@@ -18,6 +18,11 @@
                         "git_sha": "c7cfb9446fb3098e525089198ff232d795c20ef2",
                         "installed_by": ["modules"]
                     },
+                    "interproscan": {
+                        "branch": "master",
+                        "git_sha": "81880787133db07d9b4c1febd152c090eb8325dc",
+                        "installed_by": ["modules"]
+                    },
                     "multiqc": {
                         "branch": "master",
                         "git_sha": "f0719ae309075ae4a291533883847c3f7c441dad",
