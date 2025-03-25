@@ -3,6 +3,7 @@
     IMPORT MODULES / SUBWORKFLOWS / FUNCTIONS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
+include { DSHBIO_FASTATOPARQUET  } from '../modules/local/dshbio/fastatoparquet/main'
 include { MULTIQC                } from '../modules/nf-core/multiqc/main'
 include { SEQKIT_STATS           } from '../modules/nf-core/seqkit/stats/main'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
@@ -33,6 +34,10 @@ workflow PROTEINANNOTATOR {
     // todo: move this to stats on input fasta subworkflow
     SEQKIT_STATS(ch_samplesheet)
     ch_versions = ch_versions.mix(SEQKIT_STATS.out.versions)
+
+    // todo: move this to stats on input fasta subworkflow
+    DSHBIO_FASTATOPARQUET(ch_samplesheet)
+    ch_versions = ch_versions.mix(DSHBIO_FASTATOPARQUET.out.versions)
 
     //
     // Collate and save software versions
