@@ -1,5 +1,3 @@
-include { DIAMOND_BLASTP } from '../../../modules/nf-core/diamond/blastp/main'
-
 workflow FUNCTIONAL_ANNOTATION {
 
     take:
