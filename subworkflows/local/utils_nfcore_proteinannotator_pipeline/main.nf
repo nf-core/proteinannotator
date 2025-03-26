@@ -76,7 +76,7 @@ workflow PIPELINE_INITIALISATION {
         .fromList(samplesheetToList(params.input, "${projectDir}/assets/schema_input.json"))
         .map {
             meta, fasta ->
-                return [ meta.id, [ fasta ] ]
+                return [ meta, [ fasta ] ]
         }
         .groupTuple()
         .map { samplesheet ->
@@ -157,12 +157,8 @@ def validateInputParameters() {
 // Validate channels from input samplesheet
 //
 def validateInputSamplesheet(input) {
-    println(input)
-    println(input[0])
-    println(input[1])
-    def (metas, fastqs) = input[0..1]
-
-    return [ metas[0], fastqs ]
+    def (metas, fastas) = input[0..1]
+    return [ metas, fastas ]
 }
 //
 // Get attribute from genome config file e.g. fasta
