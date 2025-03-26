@@ -11,9 +11,7 @@
                 "type": "string",
                 "pattern": "^\\S+$",
                 "errorMessage": "Sample name must be provided and cannot contain spaces",
-                "meta": [
-                    "id"
-                ]
+                "meta": ["id"]
             },
             "fasta": {
                 "type": "string",
@@ -23,9 +21,6 @@
                 "errorMessage": "Fasta file for each sample must be provided, cannot contain spaces and must have extension '.fa.gz', '.fa', '.fasta', or '.fasta.gz'"
             }
         },
-        "required": [
-            "id",
-            "fasta"
-        ]
+        "required": ["id", "fasta"]
     }
 }

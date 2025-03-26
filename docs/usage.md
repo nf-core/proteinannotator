@@ -16,7 +16,6 @@ You will need to create a samplesheet with information about the samples you wou
 --input '[path to samplesheet file]'
 ```
 
-
 ### Full samplesheet
 
 A final samplesheet file consisting of multiple input fasta files from different species is below.
@@ -28,10 +27,10 @@ species1_v2,species1_v2_proteins.fasta
 species2,species2_proteins.fasta
 ```
 
-| Column    | Description                                                                                                                                                                            |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`  | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. Spaces in sample names are automatically converted to underscores (`_`). |
-| `fasta` | Full path to protein fasta file. File may be gzipped and have the extension ".fasta", ".fasta.gz", ".fa" or ".fa.gz".                                                             |
+| Column  | Description                                                                                                                                                                            |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`    | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. Spaces in sample names are automatically converted to underscores (`_`). |
+| `fasta` | Full path to protein fasta file. File may be gzipped and have the extension ".fasta", ".fasta.gz", ".fa" or ".fa.gz".                                                                  |
 
 An [example samplesheet](../assets/samplesheet.csv) has been provided with the pipeline.
 
