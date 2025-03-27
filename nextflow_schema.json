@@ -241,5 +241,14 @@
         {
             "$ref": "#/$defs/generic_options"
         }
-    ]
+    ],
+    "properties": {
+        "interproscan_database": {
+            "type": "string"
+        },
+        "interproscan_database_version": {
+            "type": "number",
+            "default": 5.5991
+        }
+    }
 }
