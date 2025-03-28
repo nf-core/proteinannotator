@@ -15,6 +15,7 @@ Special thanks to the following for their contributions to the release:
 
 ### `Added`
 
+- [[PR #13](https://github.com/nf-core/proteinannotator/pull/13)] Add nf-core seqkit/stats module
 - [[PR #17](https://github.com/nf-core/proteinannotator/pull/17)] Added Unifire module
 
 ### `Fixed`
