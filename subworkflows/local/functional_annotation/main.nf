@@ -1,9 +1,6 @@
 // Import Annotator Subworfklows
 include { INTERPROSCAN } from '../interproscan/main'
 
-include { INTERPROSCAN } from '../../../modules/local/interproscan/main'
-
-
 
 workflow FUNCTIONAL_ANNOTATION {
     take:
