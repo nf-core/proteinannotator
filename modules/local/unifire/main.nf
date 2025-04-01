@@ -1,6 +1,6 @@
 process UNIFIRE {
     tag "$meta.id"
-    label 'process_medium'
+    label 'process_large'
 
     container "dockerhub.ebi.ac.uk/uniprot-public/unifire:2025.1" // TODO: Update once Bioconda is available
     containerOptions {
