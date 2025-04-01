@@ -1,10 +1,11 @@
 process INTERPROSCAN {
+    scratch true
     tag "$meta.id"
     label 'process_medium'
     label 'process_long'
 
     conda "${moduleDir}/environment.yml"
-    container "nf-core/interproscan:5.73-104.0"
+    container "community.wave.seqera.io/library/interproscan:5.59_91.0--6053fb17325942d2"
 
     input:
     tuple val(meta), path(fasta)
