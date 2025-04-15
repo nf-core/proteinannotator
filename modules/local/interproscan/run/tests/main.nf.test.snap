@@ -1,0 +1,91 @@
+{
+    "interproscan - run": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.tsv.gz:md5,494cd75d751fdd36218a327e38f88e0d"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.xml.gz:md5,9beb149a99617063786988d589e2c643"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.gff3.gz:md5,716bbe82167d8ba9167c990d56ff2a4c"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.json.gz:md5,ddbacbf940ae30fb97d0a279b949a37c"
+                    ]
+                ],
+                "4": [
+                    "versions.yml:md5,a70a6ea74149d6f95d43c763e9c7032b"
+                ],
+                "gff3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.gff3.gz:md5,716bbe82167d8ba9167c990d56ff2a4c"
+                    ]
+                ],
+                "json": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.json.gz:md5,ddbacbf940ae30fb97d0a279b949a37c"
+                    ]
+                ],
+                "tsv": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.tsv.gz:md5,494cd75d751fdd36218a327e38f88e0d"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,a70a6ea74149d6f95d43c763e9c7032b"
+                ],
+                "xml": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.xml.gz:md5,9beb149a99617063786988d589e2c643"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.5"
+        },
+        "timestamp": "2025-04-15T11:17:16.843332"
+    }
+}
