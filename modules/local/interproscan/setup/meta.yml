@@ -22,28 +22,27 @@ tools:
 input:
   #
   ## TODO nf-core: Delete / customise this example input
-  - bam:
-      type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
-      ontologies:
-        - edam: "http://edamontology.org/format_25722"
-        - edam: "http://edamontology.org/format_2573"
-        - edam: "http://edamontology.org/format_3462"
+  - - interproscan_db:
+        ontologies:
+          - edam: http://edamontology.org/format_1929 # FASTA
+        type: directory
+        description: Path to the interproscan database (untarred
+          http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/${version_major}-${version_minor}/interproscan-${version_major}-${version_minor}-64-bit.tar.gz)
+    - db_version:
+        type: string
+        description: Version of the interproscan database for the versions.yml
 
 ## TODO nf-core: Add a description of all of the variables used as output
 output:
-  - bam:
-      #
-      ## TODO nf-core: Delete / customise this example output
-      - "*.bam":
-          type: file
-          description: Sorted BAM/CRAM/SAM file
-          pattern: "*.{bam,cram,sam}"
-          ontologies:
-            - edam: "http://edamontology.org/format_25722"
-            - edam: "http://edamontology.org/format_2573"
-            - edam: "http://edamontology.org/format_3462"
+  - - interproscan_db_prepared:
+        ontologies:
+          - edam: http://edamontology.org/format_1929 # FASTA
+        type: directory
+        description: Path to the interproscan database (untarred
+          http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/${version_major}-${version_minor}/interproscan-${version_major}-${version_minor}-64-bit.tar.gz)
+    - db_version:
+        type: string
+        description: Version of the interproscan database for the versions.yml
 
   - versions:
       - "versions.yml":

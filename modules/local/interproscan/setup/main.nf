@@ -27,11 +27,11 @@ process INTERPROSCAN_SETUP {
     container "nf-core/interproscan:5.73-104.0"
 
     input:
-    tuple path(interproscan_db), val(db_version)
+    tuple path(interproscan_db, stageAs: "data"), val(db_version)
 
     output:
     // TODO nf-core: Named file extensions MUST be emitted for ALL output channels
-    tuple path(interproscan_db), val(db_version)
+    tuple path("data/"), val(db_version)
     // TODO nf-core: List additional required output channels/values here
     path "versions.yml"           , emit: versions
 
