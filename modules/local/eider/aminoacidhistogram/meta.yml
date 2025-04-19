@@ -22,7 +22,7 @@ input:
     - parquet:
         type: directory
         description: |
-          Directory protein sequences in Parquet format
+          Directory of protein sequences in Parquet format
         pattern: "*.parquet"
 output:
   - histogram:
