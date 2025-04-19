@@ -7,13 +7,8 @@ process EIDER_AMINOACIDHISTOGRAM {
         'https://depot.galaxyproject.org/singularity/eider:0.1--hdfd78af_0' :
         'biocontainers/eider:0.1--hdfd78af_0' }"
 
-    //def amino_acid_properties = file("${moduleDir}/assets/amino_acid_properties.tsv")
-    //def query_template = file("${projectDir}/modules/local/eider/aminoacidhistogram/assets/query_template.sql")
-
     input:
     tuple val(meta), path(parquet)
-    path(amino_acid_properties) from "${moduleDir}/assets/amino_acid_properties.tsv"
-    path(query_template) from "${moduleDir}/assets/query_template.sql"
 
     output:
     tuple val(meta), path("*.histogram.tsv"), emit: histogram
@@ -25,6 +20,8 @@ process EIDER_AMINOACIDHISTOGRAM {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def amino_acid_properties = file("${moduleDir}/assets/amino_acid_properties.tsv")
+    def query_template = file("${moduleDir}/assets/query_template.sql")
     """
     eider \
         $args \
