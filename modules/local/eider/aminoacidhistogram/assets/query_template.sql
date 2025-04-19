@@ -15,6 +15,7 @@ COPY (
     '${prefix}' AS id,
     h.kv['value'] AS count,
     e.amino_acid,
+    e.one_letter_symbol,
     e.three_letter_symbol,
     e.class,
     e.chemical_polarity,
