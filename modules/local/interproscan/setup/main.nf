@@ -45,9 +45,12 @@ process INTERPROSCAN_SETUP {
 
     script:
     def args = task.ext.args ?: ''
+    template 'interproscan_setup.py'
     """
-    python3 \
-        interproscan_setup.py \
+    ls -lha
+    INTERPROSCAN_DIR="\$( dirname "\$( dirname "\$( which interproscan.sh )" )" )"
+    find "\$INTERPROSCAN_DIR/" -name "interproscan.properties"
+    interproscan_setup.py \
         --force \
         interproscan.properties
 

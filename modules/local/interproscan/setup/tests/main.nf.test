@@ -34,7 +34,8 @@ nextflow_process {
                 """
                 UNTAR.out.untar.view()
 
-                input[0] = [ UNTAR.out.untar,  "5.73-104.0" ]
+                input[0] = UNTAR.out.untar
+                    .map{ meta, folder -> tuple( folder.resolve('data'), "5.73-104.0" ) }
                 """
                 // interproscan_db_unzipped = UNTAR.out.untar.map{ meta, folder -> folder }
                 // interproscan_db_unzipped.view()
