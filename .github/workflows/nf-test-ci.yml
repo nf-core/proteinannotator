@@ -54,9 +54,6 @@ jobs:
       - name: Run nf-test
         shell: bash
         run: |
-          # NFT_WORKDIR=~ \
-          # NFT_DIFF=pdiff \
-          # NFT_DIFF_ARGS="--line-numbers --expand-tabs=2"
 
           nf-test test \
             --profile=singularity \
