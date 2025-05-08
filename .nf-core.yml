@@ -1,16 +1,20 @@
+lint:
+  files_unchanged:
+    - assets/nf-core-proteinannotator_logo_light.png
+    - docs/images/nf-core-proteinannotator_logo_light.png
+    - docs/images/nf-core-proteinannotator_logo_dark.png
+nf_core_version: 3.2.1
 repository_type: pipeline
-
-nf_core_version: 3.2.0
-
-lint: {}
-
 template:
-  org: nf-core
-  name: proteinannotator
+  author: Olga Botvinnik
   description: The best protein annotation pipeline in the world. Protein fasta ->
     ??? -> Annotations!
-  author: Olga Botvinnik
   version: 1.0.0dev
   force: true
   outdir: .
+  skip_features:
+    - fastqc
+    - igenomes
   is_nfcore: true
+  name: proteinannotator
+  org: nf-core
