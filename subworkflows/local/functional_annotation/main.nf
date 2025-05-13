@@ -1,3 +1,5 @@
+// Import Annotator Subworfklows
+
 workflow FUNCTIONAL_ANNOTATION {
 
     take:
@@ -9,9 +11,25 @@ workflow FUNCTIONAL_ANNOTATION {
 
     // TODO nf-core: substitute modules here for the modules of your subworkflow
 
+    // Create a multifasta, with one fasta per entry, add the sequence ID to the meta id
+    ch_fasta
+        .map {
+            meta, fasta ->
+            [
+                [id:"${meta.id}_${fasta[0].splitFasta(record: [id: true]).id[0].replaceAll(/\|/, '-')}"] ,
+                fasta[0].splitFasta(file:true)
+            ]
+        }
+        .transpose()
+        .view()
+        .set { ch_multifasta }
+
+    //
+    // SUBWORKFLOW: Annotator Name
+    //
+
     emit:
     // TODO nf-core: edit emitted channels
 
     versions = ch_versions                     // channel: [ versions.yml ]
 }
-
