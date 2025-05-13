@@ -4,7 +4,7 @@
 //               https://nf-co.re/join
 // TODO nf-core: A subworkflow SHOULD import at least two modules
 
-include { INTERPROSCAN_RUN     } from '../../../modules/local/interproscan/run/main'
+include { INTERPROSCAN_RUN     } from '../../../modules/local/interproscan/main'
 include { UNTAR                } from '../../../modules/nf-core/untar/main'
 
 workflow INTERPROSCAN {

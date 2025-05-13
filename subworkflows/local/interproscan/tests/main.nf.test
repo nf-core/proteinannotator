@@ -26,7 +26,7 @@ nextflow_workflow {
                 """
                 input[0] = [
                     [ id:'test', single_end:false ], // meta map
-                    file("${projectDir}/modules/local/interproscan/run/tests/fixtures/test.fasta", checkIfExists: true)
+                    file("${projectDir}/modules/local/interproscan/tests/fixtures/test.fasta", checkIfExists: true)
                 ]
                 println(params.interproscan_tar_gz)
                 println(input)

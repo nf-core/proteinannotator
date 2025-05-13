@@ -28,7 +28,7 @@ workflow FUNCTIONAL_ANNOTATION {
         .set { ch_multifasta }
 
     //
-    // MODULE: Run InterProScan
+    // SUBWORKFLOW: Run InterProScan
     //
 
     INTERPROSCAN (
