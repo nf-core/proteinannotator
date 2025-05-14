@@ -10,9 +10,8 @@ include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pi
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_proteinannotator_pipeline'
 include { FUNCTIONAL_ANNOTATION  } from '../subworkflows/local/functional_annotation'
-include { MMSEQS_SEARCH } from '../modules/nf-core/mmseqs/search/main' 
-include { MTMALIGN_ALIGN } from '../modules/nf-core/mtmalign/align/main' 
-
+include { MMSEQS_SEARCH } from '../modules/nf-core/mmseqs/search/main'
+include { MTMALIGN_ALIGN } from '../modules/nf-core/mtmalign/align/main'
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     RUN MAIN WORKFLOW
