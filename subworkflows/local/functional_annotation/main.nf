@@ -16,10 +16,8 @@ workflow FUNCTIONAL_ANNOTATION {
         .map {
             meta, fasta ->
             [
-                // meta,
                 [id:"${meta.id}_${fasta[0].splitFasta(record: [id: true]).id[0].replaceAll(/\|/, '-')}"] ,
-                fasta
-                // fasta[0].splitFasta(file:true)
+                fasta[0].splitFasta(file:true)
             ]
         }
         .transpose()
