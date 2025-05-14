@@ -26,6 +26,8 @@ workflow PROTEINANNOTATOR {
     ch_versions = Channel.empty()
     ch_multiqc_files = Channel.empty()
 
+    ch_samplesheet.view()
+
     FUNCTIONAL_ANNOTATION (
         ch_samplesheet
     )

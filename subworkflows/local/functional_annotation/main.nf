@@ -13,15 +13,14 @@ workflow FUNCTIONAL_ANNOTATION {
 
     // Create a multifasta, with one fasta per entry, add the sequence ID to the meta id
     ch_fasta
-        .splitFasta(file: true)
-        .view()
         .map {
             meta, fasta ->
-                [
-                    [id: "${meta.id}_${fasta.splitFasta(record: [id: true]).id[0].replaceAll(/\|/, '-')}"],
-                    fasta
-                ]
+            [
+                [id:"${meta.id}_${fasta[0].splitFasta(record: [id: true]).id[0].replaceAll(/\|/, '-')}"] ,
+                fasta[0].splitFasta(file:true)
+            ]
         }
+        .transpose()
         .view()
         .set { ch_multifasta }
 
