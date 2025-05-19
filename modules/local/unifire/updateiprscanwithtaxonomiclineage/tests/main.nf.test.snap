@@ -1,0 +1,68 @@
+{
+    "unifire - updateiprscanwithtaxonomiclineage - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_with_lineage.xml:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,4f349a9bd552676585808dc198ae8402"
+                ],
+                "versions": [
+                    "versions.yml:md5,4f349a9bd552676585808dc198ae8402"
+                ],
+                "xml": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_with_lineage.xml:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-05-18T14:16:02.062343311"
+    },
+    "unifire - updateiprscanwithtaxonomiclineage": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_with_lineage.xml:md5,973d552c68ccd6edaf5da6040d7d5760"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,4f349a9bd552676585808dc198ae8402"
+                ],
+                "versions": [
+                    "versions.yml:md5,4f349a9bd552676585808dc198ae8402"
+                ],
+                "xml": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_with_lineage.xml:md5,973d552c68ccd6edaf5da6040d7d5760"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-05-18T18:54:11.002629833"
+    }
+}

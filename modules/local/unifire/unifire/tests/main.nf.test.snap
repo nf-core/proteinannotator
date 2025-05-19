@@ -1,0 +1,134 @@
+{
+    "unifire - ARBA": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_arba-urml-latest_unifire.csv:md5,819a4d74674b6028cd368731cb880e33"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,c410fd32c281986ce8acaea9169b5170"
+                ],
+                "predictions": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_arba-urml-latest_unifire.csv:md5,819a4d74674b6028cd368731cb880e33"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,c410fd32c281986ce8acaea9169b5170"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-05-18T15:16:33.919304842"
+    },
+    "unifire - unirule": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_unirule-urml-latest_unifire.csv:md5,5547410e5079f79c34a4ffffe6d81b3e"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,c410fd32c281986ce8acaea9169b5170"
+                ],
+                "predictions": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_unirule-urml-latest_unifire.csv:md5,5547410e5079f79c34a4ffffe6d81b3e"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,c410fd32c281986ce8acaea9169b5170"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-05-18T14:58:12.65089179"
+    },
+    "unifire - ARBA - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_unifire.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,c410fd32c281986ce8acaea9169b5170"
+                ],
+                "predictions": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_unifire.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,c410fd32c281986ce8acaea9169b5170"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-05-18T14:14:25.197771816"
+    },
+    "unifire - unirule - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_unifire.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,c410fd32c281986ce8acaea9169b5170"
+                ],
+                "predictions": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_unifire.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,c410fd32c281986ce8acaea9169b5170"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-05-18T14:14:01.711475358"
+    }
+}

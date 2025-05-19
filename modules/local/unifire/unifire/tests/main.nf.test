@@ -1,0 +1,103 @@
+// TODO nf-core: Once you have added the required tests, please run the following command to build this file:
+// nf-core modules test unifire/unifire
+nextflow_process {
+
+    name "Test Process UNIFIRE_UNIFIRE"
+    script "../main.nf"
+    process "UNIFIRE_UNIFIRE"
+
+    tag "modules"
+    tag "modules_"
+    tag "unifire"
+    tag "unifire/unifire"
+
+    test("unifire - unirule") {
+
+        // You can find more information about how to use a 'setup' method in the docs
+        // (https://nf-co.re/docs/contributing/modules#steps-for-creating-nf-test-for-chained-modules).
+
+        // TODO: create minimal test example of the xml file, add to nf-core test data,
+        // and then replace the test data paths with something like:
+        // file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExists: true)
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'sample1' ], file("${projectDir}/data/input_ipr.fasta.xml", checkIfExists: false)
+                ]
+                input[1] = file("${projectDir}/data/unirule-urml-latest.xml", checkIfExists: true)
+                input[2] = file("${projectDir}/data/unirule-templates-latest.xml", checkIfExists: true)
+                """
+            }
+        }
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test("unifire - unirule - stub") {
+        options "-stub"
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'sample1' ], file("input_ipr.fasta.xml", checkIfExists: false)
+                ]
+                input[1] = file("unirule-urml-latest.xml", checkIfExists: false)
+                input[2] = file("unirule-templates-latest.xml", checkIfExists: false)
+                """
+            }
+        }
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test("unifire - ARBA") {
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'sample1' ], file("${projectDir}/data/input_ipr.fasta.xml", checkIfExists: true)
+                ]
+                input[1] = file("${projectDir}/data/arba-urml-latest.xml", checkIfExists: true)
+                input[2] = []
+                """
+            }
+        }
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test("unifire - ARBA - stub") {
+        options "-stub"
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'sample1' ], file("input_ipr.fasta.xml", checkIfExists: false)
+                ]
+                input[1] = file("arba-urml-latest.xml", checkIfExists: false)
+                input[2] = []
+                """
+            }
+        }
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+}
