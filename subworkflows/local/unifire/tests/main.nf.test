@@ -1,0 +1,75 @@
+nextflow_workflow {
+
+    name "Test Subworkflow UNIFIRE"
+    script "../main.nf"
+    workflow "UNIFIRE"
+
+    tag "subworkflows"
+    tag "subworkflows_"
+    tag "subworkflows/unifire"
+    tag "unifire"
+    tag "unifire/updateiprscanwithtaxonomiclineage"
+    tag "samtools/pirsr"
+    tag "samtools/unifire"
+
+    test("unifire - predict") {
+        when {
+            params {
+                unifire_skip = "pirsr"
+            }
+            workflow {
+                """
+                input[0] = [
+                    [ id: 'sample1' ],
+                    file("${projectDir}/data/input_ipr.fasta.xml", checkIfExists: true)
+                ]
+                input[1] = file("${projectDir}/data/taxa.sqlite", checkIfExists: true)
+                input[2] = file("${projectDir}/data/pirsr_data", checkIfExists: true)
+                input[3] = file("${projectDir}/data/unirule-urml-latest.xml", checkIfExists: true)
+                input[4] = file("${projectDir}/data/arba-urml-latest.xml", checkIfExists: true)
+                input[5] = file("${projectDir}/data/unirule.pirsr-urml-latest.xml", checkIfExists: true)
+                input[6] = file("${projectDir}/data/unirule-templates-latest.xml", checkIfExists: true)
+                input[7] = []
+                input[8] = []
+                """
+            }
+        }
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
+
+    test("unifire - predict - stub") {
+        options "-stub"
+        when {
+            params {
+                unifire_skip = ""
+            }
+            workflow {
+                """
+                input[0] = [
+                    [ id: 'sample1' ],
+                    file('input_ipr.fasta.xml', checkIfExists: false)
+                ]
+                input[1] = file('taxa.sqlite', checkIfExists: false)
+                input[2] = file('pirsr_data', checkIfExists: false)
+                input[3] = file('unirule-urml-latest.xml', checkIfExists: false)
+                input[4] = file('arba-urml-latest.xml', checkIfExists: false)
+                input[5] = file('unirule.pirsr_rules.xml', checkIfExists: false)
+                input[6] = file('unirule-templates-latest.xml', checkIfExists: false)
+                input[7] = []
+                input[8] = []
+                """
+            }
+        }
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
+}

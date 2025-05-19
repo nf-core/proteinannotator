@@ -1,0 +1,93 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
+name: "unifire"
+description: >
+  Run the Unifire annotation workflow, which annotates input protein sequence(s) with the PIR, Unirule and ARBA rulesets.
+  Unifire is the The UniProt Functional annotation Inference Rule Engine. To download the input rulesets, taxadb and
+  template files, please refer to the unifire/updateIPRScanWithTaxonomicLineage and unifire/unifire documentation.
+  Note that this subworkflow is equipped with a parameter, 'unifire_skip', which expects a comma separated list,
+  as a string, that may contain any combination of: unirule,arba,pirsr. E.g. if unifire_skip="unirule,pirsr", then
+  only the ARBA predictions will be performed.
+keywords:
+  - protein
+  - functional
+  - annotation
+  - unirule
+  - ARBA
+  - PIR
+components:
+  - unifire/updateIPRScanWithTaxonomicLineage
+  - unifire/unifire
+  - unifire_pirsr_predict
+input:
+  - ch_interproscan_xml:
+      description: |
+        Structure: [ val(meta), path(interproscan_xml)]
+        These are the protein sequence(s) to be annotated, and are expected to be the output of InterProScan.
+
+  - ch_taxadb:
+      description: |
+        Structure: [ path(taxadb) ]
+        The ete4 taxonmomic sqlite database for adding the taxonomic
+
+  - ch_pirsr_data:
+      description: |
+        Structure: [ path(pirsr_data) ]
+        The directory containing the PIRSR data. See module description for instructions on how to download and extract the data
+
+  - ch_unirule_rules:
+      description: |
+        Structure: [ path(unirule_xml) ]
+        The Unirule XML rule set. See the unifire/unifire module description for instructions on how to download the data
+
+  - ch_arba_rules:
+      description: |
+        Structure: [ path(arba_xml) ]
+        The ARBA XML rule set. See the unifire/unifire module description for instructions on how to download the data
+
+  - ch_pirsr_rules:
+      description: |
+        Structure: [ path(pirsr_xml) ]
+        The PIR XML ruleset. See the unifire/unifire module description for instructions on how to download the data
+
+  - ch_unirule_template:
+      description: |
+        Structure: [ path(unirule_template) ]
+        Optional. Pass an empty path if not needed. Template sequence matches. See the unifire/unifire module description for instructions on how to download the data
+
+  - ch_arba_template:
+      description: |
+        Structure: [ path(arba_template) ]
+        Optional. Pass an empty path if not needed. Template sequence matches. See the unifire/unifire module description for instructions on how to download the data
+
+  - ch_pirsr_template:
+      description: |
+        Structure: [ path(pirsr_template) ]
+        Optional. Pass an empty path if not needed. Template sequence matches. See the unifire/unifire module description for instructions on how to download the data
+
+output:
+
+  - unirule_predictions:
+      description: |
+        Structure: [ val(meta), path(pirsr_template) ]
+        A Groovy Map containing the input protein sequence(s) metadata, and a csv file containing the unifire predictions against the unirule ruleset.
+
+  - arba_predictions:
+      description: |
+        Structure: [ val(meta), path(arba_template) ]
+        A Groovy Map containing the input protein sequence(s) metadata, and a csv file containing the unifire predictions against the ARBA ruleset.
+
+  - pirsr_predictions:
+      description: |
+        Structure: [ val(meta), path(pirsr_template) ]
+        A Groovy Map containing the input protein sequence(s) metadata, and a csv file containing the unifire predictions against the PIR ruleset.
+  - versions:
+      type: file
+      description: |
+        File containing software versions
+        Structure: [ path(versions.yml) ]
+      pattern: "versions.yml"
+
+authors:
+  - "@cmatKhan"
+maintainers:
+  - "@cmatKhan"

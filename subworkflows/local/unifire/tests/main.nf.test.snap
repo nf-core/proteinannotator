@@ -1,0 +1,130 @@
+{
+    "unifire - predict": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_unirule-urml-latest_unifire.csv:md5,5547410e5079f79c34a4ffffe6d81b3e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_arba-urml-latest_unifire.csv:md5,819a4d74674b6028cd368731cb880e33"
+                    ]
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    "versions.yml:md5,2fa795f29487dbf2301e06b71240c280",
+                    "versions.yml:md5,ccbba0729f9701a5fa4a450372ef8cf5"
+                ],
+                "arba_predictions": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_arba-urml-latest_unifire.csv:md5,819a4d74674b6028cd368731cb880e33"
+                    ]
+                ],
+                "pirsr_predictions": [
+                    
+                ],
+                "unirule_predictions": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_unirule-urml-latest_unifire.csv:md5,5547410e5079f79c34a4ffffe6d81b3e"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,2fa795f29487dbf2301e06b71240c280",
+                    "versions.yml:md5,ccbba0729f9701a5fa4a450372ef8cf5"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-05-18T19:51:22.838226896"
+    },
+    "unifire - predict - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_unifire.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_unifire.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_unifire.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    "versions.yml:md5,0a21402c59f9e14ea528b460adb480e7",
+                    "versions.yml:md5,2fa795f29487dbf2301e06b71240c280",
+                    "versions.yml:md5,5d0f763af67395f1a352e567d0e72c18",
+                    "versions.yml:md5,ccbba0729f9701a5fa4a450372ef8cf5"
+                ],
+                "arba_predictions": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_unifire.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "pirsr_predictions": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_unifire.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "unirule_predictions": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        "sample1_unifire.csv:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,0a21402c59f9e14ea528b460adb480e7",
+                    "versions.yml:md5,2fa795f29487dbf2301e06b71240c280",
+                    "versions.yml:md5,5d0f763af67395f1a352e567d0e72c18",
+                    "versions.yml:md5,ccbba0729f9701a5fa4a450372ef8cf5"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.2"
+        },
+        "timestamp": "2025-05-18T19:43:50.487691196"
+    }
+}

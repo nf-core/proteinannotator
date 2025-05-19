@@ -1,0 +1,58 @@
+nextflow_process {
+
+    name "Test Process UNIFIRE_PIRSR"
+    script "../main.nf"
+    process "UNIFIRE_PIRSR"
+
+    tag "modules"
+    tag "modules_"
+    tag "unifire"
+    tag "unifire/pirsr"
+
+    test("unifire - pirsr") {
+
+        when {
+            // You can find more information about how to use a 'setup' method in the docs
+            // (https://nf-co.re/docs/contributing/modules#steps-for-creating-nf-test-for-chained-modules).
+
+            // TODO: create minimal test example of the xml file, add to nf-core test data,
+            // and then replace the test data paths with something like:
+            // file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExists: true)
+
+            process {
+                """
+                input[0] = [
+                    [ id:'sample1' ], file("${projectDir}/data/input_ipr.fasta.xml", checkIfExists: true)
+                ]
+                input[1] = file("${projectDir}/data/pirsr_data", checkIfExists: true)
+                """
+            }
+        }
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+
+    test("unifire - pirsr - stub") {
+        options "-stub"
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'sample1' ], file("input_ipr.fasta.xml", checkIfExists: false)
+                ]
+                input[1] = file("pirsr_data", checkIfExists: false)
+                """
+            }
+        }
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+}
