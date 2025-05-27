@@ -21,14 +21,14 @@ nextflow_workflow {
                 """
                 input[0] = [
                     [ id: 'sample1' ],
-                    file("${projectDir}/data/input_ipr.fasta.xml", checkIfExists: true)
+                    file("${projectDir}/modules/local/unifire/fixtures/proteins-ipr.xml", checkIfExists: true)
                 ]
-                input[1] = file("${projectDir}/data/taxa.sqlite", checkIfExists: true)
-                input[2] = file("${projectDir}/data/pirsr_data", checkIfExists: true)
-                input[3] = file("${projectDir}/data/unirule-urml-latest.xml", checkIfExists: true)
-                input[4] = file("${projectDir}/data/arba-urml-latest.xml", checkIfExists: true)
-                input[5] = file("${projectDir}/data/unirule.pirsr-urml-latest.xml", checkIfExists: true)
-                input[6] = file("${projectDir}/data/unirule-templates-latest.xml", checkIfExists: true)
+                input[1] = file("${projectDir}/modules/local/unifire/fixtures/taxadb.sqlite", checkIfExists: true)
+                input[2] = file("${projectDir}/modules/local/unifire/fixtures/sample_pirsr_data", checkIfExists: true)
+                input[3] = file("${projectDir}/modules/local/unifire/fixtures/sample_urml/sample-unirule-urml-2025_02.xml", checkIfExists: true)
+                input[4] = file("${projectDir}/modules/local/unifire/fixtures/sample_urml/sample-arba-urml-2025_02.xml", checkIfExists: true)
+                input[5] = file("${projectDir}/modules/local/unifire/fixtures/sample_urml/sample-unirule.pirsr-urml-2025_02.xml", checkIfExists: true)
+                input[6] = file("${projectDir}/modules/local/unifire/fixtures/sample_urml/sample-unirule-templates-2025_02.xml", checkIfExists: true)
                 input[7] = []
                 input[8] = []
                 """

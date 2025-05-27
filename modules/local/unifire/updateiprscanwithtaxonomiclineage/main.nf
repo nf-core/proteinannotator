@@ -28,23 +28,10 @@ process UNIFIRE_UPDATEIPRSCANWITHTAXONOMICLINEAGE {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    // this is the commit hash of
-    // https://gitlab.ebi.ac.uk/uniprot-public/unifire/-/tree/master?ref_type=heads
-    // from which the biocontainers package was built
-    def VERSION="325ee7c7"
-    """
-    updateIPRScanWithTaxonomicLineage \\
-        -i ${interproscan_xml} \\
-        -o ${prefix}_with_lineage.xml \\
-        -t ${taxadb} \\
-        ${args}
+    output_filename = prefix + "_with_lineage.xml"
+    VERSION="325ee7c7"
 
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        unifire: ${VERSION}
-    END_VERSIONS
-    """
+    template "updateIPRScanWithTaxonomicLineage.py"
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"

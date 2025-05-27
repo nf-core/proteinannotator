@@ -1,0 +1,355 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<protein-matches xmlns="https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas" interproscan-version="5.73-104.0">
+  <protein>
+    <sequence md5="7d8ab207741d3b13e236c9135f4d5570">MLMAAVLAAPAFPAFSAGETPAAPTKAAAKPDLVKGEASFTAVCAACHGADGNSAIAANPKLSAQHPEYLVKQLQEFKSGKRNDPVMKGFAMALSDEDMKNIAYWVTAKAAKPGFAKDKALVSLGERIYRGGIADRQIAACAGCHSPNGAGIPAQYPRLSGQHADYTATQLVAFRDGKRGNSLQMTQVAAKLNDREIKAVADYIAGLR</sequence>
+    <xref id="tr|J0U7L2|J0U7L2_9BURK" name="tr|J0U7L2|J0U7L2_9BURK Cytochrome c553 OS=Acidovorax sp. CF316 OX=1,131567,2,3379134,1224,28216,80840,80864,12916,2684926,1144317 GN=PMI14_03334 PE=4 SV=1"/>
+    <matches>
+      <fingerprints-match evalue="4.9E-5" graphscan="Ii">
+        <signature ac="PR00605" desc="Class IC cytochrome C signature" name="CYTCHROMECIC">
+          <entry ac="IPR008168" desc="Cytochrome c, class IC" name="Cyt_C_IC" type="FAMILY"/>
+          <signature-library-release library="PRINTS" version="42.0"/>
+        </signature>
+        <model-ac>PR00605</model-ac>
+        <locations>
+          <fingerprints-location motifNumber="1" pvalue="2.05E-5" score="54.67" start="42" end="53" representative="false">
+            <location-fragments>
+              <fingerprints-location-fragment start="42" end="53" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </fingerprints-location>
+          <fingerprints-location motifNumber="2" pvalue="1.0E-6" score="29.3" start="182" end="204" representative="false">
+            <location-fragments>
+              <fingerprints-location-fragment start="182" end="204" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </fingerprints-location>
+        </locations>
+      </fingerprints-match>
+      <hmmer3-match evalue="7.2E-61" score="203.0">
+        <signature ac="PIRSF000005" name="Cytochrome_c4">
+          <entry ac="IPR024167" desc="Cytochrome c4-like" name="Cytochrome_c4-like" type="FAMILY"/>
+          <signature-library-release library="PIRSF" version="3.10"/>
+        </signature>
+        <model-ac>PIRSF000005</model-ac>
+        <locations>
+          <hmmer3-location env-end="208" env-start="1" post-processed="false" score="202.9" evalue="7.9E-61" hmm-start="5" hmm-end="208" hmm-length="215" hmm-bounds="INCOMPLETE" start="1" end="208" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="1" end="208" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </hmmer3-location>
+        </locations>
+      </hmmer3-match>
+      <hmmer3-match evalue="1.3E-19" score="82.6">
+        <signature ac="PF00034" desc="Cytochrome c" name="Cytochrom_C">
+          <entry ac="IPR009056" desc="Cytochrome c-like domain" name="Cyt_c-like_dom" type="DOMAIN"/>
+          <signature-library-release library="PFAM" version="37.2"/>
+        </signature>
+        <model-ac>PF00034</model-ac>
+        <locations>
+          <hmmer3-location env-end="208" env-start="124" post-processed="true" score="42.5" evalue="4.3E-7" hmm-start="11" hmm-end="89" hmm-length="90" hmm-bounds="INCOMPLETE" start="140" end="207" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="140" end="207" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </hmmer3-location>
+          <hmmer3-location env-end="109" env-start="33" post-processed="true" score="41.1" evalue="1.2E-6" hmm-start="2" hmm-end="86" hmm-length="90" hmm-bounds="INCOMPLETE" start="34" end="106" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="34" end="106" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </hmmer3-location>
+        </locations>
+      </hmmer3-match>
+      <hmmer3-match evalue="2.2E-50" score="170.9">
+        <signature ac="G3DSA:1.10.760.10" name="">
+          <entry ac="IPR036909" desc="Cytochrome c-like domain superfamily" name="Cyt_c-like_dom_sf" type="HOMOLOGOUS_SUPERFAMILY"/>
+          <signature-library-release library="GENE3D" version="4.3.0"/>
+        </signature>
+        <model-ac>1m70A02</model-ac>
+        <locations>
+          <hmmer3-location env-end="208" env-start="115" post-processed="true" score="96.1" evalue="4.7E-27" hmm-start="5" hmm-end="98" hmm-length="99" hmm-bounds="COMPLETE" start="115" end="208" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="115" end="208" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </hmmer3-location>
+        </locations>
+      </hmmer3-match>
+      <hmmer3-match evalue="3.3E-49" score="167.2">
+        <signature ac="G3DSA:1.10.760.10" name="">
+          <entry ac="IPR036909" desc="Cytochrome c-like domain superfamily" name="Cyt_c-like_dom_sf" type="HOMOLOGOUS_SUPERFAMILY"/>
+          <signature-library-release library="GENE3D" version="4.3.0"/>
+        </signature>
+        <model-ac>1fcdC01</model-ac>
+        <locations>
+          <hmmer3-location env-end="109" env-start="36" post-processed="true" score="87.0" evalue="3.5E-24" hmm-start="7" hmm-end="74" hmm-length="78" hmm-bounds="COMPLETE" start="36" end="109" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="36" end="109" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </hmmer3-location>
+        </locations>
+      </hmmer3-match>
+      <panther-match ac="PTHR33751:SF9" evalue="4.2E-44" graft-point="PTN002137205" name="CYTOCHROME C4" score="162.3">
+        <signature ac="PTHR33751" name="CBB3-TYPE CYTOCHROME C OXIDASE SUBUNIT FIXP">
+          <entry ac="IPR050597" desc="Cytochrome c Oxidase Subunit" name="Cytochrome_c_Oxidase_Subunit" type="FAMILY"/>
+          <signature-library-release library="PANTHER" version="19.0"/>
+        </signature>
+        <model-ac>PTHR33751:SF9</model-ac>
+        <locations>
+          <panther-location env-start="1" env-end="208" hmm-start="41" hmm-end="221" hmm-length="0" hmm-bounds="INCOMPLETE" start="17" end="207" representative="false">
+            <location-fragments>
+              <panther-location-fragment start="17" end="207" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </panther-location>
+        </locations>
+      </panther-match>
+      <profilescan-match>
+        <signature ac="PS51007" desc="Cytochrome c family profile." name="CYTC">
+          <entry ac="IPR009056" desc="Cytochrome c-like domain" name="Cyt_c-like_dom" type="DOMAIN"/>
+          <signature-library-release library="PROSITE_PROFILES" version="2023_05"/>
+        </signature>
+        <model-ac>PS51007</model-ac>
+        <locations>
+          <profilescan-location score="11.508389" start="31" end="110" representative="true">
+            <location-fragments>
+              <profilescan-location-fragment start="31" end="110" dc-status="CONTINUOUS"/>
+            </location-fragments>
+            <alignment>PDLVKGEASFTAVCAACHGADGNSAIAANPKLSAQHPEYLV------KQLQEFKSGKRNDP--VMKGFAMALSDEDMKNIAYWVTAKA</alignment>
+          </profilescan-location>
+        </locations>
+      </profilescan-match>
+      <profilescan-match>
+        <signature ac="PS51007" desc="Cytochrome c family profile." name="CYTC">
+          <entry ac="IPR009056" desc="Cytochrome c-like domain" name="Cyt_c-like_dom" type="DOMAIN"/>
+          <signature-library-release library="PROSITE_PROFILES" version="2023_05"/>
+        </signature>
+        <model-ac>PS51007</model-ac>
+        <locations>
+          <profilescan-location score="10.349862" start="120" end="208" representative="true">
+            <location-fragments>
+              <profilescan-location-fragment start="120" end="208" dc-status="CONTINUOUS"/>
+            </location-fragments>
+            <alignment>ALVSLGERIYRggiadrqiAACAGCHSPNGAGIPAQYPRLSGQHADYTA------TQLVAFRDGKRGN-SLQMTQVAAKLNDREIKAVADYIAGLR</alignment>
+          </profilescan-location>
+        </locations>
+      </profilescan-match>
+      <superfamilyhmmer3-match evalue="6.55E-21">
+        <signature ac="SSF46626" name="Cytochrome c">
+          <entry ac="IPR036909" desc="Cytochrome c-like domain superfamily" name="Cyt_c-like_dom_sf" type="HOMOLOGOUS_SUPERFAMILY"/>
+          <signature-library-release library="SUPERFAMILY" version="1.75"/>
+        </signature>
+        <model-ac>0052127</model-ac>
+        <locations>
+          <superfamilyhmmer3-location hmm-length="149" start="10" end="110" representative="false">
+            <location-fragments>
+              <superfamilyhmmer3-location-fragment start="10" end="110" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </superfamilyhmmer3-location>
+        </locations>
+      </superfamilyhmmer3-match>
+      <superfamilyhmmer3-match evalue="2.58E-22">
+        <signature ac="SSF46626" name="Cytochrome c">
+          <entry ac="IPR036909" desc="Cytochrome c-like domain superfamily" name="Cyt_c-like_dom_sf" type="HOMOLOGOUS_SUPERFAMILY"/>
+          <signature-library-release library="SUPERFAMILY" version="1.75"/>
+        </signature>
+        <model-ac>0047100</model-ac>
+        <locations>
+          <superfamilyhmmer3-location hmm-length="90" start="118" end="206" representative="false">
+            <location-fragments>
+              <superfamilyhmmer3-location-fragment start="118" end="206" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </superfamilyhmmer3-location>
+        </locations>
+      </superfamilyhmmer3-match>
+    </matches>
+  </protein>
+  <protein>
+    <sequence md5="228fea885bda1b7325dee6a215060c21">MSLSPKQEQLFKQANKHIPGGVNSPVRAFNGVGGTPIFIEKAQGAYLYDVDGKRYVDYVGSWGPMILGHAHPSIIKAVQDAAVDGLSFGAPTVHETTLADIICDIMPSIELVRMTNSGTEATMTAIRLARGYTGRDKIVKFEGCYHGHSDSLLVKAGSGLLTKGEGEATSAGVPADFAKHTLTLPYNDIATLKECFAKFGSEIAGVIVEPVAGNMNLVKPIDGFLQAIRDVCDEHGSVFIIDEVMTGFRVGLGGAQAHYGVTPDLTTLGKIIGAGLPVGAFGGKREVMECIAPLGNVYQAGTLSGNPLAMRAGIEMFKHLREPGFYEKLTAQLEKLLAGLQAAADEAGIPFKTQQVGGMFGLYFTDQEDITSFDSMLKCDVEAFKKFFHGMLSRGVNLAPSAFEAGFISAAHSDEDIEFTIQAAKETFAEMKG</sequence>
+    <xref id="tr|A0A009EAR0|A0A009EAR0_ACIBA" name="tr|A0A009EAR0|A0A009EAR0_ACIBA Glutamate-1-semialdehyde 2,1-aminomutase OS=Acinetobacter baumannii 348935 OX=1,131567,2,3379134,1224,1236,2887326,468,469,909768,470,1310605 GN=hemL PE=3 SV=1"/>
+    <matches>
+      <funfamhmmer3-match evalue="1.2E-113" score="380.2">
+        <signature ac="G3DSA:3.40.640.10:FF:000021" desc="Glutamate-1-semialdehyde 2,1-aminomutase">
+          <signature-library-release library="FUNFAM" version="4.3.0"/>
+        </signature>
+        <model-ac>3.40.640.10-FF-000021</model-ac>
+        <locations>
+          <funfamhmmer3-location env-end="322" env-start="72" post-processed="true" score="379.8" evalue="1.6E-113" hmm-start="1" hmm-end="248" hmm-length="249" hmm-bounds="N_TERMINAL_COMPLETE" start="72" end="322" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="72" end="322" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </funfamhmmer3-location>
+        </locations>
+      </funfamhmmer3-match>
+      <hmmer3-match evalue="9.9E-73" score="256.7">
+        <signature ac="PF00202" desc="Aminotransferase class-III" name="Aminotran_3">
+          <entry ac="IPR005814" desc="Aminotransferase class-III" name="Aminotrans_3" type="FAMILY"/>
+          <signature-library-release library="PFAM" version="37.2"/>
+        </signature>
+        <model-ac>PF00202</model-ac>
+        <locations>
+          <hmmer3-location env-end="417" env-start="29" post-processed="true" score="256.4" evalue="1.3E-72" hmm-start="9" hmm-end="372" hmm-length="403" hmm-bounds="INCOMPLETE" start="35" end="399" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="35" end="399" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </hmmer3-location>
+        </locations>
+      </hmmer3-match>
+      <hmmer3-match evalue="2.2E-192" score="641.2">
+        <signature ac="G3DSA:3.90.1150.10" name="Aspartate Aminotransferase, domain 1">
+          <entry ac="IPR015422" desc="Pyridoxal phosphate-dependent transferase, small domain" name="PyrdxlP-dep_Trfase_small" type="HOMOLOGOUS_SUPERFAMILY"/>
+          <signature-library-release library="GENE3D" version="4.3.0"/>
+        </signature>
+        <model-ac>5hdmA01</model-ac>
+        <locations>
+          <hmmer3-location env-end="424" env-start="8" post-processed="true" score="641.0" evalue="2.5E-192" hmm-start="1" hmm-end="414" hmm-length="185" hmm-bounds="C_TERMINAL_COMPLETE" start="9" end="424" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="323" end="424" dc-status="N_TERMINAL_DISC"/>
+              <hmmer3-location-fragment start="9" end="71" dc-status="C_TERMINAL_DISC"/>
+            </location-fragments>
+          </hmmer3-location>
+        </locations>
+      </hmmer3-match>
+      <hmmer3-match evalue="4.5E-184" score="623.6">
+        <signature ac="TIGR00713" desc="glutamate-1-semialdehyde 2,1-aminomutase" name="hemL">
+          <entry ac="IPR004639" desc="Tetrapyrrole biosynthesis, glutamate-1-semialdehyde aminotransferase" name="4pyrrol_synth_GluAld_NH2Trfase" type="FAMILY"/>
+          <signature-library-release library="NCBIFAM" version="17.0"/>
+        </signature>
+        <model-ac>TIGR00713</model-ac>
+        <locations>
+          <hmmer3-location env-end="431" env-start="6" post-processed="false" score="623.4" evalue="5.1E-184" hmm-start="1" hmm-end="422" hmm-length="423" hmm-bounds="N_TERMINAL_COMPLETE" start="6" end="430" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="6" end="430" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </hmmer3-location>
+        </locations>
+      </hmmer3-match>
+      <hmmer3-match evalue="1.6E-202" score="684.5">
+        <signature ac="NF000818" desc="glutamate-1-semialdehyde 2,1-aminomutase" name="PRK00062.1">
+          <signature-library-release library="NCBIFAM" version="17.0"/>
+        </signature>
+        <model-ac>NF000818</model-ac>
+        <locations>
+          <hmmer3-location env-end="433" env-start="2" post-processed="false" score="684.3" evalue="1.8E-202" hmm-start="5" hmm-end="427" hmm-length="429" hmm-bounds="INCOMPLETE" start="6" end="431" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="6" end="431" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </hmmer3-location>
+        </locations>
+      </hmmer3-match>
+      <hmmer3-match evalue="2.2E-192" score="641.2">
+        <signature ac="G3DSA:3.40.640.10" name="">
+          <entry ac="IPR015421" desc="Pyridoxal phosphate-dependent transferase, major domain" name="PyrdxlP-dep_Trfase_major" type="HOMOLOGOUS_SUPERFAMILY"/>
+          <signature-library-release library="GENE3D" version="4.3.0"/>
+        </signature>
+        <model-ac>5hdmA02</model-ac>
+        <locations>
+          <hmmer3-location env-end="424" env-start="8" post-processed="true" score="641.0" evalue="2.5E-192" hmm-start="1" hmm-end="414" hmm-length="249" hmm-bounds="INCOMPLETE" start="72" end="322" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="72" end="322" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </hmmer3-location>
+        </locations>
+      </hmmer3-match>
+      <panther-match ac="PTHR43713:SF3" evalue="2.6E-174" graft-point="PTN000241405" name="GLUTAMATE-1-SEMIALDEHYDE 2,1-AMINOMUTASE 1, CHLOROPLASTIC-RELATED" score="592.0">
+        <signature ac="PTHR43713" name="GLUTAMATE-1-SEMIALDEHYDE 2,1-AMINOMUTASE">
+          <signature-library-release library="PANTHER" version="19.0"/>
+        </signature>
+        <model-ac>PTHR43713:SF3</model-ac>
+        <locations>
+          <panther-location env-start="2" env-end="432" hmm-start="23" hmm-end="445" hmm-length="0" hmm-bounds="INCOMPLETE" start="4" end="430" representative="false">
+            <location-fragments>
+              <panther-location-fragment start="4" end="430" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </panther-location>
+        </locations>
+      </panther-match>
+      <patternscan-match>
+        <signature ac="PS00600" desc="Aminotransferases class-III pyridoxal-phosphate attachment site." name="AA_TRANSFER_CLASS_3">
+          <entry ac="IPR049704" desc="Aminotransferases class-III pyridoxal-phosphate attachment site" name="Aminotrans_3_PPA_site" type="CONSERVED_SITE"/>
+          <signature-library-release library="PROSITE_PATTERNS" version="2023_05"/>
+        </signature>
+        <model-ac>PS00600</model-ac>
+        <locations>
+          <patternscan-location level="STRONG" start="239" end="275" representative="false">
+            <location-fragments>
+              <patternscan-location-fragment start="239" end="275" dc-status="CONTINUOUS"/>
+            </location-fragments>
+            <alignment>FIiDEVmtGFRvGlggaqahygvtpDLTtlGKiigAG</alignment>
+          </patternscan-location>
+        </locations>
+      </patternscan-match>
+      <profilescan-match>
+        <signature ac="MF_00375" desc="Glutamate-1-semialdehyde 2,1-aminomutase [hemL]." name="HemL_aminotrans_3">
+          <entry ac="IPR004639" desc="Tetrapyrrole biosynthesis, glutamate-1-semialdehyde aminotransferase" name="4pyrrol_synth_GluAld_NH2Trfase" type="FAMILY"/>
+          <signature-library-release library="HAMAP" version="2023_05"/>
+        </signature>
+        <model-ac>MF_00375</model-ac>
+        <locations>
+          <profilescan-location score="104.917374" start="6" end="431" representative="false">
+            <location-fragments>
+              <profilescan-location-fragment start="6" end="431" dc-status="CONTINUOUS"/>
+            </location-fragments>
+            <alignment>KQEQLFKQANKHIPGGVNSPVRAFNGVGG-TPIFIEKAQGAYLYDVDGKRYVDYVGSWGPMILGHAHPSIIKAVQDAAVDGLSFGAPTVHETTLADIICDIMPSI-ELVRMTNSGTEATMTAIRLARGYTGRDKIVKFEGCYHGHSDSLLVKAGSGLLTKGE-------GeATSAGVPADFAKHTLTLPYNDIATLKECFAKF-GSEIAGVIVEPVAGNMNLVKPIDGFLQAIRDVCDEHGSVFIIDEVMTGFRVGLGGAQAHYGV--TPDLTTLGKIIGAGLPVGAFGGKREVMECIAPLGNVYQAGTLSGNPLAMRAGIEMFKHLRE---PGFYEKLTAQLEKLLAGLQAAADEAG-IPFKTQQVGGMFGLYFTDQE---DITSFDSMLK----CDVEAFKKFFHGMLSRGVNLAPSAFEAGFISAAHSDEDIEFTIQAAKETFAEM</alignment>
+          </profilescan-location>
+        </locations>
+      </profilescan-match>
+      <rpsblast-match>
+        <signature ac="cd00610" desc="OAT_like" name="OAT_like">
+          <entry ac="IPR005814" desc="Aminotransferase class-III" name="Aminotrans_3" type="FAMILY"/>
+          <signature-library-release library="CDD" version="3.21"/>
+        </signature>
+        <model-ac>cd00610</model-ac>
+        <locations>
+          <rpsblast-location evalue="1.03747E-134" score="391.547" start="10" end="428" representative="true">
+            <location-fragments>
+              <rpsblast-location-fragment start="10" end="428" dc-status="CONTINUOUS"/>
+            </location-fragments>
+            <sites>
+              <rpsblast-site description="inhibitor-cofactor binding pocket" numLocations="11">
+                <site-locations>
+                  <site-location residue="H" start="148" end="148"/>
+                  <site-location residue="E" start="209" end="209"/>
+                  <site-location residue="M" start="245" end="245"/>
+                  <site-location residue="H" start="146" end="146"/>
+                  <site-location residue="V" start="244" end="244"/>
+                  <site-location residue="D" start="242" end="242"/>
+                  <site-location residue="T" start="119" end="119"/>
+                  <site-location residue="K" start="270" end="270"/>
+                  <site-location residue="S" start="117" end="117"/>
+                  <site-location residue="G" start="118" end="118"/>
+                  <site-location residue="Y" start="145" end="145"/>
+                </site-locations>
+              </rpsblast-site>
+              <rpsblast-site description="catalytic residue" numLocations="1">
+                <site-locations>
+                  <site-location residue="K" start="270" end="270"/>
+                </site-locations>
+              </rpsblast-site>
+              <rpsblast-site description="pyridoxal 5'-phosphate binding site" numLocations="8">
+                <site-locations>
+                  <site-location residue="E" start="209" end="209"/>
+                  <site-location residue="M" start="245" end="245"/>
+                  <site-location residue="H" start="146" end="146"/>
+                  <site-location residue="D" start="242" end="242"/>
+                  <site-location residue="T" start="119" end="119"/>
+                  <site-location residue="K" start="270" end="270"/>
+                  <site-location residue="G" start="118" end="118"/>
+                  <site-location residue="Y" start="145" end="145"/>
+                </site-locations>
+              </rpsblast-site>
+            </sites>
+          </rpsblast-location>
+        </locations>
+      </rpsblast-match>
+      <superfamilyhmmer3-match evalue="2.25E-129">
+        <signature ac="SSF53383" name="PLP-dependent transferases">
+          <entry ac="IPR015424" desc="Pyridoxal phosphate-dependent transferase" name="PyrdxlP-dep_Trfase" type="HOMOLOGOUS_SUPERFAMILY"/>
+          <signature-library-release library="SUPERFAMILY" version="1.75"/>
+        </signature>
+        <model-ac>0052943</model-ac>
+        <locations>
+          <superfamilyhmmer3-location hmm-length="427" start="5" end="430" representative="false">
+            <location-fragments>
+              <superfamilyhmmer3-location-fragment start="5" end="430" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </superfamilyhmmer3-location>
+        </locations>
+      </superfamilyhmmer3-match>
+    </matches>
+  </protein>
+</protein-matches>

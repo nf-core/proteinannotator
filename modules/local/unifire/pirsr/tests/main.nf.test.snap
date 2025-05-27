@@ -30,39 +30,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.2"
         },
-        "timestamp": "2025-05-18T14:50:35.417630102"
-    },
-    "unifire - pirsr": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "sample1"
-                        },
-                        "input_ipr.fasta-urml.xml:md5,8a24e53f4ae910930388eed01907a218"
-                    ]
-                ],
-                "1": [
-                    "versions.yml:md5,b2b09738512eda8e997c46248f8e398c"
-                ],
-                "fact_xml": [
-                    [
-                        {
-                            "id": "sample1"
-                        },
-                        "input_ipr.fasta-urml.xml:md5,8a24e53f4ae910930388eed01907a218"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,b2b09738512eda8e997c46248f8e398c"
-                ]
-            }
-        ],
-        "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.2"
-        },
-        "timestamp": "2025-05-18T14:51:37.681414236"
+        "timestamp": "2025-05-27T18:28:56.270314434"
     }
 }

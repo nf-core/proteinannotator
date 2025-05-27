@@ -24,10 +24,10 @@ nextflow_process {
             process {
                 """
                 input[0] = [
-                    [ id:'sample1' ], file("${projectDir}/data/input_ipr.fasta.xml", checkIfExists: false)
+                    [ id:'sample1' ], file("${projectDir}/modules/local/unifire/fixtures/proteins_lineage-ipr.xml", checkIfExists: true)
                 ]
-                input[1] = file("${projectDir}/data/unirule-urml-latest.xml", checkIfExists: true)
-                input[2] = file("${projectDir}/data/unirule-templates-latest.xml", checkIfExists: true)
+                input[1] = file("${projectDir}/modules/local/unifire/fixtures/sample_urml/sample-unirule-urml-2025_02.xml", checkIfExists: true)
+                input[2] = file("${projectDir}/modules/local/unifire/fixtures/sample_urml/sample-unirule-templates-2025_02.xml", checkIfExists: true)
                 """
             }
         }
@@ -65,9 +65,9 @@ nextflow_process {
             process {
                 """
                 input[0] = [
-                    [ id:'sample1' ], file("${projectDir}/data/input_ipr.fasta.xml", checkIfExists: true)
+                    [ id:'sample1' ], file("${projectDir}/modules/local/unifire/fixtures/proteins_lineage-ipr.xml", checkIfExists: true)
                 ]
-                input[1] = file("${projectDir}/data/arba-urml-latest.xml", checkIfExists: true)
+                input[1] = file("${projectDir}/modules/local/unifire/fixtures/sample_urml/sample-arba-urml-2025_02.xml", checkIfExists: true)
                 input[2] = []
                 """
             }

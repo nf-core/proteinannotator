@@ -1,0 +1,745 @@
+<?xml version="1.0"?>
+<rules xmlns="http://uniprot.org/urml/rules" xmlns:fact="http://uniprot.org/urml/facts" name="org.uniprot.unirule" version="2025_02">
+  <rule id="UR000176753_main" group="UR000176753">
+    <meta>
+      <information type="CREATOR">CRV</information>
+      <information type="CREATED_ON">2016-07-25+01:00</information>
+      <information type="MODIFIED_BY">CRV</information>
+      <information type="MODIFIED_ON">2025-01-07Z</information>
+      <information type="STATUS">Apply</information>
+      <information type="REVISION_NO">1</information>
+      <information type="LEGACY_NAME">PIRSR000005-2</information>
+      <information type="INDC">Domain</information>
+    </meta>
+    <conditions>
+      <AND>
+        <condition on="fact:Protein" bind="protein"/>
+        <condition on="fact:Organism" bind="organism" of="protein">
+          <filter on="lineage.ids">
+            <contains operator="any">
+              <value description="Bacteria">2</value>
+            </contains>
+          </filter>
+        </condition>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">PIR Superfamily</field>
+            <field attribute="value">PIRSF000005</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions/>
+  </rule>
+  <rule id="UR000176753_case_1" extends="UR000176753_main" group="UR000176753">
+    <conditions>
+      <AND>
+        <condition on="fact:Protein" bind="protein"/>
+        <condition on="fact:PositionalFeatureTag" with="positionalMapping.protein:protein">
+          <filter on="tag">
+            <value>FTGRP_1</value>
+          </filter>
+          <filter on="ruleId">
+            <value>UR000176753</value>
+          </filter>
+        </condition>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-2</field>
+          </filter>
+        </condition>
+      </AND>
+      <AND>
+        <condition on="fact:Protein" bind="protein"/>
+        <condition on="fact:PositionalFeatureTag" with="positionalMapping.protein:protein">
+          <filter on="tag">
+            <value>FTGRP_2</value>
+          </filter>
+          <filter on="ruleId">
+            <value>UR000176753</value>
+          </filter>
+        </condition>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-2</field>
+          </filter>
+        </condition>
+      </AND>
+      <AND>
+        <condition on="fact:Protein" bind="protein"/>
+        <condition on="fact:PositionalFeatureTag" with="positionalMapping.protein:protein">
+          <filter on="tag">
+            <value>FTGRP_3</value>
+          </filter>
+          <filter on="ruleId">
+            <value>UR000176753</value>
+          </filter>
+        </condition>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-2</field>
+          </filter>
+        </condition>
+      </AND>
+      <AND>
+        <condition on="fact:Protein" bind="protein"/>
+        <condition on="fact:PositionalFeatureTag" with="positionalMapping.protein:protein">
+          <filter on="tag">
+            <value>FTGRP_4</value>
+          </filter>
+          <filter on="ruleId">
+            <value>UR000176753</value>
+          </filter>
+        </condition>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-2</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="evidence:'UR000176753' protein">
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">keyword</field>
+          <field attribute="value">Iron</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">keyword</field>
+          <field attribute="value">Metal-binding</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176753_positional_preconditions_1" extends="UR000176753_main" group="UR000176753">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalProteinSignature" bind="targetMatch">
+          <filter on="signature.value">
+            <value>SRHMM000005-2</value>
+          </filter>
+        </condition>
+        <condition on="fact:TemplateProteinSignature" bind="templateMatch">
+          <filter on="protein.id">
+            <value>Q52369</value>
+          </filter>
+          <filter on="signature.value">
+            <value>SRHMM000005-2</value>
+          </filter>
+        </condition>
+        <condition on="fact:Protein" bind="protein" of="targetMatch"/>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-2</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="protein targetMatch templateMatch">
+        <fact type="fact:PositionalMapping">
+          <field attribute="templateStart">38</field>
+          <field attribute="templateEnd">38</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176753_positional_1_features_1" extends="UR000176753_positional_preconditions_1" group="UR000176753">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalMapping" bind="pm" with="protein targetMatch templateMatch">
+          <filter on="isValid"/>
+          <filter on="templateStart">
+            <value>38</value>
+          </filter>
+          <filter on="templateEnd">
+            <value>38</value>
+          </filter>
+          <filter on="mappedSequence">
+            <matches>H</matches>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create">
+        <fact type="fact:ProteinAnnotation" with="evidence:'UR000176753' positionEnd:pm.mappedEnd positionStart:pm.mappedStart protein">
+          <field attribute="type">feature.BINDING</field>
+          <field attribute="value">/ligand="heme c"|/ligand_id="ChEBI:CHEBI:61717"|/ligand_label="1"|/ligand_part="Fe"|/ligand_part_id="ChEBI:CHEBI:18248"|/note="axial binding residue"</field>
+        </fact>
+        <fact type="fact:PositionalFeatureTag" with="positionalMapping:pm">
+          <field attribute="ruleId">UR000176753</field>
+          <field attribute="tag">FTGRP_1</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176753_positional_preconditions_2" extends="UR000176753_main" group="UR000176753">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalProteinSignature" bind="targetMatch">
+          <filter on="signature.value">
+            <value>SRHMM000005-2</value>
+          </filter>
+        </condition>
+        <condition on="fact:TemplateProteinSignature" bind="templateMatch">
+          <filter on="protein.id">
+            <value>Q52369</value>
+          </filter>
+          <filter on="signature.value">
+            <value>SRHMM000005-2</value>
+          </filter>
+        </condition>
+        <condition on="fact:Protein" bind="protein" of="targetMatch"/>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-2</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="protein targetMatch templateMatch">
+        <fact type="fact:PositionalMapping">
+          <field attribute="templateStart">187</field>
+          <field attribute="templateEnd">187</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176753_positional_2_features_1" extends="UR000176753_positional_preconditions_2" group="UR000176753">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalMapping" bind="pm" with="protein targetMatch templateMatch">
+          <filter on="isValid"/>
+          <filter on="templateStart">
+            <value>187</value>
+          </filter>
+          <filter on="templateEnd">
+            <value>187</value>
+          </filter>
+          <filter on="mappedSequence">
+            <matches>M</matches>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create">
+        <fact type="fact:ProteinAnnotation" with="evidence:'UR000176753' positionEnd:pm.mappedEnd positionStart:pm.mappedStart protein">
+          <field attribute="type">feature.BINDING</field>
+          <field attribute="value">/ligand="heme c"|/ligand_id="ChEBI:CHEBI:61717"|/ligand_label="2"|/ligand_part="Fe"|/ligand_part_id="ChEBI:CHEBI:18248"|/note="axial binding residue"</field>
+        </fact>
+        <fact type="fact:PositionalFeatureTag" with="positionalMapping:pm">
+          <field attribute="ruleId">UR000176753</field>
+          <field attribute="tag">FTGRP_4</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176753_positional_preconditions_3" extends="UR000176753_main" group="UR000176753">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalProteinSignature" bind="targetMatch">
+          <filter on="signature.value">
+            <value>SRHMM000005-2</value>
+          </filter>
+        </condition>
+        <condition on="fact:TemplateProteinSignature" bind="templateMatch">
+          <filter on="protein.id">
+            <value>Q52369</value>
+          </filter>
+          <filter on="signature.value">
+            <value>SRHMM000005-2</value>
+          </filter>
+        </condition>
+        <condition on="fact:Protein" bind="protein" of="targetMatch"/>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-2</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="protein targetMatch templateMatch">
+        <fact type="fact:PositionalMapping">
+          <field attribute="templateStart">143</field>
+          <field attribute="templateEnd">143</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176753_positional_3_features_1" extends="UR000176753_positional_preconditions_3" group="UR000176753">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalMapping" bind="pm" with="protein targetMatch templateMatch">
+          <filter on="isValid"/>
+          <filter on="templateStart">
+            <value>143</value>
+          </filter>
+          <filter on="templateEnd">
+            <value>143</value>
+          </filter>
+          <filter on="mappedSequence">
+            <matches>H</matches>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create">
+        <fact type="fact:ProteinAnnotation" with="evidence:'UR000176753' positionEnd:pm.mappedEnd positionStart:pm.mappedStart protein">
+          <field attribute="type">feature.BINDING</field>
+          <field attribute="value">/ligand="heme c"|/ligand_id="ChEBI:CHEBI:61717"|/ligand_label="2"|/ligand_part="Fe"|/ligand_part_id="ChEBI:CHEBI:18248"|/note="axial binding residue"</field>
+        </fact>
+        <fact type="fact:PositionalFeatureTag" with="positionalMapping:pm">
+          <field attribute="ruleId">UR000176753</field>
+          <field attribute="tag">FTGRP_3</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176753_positional_preconditions_4" extends="UR000176753_main" group="UR000176753">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalProteinSignature" bind="targetMatch">
+          <filter on="signature.value">
+            <value>SRHMM000005-2</value>
+          </filter>
+        </condition>
+        <condition on="fact:TemplateProteinSignature" bind="templateMatch">
+          <filter on="protein.id">
+            <value>Q52369</value>
+          </filter>
+          <filter on="signature.value">
+            <value>SRHMM000005-2</value>
+          </filter>
+        </condition>
+        <condition on="fact:Protein" bind="protein" of="targetMatch"/>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-2</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="protein targetMatch templateMatch">
+        <fact type="fact:PositionalMapping">
+          <field attribute="templateStart">86</field>
+          <field attribute="templateEnd">86</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176753_positional_4_features_1" extends="UR000176753_positional_preconditions_4" group="UR000176753">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalMapping" bind="pm" with="protein targetMatch templateMatch">
+          <filter on="isValid"/>
+          <filter on="templateStart">
+            <value>86</value>
+          </filter>
+          <filter on="templateEnd">
+            <value>86</value>
+          </filter>
+          <filter on="mappedSequence">
+            <matches>M</matches>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create">
+        <fact type="fact:ProteinAnnotation" with="evidence:'UR000176753' positionEnd:pm.mappedEnd positionStart:pm.mappedStart protein">
+          <field attribute="type">feature.BINDING</field>
+          <field attribute="value">/ligand="heme c"|/ligand_id="ChEBI:CHEBI:61717"|/ligand_label="1"|/ligand_part="Fe"|/ligand_part_id="ChEBI:CHEBI:18248"|/note="axial binding residue"</field>
+        </fact>
+        <fact type="fact:PositionalFeatureTag" with="positionalMapping:pm">
+          <field attribute="ruleId">UR000176753</field>
+          <field attribute="tag">FTGRP_2</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176751_main" group="UR000176751">
+    <meta>
+      <information type="CREATOR">CRV</information>
+      <information type="CREATED_ON">2020-12-17Z</information>
+      <information type="MODIFIED_BY">CRV</information>
+      <information type="MODIFIED_ON">2025-01-07Z</information>
+      <information type="STATUS">Apply</information>
+      <information type="REVISION_NO">1</information>
+      <information type="LEGACY_NAME">PIRSR000005-1</information>
+      <information type="INDC">Domain</information>
+    </meta>
+    <conditions>
+      <AND>
+        <condition on="fact:Protein" bind="protein"/>
+        <condition on="fact:Organism" bind="organism" of="protein">
+          <filter on="lineage.ids">
+            <contains operator="any">
+              <value description="Bacteria">2</value>
+            </contains>
+          </filter>
+        </condition>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">PIR Superfamily</field>
+            <field attribute="value">PIRSF000005</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions/>
+  </rule>
+  <rule id="UR000176751_case_1" extends="UR000176751_main" group="UR000176751">
+    <conditions>
+      <AND>
+        <condition on="fact:Protein" bind="protein"/>
+        <condition on="fact:PositionalFeatureTag" with="positionalMapping.protein:protein">
+          <filter on="tag">
+            <value>FTGRP_1</value>
+          </filter>
+          <filter on="ruleId">
+            <value>UR000176751</value>
+          </filter>
+        </condition>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-1</field>
+          </filter>
+        </condition>
+      </AND>
+      <AND>
+        <condition on="fact:Protein" bind="protein"/>
+        <condition on="fact:PositionalFeatureTag" with="positionalMapping.protein:protein">
+          <filter on="tag">
+            <value>FTGRP_2</value>
+          </filter>
+          <filter on="ruleId">
+            <value>UR000176751</value>
+          </filter>
+        </condition>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-1</field>
+          </filter>
+        </condition>
+      </AND>
+      <AND>
+        <condition on="fact:Protein" bind="protein"/>
+        <condition on="fact:PositionalFeatureTag" with="positionalMapping.protein:protein">
+          <filter on="tag">
+            <value>FTGRP_3</value>
+          </filter>
+          <filter on="ruleId">
+            <value>UR000176751</value>
+          </filter>
+        </condition>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-1</field>
+          </filter>
+        </condition>
+      </AND>
+      <AND>
+        <condition on="fact:Protein" bind="protein"/>
+        <condition on="fact:PositionalFeatureTag" with="positionalMapping.protein:protein">
+          <filter on="tag">
+            <value>FTGRP_4</value>
+          </filter>
+          <filter on="ruleId">
+            <value>UR000176751</value>
+          </filter>
+        </condition>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-1</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="evidence:'UR000176751' protein">
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">comment.PTM</field>
+          <field attribute="value">Binds 2 heme c groups covalently per subunit</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">keyword</field>
+          <field attribute="value">Heme</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176751_positional_preconditions_1" extends="UR000176751_main" group="UR000176751">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalProteinSignature" bind="targetMatch">
+          <filter on="signature.value">
+            <value>SRHMM000005-1</value>
+          </filter>
+        </condition>
+        <condition on="fact:TemplateProteinSignature" bind="templateMatch">
+          <filter on="protein.id">
+            <value>Q52369</value>
+          </filter>
+          <filter on="signature.value">
+            <value>SRHMM000005-1</value>
+          </filter>
+        </condition>
+        <condition on="fact:Protein" bind="protein" of="targetMatch"/>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-1</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="protein targetMatch templateMatch">
+        <fact type="fact:PositionalMapping">
+          <field attribute="templateStart">139</field>
+          <field attribute="templateEnd">139</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176751_positional_1_features_1" extends="UR000176751_positional_preconditions_1" group="UR000176751">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalMapping" bind="pm" with="protein targetMatch templateMatch">
+          <filter on="isValid"/>
+          <filter on="templateStart">
+            <value>139</value>
+          </filter>
+          <filter on="templateEnd">
+            <value>139</value>
+          </filter>
+          <filter on="mappedSequence">
+            <matches>C</matches>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create">
+        <fact type="fact:ProteinAnnotation" with="evidence:'UR000176751' positionEnd:pm.mappedEnd positionStart:pm.mappedStart protein">
+          <field attribute="type">feature.BINDING</field>
+          <field attribute="value">/ligand="heme c"|/ligand_id="ChEBI:CHEBI:61717"|/ligand_label="2"|/note="covalent"</field>
+        </fact>
+        <fact type="fact:PositionalFeatureTag" with="positionalMapping:pm">
+          <field attribute="ruleId">UR000176751</field>
+          <field attribute="tag">FTGRP_3</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176751_positional_preconditions_2" extends="UR000176751_main" group="UR000176751">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalProteinSignature" bind="targetMatch">
+          <filter on="signature.value">
+            <value>SRHMM000005-1</value>
+          </filter>
+        </condition>
+        <condition on="fact:TemplateProteinSignature" bind="templateMatch">
+          <filter on="protein.id">
+            <value>Q52369</value>
+          </filter>
+          <filter on="signature.value">
+            <value>SRHMM000005-1</value>
+          </filter>
+        </condition>
+        <condition on="fact:Protein" bind="protein" of="targetMatch"/>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-1</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="protein targetMatch templateMatch">
+        <fact type="fact:PositionalMapping">
+          <field attribute="templateStart">34</field>
+          <field attribute="templateEnd">34</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176751_positional_2_features_1" extends="UR000176751_positional_preconditions_2" group="UR000176751">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalMapping" bind="pm" with="protein targetMatch templateMatch">
+          <filter on="isValid"/>
+          <filter on="templateStart">
+            <value>34</value>
+          </filter>
+          <filter on="templateEnd">
+            <value>34</value>
+          </filter>
+          <filter on="mappedSequence">
+            <matches>C</matches>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create">
+        <fact type="fact:ProteinAnnotation" with="evidence:'UR000176751' positionEnd:pm.mappedEnd positionStart:pm.mappedStart protein">
+          <field attribute="type">feature.BINDING</field>
+          <field attribute="value">/ligand="heme c"|/ligand_id="ChEBI:CHEBI:61717"|/ligand_label="1"|/note="covalent"</field>
+        </fact>
+        <fact type="fact:PositionalFeatureTag" with="positionalMapping:pm">
+          <field attribute="ruleId">UR000176751</field>
+          <field attribute="tag">FTGRP_1</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176751_positional_preconditions_3" extends="UR000176751_main" group="UR000176751">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalProteinSignature" bind="targetMatch">
+          <filter on="signature.value">
+            <value>SRHMM000005-1</value>
+          </filter>
+        </condition>
+        <condition on="fact:TemplateProteinSignature" bind="templateMatch">
+          <filter on="protein.id">
+            <value>Q52369</value>
+          </filter>
+          <filter on="signature.value">
+            <value>SRHMM000005-1</value>
+          </filter>
+        </condition>
+        <condition on="fact:Protein" bind="protein" of="targetMatch"/>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-1</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="protein targetMatch templateMatch">
+        <fact type="fact:PositionalMapping">
+          <field attribute="templateStart">37</field>
+          <field attribute="templateEnd">37</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176751_positional_3_features_1" extends="UR000176751_positional_preconditions_3" group="UR000176751">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalMapping" bind="pm" with="protein targetMatch templateMatch">
+          <filter on="isValid"/>
+          <filter on="templateStart">
+            <value>37</value>
+          </filter>
+          <filter on="templateEnd">
+            <value>37</value>
+          </filter>
+          <filter on="mappedSequence">
+            <matches>C</matches>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create">
+        <fact type="fact:ProteinAnnotation" with="evidence:'UR000176751' positionEnd:pm.mappedEnd positionStart:pm.mappedStart protein">
+          <field attribute="type">feature.BINDING</field>
+          <field attribute="value">/ligand="heme c"|/ligand_id="ChEBI:CHEBI:61717"|/ligand_label="1"|/note="covalent"</field>
+        </fact>
+        <fact type="fact:PositionalFeatureTag" with="positionalMapping:pm">
+          <field attribute="ruleId">UR000176751</field>
+          <field attribute="tag">FTGRP_2</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176751_positional_preconditions_4" extends="UR000176751_main" group="UR000176751">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalProteinSignature" bind="targetMatch">
+          <filter on="signature.value">
+            <value>SRHMM000005-1</value>
+          </filter>
+        </condition>
+        <condition on="fact:TemplateProteinSignature" bind="templateMatch">
+          <filter on="protein.id">
+            <value>Q52369</value>
+          </filter>
+          <filter on="signature.value">
+            <value>SRHMM000005-1</value>
+          </filter>
+        </condition>
+        <condition on="fact:Protein" bind="protein" of="targetMatch"/>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">SRHMM</field>
+            <field attribute="value">SRHMM000005-1</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="protein targetMatch templateMatch">
+        <fact type="fact:PositionalMapping">
+          <field attribute="templateStart">142</field>
+          <field attribute="templateEnd">142</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000176751_positional_4_features_1" extends="UR000176751_positional_preconditions_4" group="UR000176751">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalMapping" bind="pm" with="protein targetMatch templateMatch">
+          <filter on="isValid"/>
+          <filter on="templateStart">
+            <value>142</value>
+          </filter>
+          <filter on="templateEnd">
+            <value>142</value>
+          </filter>
+          <filter on="mappedSequence">
+            <matches>C</matches>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create">
+        <fact type="fact:ProteinAnnotation" with="evidence:'UR000176751' positionEnd:pm.mappedEnd positionStart:pm.mappedStart protein">
+          <field attribute="type">feature.BINDING</field>
+          <field attribute="value">/ligand="heme c"|/ligand_id="ChEBI:CHEBI:61717"|/ligand_label="2"|/note="covalent"</field>
+        </fact>
+        <fact type="fact:PositionalFeatureTag" with="positionalMapping:pm">
+          <field attribute="ruleId">UR000176751</field>
+          <field attribute="tag">FTGRP_4</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+</rules>

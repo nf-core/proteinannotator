@@ -1,0 +1,417 @@
+<?xml version="1.0"?>
+<rules xmlns="http://uniprot.org/urml/rules" xmlns:fact="http://uniprot.org/urml/facts" name="org.uniprot.unirule" version="2025_02">
+  <rule id="UR001480757">
+    <meta>
+      <information type="CREATOR">lsyeh3</information>
+      <information type="CREATED_ON">2020-12-18Z</information>
+      <information type="MODIFIED_BY">arighi</information>
+      <information type="MODIFIED_ON">2021-03-04Z</information>
+      <information type="STATUS">Apply</information>
+      <information type="LEGACY_NAME">PIRNR002574</information>
+      <information type="INDC">Domain</information>
+      <information type="TEMPLATE">Q14515;P70663</information>
+    </meta>
+    <conditions>
+      <AND>
+        <condition on="fact:Protein" bind="protein">
+          <filter on="sequence.isFragment" negative="true"/>
+          <filter on="sequence.length">
+            <range start="634" end="676"/>
+          </filter>
+        </condition>
+        <condition on="fact:Organism" bind="organism" of="protein">
+          <filter on="lineage.ids">
+            <contains operator="any">
+              <value description="Vertebrata">7742</value>
+            </contains>
+          </filter>
+        </condition>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">PIR Superfamily</field>
+            <field attribute="value">PIRSF002574</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="evidence:'UR001480757' protein">
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">protein.recommendedName.fullName</field>
+          <field attribute="value">SPARC-like protein 1</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">comment.subcellular_location</field>
+          <field attribute="value">Secreted, extracellular space, extracellular matrix</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">comment.similarity</field>
+          <field attribute="value">Belongs to the SPARC family</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">keyword</field>
+          <field attribute="value">Calcium</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">keyword</field>
+          <field attribute="value">Extracellular matrix</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">keyword</field>
+          <field attribute="value">Metal-binding</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">keyword</field>
+          <field attribute="value">Secreted</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">xref.GO</field>
+          <field attribute="value">GO:0005509</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">xref.GO</field>
+          <field attribute="value">GO:0005615</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">xref.GO</field>
+          <field attribute="value">GO:0007165</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000000539">
+    <meta>
+      <information type="CREATOR">john</information>
+      <information type="CREATED_ON">2011-05-23+01:00</information>
+      <information type="MODIFIED_BY">h.zellner</information>
+      <information type="MODIFIED_ON">2018-11-13Z</information>
+      <information type="STATUS">Apply</information>
+      <information type="LEGACY_NAME">RU003560</information>
+    </meta>
+    <conditions>
+      <AND>
+        <condition on="fact:Protein" bind="protein">
+          <filter on="sequence.length">
+            <range start="300" end="550"/>
+          </filter>
+        </condition>
+        <condition on="fact:Organism" bind="organism" of="protein">
+          <filter on="lineage.ids">
+            <contains operator="any">
+              <value description="Archaea">2157</value>
+              <value description="Eukaryota">2759</value>
+              <value description="Bacteria">2</value>
+            </contains>
+          </filter>
+        </condition>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">PFAM</field>
+            <field attribute="value">PF00202</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="evidence:'UR000000539' protein">
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">comment.similarity</field>
+          <field attribute="value">Belongs to the class-III pyridoxal-phosphate-dependent aminotransferase family</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">keyword</field>
+          <field attribute="value">Pyridoxal phosphate</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000413283">
+    <meta>
+      <information type="CREATOR">nhulo</information>
+      <information type="CREATED_ON">2005-04-20+01:00</information>
+      <information type="MODIFIED_BY">ecastro</information>
+      <information type="MODIFIED_ON">2025-01-07Z</information>
+      <information type="STATUS">Apply</information>
+      <information type="REVISION_NO">13</information>
+      <information type="LEGACY_NAME">PRU00433</information>
+      <information type="INDC">Domain</information>
+      <information type="MOTIF_NAMES">Cytochrome c domain</information>
+    </meta>
+    <conditions>
+      <AND>
+        <condition on="fact:Protein" bind="protein"/>
+        <condition on="fact:Organism" bind="organism" of="protein">
+          <filter on="lineage.ids">
+            <contains operator="any">
+              <value description="Eukaryota">2759</value>
+              <value description="Bacteria">2</value>
+              <value description="Archaea">2157</value>
+            </contains>
+          </filter>
+        </condition>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">PROSITE</field>
+            <field attribute="value">PS51007</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="evidence:'UR000413283' protein">
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">keyword</field>
+          <field attribute="value">Heme</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">keyword</field>
+          <field attribute="value">Iron</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">keyword</field>
+          <field attribute="value">Metal-binding</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR001995901">
+    <meta>
+      <information type="CREATOR">ncbifam</information>
+      <information type="CREATED_ON">2023-11-23Z</information>
+      <information type="MODIFIED_BY">Raposo</information>
+      <information type="MODIFIED_ON">2024-07-09+01:00</information>
+      <information type="STATUS">Apply</information>
+      <information type="EXTERNAL_COMMENTS">equivalog</information>
+      <information type="LEGACY_NAME">TIGR00713</information>
+    </meta>
+    <conditions>
+      <AND>
+        <condition on="fact:Protein" bind="protein"/>
+        <condition on="fact:Organism" bind="organism" of="protein">
+          <filter on="lineage.ids">
+            <contains operator="any">
+              <value description="Bacteria">2</value>
+              <value description="Archaea">2157</value>
+            </contains>
+          </filter>
+        </condition>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">NCBIFAM</field>
+            <field attribute="value">TIGR00713</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="evidence:'UR001995901' protein">
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">protein.recommendedName.fullName</field>
+          <field attribute="value">Glutamate-1-semialdehyde 2,1-aminomutase</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">protein.recommendedName.ecNumber</field>
+          <field attribute="value">5.4.3.8</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">xref.GO</field>
+          <field attribute="value">GO:0005737</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">xref.GO</field>
+          <field attribute="value">GO:0006779</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">xref.GO</field>
+          <field attribute="value">GO:0042286</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000084156_main" group="UR000084156">
+    <meta>
+      <information type="CREATOR">hamap</information>
+      <information type="CREATED_ON">2001-06-01+01:00</information>
+      <information type="MODIFIED_BY">crivoire</information>
+      <information type="MODIFIED_ON">2025-01-07Z</information>
+      <information type="STATUS">Apply</information>
+      <information type="INTERNAL_COMMENTS">A third putative copy exists in HALH5. A second divergent copy exists in AERPE.</information>
+      <information type="REVISION_NO">53</information>
+      <information type="LEGACY_NAME">MF_00375</information>
+      <information type="INDC">Protein</information>
+      <information type="TEMPLATE">P23893</information>
+      <information type="PROTEIN_NAME">GSA</information>
+      <information type="DUPLICATE">ANOFW;BACVZ;BACAA;BACAC;BACAH;BACAN;BACC0;BACC1;BACC2;BACC3;BACC4;BACC7;BACCN;BACCQ;BACCR;BACCZ;HALH5;BACHK;BACLD;BACP2;SHOC1;BACSU;BACMK;BREBN;CENSY;LACP7;EXIS2;EXISA;GEOKA;GEOTN;LISIN;LISMC;LISMF;LISMH;LISMO;LISW6;LYSSC;MACCJ;OCEIH;STAA1;STAA2;STAA3;STAA8;STAA9;STAAB;STAAC;STAAE;STAAM;STAAN;STAAR;STAAS;STAAT;STAAW;STACT;STAEQ;STAES;STAHJ;STAS1</information>
+      <information type="MOTIF_NAMES">HemL_aminotrans_3</information>
+    </meta>
+    <conditions>
+      <AND>
+        <condition on="fact:Protein" bind="protein">
+          <filter on="sequence.isFragment" negative="true"/>
+        </condition>
+        <condition on="fact:Organism" bind="organism" of="protein">
+          <filter on="lineage.ids">
+            <contains operator="any">
+              <value description="Bacteria">2</value>
+              <value description="Archaea">2157</value>
+            </contains>
+          </filter>
+        </condition>
+        <condition on="fact:ProteinSignature" with="protein">
+          <filter on="signature">
+            <field attribute="type">HAMAP</field>
+            <field attribute="value">MF_00375</field>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="evidence:'UR000084156' protein">
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">protein.recommendedName.fullName</field>
+          <field attribute="value">Glutamate-1-semialdehyde 2,1-aminomutase</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">protein.recommendedName.shortName</field>
+          <field attribute="value">GSA</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">protein.recommendedName.ecNumber</field>
+          <field attribute="value">5.4.3.8</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">protein.alternativeName.fullName</field>
+          <field attribute="value">Glutamate-1-semialdehyde aminotransferase</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">protein.alternativeName.shortName</field>
+          <field attribute="value">GSA-AT</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">comment.catalytic_activity</field>
+          <field attribute="value">Reaction=(S)-4-amino-5-oxopentanoate = 5-aminolevulinate; Xref=Rhea:RHEA:14265, ChEBI:CHEBI:57501, ChEBI:CHEBI:356416; EC=5.4.3.8;</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">comment.cofactor</field>
+          <field attribute="value">Name=pyridoxal 5'-phosphate; Xref=ChEBI:CHEBI:597326</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">comment.subcellular_location</field>
+          <field attribute="value">Cytoplasm</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">comment.similarity</field>
+          <field attribute="value">Belongs to the class-III pyridoxal-phosphate-dependent aminotransferase family. HemL subfamily</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">keyword</field>
+          <field attribute="value">Cytoplasm</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">keyword</field>
+          <field attribute="value">Isomerase</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">keyword</field>
+          <field attribute="value">Porphyrin biosynthesis</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">keyword</field>
+          <field attribute="value">Pyridoxal phosphate</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">gene.name.primary</field>
+          <field attribute="value">hemL</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">xref.GO</field>
+          <field attribute="value">GO:0005737</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">xref.GO</field>
+          <field attribute="value">GO:0006782</field>
+        </fact>
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">xref.GO</field>
+          <field attribute="value">GO:0042286</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000084156_case_1" extends="UR000084156_main" group="UR000084156">
+    <conditions>
+      <AND>
+        <condition on="fact:Protein" bind="protein"/>
+        <condition on="fact:Organism" bind="organism" of="protein">
+          <filter on="lineage.ids">
+            <contains operator="any">
+              <value description="Bacteria">2</value>
+            </contains>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="evidence:'UR000084156' protein">
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">comment.subunit</field>
+          <field attribute="value">Homodimer</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000084156_positional_preconditions_1" extends="UR000084156_main" group="UR000084156">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalProteinSignature" bind="targetMatch">
+          <filter on="signature.value">
+            <value>MF_00375</value>
+          </filter>
+        </condition>
+        <condition on="fact:TemplateProteinSignature" bind="templateMatch">
+          <filter on="protein.id">
+            <value>P23893</value>
+          </filter>
+          <filter on="signature.value">
+            <value>MF_00375</value>
+          </filter>
+        </condition>
+        <condition on="fact:Protein" bind="protein" of="targetMatch"/>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="protein targetMatch templateMatch">
+        <fact type="fact:PositionalMapping">
+          <field attribute="templateStart">265</field>
+          <field attribute="templateEnd">265</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+  <rule id="UR000084156_positional_1_feature_1" extends="UR000084156_positional_preconditions_1" group="UR000084156">
+    <conditions>
+      <AND>
+        <condition on="fact:PositionalMapping" bind="pm" with="protein targetMatch templateMatch">
+          <filter on="isValid"/>
+          <filter on="templateStart">
+            <value>265</value>
+          </filter>
+          <filter on="templateEnd">
+            <value>265</value>
+          </filter>
+          <filter on="mappedSequence">
+            <matches>K</matches>
+          </filter>
+        </condition>
+      </AND>
+    </conditions>
+    <actions>
+      <action type="create" with="evidence:'UR000084156' positionEnd:pm.mappedEnd positionStart:pm.mappedStart protein">
+        <fact type="fact:ProteinAnnotation">
+          <field attribute="type">feature.MOD_RES</field>
+          <field attribute="value">N6-(pyridoxal phosphate)lysine</field>
+        </fact>
+      </action>
+    </actions>
+  </rule>
+</rules>

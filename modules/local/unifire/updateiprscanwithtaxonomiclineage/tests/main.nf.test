@@ -15,8 +15,11 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = [ [ id: 'sample1' ], file("${projectDir}/data/input_ipr.fasta.xml", checkIfExists: true) ]
-                input[1] = file("${projectDir}/data/taxa.sqlite", checkIfExists: true)
+
+                input[0] = [
+                    [ id:'sample1' ], file("${projectDir}/modules/local/unifire/fixtures/proteins-ipr.xml", checkIfExists: true)
+                ]
+                input[1] = file("${projectDir}/modules/local/unifire/fixtures/taxadb.sqlite", checkIfExists: true)
                 """
             }
         }
