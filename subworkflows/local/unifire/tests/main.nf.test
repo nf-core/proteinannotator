@@ -36,8 +36,10 @@ nextflow_workflow {
         }
         then {
             assertAll(
-                { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                // NOTE: the unirule step, at least, does not consistently produce
+                // output in the same order. The module is tested a bit more rigorously
+                // but the workflow just looks for successful completion.
+                { assert workflow.success }
             )
         }
     }

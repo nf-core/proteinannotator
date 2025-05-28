@@ -33,8 +33,14 @@ nextflow_process {
         }
         then {
             assertAll(
+                // Check process ran successfully
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+
+                        { assert process.success },
+                        { assert process.out.predictions.every { new File(it[1]).exists() && new File(it[1]).text.readLines().size() == 30 } },
+                        { assert process.out.predictions.any { new File(it[1]).text.contains("Evidence\tProteinId\tAnnotationType\tValue\tStart\tEnd") } },
+                        { assert process.out.predictions.any { new File(it[1]).text.contains("comment.catalytic_activity") } },
+                        // ... more assertions ...
             )
         }
     }

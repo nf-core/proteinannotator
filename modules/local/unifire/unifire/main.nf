@@ -27,9 +27,10 @@ process UNIFIRE_UNIFIRE {
     def template_flag = template ? "-t ${template}" : ''
     def input_source = meta.input_source ?: 'InterProScan'
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def urml_rules_simplename = urml_rules ? urml_rules.getSimpleName() : ''
     def output_filename = task.ext.prefix
             ? "${prefix}_unifire.csv"
-            : "${prefix}_${urml_rules.getSimpleName()}_unifire.csv"
+            : "${prefix}_${urml_rules_simplename}_unifire.csv"
     def max_memory = task.ext.max_memory ?: task.max_memory
     def args = task.ext.args ?: ''
     def VERSION="325ee7c7"
