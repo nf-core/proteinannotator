@@ -5,6 +5,7 @@ workflow FUNCTIONAL_ANNOTATION {
     take:
     ch_fasta // channel: [ val(meta), [ fasta ] ]
 
+
     main:
 
     ch_versions = Channel.empty()
