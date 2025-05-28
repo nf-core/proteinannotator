@@ -1,0 +1,94 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "unifire_unifire"
+description: |
+  This module provides the Unifire 'unifire.sh' script, interface to annotate the XML output of InterProScan.
+  It can be used to anotate input protein sequences against the UniRule or ARBA databases, or on the output of the `unifire_pirsr` module,
+  against the PIR database.
+  To do so, you will need to download the following files and provide them as input, in addition to the InterProScan XML output of your proteins.
+
+  To download the URML and template input files, replace '2025_02' with the version you need and run the following commands:
+
+      wget ftp://ftp.ebi.ac.uk/pub/contrib/UniProt/UniFIRE/rules/arba-urml-2025_02.xml
+      wget ftp://ftp.ebi.ac.uk/pub/contrib/UniProt/UniFIRE/rules/unirule-urml-2025_02.xml
+      wget ftp://ftp.ebi.ac.uk/pub/contrib/UniProt/UniFIRE/rules/unirule.pirsr-urml-2025_02.xml
+      [optional] wget ftp://ftp.ebi.ac.uk/pub/contrib/UniProt/UniFIRE/rules/unirule-templates-2025_02.xml
+
+  Please note that the InterProScan XML needs to have the Taxid appropriately annotated.
+  See the module `unifire/updateIPRScanWithTaxonomicLineage` for more information on how to do this, if necessary.
+keywords:
+  - protein
+  - functional
+  - annotation
+  - unirule
+  - ARBA
+tools:
+  - "unifire":
+      description: >
+        Unifire is the The UniProt Functional annotation Inference Rule Engine.
+        It is a tool for functional annotation of proteins.
+      homepage: "https://gitlab.ebi.ac.uk/uniprot-public/unifire"
+      documentation: "https://gitlab.ebi.ac.uk/uniprot-public/unifire"
+      tool_dev_url: "https://gitlab.ebi.ac.uk/uniprot-public/unifire"
+      # doi: ""
+      licence: ["Apache-2.0"]
+      identifier: biotools:unifire
+
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing metadata information on the InterProScan XML input file.
+          At minimum, this must have the `id` field. It can optionally have
+          `input_source`, the options of which are documented here:
+          https://gitlab.ebi.ac.uk/uniprot-public/unifire/-/tree/master?ref_type=heads#options
+          By default, the input_source is set to 'InterProScan'.
+          e.g. `[ id:'sample1']`
+
+    - interproscan_xml:
+        type: file
+        description: The xml output of InterProScan, or the output of the `unifire_pirsr` module.
+        pattern: "*.xml"
+        ontologies:
+          - edam: "http://edamontology.org/format_2555"
+
+    - urml_rules:
+        type: file
+        description: >
+          The URML file containing the rules to be used for annotation.
+        pattern: "*.xml"
+        ontologies:
+          - edam: "http://edamontology.org/format_2555"
+
+    - template:
+        type: file
+        description: U>
+          UniRule template sequence matches, provided by UniProt.
+          This is optional. Provide an empty path if you do not want to use it.
+        pattern: "*.xml"
+        ontologies:
+          - edam: "http://edamontology.org/format_2555"
+
+output:
+  - predictions:
+      - meta:
+          type: map
+          description: The input data's Groovy Map.
+            e.g. `[ id:'sample1']`
+      - "*.csv":
+          type: file
+          description: Protein annotation predictions
+          pattern: "*.csv"
+          ontologies:
+            - edam: "http://edamontology.org/format_3752"
+
+  - versions:
+      - "versions.yml":
+          type: file
+          description: File containing software versions
+          pattern: "versions.yml"
+
+authors:
+  - "@cmatKhan"
+maintainers:
+  - "@cmatKhan"

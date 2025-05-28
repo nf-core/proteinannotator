@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://uniprot.org/urml/facts">
+  <fact xsi:type="TemplateProtein" id="Q52369">
+    <sequence length="210">MNKVLVSLLLTLGITGMAHAAGDAEAGQGKVAVCGACHGVDGNSPAPNFPKLAGQGERYLLKQLQDIKAGSTPGAPEGVGRKVLEMTGMLDPLSDQDLEDIAAYFSSQKGSVGYADPALAKQGEKLFRGGKLDQGMPACTGCHAPNGVGNDLAGFPKLGGQHAAYTAKQLTDFREGNRTNDGDTMIMRGVAAKLSNKDIEALSSYIQGLH</sequence>
+  </fact>
+  <fact xsi:type="TemplateProteinSignature">
+    <protein>Q52369</protein>
+    <signature type="SRHMM">SRHMM000005-1</signature>
+    <frequency>1</frequency>
+    <positionStart>1</positionStart>
+    <positionEnd>221</positionEnd>
+    <alignment>mnkvlvsllltlgitgmahaagd---------AEAGQGKVAVCGACHGVDGNSPAPNFPKLAGQGERYLLKQLQDIKAGstpgapegvGRKVLEMTGMLDPLSDQDLEDIAAYFSSQ-KGSVGYADPALAKQGekLFRGGKLDQGMPACTGCHAPNGVGNDLAgFPKLGGQHAAYTAKQLTDFREGNRTNDGDTMIMRGVAAKLSNKDIEALSSYIQ-glh</alignment>
+  </fact>
+  <fact xsi:type="TemplateProtein" id="Q52369">
+    <sequence length="210">MNKVLVSLLLTLGITGMAHAAGDAEAGQGKVAVCGACHGVDGNSPAPNFPKLAGQGERYLLKQLQDIKAGSTPGAPEGVGRKVLEMTGMLDPLSDQDLEDIAAYFSSQKGSVGYADPALAKQGEKLFRGGKLDQGMPACTGCHAPNGVGNDLAGFPKLGGQHAAYTAKQLTDFREGNRTNDGDTMIMRGVAAKLSNKDIEALSSYIQGLH</sequence>
+  </fact>
+  <fact xsi:type="TemplateProteinSignature">
+    <protein>Q52369</protein>
+    <signature type="SRHMM">SRHMM000005-2</signature>
+    <frequency>1</frequency>
+    <positionStart>1</positionStart>
+    <positionEnd>221</positionEnd>
+    <alignment>mnkvlvsllltlgitgmahaagd---------AEAGQGKVAVCGACHGVDGNSPAPNFPKLAGQGERYLLKQLQDIKAGstpgapegvGRKVLEMTGMLDPLSDQDLEDIAAYFSSQ-KGSVGYADPALAKQGekLFRGGKLDQGMPACTGCHAPNGVGNDLAgFPKLGGQHAAYTAKQLTDFREGNRTNDGDTMIMRGVAAKLSNKDIEALSSYIQ-glh</alignment>
+  </fact>
+  <fact xsi:type="TemplateProtein" id="Q72EF4">
+    <sequence length="159">MSEEKSRNGPARLKLVLGGATLGVVALATVAFGMKYTDQRPFCTSCHIMNPVGVTHKLSGHANISCNDCHAPHNLLAKLPFKAIAGARDVYMNTLGHPGDLILAGMETKEVVNANCKACHTMTNVEVASMEAKKYCTDCHRNVQHMRMKPISTREVA
+DE</sequence>
+  </fact>
+  <fact xsi:type="TemplateProteinSignature">
+    <protein>Q72EF4</protein>
+    <signature type="SRHMM">SRHMM000013-1</signature>
+    <frequency>1</frequency>
+    <positionStart>1</positionStart>
+    <positionEnd>189</positionEnd>
+    <alignment>mseeksrngparlklvlggatlgvvalatvafgmkytdqrpFCTSCHIMN------PVGVTHKLSGHANISCNDCHAPHNLLaKLPFKAIAGARDVYMNTLG--------HPGDLILAG---METKEVVNANCKACHTMTNVEVAS------------MEAKKYCTDCHRNVQHMRMK-pistrevade</alignment>
+  </fact>
+  <fact xsi:type="TemplateProtein" id="Q72EF4">
+    <sequence length="159">MSEEKSRNGPARLKLVLGGATLGVVALATVAFGMKYTDQRPFCTSCHIMNPVGVTHKLSGHANISCNDCHAPHNLLAKLPFKAIAGARDVYMNTLGHPGDLILAGMETKEVVNANCKACHTMTNVEVASMEAKKYCTDCHRNVQHMRMKPISTREVADE</sequence>
+  </fact>
+  <fact xsi:type="TemplateProteinSignature">
+    <protein>Q72EF4</protein>
+    <signature type="SRHMM">SRHMM000013-2</signature>
+    <frequency>1</frequency>
+    <positionStart>1</positionStart>
+    <positionEnd>189</positionEnd>
+    <alignment>mseeksrngparlklvlggatlgvvalatvafgmkytdqrpFCTSCHIMN------PVGVTHKLSGHANISCNDCHAPHNLLaKLPFKAIAGARDVYMNTLG--------HPGDLILAG---METKEVVNANCKACHTMTNVEVAS------------MEAKKYCTDCHRNVQHMRMK-pistrevade</alignment>
+  </fact>
+</facts>

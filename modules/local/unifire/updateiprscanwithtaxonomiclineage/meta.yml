@@ -1,0 +1,76 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "unifire_updateiprscanwithtaxonomiclineage"
+description: >
+  This module profiles a script which reads a InterProScan xml file and replaces any
+  occurence of "OX={taxId}" in the xref name element by the full lineage corresponding
+  to this taxId. The output is the resolved InterProScan xml file written on the given
+  output path. It is intended to be used, if necessary, as a pre-processing step to
+  the Unifire annotation modules. To get the taxadb input sqlite file, follow the instructions here:
+
+  https://etetoolkit.github.io/ete/tutorial/tutorial_taxonomy.html#setting-up-local-copies-of-the-ncbi-and-gtdb-taxonomy-databases
+
+keywords:
+  - protein
+  - functional
+  - annotation
+  - lineage
+tools:
+  - "unifire":
+      description: >
+        Unifire is the The UniProt Functional annotation Inference Rule Engine.
+        It is a tool for functional annotation of proteins.
+      homepage: "https://gitlab.ebi.ac.uk/uniprot-public/unifire"
+      documentation: "https://gitlab.ebi.ac.uk/uniprot-public/unifire"
+      tool_dev_url: "https://gitlab.ebi.ac.uk/uniprot-public/unifire"
+      # doi: ""
+      licence: ["Apache-2.0"]
+      identifier: biotools:unifire
+
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information. At minimum, the map must containing
+          the sample id.
+          e.g. `[ id:'sample1' ]`
+
+    - interproscan_xml:
+        type: file
+        description: The xml output of InterProScan
+        pattern: "*.xml"
+        ontologies:
+          - edam: "http://edamontology.org/format_2555"
+
+    - taxadb:
+        type: file
+        description: >
+          This is the ete4 taxonomic database containing the taxonomic lineage
+        pattern: "*.sqlite"
+        ontologies:
+          - edam: "http://edamontology.org/format_3621"
+
+output:
+  - xml:
+      - meta:
+          type: map
+          description: |
+            Groovy Map of the `interproscan_xml` input. At minimum, it has key `id``.
+            e.g. `[ id:'sample1' ]`
+      - "*.xml":
+          type: file
+          description: The xml output of InterProScan with the full taxonomic lineage
+          pattern: "*.{bam,cram,sam}"
+          ontologies:
+            - edam: "http://edamontology.org/format_2555"
+
+  - versions:
+      - "versions.yml":
+          type: file
+          description: File containing software versions
+          pattern: "versions.yml"
+
+authors:
+  - "@cmatKhan"
+maintainers:
+  - "@cmatKhan"

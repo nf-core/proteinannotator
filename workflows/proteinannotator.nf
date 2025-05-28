@@ -10,8 +10,10 @@ include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pi
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_proteinannotator_pipeline'
 include { FUNCTIONAL_ANNOTATION  } from '../subworkflows/local/functional_annotation'
-include { MMSEQS_SEARCH } from '../modules/nf-core/mmseqs/search/main'
-include { MTMALIGN_ALIGN } from '../modules/nf-core/mtmalign/align/main'
+include { MMSEQS_SEARCH          } from '../modules/nf-core/mmseqs/search/main'
+include { MTMALIGN_ALIGN         } from '../modules/nf-core/mtmalign/align/main'
+include { UNIFIRE                } from '../subworkflows/local/unifire/main'
+include { UNTAR                  } from '../modules/nf-core/untar/main'
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     RUN MAIN WORKFLOW
@@ -27,11 +29,56 @@ workflow PROTEINANNOTATOR {
     ch_versions = Channel.empty()
     ch_multiqc_files = Channel.empty()
 
+    // Unifire channels
+    // ch_taxadb = params.ete4_taxadb ? Channel.fromPath(params.ete4_taxadb, checkIfExists: true) : Channel.empty()
+
+    // if the params.pirsr_data ends in .tar.gz, then it needs to be unpacked with UNTAR
+    // else, we will assume it is a direcory and set it to the channel directly
+    // ch_pirsr_data = !params.unifire_pirsr_data ? Channel.empty() :
+    //     params.unifire_pirsr_data.endsWith('.tar.gz')
+    //         ? UNTAR(Channel.of([[:], file(params.unifire_pirsr_data)])).out.untar.map{out -> out[1]}
+    //         : Channel.fromPath(params.unifire_pirsr_data, checkIfExists: true)
+
+    // // Collect versions if UNTAR is used
+    // if (params.unifire_pirsr_data && params.unifire_pirsr_data.endsWith('.tar.gz')) {
+    //     ch_versions = ch_versions.mix(UNTAR.out.versions.first())
+    // }
+
+    // ch_pirsr_data = params.unifire_pirsr_data ? Channel.fromPath(params.unifire_pirsr_data, checkIfExists: true) : Channel.empty()
+    // ch_unirule_rules = params.unifire_urml_unirule ? Channel.fromPath(params.unifire_urml_unirule, checkIfExists: true) : Channel.empty()
+    // ch_arba_rules = params.unifire_urml_arba ? Channel.fromPath(params.unifire_urml_arba, checkIfExists: true) : Channel.empty()
+    // ch_pirsr_rules = params.unifire_urml_pirsr ? Channel.fromPath(params.unifire_urml_pirsr, checkIfExists: true) : Channel.empty()
+    // ch_unirule_template = params.unifire_urml_templates ? Channel.fromPath(params.unifire_urml_templates, checkIfExists: true) : Channel.empty()
+
     ch_samplesheet.view()
 
     FUNCTIONAL_ANNOTATION (
         ch_samplesheet
     )
+
+    //
+    // SUBWORKFLOW: Unifire
+    //
+    // TODO: it looks like the intention is to put this under FUNCTIONAL_ANNOTATION,
+    // but the unifire subworkflow is already fully documented. Placing it under the
+    // FUNCTIONAL_ANNOTATION subworkflow would require that 9 input channels get
+    // redundantly documented in the functional annotation meta (they are already)
+    // documented in the unifire modules, subworkflow, and the proteinannotator
+    // schema. I would suggest it be placed in the main workflow as a result.
+    // if (!params.skip_tools.contains('unifire')) {
+    //         UNIFIRE_PREDICT(
+    //             INTERPROSCAN.out.xml,
+    //                 ch_taxadb,
+    //                 ch_pirsr_data,
+    //                 ch_unirule_rules,
+    //                 ch_arba_rules,
+    //                 ch_pirsr_rules,
+    //                 ch_unirule_template,
+    //                 [],
+    //                 []
+    //         )
+    //         ch_versions = ch_versions.mix(UNIFIRE_PREDICT.out.versions.first())
+    // }
 
     // todo: move this to stats on input fasta subworkflow
     SEQKIT_STATS(ch_samplesheet)

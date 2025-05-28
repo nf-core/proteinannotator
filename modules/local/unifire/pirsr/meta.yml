@@ -1,0 +1,84 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "unifire_pirsr"
+description: >
+  This module provides the Unifire 'pirsr.sh' script from Unifire, the Uniprot Functional annotation Inference Engine.
+  This is the first step of the two step process necessary to annotate input protein sequences against the [protein information resource](https://proteininformationresource.org/).
+  This step calculates the alignment(s) of your protein(s) against all SRHMM signatures, combines data from the input in InterProScan XML format with these alignments, and writes the output to the Fact XML file PIRSR-input-iprscan-urml.xml.
+  In addition to your protein sequences, you need to provide a directory of PIR data as input.
+
+  To download the PIR input data, replace '2025_02' with the version you need and run the following commands:
+
+  wget https://proteininformationresource.org/pirsr/pirsr_data_latest.tar.gz
+
+  To extract the PIRSR data archive, run:
+
+  tar -xzf pirsr_data_latest.tar.gz
+
+  Please note that the InterProScan XML needs to have the Taxid appropriately annotated.
+  See the module `unifire/updateIPRScanWithTaxonomicLineage` for more information on how to do this, if necessary.
+keywords:
+  - protein
+  - functional
+  - annotation
+  - PIRSR
+  - PIRSR
+tools:
+  - "unifire":
+      description: >
+        Unifire is the The UniProt Functional annotation Inference Rule Engine.
+        It is a tool for functional annotation of proteins.
+      homepage: "https://gitlab.ebi.ac.uk/uniprot-public/unifire"
+      documentation: "https://gitlab.ebi.ac.uk/uniprot-public/unifire"
+      tool_dev_url: "https://gitlab.ebi.ac.uk/uniprot-public/unifire"
+      # doi: ""
+      licence: ["Apache-2.0"]
+      identifier: biotools:unifire
+
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information. At minimum, it must have the key `id`
+          e.g. `[ id:'sample1' ]`
+
+    - interproscan_xml:
+        type: file
+        description: The xml output of InterProScan
+        pattern: "*.xml"
+        ontologies:
+          - edam: "http://edamontology.org/format_2555"
+
+    - pirsr_data:
+        type: directory
+        description: >
+          The directory containing the PIRSR data. See module description for instructions on how to download and extract the data
+        pattern: ".*/"
+        ontologies:
+          - edam: "http://edamontology.org/data_1049"
+
+output:
+  - fact_xml:
+      #Only when we have meta
+      - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information from the `interproscan_xml`. At minimum, it has the key `id`
+            e.g. `[ id:'sample1' ]`
+      - "*.xml":
+          type: file
+          description: A fact XML file that may be used as the URML rules input to the unifire_unifire module for annotating protein sequences against the PIR database.
+          pattern: "*.xml"
+          ontologies:
+            - edam: "http://edamontology.org/format_2555"
+
+  - versions:
+      - "versions.yml":
+          type: file
+          description: File containing software versions
+          pattern: "versions.yml"
+
+authors:
+  - "@cmatKhan"
+maintainers:
+  - "@cmatKhan"

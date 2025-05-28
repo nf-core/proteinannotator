@@ -5,6 +5,19 @@
     "description": "The best protein annotation pipeline in the world. Protein fasta -> ??? -> Annotations!",
     "type": "object",
     "$defs": {
+        "main_options": {
+            "title": "Main options",
+            "type": "object",
+            "description": "",
+            "default": "",
+            "properties": {
+                "skip_tools": {
+                    "type": "string",
+                    "description": "Multiple tools can be specified, separated by commas",
+                    "pattern": "^((unifire)?,?)*(?<!,)$"
+                }
+            }
+        },
         "input_output_options": {
             "title": "Input/output options",
             "type": "object",
@@ -191,9 +204,74 @@
                     "hidden": true
                 }
             }
+        },
+        "unifire": {
+            "title": "Unifire",
+            "type": "object",
+            "description": "The official Uniprot protein annotation engine",
+            "default": "",
+            "properties": {
+                "unifire_skip": {
+                    "type": "string",
+                    "default": "pirsr",
+                    "description": "Skip modules in the Unifire subworkflow. May be any combination of \"pirsr,arba,unirule\". Comma separated, no spaces",
+                    "pattern": "^(pirsr|arba|unirule)(,(pirsr|arba|unirule)){0,2}$"
+                },
+                "ete4_taxadb": {
+                    "type": "string",
+                    "description": "The path to the NCBI Ete4 taxa.sqlite database. This may be downloaded by following the instructions here:  https://etetoolkit.github.io/ete/tutorial/tutorial_taxonomy.html#setting-up-local-copies-of-the-ncbi-and-gtdb-taxonomy-databases",
+                    "pattern": "^\\S+\\.sqlite$"
+                },
+                "pirsr_data": {
+                    "type": "string",
+                    "default": "https://proteininformationresource.org/pirsr/pirsr_data_latest.tar.gz",
+                    "description": "Path to the pirsr annotation data. This may be passed as either a tarball, or the extracted directory",
+                    "format": "path"
+                },
+                "save_pirsr_data": {
+                    "type": "boolean",
+                    "hidden": true,
+                    "description": "Set this to true to save the pirsr tarball for future use. Defaults to false"
+                },
+                "pirsr_urml_rules": {
+                    "type": "string",
+                    "default": "ftp://ftp.ebi.ac.uk/pub/contrib/UniProt/UniFIRE/rules/unirule.pirsr-urml-2025_02.xml",
+                    "description": "Path to the pirsr annotation rules",
+                    "pattern": "^\\S+\\.xml$",
+                    "format": "file-path",
+                    "mimetype": "text/xml"
+                },
+                "arba_urml_rules": {
+                    "type": "string",
+                    "default": "ftp://ftp.ebi.ac.uk/pub/contrib/UniProt/UniFIRE/rules/arba-urml-2025_02.xml",
+                    "description": "Path to the arba annotation rules",
+                    "pattern": "^\\S+\\.xml$",
+                    "format": "file-path",
+                    "mimetype": "text/xml"
+                },
+                "unirule_urml_rules": {
+                    "type": "string",
+                    "default": "ftp://ftp.ebi.ac.uk/pub/contrib/UniProt/UniFIRE/rules/unirule-urml-2025_02.xml",
+                    "description": "Path to the unirule annotation rules",
+                    "pattern": "^\\S+\\.xml$",
+                    "format": "file-path",
+                    "mimetype": "text/xml"
+                },
+                "unirule_template": {
+                    "type": "string",
+                    "default": "ftp://ftp.ebi.ac.uk/pub/contrib/UniProt/UniFIRE/rules/unirule-templates-2025_02.xml",
+                    "description": "Path to the unirule annotation template",
+                    "pattern": "^\\S+\\.xml$",
+                    "format": "file-path",
+                    "mimetype": "text/xml"
+                }
+            }
         }
     },
     "allOf": [
+        {
+            "$ref": "#/$defs/main_options"
+        },
         {
             "$ref": "#/$defs/input_output_options"
         },
@@ -202,6 +280,9 @@
         },
         {
             "$ref": "#/$defs/generic_options"
+        },
+        {
+            "$ref": "#/$defs/unifire"
         }
     ]
 }
