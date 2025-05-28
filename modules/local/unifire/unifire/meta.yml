@@ -72,9 +72,9 @@ input:
 output:
   - predictions:
       - meta:
-            type: map
-            description: The input data's Groovy Map.
-                e.g. `[ id:'sample1']`
+          type: map
+          description: The input data's Groovy Map.
+            e.g. `[ id:'sample1']`
       - "*.csv":
           type: file
           description: Protein annotation predictions

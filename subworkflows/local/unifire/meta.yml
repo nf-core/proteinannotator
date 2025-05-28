@@ -65,7 +65,6 @@ input:
         Optional. Pass an empty path if not needed. Template sequence matches. See the unifire/unifire module description for instructions on how to download the data
 
 output:
-
   - unirule_predictions:
       description: |
         Structure: [ val(meta), path(pirsr_template) ]
