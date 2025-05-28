@@ -35,3 +35,12 @@ indent_style = unset
 # ignore ro-crate metadata files
 [**/ro-crate-metadata.json]
 insert_final_newline = unset
+
+# ignore the unifire fixtures
+[/modules/local/unifire/fixtures/**]
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+indent_size = unset
+indent_style = unset
