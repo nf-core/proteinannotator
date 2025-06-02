@@ -1,0 +1,3 @@
+ERROR ~ No such file or directory: Can't find a matching module file for include: /home/trace/projects/proteinannotator/modules/nf-core/diamond/blastp/tests/../../makedb/main.nf
+
+ -- Check script '/home/trace/projects/proteinannotator/.nf-test-5fe1b68b1633d10fa11759d4fe6e77d1.nf' at line: 11 or see '/home/trace/projects/proteinannotator/.nf-test/tests/5fe1b68b1633d10fa11759d4fe6e77d1/meta/nextflow.log' file for more details

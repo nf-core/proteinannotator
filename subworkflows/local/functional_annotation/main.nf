@@ -1,5 +1,6 @@
 include { DIAMOND_BLASTP  } from '../../../modules/nf-core/diamond/blastp/main'
 include { BLAST_MAKEBLASTDB } from '../../../modules/nf-core/blast/makeblastdb/main'
+include { NCBIREFSEQDOWNLOAD } from '../../../modules/local/ncbirefseqdownload/main'
 
 workflow FUNCTIONAL_ANNOTATION {
 
@@ -11,15 +12,19 @@ workflow FUNCTIONAL_ANNOTATION {
     ch_versions = Channel.empty()
 
     // TODO nf-core: substitute modules here for the modules of your subworkflow
+    NCBIREFSEQDOWNLOAD() // may need to include an input, currently uses default categories def categories = task.ext.categories ?: ['vertebrate_mammalian', 'vertebrate_other', 'invertebrate']
+    ch_diamond_reference_fasta = NCBIREFSEQDOWNLOAD.out.fasta
+    ch_versions = ch_versions.mix(NCBIREFSEQDOWNLOAD.out.versions.first())
+
     BLAST_MAKEBLASTDB (
-        ch_fasta,
+        ch_diamond_reference_fasta,
     )
 
     ch_diamond_db = BLAST_MAKEBLASTDB.out.db
     ch_versions = ch_versions.mix(BLAST_MAKEBLASTDB.out.versions.first())
 
 
-    ch_diamond_db = Channel.of( [ [id:"diamond_db"], file(params.diamond_db, checkIfExists: true) ] )
+    //ch_diamond_db = Channel.of( [ [id:"diamond_db"], file(params.diamond_db, checkIfExists: true) ] )
 
     DIAMOND_BLASTP (
         ch_fasta,
