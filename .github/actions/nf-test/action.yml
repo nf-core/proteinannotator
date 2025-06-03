@@ -53,7 +53,6 @@ runs:
         auto-update-conda: true
         conda-solver: libmamba
         conda-remove-defaults: true
-
       # TODO Skip failing conda tests and document their failures
       # https://github.com/nf-core/modules/issues/7017
     - name: Run nf-test

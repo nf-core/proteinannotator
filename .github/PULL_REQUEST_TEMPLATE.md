@@ -18,8 +18,8 @@ Learn more about contributing: [CONTRIBUTING.md](https://github.com/nf-core/prot
 - [ ] If you've added a new tool - have you followed the pipeline conventions in the [contribution docs](https://github.com/nf-core/proteinannotator/tree/master/.github/CONTRIBUTING.md)
 - [ ] If necessary, also make a PR on the nf-core/proteinannotator _branch_ on the [nf-core/test-datasets](https://github.com/nf-core/test-datasets) repository.
 - [ ] Make sure your code lints (`nf-core pipelines lint`).
-- [ ] Ensure the test suite passes (`nextflow run . -profile test,docker --outdir <OUTDIR>`).
-- [ ] Check for unexpected warnings in debug mode (`nextflow run . -profile debug,test,docker --outdir <OUTDIR>`).
+- [ ] Ensure the test suite passes (e.g. `nf-test test */local --profile=~test,docker` for all new local tests).
+- [ ] Check for unexpected warnings in debug mode (`nf-test test */local --profile=~test,docker,debug`).
 - [ ] Usage Documentation in `docs/usage.md` is updated.
 - [ ] Output Documentation in `docs/output.md` is updated.
 - [ ] `CHANGELOG.md` is updated.
