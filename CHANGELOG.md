@@ -9,6 +9,8 @@ Initial release of nf-core/proteinannotator, created with the [nf-core](https://
 
 ### `Added`
 
+- [[PR #13](https://github.com/nf-core/proteinannotator/pull/13)] Add nf-core seqkit/stats module
+
 ### `Fixed`
 
 ### `Dependencies`
