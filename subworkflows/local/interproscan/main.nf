@@ -25,7 +25,7 @@ workflow INTERPROSCAN {
             file(params.interproscan_tar_gz, checkIfExists: true),
         ]
         UNTAR(interproscan_compressed)
-        interproscan_db = UNTAR.out.untar.map { meta, folder -> tuple(folder.resolve('data'), params.interproscan_database_version) }
+        interproscan_db = UNTAR.out.untar.map { _meta, folder -> tuple(folder.resolve('data'), params.interproscan_database_version) }
     }
     else if (params.interproscan_database) {
         interproscan_db = [file(params.interproscan_database, checkIfExists: true), params.interproscan_database_version]
