@@ -63,7 +63,7 @@ process INTERPROSCAN {
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    echo '' > ${prefix}.{tsv,xml,gff3,json}
+    touch ${prefix}.{tsv,xml,gff3,json}
     gzip ${prefix}.{tsv,xml,gff3,json}
 
     cat <<-END_VERSIONS > versions.yml
