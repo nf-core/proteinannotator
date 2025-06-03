@@ -10,34 +10,68 @@ nextflow_workflow {
     tag "subworkflows_"
     tag "subworkflows/functional_annotation"
     // TODO nf-core: Add tags for all modules used within this subworkflow. Example:
-    tag "samtools"
-    tag "samtools/sort"
-    tag "samtools/index"
+    // tag "samtools"
+    // tag "samtools/sort"
+    // tag "samtools/index"
 
 
     // TODO nf-core: Change the test name preferably indicating the test-data and file-format used
-    test("sarscov2 - bam - single_end") {
+    test("Test two input channels, one fasta record each") {
 
         when {
+            params {
+                pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/"
+            }
             workflow {
                 """
                 // TODO nf-core: define inputs of the workflow here. Example:
-                input[0] = [
-                    [ id:'test', single_end:false ], // meta map
-                    file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExists: true),
-                ]
-                input[1] = [
-                    [ id:'genome' ],
-                    file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExists: true),
-                ]
+                input[0] = Channel.fromList([
+                    [
+                        [ id:'T1024' ], // meta map
+                        file(params.pipelines_testdata_base_path + 'proteinfold/testdata/sequences/T1024.fasta', checkIfExists: true)
+                    ],
+                    [
+                        [ id:'T1026' ], // meta map
+                        file(params.pipelines_testdata_base_path + 'proteinfold/testdata/sequences/T1026.fasta', checkIfExists: true)
+                    ]
+                ])
                 """
             }
         }
 
         then {
             assertAll(
+                // { assert snapshot(workflow.out).match()},
                 { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
+                //TODO nf-core: Add all required assertions to verify the test output.
+            )
+        }
+    }
+
+            // TODO nf-core: Change the test name preferably indicating the test-data and file-format used
+    test("Test single input fasta with 4 fasta records: snap25 isoforms - bcl2 - ced9") {
+
+        when {
+            params {
+                pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/"
+            }
+            workflow {
+                """
+                // TODO nf-core: define inputs of the workflow here. Example:
+                input[0] = Channel.fromList([
+                    [
+                        [ id:'test' ], // meta map
+                        file(params.pipelines_testdata_base_path + 'proteinannotator/reference/snap25_isoforms_bcl2_ced9.fasta', checkIfExists: true)
+                    ]
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                // { assert snapshot(workflow.out).match()},
+                { assert workflow.success},
                 //TODO nf-core: Add all required assertions to verify the test output.
             )
         }
