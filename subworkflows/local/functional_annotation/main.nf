@@ -1,5 +1,5 @@
 include { DIAMOND_BLASTP  } from '../../../modules/nf-core/diamond/blastp/main'
-include { DIAMOND_MAKEDB } from '../modules/nf-core/diamond/makedb/main'
+include { DIAMOND_MAKEDB } from '../../../modules/nf-core/diamond/makedb/main'
 // include { BLAST_MAKEBLASTDB } from '../../../modules/nf-core/blast/makeblastdb/main'
 include { NCBIREFSEQDOWNLOAD } from '../../../modules/local/ncbirefseqdownload/main'
 

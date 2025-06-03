@@ -1,16 +1,16 @@
-Jun-03 14:37:08.369 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.2
-Jun-03 14:37:08.386 [main] INFO  com.askimed.nf.test.App - Arguments: [test, modules/nf-core/diamond/makedb]
-Jun-03 14:37:09.324 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 24.10.6
-Jun-03 14:37:09.329 [main] WARN  com.askimed.nf.test.commands.RunTestsCommand - No nf-test config file found.
-Jun-03 14:37:09.357 [main] WARN  com.askimed.nf.test.nextflow.NextflowScript - Module /home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/main.nf: Dependency '/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/../../../modules/local/ncbirefseqdownload/main.nf' not found.
-Jun-03 14:37:09.391 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 30 files from directory /home/trace/projects/proteinannotator in 0.058 sec
-Jun-03 14:37:09.393 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 1 files containing tests.
-Jun-03 14:37:09.394 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/home/trace/projects/proteinannotator/modules/nf-core/diamond/makedb/tests/main.nf.test]
-Jun-03 14:37:10.076 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 3 tests to execute.
-Jun-03 14:37:10.077 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Started test plan
-Jun-03 14:37:10.077 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Process DIAMOND_MAKEDB' from file '/home/trace/projects/proteinannotator/modules/nf-core/diamond/makedb/tests/main.nf.test'.
-Jun-03 14:37:10.077 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'b2b060aa: Should build a DIAMOND db file from a fasta file without taxonomic information'. type: com.askimed.nf.test.lang.process.ProcessTest
-Jun-03 14:37:16.752 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'b2b060aa: Should build a DIAMOND db file from a fasta file without taxonomic information' finished. status: FAILED
+Jun-03 14:55:37.424 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.2
+Jun-03 14:55:37.447 [main] INFO  com.askimed.nf.test.App - Arguments: [test, modules/nf-core/diamond/makedb]
+Jun-03 14:55:38.680 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 24.10.6
+Jun-03 14:55:38.687 [main] WARN  com.askimed.nf.test.commands.RunTestsCommand - No nf-test config file found.
+Jun-03 14:55:38.724 [main] WARN  com.askimed.nf.test.nextflow.NextflowScript - Module /home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/main.nf: Dependency '/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/../../../modules/local/ncbirefseqdownload/main.nf' not found.
+Jun-03 14:55:38.782 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 30 files from directory /home/trace/projects/proteinannotator in 0.09 sec
+Jun-03 14:55:38.788 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 1 files containing tests.
+Jun-03 14:55:38.789 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/home/trace/projects/proteinannotator/modules/nf-core/diamond/makedb/tests/main.nf.test]
+Jun-03 14:55:39.604 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 3 tests to execute.
+Jun-03 14:55:39.605 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Started test plan
+Jun-03 14:55:39.606 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Process DIAMOND_MAKEDB' from file '/home/trace/projects/proteinannotator/modules/nf-core/diamond/makedb/tests/main.nf.test'.
+Jun-03 14:55:39.606 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'b2b060aa: Should build a DIAMOND db file from a fasta file without taxonomic information'. type: com.askimed.nf.test.lang.process.ProcessTest
+Jun-03 14:55:47.813 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'b2b060aa: Should build a DIAMOND db file from a fasta file without taxonomic information' finished. status: FAILED
 org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions failed
 	at com.askimed.nf.test.lang.extensions.GlobalMethods.assertAll(GlobalMethods.java:48)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
@@ -47,8 +47,8 @@ org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions f
 	at picocli.CommandLine.execute(CommandLine.java:2078)
 	at com.askimed.nf.test.App.run(App.java:39)
 	at com.askimed.nf.test.App.main(App.java:46)
-Jun-03 14:37:16.757 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '1d5885bf: Should build a DIAMOND db file from a zipped fasta file without taxonomic information'. type: com.askimed.nf.test.lang.process.ProcessTest
-Jun-03 14:37:23.252 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '1d5885bf: Should build a DIAMOND db file from a zipped fasta file without taxonomic information' finished. status: FAILED
+Jun-03 14:55:47.820 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '1d5885bf: Should build a DIAMOND db file from a zipped fasta file without taxonomic information'. type: com.askimed.nf.test.lang.process.ProcessTest
+Jun-03 14:55:56.016 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '1d5885bf: Should build a DIAMOND db file from a zipped fasta file without taxonomic information' finished. status: FAILED
 org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions failed
 	at com.askimed.nf.test.lang.extensions.GlobalMethods.assertAll(GlobalMethods.java:48)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
@@ -85,8 +85,8 @@ org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions f
 	at picocli.CommandLine.execute(CommandLine.java:2078)
 	at com.askimed.nf.test.App.run(App.java:39)
 	at com.askimed.nf.test.App.main(App.java:46)
-Jun-03 14:37:23.253 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '38117492: Should build a DIAMOND db file from a fasta file with taxonomic information'. type: com.askimed.nf.test.lang.process.ProcessTest
-Jun-03 14:37:30.603 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '38117492: Should build a DIAMOND db file from a fasta file with taxonomic information' finished. status: FAILED
+Jun-03 14:55:56.018 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '38117492: Should build a DIAMOND db file from a fasta file with taxonomic information'. type: com.askimed.nf.test.lang.process.ProcessTest
+Jun-03 14:56:04.375 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '38117492: Should build a DIAMOND db file from a fasta file with taxonomic information' finished. status: FAILED
 org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions failed
 	at com.askimed.nf.test.lang.extensions.GlobalMethods.assertAll(GlobalMethods.java:48)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
@@ -123,5 +123,5 @@ org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions f
 	at picocli.CommandLine.execute(CommandLine.java:2078)
 	at com.askimed.nf.test.App.run(App.java:39)
 	at com.askimed.nf.test.App.main(App.java:46)
-Jun-03 14:37:30.604 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Process DIAMOND_MAKEDB' finished. snapshot file: false, skipped tests: false, failed tests: true
-Jun-03 14:37:30.604 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Executed 3 tests. 3 tests failed. Done!
+Jun-03 14:56:04.376 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Process DIAMOND_MAKEDB' finished. snapshot file: false, skipped tests: false, failed tests: true
+Jun-03 14:56:04.377 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Executed 3 tests. 3 tests failed. Done!

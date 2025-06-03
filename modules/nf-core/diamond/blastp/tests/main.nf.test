@@ -29,7 +29,7 @@ nextflow_process {
             process {
                 """
                 input[0] = [ [id:'test'], file(params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta', checkIfExists: true) ]
-                input[1] = DIAMOND_MAKEDB.out.db
+                input[1] = [ [id:'testdb'], DIAMOND_MAKEDB.out.db ]
                 input[2] = 6
                 input[3] = 'qseqid qlen'
                 """
