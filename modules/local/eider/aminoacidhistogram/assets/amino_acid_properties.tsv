@@ -1,0 +1,27 @@
+amino_acid	three_letter_symbol	one_letter_symbol	class	chemical_polarity	net_charge	hydropathy_index	molecular_mass	abundance_in_proteins	standard_genetic_coding	hydrophobic	aromatic	aliphatic	small	hydrophilic	positively_charged	negatively_charged
+Alanine	Ala	A	Aliphatic	Nonpolar	Neutral	1.8	89.094	8.76	GCN	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE
+Arginine	Arg	R	Fixed cation	Basic polar	Positive	−4.5	174.203	5.78	MGR, CGY	FALSE	FALSE	FALSE	FALSE	TRUE	TRUE	FALSE
+Asparagine	Asn	N	Amide	Polar	Neutral	−3.5	132.119	3.93	AAY	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE
+Aspartate	Asp	D	Anion	Brønsted base	Negative	−3.5	133.104	5.49	GAY	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	TRUE
+Cysteine	Cys	C	Thiol	Brønsted acid	Neutral	2.5	121.154	1.38	UGY	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
+Glutamine	Gln	Q	Amide	Polar	Neutral	−3.5	146.146	3.9	CAR	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE
+Glutamate	Glu	E	Anion	Brønsted base	Negative	−3.5	147.131	6.32	GAR	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	TRUE
+Glycine	Gly	G	Aliphatic	Nonpolar	Neutral	−0.4	75.067	7.03	GGN	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE
+Histidine	His	H	Cationic	Brønsted acid and base	Positive, 10% Neutral, 90%	−3.2	155.156	2.26	CAY	FALSE	TRUE	FALSE	FALSE	TRUE	TRUE	FALSE
+Isoleucine	Ile	I	Aliphatic	Nonpolar	Neutral	4.5	131.175	5.49	AUH	TRUE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE
+Leucine	Leu	L	Aliphatic	Nonpolar	Neutral	3.8	131.175	9.68	YUR, CUY	TRUE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE
+Lysine	Lys	K	Cation	Brønsted acid	Positive	−3.9	146.189	5.19	AAR	FALSE	FALSE	FALSE	FALSE	TRUE	TRUE	FALSE
+Methionine	Met	M	Thioether	Nonpolar	Neutral	1.9	149.208	2.32	AUG	TRUE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE
+Phenylalanine	Phe	F	Aromatic	Nonpolar	Neutral	2.8	165.192	3.87	UUY	TRUE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE
+Proline	Pro	P	Cyclic	Nonpolar	Neutral	−1.6	115.132	5.02	CCN	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE
+Serine	Ser	S	Hydroxylic	Polar	Neutral	−0.8	105.093	7.14	UCN, AGY	FALSE	FALSE	FALSE	TRUE	TRUE	FALSE	FALSE
+Threonine	Thr	T	Hydroxylic	Polar	Neutral	−0.7	119.119	5.53	ACN	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE
+Tryptophan	Trp	W	Aromatic	Nonpolar	Neutral	−0.9	204.228	1.25	UGG	TRUE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE
+Tyrosine	Tyr	Y	Aromatic	Brønsted acid	Neutral	−1.3	181.191	2.91	UAY	TRUE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE
+Valine	Val	V	Aliphatic	Nonpolar	Neutral	4.2	117.148	6.73	GUN	TRUE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE
+Selenocysteine	Sec	U					168.064									
+Pyrrolysine	Pyl	O					255.313									
+Any/unknown	Xaa	X														
+Asparagine or aspartate	Asx	B														
+Glutamine or glutamate	Glx	Z														
+Leucine or isoleucine	Xle	J														

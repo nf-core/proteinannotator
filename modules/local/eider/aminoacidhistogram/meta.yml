@@ -1,0 +1,47 @@
+name: eider_aminoacidhistogram
+description: Build amino acid histogram from protein sequences
+keywords:
+  - duckdb
+  - parquet
+  - sql
+  - query
+tools:
+  - eider:
+      description: |
+        Command line bioinformatics tools for DuckDB.
+      homepage: https://github.com/heuermh/eider
+      documentation: https://github.com/heuermh/eider
+      licence: ["Apache-2.0"]
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. [ id:'test', single_end:false ]
+    - parquet:
+        type: directory
+        description: |
+          Directory of protein sequences in Parquet format
+        pattern: "*.parquet"
+output:
+  - histogram:
+      - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. [ id:'test', single_end:false ]
+      - "*.tsv":
+          type: file
+          description: |
+            Amino acid histogram in tab separated values (TSV) text format
+          pattern: "*.{tsv}"
+  - versions:
+      - versions.yml:
+          type: file
+          description: File containing software versions
+          pattern: "versions.yml"
+authors:
+  - "@heuermh"
+maintainers:
+  - "@heuermh"
