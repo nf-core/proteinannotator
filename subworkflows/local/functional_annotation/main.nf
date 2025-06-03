@@ -1,5 +1,6 @@
 include { DIAMOND_BLASTP  } from '../../../modules/nf-core/diamond/blastp/main'
-include { BLAST_MAKEBLASTDB } from '../../../modules/nf-core/blast/makeblastdb/main'
+include { DIAMOND_MAKEDB } from '../modules/nf-core/diamond/makedb/main'
+// include { BLAST_MAKEBLASTDB } from '../../../modules/nf-core/blast/makeblastdb/main'
 include { NCBIREFSEQDOWNLOAD } from '../../../modules/local/ncbirefseqdownload/main'
 
 workflow FUNCTIONAL_ANNOTATION {
@@ -16,12 +17,12 @@ workflow FUNCTIONAL_ANNOTATION {
     ch_diamond_reference_fasta = NCBIREFSEQDOWNLOAD.out.fasta
     ch_versions = ch_versions.mix(NCBIREFSEQDOWNLOAD.out.versions.first())
 
-    BLAST_MAKEBLASTDB (
+    DIAMOND_MAKEDB (
         ch_diamond_reference_fasta,
     )
 
-    ch_diamond_db = BLAST_MAKEBLASTDB.out.db
-    ch_versions = ch_versions.mix(BLAST_MAKEBLASTDB.out.versions.first())
+    ch_diamond_db = DIAMOND_MAKEDB.out.db
+    ch_versions = ch_versions.mix(DIAMOND_MAKEDB.out.versions.first())
 
 
     //ch_diamond_db = Channel.of( [ [id:"diamond_db"], file(params.diamond_db, checkIfExists: true) ] )

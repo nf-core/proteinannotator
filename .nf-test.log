@@ -1,16 +1,16 @@
-May-27 13:28:58.075 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.2
-May-27 13:28:58.093 [main] INFO  com.askimed.nf.test.App - Arguments: [test, modules/nf-core/blast/makeblastdb]
-May-27 13:28:58.930 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 24.10.6
-May-27 13:28:58.935 [main] WARN  com.askimed.nf.test.commands.RunTestsCommand - No nf-test config file found.
-May-27 13:28:58.955 [main] WARN  com.askimed.nf.test.nextflow.NextflowScript - Module /home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/main.nf: Dependency '/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/../../../modules/local/ncbirefseqdownload/main.nf' not found.
-May-27 13:28:58.982 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 27 files from directory /home/trace/projects/proteinannotator in 0.045 sec
-May-27 13:28:58.985 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 1 files containing tests.
-May-27 13:28:58.986 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/home/trace/projects/proteinannotator/modules/nf-core/blast/makeblastdb/tests/main.nf.test]
-May-27 13:28:59.630 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 2 tests to execute.
-May-27 13:28:59.631 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Started test plan
-May-27 13:28:59.631 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Process BLAST_MAKEBLASTDB' from file '/home/trace/projects/proteinannotator/modules/nf-core/blast/makeblastdb/tests/main.nf.test'.
-May-27 13:28:59.631 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '5c90a8e6: Should build a blast db folder from a fasta file'. type: com.askimed.nf.test.lang.process.ProcessTest
-May-27 13:29:05.722 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '5c90a8e6: Should build a blast db folder from a fasta file' finished. status: FAILED
+Jun-03 14:37:08.369 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.2
+Jun-03 14:37:08.386 [main] INFO  com.askimed.nf.test.App - Arguments: [test, modules/nf-core/diamond/makedb]
+Jun-03 14:37:09.324 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 24.10.6
+Jun-03 14:37:09.329 [main] WARN  com.askimed.nf.test.commands.RunTestsCommand - No nf-test config file found.
+Jun-03 14:37:09.357 [main] WARN  com.askimed.nf.test.nextflow.NextflowScript - Module /home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/main.nf: Dependency '/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/../../../modules/local/ncbirefseqdownload/main.nf' not found.
+Jun-03 14:37:09.391 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 30 files from directory /home/trace/projects/proteinannotator in 0.058 sec
+Jun-03 14:37:09.393 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 1 files containing tests.
+Jun-03 14:37:09.394 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/home/trace/projects/proteinannotator/modules/nf-core/diamond/makedb/tests/main.nf.test]
+Jun-03 14:37:10.076 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 3 tests to execute.
+Jun-03 14:37:10.077 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Started test plan
+Jun-03 14:37:10.077 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Process DIAMOND_MAKEDB' from file '/home/trace/projects/proteinannotator/modules/nf-core/diamond/makedb/tests/main.nf.test'.
+Jun-03 14:37:10.077 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'b2b060aa: Should build a DIAMOND db file from a fasta file without taxonomic information'. type: com.askimed.nf.test.lang.process.ProcessTest
+Jun-03 14:37:16.752 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'b2b060aa: Should build a DIAMOND db file from a fasta file without taxonomic information' finished. status: FAILED
 org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions failed
 	at com.askimed.nf.test.lang.extensions.GlobalMethods.assertAll(GlobalMethods.java:48)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
@@ -22,8 +22,8 @@ org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions f
 	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallStatic(CallSiteArray.java:55)
 	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callStatic(AbstractCallSite.java:217)
 	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callStatic(AbstractCallSite.java:240)
-	at main_nf$_run_closure1$_closure2$_closure5.doCall(main.nf.test:23)
-	at main_nf$_run_closure1$_closure2$_closure5.doCall(main.nf.test)
+	at main_nf$_run_closure1$_closure2$_closure6.doCall(main.nf.test:28)
+	at main_nf$_run_closure1$_closure2$_closure6.doCall(main.nf.test)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
@@ -47,8 +47,8 @@ org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions f
 	at picocli.CommandLine.execute(CommandLine.java:2078)
 	at com.askimed.nf.test.App.run(App.java:39)
 	at com.askimed.nf.test.App.main(App.java:46)
-May-27 13:29:05.726 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '99276840: Should build a blast db folder from a zipped fasta file'. type: com.askimed.nf.test.lang.process.ProcessTest
-May-27 13:29:11.726 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '99276840: Should build a blast db folder from a zipped fasta file' finished. status: FAILED
+Jun-03 14:37:16.757 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '1d5885bf: Should build a DIAMOND db file from a zipped fasta file without taxonomic information'. type: com.askimed.nf.test.lang.process.ProcessTest
+Jun-03 14:37:23.252 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '1d5885bf: Should build a DIAMOND db file from a zipped fasta file without taxonomic information' finished. status: FAILED
 org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions failed
 	at com.askimed.nf.test.lang.extensions.GlobalMethods.assertAll(GlobalMethods.java:48)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
@@ -60,7 +60,7 @@ org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions f
 	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallStatic(CallSiteArray.java:55)
 	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callStatic(AbstractCallSite.java:217)
 	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callStatic(AbstractCallSite.java:240)
-	at main_nf$_run_closure1$_closure3$_closure12.doCall(main.nf.test:62)
+	at main_nf$_run_closure1$_closure3$_closure12.doCall(main.nf.test:53)
 	at main_nf$_run_closure1$_closure3$_closure12.doCall(main.nf.test)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
@@ -85,5 +85,43 @@ org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions f
 	at picocli.CommandLine.execute(CommandLine.java:2078)
 	at com.askimed.nf.test.App.run(App.java:39)
 	at com.askimed.nf.test.App.main(App.java:46)
-May-27 13:29:11.727 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Process BLAST_MAKEBLASTDB' finished. snapshot file: false, skipped tests: false, failed tests: true
-May-27 13:29:11.727 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Executed 2 tests. 2 tests failed. Done!
+Jun-03 14:37:23.253 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '38117492: Should build a DIAMOND db file from a fasta file with taxonomic information'. type: com.askimed.nf.test.lang.process.ProcessTest
+Jun-03 14:37:30.603 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '38117492: Should build a DIAMOND db file from a fasta file with taxonomic information' finished. status: FAILED
+org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions failed
+	at com.askimed.nf.test.lang.extensions.GlobalMethods.assertAll(GlobalMethods.java:48)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
+	at org.codehaus.groovy.runtime.callsite.StaticMetaMethodSite.invoke(StaticMetaMethodSite.java:44)
+	at org.codehaus.groovy.runtime.callsite.StaticMetaMethodSite.callStatic(StaticMetaMethodSite.java:100)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallStatic(CallSiteArray.java:55)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callStatic(AbstractCallSite.java:217)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callStatic(AbstractCallSite.java:240)
+	at main_nf$_run_closure1$_closure4$_closure18.doCall(main.nf.test:78)
+	at main_nf$_run_closure1$_closure4$_closure18.doCall(main.nf.test)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:274)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1030)
+	at groovy.lang.Closure.call(Closure.java:427)
+	at groovy.lang.Closure.call(Closure.java:406)
+	at com.askimed.nf.test.lang.TestCode.execute(TestCode.java:16)
+	at com.askimed.nf.test.lang.process.ProcessTest.execute(ProcessTest.java:171)
+	at com.askimed.nf.test.core.TestExecutionEngine.execute(TestExecutionEngine.java:165)
+	at com.askimed.nf.test.commands.RunTestsCommand.execute(RunTestsCommand.java:298)
+	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:43)
+	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:18)
+	at picocli.CommandLine.executeUserObject(CommandLine.java:1953)
+	at picocli.CommandLine.access$1300(CommandLine.java:145)
+	at picocli.CommandLine$RunLast.executeUserObjectOfLastSubcommandWithSameParent(CommandLine.java:2352)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2346)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2311)
+	at picocli.CommandLine$AbstractParseResultHandler.execute(CommandLine.java:2179)
+	at picocli.CommandLine.execute(CommandLine.java:2078)
+	at com.askimed.nf.test.App.run(App.java:39)
+	at com.askimed.nf.test.App.main(App.java:46)
+Jun-03 14:37:30.604 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Process DIAMOND_MAKEDB' finished. snapshot file: false, skipped tests: false, failed tests: true
+Jun-03 14:37:30.604 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Executed 3 tests. 3 tests failed. Done!

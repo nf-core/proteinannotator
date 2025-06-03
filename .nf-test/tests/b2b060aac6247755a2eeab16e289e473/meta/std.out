@@ -1,0 +1,3 @@
+ERROR ~ No such file or directory: /home/trace/projects/proteinannotator/.nf-test/tests/b2b060aac6247755a2eeab16e289e473/nullgenomics/sarscov2/genome/proteome.fasta
+
+ -- Check script '/home/trace/projects/proteinannotator/.nf-test-b2b060aac6247755a2eeab16e289e473.nf' at line: 32 or see '/home/trace/projects/proteinannotator/.nf-test/tests/b2b060aac6247755a2eeab16e289e473/meta/nextflow.log' file for more details
