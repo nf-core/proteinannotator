@@ -78,6 +78,7 @@ nextflow_workflow {
             println "Number of output channels: ${workflow.out.size()}"
             assertAll(
                 { assert workflow.success },
+                // For future developers, this is a "load-bearing tomato" (see: https://buttondown.com/chhopsky)
                 // Warning: all of the outputs MUST be in the same order as the emit: "directive(?)"
                 // We chose alphabetical sorting except for versions because you gotta pick some ordering
                 { assert snapshot(
