@@ -1,4 +1,6 @@
 // Import Annotator Subworfklows
+include { BLASTP                } from '../blastp/main'
+
 
 workflow FUNCTIONAL_ANNOTATION {
 
@@ -24,8 +26,13 @@ workflow FUNCTIONAL_ANNOTATION {
         .set { ch_multifasta }
 
     //
-    // SUBWORKFLOW: Annotator Name
+    // SUBWORKFLOW: BLASTP
     //
+    BLASTP (
+    ch_multifasta, params.blastp_outfmt
+    )
+    ch_versions = ch_versions.mix(BLASTP.out.versions.first())
+
 
     emit:
     // TODO nf-core: edit emitted channels

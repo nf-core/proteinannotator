@@ -203,5 +203,20 @@
         {
             "$ref": "#/$defs/generic_options"
         }
-    ]
+    ],
+    "properties": {
+        "blast_ref_fasta": {
+            "type": "string",
+            "help_text": "Reference protein database to BLAST against"
+        },
+        "blastp_outfmt": {
+            "type": "string",
+            "default": "tsv",
+            "pattern": "^\\S+\\.(xml|tsv|csv)$",
+            "help_text": "Desired format for BLAST output (tsv, csv, xml)"
+        },
+        "modules_testdata_base_path": {
+            "type": "string"
+        }
+    }
 }

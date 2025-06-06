@@ -5,6 +5,15 @@
         "https://github.com/nf-core/modules.git": {
             "modules": {
                 "nf-core": {
+                    "blast/blastp": {
+                        "branch": "master",
+                        "git_sha": "be58de79943289acb561a6246d1da5f85555a224",
+                        "installed_by": ["modules"]
+                    },
+                    "blast/makeblastdb": {
+                        "branch": "master",
+                        "git_sha": "c7a7f06819adcf6f922e11b47f308b7c74484d67"
+                    },
                     "mmseqs/search": {
                         "branch": "master",
                         "git_sha": "81880787133db07d9b4c1febd152c090eb8325dc",
