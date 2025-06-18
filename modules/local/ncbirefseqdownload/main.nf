@@ -20,25 +20,15 @@ process NCBIREFSEQDOWNLOAD {
     task.ext.when == null || task.ext.when
 
     script:
-    
-    def refseq_releases = task.ext.refseq_releases ?: ['complete']
-    def download_release = refseq_releases.collect { release ->
-        """
-        mkdir -p ${release}/
-
-        rsync \\
-            -av \\
-            --include '*protein.faa.gz' \\
-            --exclude '*' \\
-            rsync://ftp.ncbi.nlm.nih.gov/refseq/release/${release}/ \\
-            ${release}/
-        """
-    }.join("\n")
-
     """
-    set -e
+    mkdir -p refseq/${refseq_release}
 
-    ${download_release}
+    rsync \\
+        -av \\
+        --include '*protein.faa.gz' \\
+        --exclude '*' \\
+        rsync://ftp.ncbi.nlm.nih.gov/refseq/release/${refseq_release}/ \\
+        ${refseq_release}/
 
     zcat */*.faa.gz | gzip -c > refseq_fastas.fa.gz
 

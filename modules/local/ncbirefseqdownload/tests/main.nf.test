@@ -7,13 +7,10 @@ nextflow_process {
     test("Should download ncbi refseq 'other' zipped protein fasta") {
 
         when {
-            params {
-                // define parameters here. Example:
-                // outdir = "tests/results"
-            }
+
             process {
                 """
-                input[0] = "other"
+                input[0] = [['id': 'test'], 'other']
                 """
             }
         }
