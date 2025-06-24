@@ -20,6 +20,16 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - name: Print Modules Folder Tree
+      uses: jaywcjlove/github-action-folder-tree@main
+      with:
+        exclude: "node_modules|dist|.git|.husky"
+        path: ./modules
+    - name: Print Subworkflows Folder Tree
+      uses: jaywcjlove/github-action-folder-tree@main
+      with:
+        exclude: "node_modules|dist|.git|.husky"
+        path: ./subworkflows
     - name: Install nf-test
       uses: nf-core/setup-nf-test@v1
       with:
