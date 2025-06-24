@@ -97,7 +97,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test.tsv.gz:md5,0dff8a56e27a3ff63fb1d12801558118"
+                        "test.tsv.gz:md5,2adf8f4b398bc1612e9d9478b410d2ec"
                     ]
                 ],
                 "1": [
@@ -115,7 +115,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test.gff3.gz:md5,87502cd5befcc9b84433788e18ec73a8"
+                        "test.gff3.gz:md5,f04d5325d6af7814eee7d4b575c82f93"
                     ]
                 ],
                 "3": [
@@ -136,7 +136,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test.gff3.gz:md5,87502cd5befcc9b84433788e18ec73a8"
+                        "test.gff3.gz:md5,f04d5325d6af7814eee7d4b575c82f93"
                     ]
                 ],
                 "json": [
@@ -154,7 +154,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test.tsv.gz:md5,0dff8a56e27a3ff63fb1d12801558118"
+                        "test.tsv.gz:md5,2adf8f4b398bc1612e9d9478b410d2ec"
                     ]
                 ],
                 "versions": [
@@ -175,7 +175,7 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.1"
         },
-        "timestamp": "2025-06-23T12:07:32.298963"
+        "timestamp": "2025-06-24T10:57:31.077533"
     },
     "interproscan": {
         "content": [
