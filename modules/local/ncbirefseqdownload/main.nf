@@ -1,19 +1,19 @@
 process NCBIREFSEQDOWNLOAD {
     label 'process_low'
-    tag "downloand_refseq"
+    tag "download_refseq"
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/YOUR-TOOL-HERE':
         'biocontainers/YOUR-TOOL-HERE' }"
 
-    publishDir "${params.outdir}/ncbi_refseq/", mode: 'copy'
+    // publishDir "${params.outdir}", mode: 'copy'
 
     input:
-    tuple val(meta), val(refseq_release) // ncbi refseq release category
+    val(refseq_release) // ncbi refseq release category
 
     output:
-    path "refseq_fastas.fa.gz", emit: ch_diamond_reference_fasta // reference fasta for diamond/makedb
+    path "ncbi_refseq/refseq_fasta.fa.gz", emit: refseq_fasta // reference fasta for diamond/makedb
     path "versions.yml"           , emit: versions
 
     when:
@@ -21,16 +21,16 @@ process NCBIREFSEQDOWNLOAD {
 
     script:
     """
-    mkdir -p refseq/${refseq_release}
+    mkdir -p ncbi_refseq/${refseq_release}/
 
     rsync \\
         -av \\
         --include '*protein.faa.gz' \\
         --exclude '*' \\
         rsync://ftp.ncbi.nlm.nih.gov/refseq/release/${refseq_release}/ \\
-        ${refseq_release}/
+        ncbi_refseq/${refseq_release}/
 
-    zcat */*.faa.gz | gzip -c > refseq_fastas.fa.gz
+    zcat ncbi_refseq/*/*.faa.gz | gzip -c > ncbi_refseq/refseq_fasta.fa.gz
 
     echo "All RefSeq protein FASTAs aggregated into ncbi_refseq/"
 
