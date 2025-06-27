@@ -1,0 +1,37 @@
+{
+    "versions": {
+        "content": [
+            [
+                "versions.yml:md5,3799a0b1fc5359fd1bdc1c8f20167431"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.6"
+        },
+        "timestamp": "2025-06-26T10:59:29.378160575"
+    },
+    "Should download ncbi refseq 'other' zipped protein fasta": {
+        "content": [
+            {
+                "0": [
+                    "refseq_fasta.fa.gz:md5,f268873781947724d1dbcd450aecd336"
+                ],
+                "1": [
+                    "versions.yml:md5,3799a0b1fc5359fd1bdc1c8f20167431"
+                ],
+                "refseq_fasta": [
+                    "refseq_fasta.fa.gz:md5,f268873781947724d1dbcd450aecd336"
+                ],
+                "versions": [
+                    "versions.yml:md5,3799a0b1fc5359fd1bdc1c8f20167431"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "24.10.6"
+        },
+        "timestamp": "2025-06-26T09:38:32.666570109"
+    }
+}
