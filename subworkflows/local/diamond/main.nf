@@ -22,6 +22,7 @@ workflow DIAMOND {
 
     DIAMOND_MAKEDB (
         ch_diamond_reference_fasta,
+        taxonmap, // make default ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/prot.accession2taxid.gz
     )
 
     ch_diamond_db = DIAMOND_MAKEDB.out.db

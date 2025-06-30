@@ -10,7 +10,7 @@ process NCBIREFSEQDOWNLOAD {
     // publishDir "${params.outdir}", mode: 'copy'
 
     input:
-    val(refseq_release) // ncbi refseq release category
+    val(refseq_release) // ncbi refseq release category --  add default of 'complete'
 
     output:
     path "ncbi_refseq/refseq_fasta.fa.gz", emit: refseq_fasta // reference fasta for diamond/makedb
