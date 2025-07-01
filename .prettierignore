@@ -11,3 +11,6 @@ testing*
 *.pyc
 bin/
 ro-crate-metadata.json
+**/Makefile
+Makefile
+modules/local/interproscan/tests/fixtures/interproscan_db/data

@@ -3,8 +3,11 @@ include { DIAMOND_MAKEDB } from '../../../modules/nf-core/diamond/makedb/main'
 // include { BLAST_MAKEBLASTDB } from '../../../modules/nf-core/blast/makeblastdb/main'
 include { NCBIREFSEQDOWNLOAD } from '../../../modules/local/ncbirefseqdownload/main'
 
-workflow FUNCTIONAL_ANNOTATION {
+// Import Annotator Subworfklows
+include { INTERPROSCAN } from '../interproscan/main'
 
+
+workflow FUNCTIONAL_ANNOTATION {
     take:
     ch_fasta // channel: [ val(meta), [ fasta ] ]
 
@@ -37,24 +40,31 @@ workflow FUNCTIONAL_ANNOTATION {
 
     // Create a multifasta, with one fasta per entry, add the sequence ID to the meta id
     ch_fasta
-        .map {
-            meta, fasta ->
+        .map { meta, fasta ->
             [
-                [id:"${meta.id}_${fasta.splitFasta(record: [id: true]).id[0].replaceAll(/\|/, '-')}"] ,
-                fasta.splitFasta(file:true)
+                [id: "${meta.id}_${fasta.splitFasta(record: [id: true]).id[0].replaceAll(/\|/, '-')}"],
+                fasta.splitFasta(file: true),
             ]
         }
         .transpose()
         .set { ch_multifasta }
 
-    //
-    // SUBWORKFLOW: Annotator Name
-    //
+
 
     emit:
     // TODO nf-core: edit emitted channels
     ch_diamond_tsv = DIAMOND_BLASTP.out.tsv    // channel: [ val(meta)]
+    emit:
+    versions = ch_versions // channel: [ versions.yml ]
+    
+    //
+    // SUBWORKFLOW: Run InterProScan
+    //
 
-    multifasta = ch_multifasta
-    versions   = ch_versions                     // channel: [ versions.yml ]
+    if (!params.skip_interproscan) {
+        INTERPROSCAN(
+            ch_multifasta
+        )
+        ch_versions = ch_versions.mix(INTERPROSCAN.out.versions.first())
+    }
 }

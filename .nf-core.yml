@@ -1,6 +1,9 @@
 lint:
   files_exist:
     - .github/workflows/ci.yml
+    - conf/igenomes.config
+    - conf/igenomes_ignored.config
+  actions_ci: false
   files_unchanged:
     - assets/nf-core-proteinannotator_logo_light.png
     - docs/images/nf-core-proteinannotator_logo_light.png
@@ -8,7 +11,6 @@ lint:
     - .github/PULL_REQUEST_TEMPLATE.md
 nf_core_version: 3.3.1
 repository_type: pipeline
-
 template:
   author: Olga Botvinnik
   description: The best protein annotation pipeline in the world. Protein fasta ->

@@ -20,7 +20,7 @@
 
 ## Introduction
 
-**nf-core/proteinannotator** is a bioinformatics pipeline that ...
+**nf-core/proteinannotator** is a bioinformatics pipeline that runs statistics of input protein fasta files and identifies the function of proteins based on their sequence data, using state-of-the-art protein annotation tools such as [InterProScan](https://interproscan-docs.readthedocs.io/).
 
 <!-- TODO nf-core:
    Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
@@ -36,8 +36,11 @@
 
 
 1. Run ([`seqkit stats`](https://bioinf.shenwei.me/seqkit/usage/#stats)) to summarize input protein fasta files
-2. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
-2. Functional Annotation ([`DIAMOND`](https://github.com/bbuchfink/diamond))
+2. Functional Annotation:
+   1. ([`InterProScan`](https://interproscan-docs.readthedocs.io/en/v5/)) a software tool used to analyze protein sequences by scanning them against the signatures of protein families, domains, and sites in the [InterPro](https://www.ebi.ac.uk/interpro/) database, helping to identify their functional characteristics.
+   2. ([`DIAMOND`](https://github.com/bbuchfink/diamond))
+3. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
+
 
 ![Protein annotator metromap. Protein fasta files are summarized with `seqkit stats`, then functionally annotated with InterProScan, DIAMOND-blastp, UniFire, and Kmerseek](assets/proteinannotator-metromap.excalidraw.png)
 

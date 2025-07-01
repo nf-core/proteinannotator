@@ -10,6 +10,7 @@ nextflow_workflow {
     tag "subworkflows_"
     tag "subworkflows/functional_annotation"
     // TODO nf-core: Add tags for all modules used within this subworkflow. Example:
+
     // tag "samtools"
     // tag "samtools/sort"
     // tag "samtools/index"
@@ -17,6 +18,44 @@ nextflow_workflow {
 
     // TODO nf-core: Change the test name preferably indicating the test-data and file-format used
     test("Test two input channels, one fasta record each") {
+
+        when {
+            params {
+                pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/"
+            }
+            workflow {
+                """
+                // TODO nf-core: define inputs of the workflow here. Example:
+                input[0] = Channel.fromList([
+                    [
+                        [ id:'T1024' ], // meta map
+                        file(params.pipelines_testdata_base_path + 'proteinfold/testdata/sequences/T1024.fasta', checkIfExists: true)
+                    ],
+                    [
+                        [ id:'T1026' ], // meta map
+                        file(params.pipelines_testdata_base_path + 'proteinfold/testdata/sequences/T1026.fasta', checkIfExists: true)
+                    ]
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                // { assert snapshot(workflow.out).match()},
+                { assert workflow.success},
+                //TODO nf-core: Add all required assertions to verify the test output.
+            )
+        }
+    }
+
+        // TODO nf-core: Change the test name preferably indicating the test-data and file-format used
+    test("Test two input channels, one fasta record each -- stub") {
+        tag "stub"
+        // Run this test in the GitHub Actions Continuous Integration (CI), instead of the other one
+        tag "CI"
+
+        options "-stub"
 
         when {
             params {
@@ -70,8 +109,8 @@ nextflow_workflow {
 
         then {
             assertAll(
-                // { assert snapshot(workflow.out).match()},
                 { assert workflow.success},
+                { assert snapshot(workflow.out).match()}
                 //TODO nf-core: Add all required assertions to verify the test output.
             )
         }

@@ -19,6 +19,18 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Print Modules Folder Tree
+      uses: jaywcjlove/github-action-folder-tree@main
+      with:
+        exclude: "node_modules|dist|.git|.husky"
+        path: ./modules
+        depth: 10
+    - name: Print Subworkflows Folder Tree
+      uses: jaywcjlove/github-action-folder-tree@main
+      with:
+        exclude: "node_modules|dist|.git|.husky"
+        path: ./subworkflows
+        depth: 10
     - name: Setup Nextflow
       uses: nf-core/setup-nextflow@v2
       with:
