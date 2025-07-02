@@ -1,88 +1,18 @@
-Jun-30 09:58:17.386 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.2
-Jun-30 09:58:17.404 [main] INFO  com.askimed.nf.test.App - Arguments: [test, modules/local/diamondpreparetaxa/tests/main.nf.test]
-Jun-30 09:58:18.330 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 24.10.6
-Jun-30 09:58:18.332 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Load config from file /home/trace/projects/proteinannotator/nf-test.config...
-Jun-30 09:58:18.812 [main] WARN  com.askimed.nf.test.nextflow.NextflowScript - Module /home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/main.nf: Dependency '/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/../../../modules/nf-core/blast/makeblastdb/main.nf' not found.
-Jun-30 09:58:18.861 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 15 files from directory /home/trace/projects/proteinannotator in 0.065 sec
-Jun-30 09:58:18.862 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 1 files containing tests.
-Jun-30 09:58:18.863 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/home/trace/projects/proteinannotator/modules/local/diamondpreparetaxa/tests/main.nf.test]
-Jun-30 09:58:19.064 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 1 tests to execute.
-Jun-30 09:58:19.065 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Started test plan
-Jun-30 09:58:19.065 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Process DIAMONDPREPARETAXA' from file '/home/trace/projects/proteinannotator/modules/local/diamondpreparetaxa/tests/main.nf.test'.
-Jun-30 09:58:19.066 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'd9252286: Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files'. type: com.askimed.nf.test.lang.process.ProcessTest
-Jun-30 09:58:32.266 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Load snapshots from file '/home/trace/projects/proteinannotator/modules/local/diamondpreparetaxa/tests/main.nf.test.snap'
-Jun-30 09:58:36.031 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files' do not match.
-Jun-30 09:58:36.032 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'd9252286: Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files' finished. status: FAILED
-java.lang.RuntimeException: Different Snapshot:
-[													[
-    {													    {
-        "0": [												        "0": [
-            											   |	            "nodes.dmp:md5,66d4a0325484b76d7d7dbe8db3682aaf"
-        ],												        ],
-        "1": [												        "1": [
-            											   |	            "names.dmp:md5,f9d14f8ef4c82bc4dca597cdeba1acbb"
-        ],												        ],
-        "2": [												        "2": [
-            											   |	            "versions.yml:md5,32e482f39dd2786ece9329f2a81d0f62"
-        ],												        ],
-        "taxonnames": [											        "taxonnames": [
-            											   |	            "names.dmp:md5,f9d14f8ef4c82bc4dca597cdeba1acbb"
-        ],												        ],
-        "taxonnodes": [											        "taxonnodes": [
-            											   |	            "nodes.dmp:md5,66d4a0325484b76d7d7dbe8db3682aaf"
-        ],												        ],
-        "versions": [											        "versions": [
-            											   |	            "versions.yml:md5,32e482f39dd2786ece9329f2a81d0f62"
-        ]												        ]
-    }													    }
-]													]
-
-	at com.askimed.nf.test.lang.extensions.SnapshotFileItem.equals(SnapshotFileItem.java:69)
-	at com.askimed.nf.test.lang.extensions.Snapshot.match(Snapshot.java:57)
-	at com.askimed.nf.test.lang.extensions.Snapshot.match(Snapshot.java:27)
-	at com.askimed.nf.test.lang.extensions.Snapshot$match.call(Unknown Source)
-	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:130)
-	at main_nf$_run_closure1$_closure2$_closure4$_closure7.doCall(main.nf.test:31)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:274)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1030)
-	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:38)
-	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:139)
-	at main_nf$_run_closure1$_closure2$_closure4.doCall(main.nf.test:31)
-	at main_nf$_run_closure1$_closure2$_closure4.doCall(main.nf.test)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:274)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1030)
-	at groovy.lang.Closure.call(Closure.java:427)
-	at groovy.lang.Closure.call(Closure.java:406)
-	at com.askimed.nf.test.lang.TestCode.execute(TestCode.java:16)
-	at com.askimed.nf.test.lang.process.ProcessTest.execute(ProcessTest.java:171)
-	at com.askimed.nf.test.core.TestExecutionEngine.execute(TestExecutionEngine.java:165)
-	at com.askimed.nf.test.commands.RunTestsCommand.execute(RunTestsCommand.java:298)
-	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:43)
-	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:18)
-	at picocli.CommandLine.executeUserObject(CommandLine.java:1953)
-	at picocli.CommandLine.access$1300(CommandLine.java:145)
-	at picocli.CommandLine$RunLast.executeUserObjectOfLastSubcommandWithSameParent(CommandLine.java:2352)
-	at picocli.CommandLine$RunLast.handle(CommandLine.java:2346)
-	at picocli.CommandLine$RunLast.handle(CommandLine.java:2311)
-	at picocli.CommandLine$AbstractParseResultHandler.execute(CommandLine.java:2179)
-	at picocli.CommandLine.execute(CommandLine.java:2078)
-	at com.askimed.nf.test.App.run(App.java:39)
-	at com.askimed.nf.test.App.main(App.java:46)
-Jun-30 09:58:36.036 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Process DIAMONDPREPARETAXA' finished. snapshot file: true, skipped tests: false, failed tests: true
-Jun-30 09:58:36.037 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Executed 1 tests. 1 tests failed. Done!
+Jul-01 10:12:43.803 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.2
+Jul-01 10:12:43.824 [main] INFO  com.askimed.nf.test.App - Arguments: [test, modules/local/diamondpreparetaxa/tests/main.nf.test]
+Jul-01 10:12:44.868 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 24.10.6
+Jul-01 10:12:44.871 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Load config from file /home/trace/projects/proteinannotator/nf-test.config...
+Jul-01 10:12:45.432 [main] WARN  com.askimed.nf.test.nextflow.NextflowScript - Module /home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/main.nf: Dependency '/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/../../../modules/nf-core/blast/makeblastdb/main.nf' not found.
+Jul-01 10:12:45.518 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 21 files from directory /home/trace/projects/proteinannotator in 0.105 sec
+Jul-01 10:12:45.520 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 1 files containing tests.
+Jul-01 10:12:45.520 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/home/trace/projects/proteinannotator/modules/local/diamondpreparetaxa/tests/main.nf.test]
+Jul-01 10:12:45.666 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 1 tests to execute.
+Jul-01 10:12:45.666 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Started test plan
+Jul-01 10:12:45.667 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Process DIAMONDPREPARETAXA' from file '/home/trace/projects/proteinannotator/modules/local/diamondpreparetaxa/tests/main.nf.test'.
+Jul-01 10:12:45.667 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'd9252286: Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files'. type: com.askimed.nf.test.lang.process.ProcessTest
+Jul-01 10:12:57.831 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Load snapshots from file '/home/trace/projects/proteinannotator/modules/local/diamondpreparetaxa/tests/main.nf.test.snap'
+Jul-01 10:12:59.690 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files' match.
+Jul-01 10:12:59.696 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'versions' match.
+Jul-01 10:12:59.696 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'd9252286: Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files' finished. status: PASSED
+Jul-01 10:12:59.699 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Process DIAMONDPREPARETAXA' finished. snapshot file: true, skipped tests: false, failed tests: false
+Jul-01 10:12:59.699 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Executed 1 tests. 0 tests failed. Done!

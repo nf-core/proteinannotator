@@ -21,7 +21,7 @@ nextflow_process {
         then {
             // Make sure the process works
             assert process.success
-
+            
             // Check number of tasks and output file sizes
             assert process.trace.tasks().size() == 1
             assert process.out.refseq_fasta.size() == 1
