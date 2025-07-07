@@ -14,6 +14,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 
 - [Functional Annotation](#functional-annotation) Annotate proteins with functional domains
   - [InterProScan](#Interproscan) - Search the InterPro database for functional domains
+  - [Diamond] (#Diamond) - Provide ‘hits’ of potential homologous protein matches between species
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [SeqKit stats](#seqkit_stats) - Simple statistics for protein FASTA files
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
@@ -75,7 +76,7 @@ AKRLERIETINREIIDMAGGAGSSNGTGGMLTKIKAATIATESGVPVYICS
 
 </details>
 
-#### JavaScript Object Notation (JSON) Output
+##### JavaScript Object Notation (JSON) Output
 
 JSON representation of the matches - an alternative to XML format. As new releases are made public, the changes to the expected JSON format are documented in [Change log for InterProScan JSON output format](https://interproscan-docs.readthedocs.io/en/v5/JSONOutputFormatHistory.html#change-log-for-interproscan-json-output-format).
 
@@ -264,6 +265,115 @@ The XML Schema Definition (XSD) is available [here](http://ftp.ebi.ac.uk/pub/sof
         </matches>
     </protein>
 </protein-matches>
+```
+
+</details>
+
+#### Diamond
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `functional_annotation/diamond`
+  - `*.blast`: (Basic Local Alignment Search Tool) BLAST pairwise format
+  - `*.xml`: BLAST Extensible Markup Language (XML) format
+  - `*.txt`: BLAST tabular format (default). This format can be customized, the 6 may be followed by a space-separated list of the blast_columns keywords, each specifying a field of the output. 
+  - `*.daa`: DIAMOND alignment archive (DAA). The DAA format is a proprietary binary format that can subsequently be used to generate other output formats using the view command. It is also supported by MEGAN and allows a quick import of results. 
+  - `*.sam`: SAM format. 
+  - `*.tsv`: Taxonomic classification. This format will not print alignments but only a taxonomic classification for each query using the LCA algorithm. 
+  - `*.paf`: PAF format. The custom fields in the format are AS (bit score), ZR (raw score) and ZE (e-value)
+
+</details>
+
+[Diamond](https://github.com/bbuchfink/diamond) provides sensitive protein sequence alignment. The process provides ‘hits’ that are potential homologous protein matches between species, indicating a evolutionary relationship, derived by protein sequence similarity.
+
+##### Pairwise Alignment Format (.blast) Output
+
+The pairwise BLAST format is a human readable format that is useful for visual inspection, if one desires to get full alignment details for individual alignments.
+
+<details markdown="1">
+<summary>Example Pairwise Alignment Format output</summary>
+
+```
+
+```
+
+</details>
+
+##### BLAST Extensible Markup Language (XML) Output
+
+XML (Extensible Markup Language) file has the same information as the pairwise file but is suited for bioinformatics software and scripts (machine readable), due to it’s structure and parsing of data.
+
+<details markdown="1">
+<summary>Example Extensible Markup Language (XML) output</summary>
+
+```
+
+```
+
+</details>
+
+##### Text File (TXT) Output --default
+
+The BLAST tabular format is the default output and the output columns can be modified depending on analysis needs. This format is much smaller than the other BLAST formats and compatible with most all forward processing and is easily filtered and analyzed.
+
+<details markdown="1">
+<summary>Example Text File (TXT) output</summary>
+
+```
+
+```
+
+</details>
+
+##### DIAMOND Alignment Archive (DAA) Output
+
+DIAMOND alignment archive (DAA) is a compressed proprietary binary format that is can be converted to any of the other output formats (.blast, .xml, .txt, .sam, .tsv, .paf) with the DIAMOND view command without rerunning the pipeline. It can also be used in some meta-genomic analysis software. 
+
+<details markdown="1">
+<summary>Example DIAMOND Alignment Archive (DAA) output</summary>
+
+```
+
+```
+
+</details>
+
+##### Sequence Alignment/Map (SAM) Output
+
+The SAM (Sequence Alignment/Map) file adapts the DIAMOND protein alignment output in a similar fashion to the genomic alignment. This allows for easy integration into SAM/BAM pipelines and protein alignment visualization with IGV browser.
+
+<details markdown="1">
+<summary>Example Sequence Alignment/Map (SAM) output</summary>
+
+```
+
+```
+
+</details>
+
+##### Tab-Separated Values (TSV) Output
+
+The taxonomic classification (.tsv) output provides taxonomic composition and is useful for biological interpretation rather than alignment comparison.
+
+<details markdown="1">
+<summary>Example Tab-Separated Values (TSV) output</summary>
+
+```
+
+```
+
+</details>
+
+##### Pairwise Mapping Format (PAF)
+
+The PAF (Pairwise mApping Format) file that is originally used for long read sequencing. DIAMOND adds three additional variables, AS (bit score), ZR (raw alignment score), and ZE (E-value), to provide statistical evidence for protein alignment. This format is useful if one is looking for positional information and statistical significance. 
+
+<details markdown="1">
+<summary>Example InterProScan GFF output</summary>
+
+```
+
 ```
 
 </details>
