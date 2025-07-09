@@ -41,16 +41,17 @@ process DIAMONDPREPARETAXA {
     END_VERSIONS
     """
 
-    // stub:
+    stub:
     // def args = task.ext.args ?: ''
     // def prefix = task.ext.prefix ?: "${meta.id}"
-    // """
+    """
     
-    // touch ${prefix}.bam
+    touch taxa/nodes.dmp
+    touch taxa/names.dmp
 
-    // cat <<-END_VERSIONS > versions.yml
-    // "${task.process}":
-    //     diamondpreparetaxa: \$(diamondpreparetaxa --version)
-    // END_VERSIONS
-    // """
+    cat <<-END_VERSIONS > versions.yml
+    "${task.process}":
+        diamondpreparetaxa: \$(diamondpreparetaxa --version)
+    END_VERSIONS
+    """
 }
