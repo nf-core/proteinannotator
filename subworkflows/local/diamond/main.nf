@@ -58,9 +58,17 @@ workflow DIAMOND {
         params.diamond_outfmt,
         params.diamond_blast_columns,
     )
-    emit:
     ch_versions = ch_versions.mix(DIAMOND_BLASTP.out.versions.first())
-    ch_diamond_tsv = DIAMOND_BLASTP.out.tsv
+
+    emit:
+    blast = DIAMOND_BLASTP.out.blast
+    sml = DIAMOND_BLASTP.out.xml
+    txt = DIAMOND_BLASTP.out.txt
+    daa = DIAMOND_BLASTP.out.daa
+    sam = DIAMOND_BLASTP.out.sam
+    tsv = DIAMOND_BLASTP.out.tsv
+    paf = DIAMOND_BLASTP.out.paf
+    versions = ch_versions
 
     // // Create a multifasta, with one fasta per entry, add the sequence ID to the meta id
     // ch_fasta
