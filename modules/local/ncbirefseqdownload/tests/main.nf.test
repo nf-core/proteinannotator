@@ -4,6 +4,12 @@ nextflow_process {
     script "../main.nf"
     process "NCBIREFSEQDOWNLOAD"
 
+    tag "modules"
+    tag "modules_"
+    tag "ncbirefseqdownload"
+    tag "diamond"
+    tag "diamond_local"
+
     test("Should download ncbi refseq 'other' zipped protein fasta") {
 
         when {

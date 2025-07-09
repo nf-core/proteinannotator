@@ -9,6 +9,8 @@ nextflow_process {
     tag "modules"
     tag "modules_"
     tag "diamondpreparetaxa"
+    tag "diamond"
+    tag "diamond_local"
 
     test("Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files") {
 

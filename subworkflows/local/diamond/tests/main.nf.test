@@ -10,26 +10,66 @@ nextflow_workflow {
     tag "subworkflows_"
     tag "subworkflows/diamond"
     // TODO nf-core: Add tags for all modules used within this subworkflow. Example:
-    tag "samtools"
-    tag "samtools/sort"
-    tag "samtools/index"
+    tag "ncbirefseqdownload"
+    tag "diamondpreparetaxa"
+    tag "diamond/makedb"
+    tag "diamond/blastp"
 
 
     // TODO nf-core: Change the test name preferably indicating the test-data and file-format used
-    test("sarscov2 - bam - single_end") {
+    setup {
+        run("NCBIREFSEQDOWNLOAD") {
+            script "../../../../modules/local/ncbirefseqdownload/main.nf"
+            process {
+                """
+                input[0] = 'other'
+                """
+            }
+        }
+        run("DIAMONDPREPARETAXA") {
+            script "../../../../modules/local/diamondpreparetaxa/main.nf"
+            process {
+                """
+                input[0] = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
+                """
+            }
+        }
+        run("DIAMOND_MAKEDB") {
+            script "../../../../modules/nf-core/diamond/makedb/main.nf"
+            process {
+                """
+                input[0] = [ [id:'test2'], [ NCBIREFSEQDOWNLOAD.out.refseq_fasta ] ]
+                input[1] = 'ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/prot.accession2taxid.gz'
+                input[2] = DIAMONDPREPARETAXA.out.taxonnodes
+                input[3] = DIAMONDPREPARETAXA.out.taxonnames
+                """
+            }
+        }
+        run("DIAMOND_BLASTP") {
+            script "../../../../modules/nf-core/diamond/makedb/main.nf"
+            process {
+                """
+                input[0] = [ [id:'test'], file(params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta', checkIfExists: true) ]
+                input[1] = DIAMOND_MAKEDB.out.db
+                input[2] = 6
+                input[3] = 'qseqid qlen'
+                """
+            }
+        }
+    }
+    test("Test Diamond subworkflow succeeds") {
 
         when {
+            params {
+                params.refseq_release = 'complete'
+                params.taxondmp_zip = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
+                params.taxonmap = 'ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/prot.accession2taxid.gz'
+                params.diamond_outfmt = 6
+                params.diamond_blast_columns = 'qseqid'
+            }
             workflow {
                 """
-                // TODO nf-core: define inputs of the workflow here. Example:
-                input[0] = [
-                    [ id:'test', single_end:false ], // meta map
-                    file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExists: true),
-                ]
-                input[1] = [
-                    [ id:'genome' ],
-                    file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExists: true),
-                ]
+                input[0] = file("test1.fasta", checkIfExists: true)
                 """
             }
         }

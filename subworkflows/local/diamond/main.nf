@@ -13,6 +13,9 @@ include { DIAMOND_BLASTP  } from '../../../modules/nf-core/diamond/blastp/main'
 */
 // params.refseq_release = 'complete'
 // params.taxondmp_zip = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
+// params.taxonmap = 'ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/prot.accession2taxid.gz'
+// params.diamond_outfmt = 6
+// params.diamond_blast_columns = qseqid
 
 workflow DIAMOND {
     take:
@@ -49,13 +52,15 @@ workflow DIAMOND {
 
     //ch_diamond_db = Channel.of( [ [id:"diamond_db"], file(params.diamond_db, checkIfExists: true) ] )
 
-    // DIAMOND_BLASTP (
-    //     ch_fasta,
-    //     ch_diamond_db,
-    //     params.diamond_outfmt,
-    //     params.diamond_blast_columns,
-    // )
-    // ch_versions = ch_versions.mix(DIAMOND_BLASTP.out.versions.first())
+    DIAMOND_BLASTP (
+        ch_fasta,
+        ch_diamond_db,
+        params.diamond_outfmt,
+        params.diamond_blast_columns,
+    )
+    emit:
+    ch_versions = ch_versions.mix(DIAMOND_BLASTP.out.versions.first())
+    ch_diamond_tsv = DIAMOND_BLASTP.out.tsv
 
     // // Create a multifasta, with one fasta per entry, add the sequence ID to the meta id
     // ch_fasta

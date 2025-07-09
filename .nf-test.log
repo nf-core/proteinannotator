@@ -1,18 +1,9 @@
-Jul-01 10:12:43.803 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.2
-Jul-01 10:12:43.824 [main] INFO  com.askimed.nf.test.App - Arguments: [test, modules/local/diamondpreparetaxa/tests/main.nf.test]
-Jul-01 10:12:44.868 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 24.10.6
-Jul-01 10:12:44.871 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Load config from file /home/trace/projects/proteinannotator/nf-test.config...
-Jul-01 10:12:45.432 [main] WARN  com.askimed.nf.test.nextflow.NextflowScript - Module /home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/main.nf: Dependency '/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/../../../modules/nf-core/blast/makeblastdb/main.nf' not found.
-Jul-01 10:12:45.518 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 21 files from directory /home/trace/projects/proteinannotator in 0.105 sec
-Jul-01 10:12:45.520 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 1 files containing tests.
-Jul-01 10:12:45.520 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/home/trace/projects/proteinannotator/modules/local/diamondpreparetaxa/tests/main.nf.test]
-Jul-01 10:12:45.666 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 1 tests to execute.
-Jul-01 10:12:45.666 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Started test plan
-Jul-01 10:12:45.667 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Process DIAMONDPREPARETAXA' from file '/home/trace/projects/proteinannotator/modules/local/diamondpreparetaxa/tests/main.nf.test'.
-Jul-01 10:12:45.667 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'd9252286: Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files'. type: com.askimed.nf.test.lang.process.ProcessTest
-Jul-01 10:12:57.831 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Load snapshots from file '/home/trace/projects/proteinannotator/modules/local/diamondpreparetaxa/tests/main.nf.test.snap'
-Jul-01 10:12:59.690 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files' match.
-Jul-01 10:12:59.696 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'versions' match.
-Jul-01 10:12:59.696 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'd9252286: Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files' finished. status: PASSED
-Jul-01 10:12:59.699 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Process DIAMONDPREPARETAXA' finished. snapshot file: true, skipped tests: false, failed tests: false
-Jul-01 10:12:59.699 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Executed 1 tests. 0 tests failed. Done!
+Jul-09 09:36:15.278 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.2
+Jul-09 09:36:15.294 [main] INFO  com.askimed.nf.test.App - Arguments: [test, subworkflows/local/diamond/tests/main.nf.tests]
+Jul-09 09:36:16.153 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 24.10.6
+Jul-09 09:36:16.155 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Load config from file /home/trace/projects/proteinannotator/nf-test.config...
+Jul-09 09:36:16.663 [main] WARN  com.askimed.nf.test.nextflow.NextflowScript - Module /home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/main.nf: Dependency '/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/../../../modules/nf-core/blast/makeblastdb/main.nf' not found.
+Jul-09 09:36:16.728 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 21 files from directory /home/trace/projects/proteinannotator in 0.081 sec
+Jul-09 09:36:16.730 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 0 files containing tests.
+Jul-09 09:36:16.730 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: []
+Jul-09 09:36:16.732 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 0 tests to execute.
