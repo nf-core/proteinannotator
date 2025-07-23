@@ -38,7 +38,12 @@
    1. ([`InterProScan`](https://interproscan-docs.readthedocs.io/en/v5/)) a software tool used to analyze protein sequences by scanning them against the signatures of protein families, domains, and sites in the [InterPro](https://www.ebi.ac.uk/interpro/) database, helping to identify their functional characteristics.
 3. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
 
-![Protein annotator metromap. Protein fasta files are summarized with `seqkit stats`, then functionally annotated with InterProScan, DIAMOND-blastp, UniFire, and Kmerseek](assets/proteinannotator-metromap.excalidraw.png)
+<h1>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/proteinannotator-metromap.dark.excalidraw.png">
+    <img alt="Protein annotator metromap. Protein fasta files are summarized with `seqkit stats`, then functionally annotated with InterProScan, DIAMOND-blastp, UniFire, and Kmerseek" src="docs/images/proteinannotator-metromap.light.excalidraw.png">
+  </picture>
+</h1>
 
 ## Usage
 

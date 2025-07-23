@@ -24,3 +24,4 @@ Learn more about contributing: [CONTRIBUTING.md](https://github.com/nf-core/prot
 - [ ] Output Documentation in `docs/output.md` is updated.
 - [ ] `CHANGELOG.md` is updated.
 - [ ] `README.md` is updated (including new tool citations and authors/contributors).
+  - [ ] `docs/images/proteinannotator-metromap.light.excalidraw.png` and `docs/images/proteinannotator-metromap.light.excalidraw.png` (edit the light version only, then export and turn on dark mode) are both updated (use the excalidraw [website](https://excalidraw.com/) or [VS Code](https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor) plugin to edit)
