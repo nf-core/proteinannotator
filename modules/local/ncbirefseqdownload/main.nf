@@ -4,8 +4,8 @@ process NCBIREFSEQDOWNLOAD {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/YOUR-TOOL-HERE':
-        'biocontainers/YOUR-TOOL-HERE' }"
+        'https://depot.galaxyproject.org/singularity/r-stitch:1.7.3--r44h64f727c_0':
+        'biocontainers/r-stitch:1.7.3--r44h64f727c_0' }"
 
     // publishDir "${params.outdir}", mode: 'copy'
 

@@ -4,8 +4,9 @@ process DIAMONDPREPARETAXA {
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
-    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/YOUR-TOOL-HERE':
+    container "${workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container
+        ? 'https://depot.galaxyproject.org/singularity/diamond:2.1.12--hdb4b4cc_1'
+        : 'biocontainers/diamond:2.1.12--hdb4b4cc_1'}"
         'biocontainers/YOUR-TOOL-HERE' }"
 
     // write the output files to a user specified directory via an input parameter
@@ -45,7 +46,6 @@ process DIAMONDPREPARETAXA {
     // def args = task.ext.args ?: ''
     // def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    
     touch taxa/nodes.dmp
     touch taxa/names.dmp
 
