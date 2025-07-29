@@ -14,7 +14,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 
 - [Functional Annotation](#functional-annotation) Annotate proteins with functional domains
   - [InterProScan](#Interproscan) - Search the InterPro database for functional domains
-  - [Diamond] (#Diamond) - Provide ‘hits’ of potential homologous protein matches between species
+  - [Diamond] (#Diamond) - Provide potential homologous protein matches between species
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [SeqKit stats](#seqkit_stats) - Simple statistics for protein FASTA files
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution

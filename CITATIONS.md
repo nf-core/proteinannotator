@@ -10,9 +10,6 @@
 
 ## Pipeline tools
 
-- [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
-
-> Andrews, S. (2010). FastQC: A Quality Control Tool for High Throughput Sequence Data [Online].
 
 - [DIAMOND](https://github.com/bbuchfink/diamond)
 
