@@ -29,7 +29,7 @@ workflow DIAMOND {
     NCBIREFSEQDOWNLOAD(
         params.refseq_release
     )
-    ch_diamond_reference_fasta = NCBIREFSEQDOWNLOAD.out.refseq_fasta
+    ch_diamond_reference_fasta = NCBIREFSEQDOWNLOAD.out.refseq_fasta.map { file -> [ [id: 'refseq'], file ] }
     ch_versions = ch_versions.mix(NCBIREFSEQDOWNLOAD.out.versions.first())
 
     DIAMONDPREPARETAXA (
