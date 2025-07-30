@@ -3,19 +3,19 @@
         "content": [
             {
                 "0": [
-                    "nodes.dmp:md5,2fdf39608fa7229bf6f005e1917ccf0d"
+                    "nodes.dmp:md5,1bfa63b09c297eb0fd11fb357d3b89f4"
                 ],
                 "1": [
-                    "names.dmp:md5,55b8219881cbe8db60d7a91b8498605f"
+                    "names.dmp:md5,53c087be5d811bd7284603fead32d0b1"
                 ],
                 "2": [
                     "versions.yml:md5,32e482f39dd2786ece9329f2a81d0f62"
                 ],
                 "taxonnames": [
-                    "names.dmp:md5,55b8219881cbe8db60d7a91b8498605f"
+                    "names.dmp:md5,53c087be5d811bd7284603fead32d0b1"
                 ],
                 "taxonnodes": [
-                    "nodes.dmp:md5,2fdf39608fa7229bf6f005e1917ccf0d"
+                    "nodes.dmp:md5,1bfa63b09c297eb0fd11fb357d3b89f4"
                 ],
                 "versions": [
                     "versions.yml:md5,32e482f39dd2786ece9329f2a81d0f62"
@@ -24,9 +24,9 @@
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "24.10.6"
+            "nextflow": "25.04.6"
         },
-        "timestamp": "2025-07-08T09:36:02.926369952"
+        "timestamp": "2025-07-29T10:33:07.445040564"
     },
     "versions": {
         "content": [

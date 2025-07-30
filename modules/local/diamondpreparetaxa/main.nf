@@ -4,10 +4,9 @@ process DIAMONDPREPARETAXA {
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
-    container "${workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container
-        ? 'https://depot.galaxyproject.org/singularity/diamond:2.1.12--hdb4b4cc_1'
-        : 'biocontainers/diamond:2.1.12--hdb4b4cc_1'}"
-        'biocontainers/YOUR-TOOL-HERE' }"
+    container "${workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ? 
+        'https://depot.galaxyproject.org/singularity/diamond:2.1.12--hdb4b4cc_1' : 
+        'biocontainers/diamond:2.1.12--hdb4b4cc_1'}"
 
     // write the output files to a user specified directory via an input parameter
     // publishDir "${params.outdir}/ncbi_refseq/", mode: 'copy'

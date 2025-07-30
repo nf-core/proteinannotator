@@ -1,22 +1,31 @@
-Jul-22 14:13:52.970 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.2
-Jul-22 14:13:52.990 [main] INFO  com.askimed.nf.test.App - Arguments: [test, modules/local/diamondpreparetaxa/tests/main.nf.test, --profile, docker]
-Jul-22 14:13:54.102 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 25.04.6
-Jul-22 14:13:54.104 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Load config from file /home/trace/projects/proteinannotator/nf-test.config...
-Jul-22 14:13:54.810 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 22 files from directory /home/trace/projects/proteinannotator in 0.094 sec
-Jul-22 14:13:54.811 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 1 files containing tests.
-Jul-22 14:13:54.811 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/home/trace/projects/proteinannotator/modules/local/diamondpreparetaxa/tests/main.nf.test]
-Jul-22 14:13:54.934 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 1 tests to execute.
-Jul-22 14:13:54.935 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Started test plan
-Jul-22 14:13:54.935 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Process DIAMONDPREPARETAXA' from file '/home/trace/projects/proteinannotator/modules/local/diamondpreparetaxa/tests/main.nf.test'.
-Jul-22 14:13:54.935 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'd9252286: Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files'. type: com.askimed.nf.test.lang.process.ProcessTest
-Jul-22 14:14:01.416 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'd9252286: Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files' finished. status: FAILED
-org.codehaus.groovy.runtime.powerassert.PowerAssertionError: assert process.success
-       |       |
-       |       false
-       DIAMONDPREPARETAXA
-	at org.codehaus.groovy.runtime.InvokerHelper.assertFailed(InvokerHelper.java:432)
-	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.assertFailed(ScriptBytecodeAdapter.java:670)
-	at main_nf$_run_closure1$_closure2$_closure4.doCall(main.nf.test:31)
+Jul-30 09:33:50.172 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.2
+Jul-30 09:33:50.193 [main] INFO  com.askimed.nf.test.App - Arguments: [test, subworkflows/local/diamond/tests/main.nf.test, --profile, docker]
+Jul-30 09:33:51.319 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 25.04.6
+Jul-30 09:33:51.322 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Load config from file /home/trace/projects/proteinannotator/nf-test.config...
+Jul-30 09:33:53.193 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 22 files from directory /home/trace/projects/proteinannotator in 0.18 sec
+Jul-30 09:33:53.195 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 1 files containing tests.
+Jul-30 09:33:53.195 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/home/trace/projects/proteinannotator/subworkflows/local/diamond/tests/main.nf.test]
+Jul-30 09:33:53.594 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 1 tests to execute.
+Jul-30 09:33:53.595 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Started test plan
+Jul-30 09:33:53.596 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Subworkflow DIAMOND' from file '/home/trace/projects/proteinannotator/subworkflows/local/diamond/tests/main.nf.test'.
+Jul-30 09:33:53.596 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'f70c5ebf: Test Diamond subworkflow succeeds'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
+Jul-30 09:48:58.535 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Load snapshots from file '/home/trace/projects/proteinannotator/subworkflows/local/diamond/tests/main.nf.test.snap'
+Jul-30 09:48:58.570 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Test Diamond subworkflow succeeds' do not match.
+Jul-30 09:48:58.572 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'f70c5ebf: Test Diamond subworkflow succeeds' finished. status: FAILED
+org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions failed
+	at com.askimed.nf.test.lang.extensions.GlobalMethods.assertAll(GlobalMethods.java:48)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
+	at org.codehaus.groovy.runtime.callsite.StaticMetaMethodSite.invoke(StaticMetaMethodSite.java:44)
+	at org.codehaus.groovy.runtime.callsite.StaticMetaMethodSite.callStatic(StaticMetaMethodSite.java:100)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallStatic(CallSiteArray.java:55)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callStatic(AbstractCallSite.java:217)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callStatic(AbstractCallSite.java:240)
+	at main_nf$_run_closure1$_closure2$_closure4.doCall(main.nf.test:80)
 	at main_nf$_run_closure1$_closure2$_closure4.doCall(main.nf.test)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
@@ -29,7 +38,7 @@ org.codehaus.groovy.runtime.powerassert.PowerAssertionError: assert process.succ
 	at groovy.lang.Closure.call(Closure.java:427)
 	at groovy.lang.Closure.call(Closure.java:406)
 	at com.askimed.nf.test.lang.TestCode.execute(TestCode.java:16)
-	at com.askimed.nf.test.lang.process.ProcessTest.execute(ProcessTest.java:171)
+	at com.askimed.nf.test.lang.workflow.WorkflowTest.execute(WorkflowTest.java:178)
 	at com.askimed.nf.test.core.TestExecutionEngine.execute(TestExecutionEngine.java:165)
 	at com.askimed.nf.test.commands.RunTestsCommand.execute(RunTestsCommand.java:298)
 	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:43)
@@ -43,5 +52,5 @@ org.codehaus.groovy.runtime.powerassert.PowerAssertionError: assert process.succ
 	at picocli.CommandLine.execute(CommandLine.java:2078)
 	at com.askimed.nf.test.App.run(App.java:39)
 	at com.askimed.nf.test.App.main(App.java:46)
-Jul-22 14:14:01.421 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Process DIAMONDPREPARETAXA' finished. snapshot file: false, skipped tests: false, failed tests: true
-Jul-22 14:14:01.422 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Executed 1 tests. 1 tests failed. Done!
+Jul-30 09:48:58.578 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Subworkflow DIAMOND' finished. snapshot file: true, skipped tests: false, failed tests: true
+Jul-30 09:48:58.579 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Executed 1 tests. 1 tests failed. Done!
