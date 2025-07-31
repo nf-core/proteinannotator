@@ -1,17 +1,17 @@
-Jul-30 09:33:50.172 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.2
-Jul-30 09:33:50.193 [main] INFO  com.askimed.nf.test.App - Arguments: [test, subworkflows/local/diamond/tests/main.nf.test, --profile, docker]
-Jul-30 09:33:51.319 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 25.04.6
-Jul-30 09:33:51.322 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Load config from file /home/trace/projects/proteinannotator/nf-test.config...
-Jul-30 09:33:53.193 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 22 files from directory /home/trace/projects/proteinannotator in 0.18 sec
-Jul-30 09:33:53.195 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 1 files containing tests.
-Jul-30 09:33:53.195 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/home/trace/projects/proteinannotator/subworkflows/local/diamond/tests/main.nf.test]
-Jul-30 09:33:53.594 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 1 tests to execute.
-Jul-30 09:33:53.595 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Started test plan
-Jul-30 09:33:53.596 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Subworkflow DIAMOND' from file '/home/trace/projects/proteinannotator/subworkflows/local/diamond/tests/main.nf.test'.
-Jul-30 09:33:53.596 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'f70c5ebf: Test Diamond subworkflow succeeds'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
-Jul-30 09:48:58.535 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Load snapshots from file '/home/trace/projects/proteinannotator/subworkflows/local/diamond/tests/main.nf.test.snap'
-Jul-30 09:48:58.570 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Test Diamond subworkflow succeeds' do not match.
-Jul-30 09:48:58.572 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'f70c5ebf: Test Diamond subworkflow succeeds' finished. status: FAILED
+Jul-31 08:39:57.568 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.2
+Jul-31 08:39:57.591 [main] INFO  com.askimed.nf.test.App - Arguments: [test, subworkflows/local/diamond/tests/main.nf.test, --profile, docker]
+Jul-31 08:39:58.714 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 25.04.6
+Jul-31 08:39:58.716 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Load config from file /home/trace/projects/proteinannotator/nf-test.config...
+Jul-31 08:39:59.466 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 22 files from directory /home/trace/projects/proteinannotator in 0.099 sec
+Jul-31 08:39:59.469 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 1 files containing tests.
+Jul-31 08:39:59.469 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/home/trace/projects/proteinannotator/subworkflows/local/diamond/tests/main.nf.test]
+Jul-31 08:39:59.697 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 1 tests to execute.
+Jul-31 08:39:59.698 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Started test plan
+Jul-31 08:39:59.699 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Subworkflow DIAMOND' from file '/home/trace/projects/proteinannotator/subworkflows/local/diamond/tests/main.nf.test'.
+Jul-31 08:39:59.699 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'f70c5ebf: Test Diamond subworkflow succeeds'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
+Jul-31 08:53:56.670 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Load snapshots from file '/home/trace/projects/proteinannotator/subworkflows/local/diamond/tests/main.nf.test.snap'
+Jul-31 08:53:56.719 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Test Diamond subworkflow succeeds' do not match.
+Jul-31 08:53:56.722 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'f70c5ebf: Test Diamond subworkflow succeeds' finished. status: FAILED
 org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions failed
 	at com.askimed.nf.test.lang.extensions.GlobalMethods.assertAll(GlobalMethods.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -52,5 +52,5 @@ org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions f
 	at picocli.CommandLine.execute(CommandLine.java:2078)
 	at com.askimed.nf.test.App.run(App.java:39)
 	at com.askimed.nf.test.App.main(App.java:46)
-Jul-30 09:48:58.578 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Subworkflow DIAMOND' finished. snapshot file: true, skipped tests: false, failed tests: true
-Jul-30 09:48:58.579 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Executed 1 tests. 1 tests failed. Done!
+Jul-31 08:53:56.737 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Subworkflow DIAMOND' finished. snapshot file: true, skipped tests: false, failed tests: true
+Jul-31 08:53:56.738 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Executed 1 tests. 1 tests failed. Done!
