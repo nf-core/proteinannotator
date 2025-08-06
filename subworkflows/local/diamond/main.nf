@@ -46,6 +46,7 @@ workflow DIAMOND {
         ch_taxonnodes,
         ch_taxonnames
     )
+    // ch_diamond_db = DIAMOND_MAKEDB.out.db.map { db -> [ [id: 'diamond_db'], db ]}
     ch_diamond_db = DIAMOND_MAKEDB.out.db
     ch_versions = ch_versions.mix(DIAMOND_MAKEDB.out.versions.first())
 

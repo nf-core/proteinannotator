@@ -13,3 +13,8 @@ null/
 .nf-test/tests
 .nf-test-*.nf
 .nf-test/*
+
+# diamond subworkflow test data
+subworkflows/diamond/tests/*.fasta
+subworkflows/diamond/tests/*.gz
+subworkflows/local/diamond/tests/mini_prot.accession2taxid.gz
