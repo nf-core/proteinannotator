@@ -18,7 +18,7 @@ nextflow_workflow {
             params {
                 refseq_release = 'other'
                 taxondmp_zip = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
-                taxonmap =  'ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/prot.accession2taxid.gz'
+                taxonmap =  "${moduleTestDir}/mini_prot.accession2taxid.gz" //'ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/prot.accession2taxid.gz'
                 diamond_outfmt = 6
             }
             workflow {
@@ -29,13 +29,13 @@ nextflow_workflow {
         }
 
         then {
-            println "module test directory: ${moduleTestDir}"
-            println "expected module test directory: subworkflows/local/diamond/tests/"
-            println "taxon map parameter: file('${moduleTestDir}/mini_prot.accession2taxid.gz'"
+            // view ("module test directory: ${moduleTestDir}")
+            // view ("expected module test directory: subworkflows/local/diamond/tests/")
+            // view ("taxon map parameter: ${file("${moduleTestDir}/mini_prot.accession2taxid.gz")}")
 
             assertAll(
                 { assert workflow.success},
-                // { assert snapshot(workflow.out).match()}
+                { assert snapshot(workflow.out).match()}
             )
         }
     }

@@ -1,0 +1,77 @@
+{
+    "Test Diamond subworkflow succeeds": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    
+                ],
+                "7": [
+                    "versions.yml:md5,4b60d5e52704e15aa6a464a001e875a1",
+                    "versions.yml:md5,88882983f101071ff12ab9ad8862946c",
+                    "versions.yml:md5,8ed4d70f88801b4b97aa532c4cd5f1e4",
+                    "versions.yml:md5,af268b7575a939dcbb762d66f0d34775"
+                ],
+                "blast": [
+                    
+                ],
+                "daa": [
+                    
+                ],
+                "paf": [
+                    
+                ],
+                "sam": [
+                    
+                ],
+                "sml": [
+                    
+                ],
+                "tsv": [
+                    
+                ],
+                "txt": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,4b60d5e52704e15aa6a464a001e875a1",
+                    "versions.yml:md5,88882983f101071ff12ab9ad8862946c",
+                    "versions.yml:md5,8ed4d70f88801b4b97aa532c4cd5f1e4",
+                    "versions.yml:md5,af268b7575a939dcbb762d66f0d34775"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2025-08-07T13:42:12.855204927"
+    }
+}
