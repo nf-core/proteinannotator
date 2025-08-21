@@ -23,7 +23,7 @@ nextflow_workflow {
             }
             workflow {
                 """
-                input[0] = [ [id:'test'], file("${moduleTestDir}/test1.fasta", checkIfExists: true)]
+                input[0] = [ [id:'test'], file("${moduleTestDir}/test_refseq.fasta", checkIfExists: true)]
                 """
             }
         }
