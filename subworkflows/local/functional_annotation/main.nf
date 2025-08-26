@@ -12,7 +12,10 @@ workflow FUNCTIONAL_ANNOTATION {
 
     ch_versions = Channel.empty()
 
-    // TODO nf-core: substitute modules here for the modules of your subworkflow
+    //
+    // SUBWORKFLOW: Run Diamond
+    //
+
     DIAMOND(
         ch_fasta
     )
