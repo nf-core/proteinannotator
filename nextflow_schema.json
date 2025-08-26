@@ -265,6 +265,9 @@
         {
             "$ref": "#/$defs/interproscan_options"
         },
+        { 
+            "$ref": "#/$defs/diamond_options" 
+        },
         {
             "$ref": "#/$defs/institutional_config_options"
         },
