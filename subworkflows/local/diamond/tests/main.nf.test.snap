@@ -1,5 +1,5 @@
 {
-    "Test Diamond subworkflow succeeds": {
+    "Test Diamond subworkflow success -- 6 - TXT output - no columns specified": {
         "content": [
             {
                 "0": [
@@ -72,6 +72,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.6"
         },
-        "timestamp": "2025-08-21T09:41:35.699742832"
+        "timestamp": "2025-08-26T09:47:59.559089213"
     }
 }

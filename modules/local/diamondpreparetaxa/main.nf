@@ -8,11 +8,8 @@ process DIAMONDPREPARETAXA {
         'https://depot.galaxyproject.org/singularity/diamond:2.1.12--hdb4b4cc_1' : 
         'biocontainers/diamond:2.1.12--hdb4b4cc_1'}"
 
-    // write the output files to a user specified directory via an input parameter
-    // publishDir "${params.outdir}/ncbi_refseq/", mode: 'copy'
-
     input:
-    val taxondmp_zip // Add default of ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
+    val taxondmp_zip // default of ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
 
     output:
     path("taxa/nodes.dmp"), emit: taxonnodes
@@ -23,13 +20,6 @@ process DIAMONDPREPARETAXA {
     task.ext.when == null || task.ext.when
 
     script:
-    def args = task.ext.args ?: ''
-    // def prefix = task.ext.prefix ?: "${meta.id}"
-    // Omitting from script portion for now
-        // # $args \\
-        // # -@ $task.cpus \\
-        // # -o ${prefix}.bam \\
-
     """ 
     mkdir -p taxa/
     wget -q ${taxondmp_zip}
@@ -42,8 +32,6 @@ process DIAMONDPREPARETAXA {
     """
 
     stub:
-    // def args = task.ext.args ?: ''
-    // def prefix = task.ext.prefix ?: "${meta.id}"
     """
     touch taxa/nodes.dmp
     touch taxa/names.dmp

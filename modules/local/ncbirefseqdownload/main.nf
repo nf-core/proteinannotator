@@ -7,13 +7,11 @@ process NCBIREFSEQDOWNLOAD {
         'https://depot.galaxyproject.org/singularity/r-stitch:1.7.3--r44h64f727c_0':
         'biocontainers/r-stitch:1.7.3--r44h64f727c_0' }"
 
-    // publishDir "${params.outdir}", mode: 'copy'
-
     input:
-    val(refseq_release) // ncbi refseq release category --  add default of 'complete'
+    val(refseq_release) // ncbi refseq release category -- default of 'complete'
 
     output:
-    path "ncbi_refseq/refseq_fasta.fa.gz", emit: refseq_fasta // reference fasta for diamond/makedb
+    path "ncbi_refseq/refseq_fasta.fa.gz", emit: refseq_fasta // reference fasta for diamond/makedb nf-core module
     path "versions.yml"           , emit: versions
 
     when:
@@ -41,12 +39,6 @@ process NCBIREFSEQDOWNLOAD {
     """
 
     stub:
-    // def args = task.ext.args ?: ''
-    // def prefix = task.ext.prefix ?: "${meta.id}"
-    // TODO nf-core: A stub section should mimic the execution of the original module as best as possible
-    //               Have a look at the following examples:
-    //               Simple example: https://github.com/nf-core/modules/blob/818474a292b4860ae8ff88e149fbcda68814114d/modules/nf-core/bcftools/annotate/main.nf#L47-L63
-    //               Complex example: https://github.com/nf-core/modules/blob/818474a292b4860ae8ff88e149fbcda68814114d/modules/nf-core/bedtools/split/main.nf#L38-L54
     """
     touch ncbi_refseq/refseq_fastas.fa.gz
 
