@@ -38,7 +38,7 @@
 1. Run ([`seqkit stats`](https://bioinf.shenwei.me/seqkit/usage/#stats)) to summarize input protein fasta files
 2. Functional Annotation:
    1. ([`InterProScan`](https://interproscan-docs.readthedocs.io/en/v5/)) a software tool used to analyze protein sequences by scanning them against the signatures of protein families, domains, and sites in the [InterPro](https://www.ebi.ac.uk/interpro/) database, helping to identify their functional characteristics.
-   2. ([`DIAMOND`](https://github.com/bbuchfink/diamond))
+   2. ([`DIAMOND`](https://github.com/bbuchfink/diamond)) tool used for sensitive protein sequence alignment, comparing to a reference database created from combined protein fastas and taxonic information (taxon names, nodes, and map).
 3. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
 
 
