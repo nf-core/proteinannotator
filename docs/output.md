@@ -285,7 +285,7 @@ The XML Schema Definition (XSD) is available [here](http://ftp.ebi.ac.uk/pub/sof
 
 </details>
 
-[Diamond](https://github.com/bbuchfink/diamond) provides sensitive protein sequence alignment. The process provides ‘hits’ that are potential homologous protein matches between species, indicating a evolutionary relationship, derived by protein sequence similarity.
+[Diamond](https://github.com/bbuchfink/diamond) provides sensitive protein sequence alignment. The process provides potential homologous protein matches between species, indicating a evolutionary relationship, derived by protein sequence similarity.
 
 ##### Pairwise Alignment Format (.blast) Output
 
@@ -473,7 +473,7 @@ WP_168247881.1	0	0
 The PAF (Pairwise mApping Format) file that is originally used for long read sequencing. DIAMOND adds three additional variables, AS (bit score), ZR (raw alignment score), and ZE (E-value), to provide statistical evidence for protein alignment. This format is useful if one is looking for positional information and statistical significance. 
 
 <details markdown="1">
-<summary>Example InterProScan GFF output</summary>
+<summary>Example Pairwise Mapping Format (PAF) output</summary>
 
 ```
 WP_031942563.1	401
