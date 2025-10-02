@@ -40,10 +40,11 @@ process NCBIREFSEQDOWNLOAD {
 
     stub:
     """
-    touch ncbi_refseq/refseq_fastas.fa.gz
+    mkdir -p ncbi_refseq
+    touch ncbi_refseq/refseq_fasta.fa.gz
 
     cat <<-END_VERSIONS > versions.yml
-    "${task.process}"
+    "${task.process}":
         rsync: "stub"
     END_VERSIONS
     """

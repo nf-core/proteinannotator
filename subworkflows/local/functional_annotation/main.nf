@@ -21,23 +21,23 @@ workflow FUNCTIONAL_ANNOTATION {
     )
     ch_diamond_tsv = DIAMOND.out.tsv
     ch_versions = ch_versions.mix(DIAMOND.out.versions.first())
-    
-    // Create a multifasta, with one fasta per entry, add the sequence ID to the meta id
-    ch_fasta
-        .map { meta, fasta ->
-            [
-                [id: "${meta.id}_${fasta.splitFasta(record: [id: true]).id[0].replaceAll(/\|/, '-')}"],
-                fasta.splitFasta(file: true),
-            ]
-        }
-        .transpose()
-        .set { ch_multifasta }
 
     //
     // SUBWORKFLOW: Run InterProScan
     //
 
     if (!params.skip_interproscan) {
+        // Create a multifasta, with one fasta per entry, add the sequence ID to the meta id
+        ch_fasta
+            .map { meta, fasta ->
+                [
+                    [id: "${meta.id}_${fasta.splitFasta(record: [id: true]).id[0].replaceAll(/\|/, '-')}"],
+                    fasta.splitFasta(file: true),
+                ]
+            }
+            .transpose()
+            .set { ch_multifasta }
+
         INTERPROSCAN(
             ch_multifasta
         )

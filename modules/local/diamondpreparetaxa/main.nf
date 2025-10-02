@@ -33,6 +33,7 @@ process DIAMONDPREPARETAXA {
 
     stub:
     """
+    mkdir -p taxa/
     touch taxa/nodes.dmp
     touch taxa/names.dmp
 

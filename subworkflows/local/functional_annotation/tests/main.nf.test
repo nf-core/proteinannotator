@@ -120,4 +120,58 @@ nextflow_workflow {
             )
         }
     }
+    test("Test FUNCTIONAL_ANNOTATION subworkflow success - simple protein fasta") {
+
+        when {
+            params {
+                refseq_release = 'other'
+                taxondmp_zip = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
+                taxonmap = "${moduleTestDir}/mini_prot.accession2taxid.gz"
+                diamond_outfmt = 6
+                diamond_blast_columns = ''
+                skip_interproscan = true
+            }
+            workflow {
+                """
+                input[0] = [ [id:'test'], file("${moduleTestDir}/test_refseq.fasta", checkIfExists: true)]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
+
+    test("Test FUNCTIONAL_ANNOTATION subworkflow success - simple protein fasta - stub") {
+        tag "stub"
+
+        options "-stub"
+
+        when {
+            params {
+                refseq_release = 'other'
+                taxondmp_zip = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
+                taxonmap = "${moduleTestDir}/mini_prot.accession2taxid.gz"
+                diamond_outfmt = 6
+                diamond_blast_columns = ''
+                skip_interproscan = true
+            }
+            workflow {
+                """
+                input[0] = [ [id:'test'], file("${moduleTestDir}/test_refseq.fasta", checkIfExists: true)]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
 }
