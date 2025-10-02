@@ -104,7 +104,7 @@
                 "diamond_blast_columns": {
                     "type": "string",
                     "description": "Accompanied optional input parameter to `diamond_outfmt`: `*.txt (6)` output format. Space separated list of columns to be included. Options: qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore.",
-                    "default": false
+                    "default": null
                 }
             }
         },
