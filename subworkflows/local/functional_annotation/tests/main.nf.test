@@ -9,6 +9,11 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_"
     tag "subworkflows/functional_annotation"
+    tag "diamond"
+    tag "ncbirefseqdownload"
+    tag "diamondpreparetaxa"
+    tag "diamond/makedb"
+    tag "diamond/blastp"
     // TODO nf-core: Add tags for all modules used within this subworkflow. Example:
 
     // tag "samtools"

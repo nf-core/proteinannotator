@@ -19,6 +19,7 @@ workflow FUNCTIONAL_ANNOTATION {
     DIAMOND(
         ch_fasta
     )
+    ch_diamond_tsv = DIAMOND.out.tsv
     ch_versions = ch_versions.mix(DIAMOND.out.versions.first())
     
     // Create a multifasta, with one fasta per entry, add the sequence ID to the meta id
@@ -44,5 +45,6 @@ workflow FUNCTIONAL_ANNOTATION {
     }
 
     emit:
-    versions = ch_versions // channel: [ versions.yml ]
+    diamond_tsv = ch_diamond_tsv    // channel: [ val(meta), path(tsv) ]
+    versions = ch_versions          // channel: [ versions.yml ]
 }

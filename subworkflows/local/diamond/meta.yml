@@ -1,50 +1,79 @@
+---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
 name: "diamond"
-## TODO nf-core: Add a description of the subworkflow and list keywords
-description: Sort SAM/BAM/CRAM file
+description: Downloads NCBI RefSeq and taxonomy databases, builds a DIAMOND database, and performs protein sequence alignment using DIAMOND BLASTP
 keywords:
-  - sort
-  - bam
-  - sam
-  - cram
-## TODO nf-core: Add a list of the modules and/or subworkflows used in the subworkflow
+  - alignment
+  - diamond
+  - blastp
+  - protein
+  - refseq
+  - taxonomy
+
 components:
-  - samtools/sort
-  - samtools/index
-## TODO nf-core: List all of the channels used as input with a description and their structure
+  - ncbirefseqdownload
+  - diamondpreparetaxa
+  - diamond/makedb
+  - diamond/blastp
+
 input:
-  - ch_bam:
+  - ch_fasta:
       type: file
       description: |
-        The input channel containing the BAM/CRAM/SAM files
-        Structure: [ val(meta), path(bam) ]
-      pattern: "*.{bam/cram/sam}"
-## TODO nf-core: List all of the channels used as output with a descriptions and their structure
+        The input channel containing the protein FASTA files
+        Structure: [ val(meta), path(fasta) ]
+      pattern: "*.{fa,fasta,fa.gz,fasta.gz}"
+
 output:
-  - bam:
+  - blast:
       type: file
       description: |
-        Channel containing BAM files
-        Structure: [ val(meta), path(bam) ]
-      pattern: "*.bam"
-  - bai:
+        Channel containing BLAST output files
+        Structure: [ val(meta), path(blast) ]
+      pattern: "*"
+  - xml:
       type: file
       description: |
-        Channel containing indexed BAM (BAI) files
-        Structure: [ val(meta), path(bai) ]
-      pattern: "*.bai"
-  - csi:
+        Channel containing XML output files
+        Structure: [ val(meta), path(xml) ]
+      pattern: "*.xml"
+  - txt:
       type: file
       description: |
-        Channel containing CSI files
-        Structure: [ val(meta), path(csi) ]
-      pattern: "*.csi"
+        Channel containing TXT output files
+        Structure: [ val(meta), path(txt) ]
+      pattern: "*.txt"
+  - daa:
+      type: file
+      description: |
+        Channel containing DIAMOND archive output files
+        Structure: [ val(meta), path(daa) ]
+      pattern: "*.daa"
+  - sam:
+      type: file
+      description: |
+        Channel containing SAM alignment files
+        Structure: [ val(meta), path(sam) ]
+      pattern: "*.sam"
+  - tsv:
+      type: file
+      description: |
+        Channel containing TSV output files
+        Structure: [ val(meta), path(tsv) ]
+      pattern: "*.tsv"
+  - paf:
+      type: file
+      description: |
+        Channel containing PAF alignment files
+        Structure: [ val(meta), path(paf) ]
+      pattern: "*.paf"
   - versions:
       type: file
       description: |
         File containing software versions
         Structure: [ path(versions.yml) ]
       pattern: "versions.yml"
+
 authors:
   - "@tracelail"
 maintainers:

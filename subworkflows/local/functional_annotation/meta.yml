@@ -2,9 +2,16 @@
 name: "functional_annotation"
 description: Functional annotation of proteins
 keywords:
-  - fasta
+  - annotation
+  - functional
+  - protein
+  - diamond
+  - interproscan
+  - blastp
+
 components:
-  - diamond/blastp
+  - diamond
+  - interproscan
 input:
   - ch_fasta:
       type: file
@@ -13,7 +20,7 @@ input:
         Structure: [ val(meta), path(fasta) ]
       pattern: "*.{fa,fasta,fa.gz,fasta.gz}"
 output:
-  - tsv:
+  - diamond_tsv:
       - meta:
           type: map
           description: |
@@ -33,5 +40,7 @@ output:
       pattern: "versions.yml"
 authors:
   - "@eweizy"
+  - "@tracelail"
 maintainers:
   - "@eweizy"
+  - "@tracelail"

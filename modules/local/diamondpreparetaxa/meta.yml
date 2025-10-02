@@ -1,61 +1,47 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "diamondpreparetaxa"
-## TODO nf-core: Add a description of the module and list keywords
-description: write your description here
+description: Downloads and extracts NCBI taxonomy database files (nodes.dmp and names.dmp) required for DIAMOND taxonomic classification
 keywords:
-  - sort
-  - example
-  - genomics
+  - taxonomy
+  - ncbi
+  - diamond
+  - database
+  - classification
 tools:
-  - "diamondpreparetaxa":
-      ## TODO nf-core: Add a description and other details for the software below
-      description: ""
-      homepage: ""
-      documentation: ""
-      tool_dev_url: ""
-      doi: ""
-      licence:
-      identifier:
+  - "wget":
+      description: Network downloader that retrieves files from the web
+      homepage: "https://www.gnu.org/software/wget/"
+      documentation: "https://www.gnu.org/software/wget/manual/"
+      tool_dev_url: "https://git.savannah.gnu.org/cgit/wget.git"
+      licence: ["GPL-3.0-or-later"]
+  - "diamond":
+      description: Accelerated BLAST-compatible local sequence aligner
+      homepage: "https://github.com/bbuchfink/diamond"
+      documentation: "https://github.com/bbuchfink/diamond/wiki"
+      tool_dev_url: "https://github.com/bbuchfink/diamond"
+      doi: "10.1038/s41592-021-01101-x"
+      licence: ["GPL-3.0-or-later"]
 
-## TODO nf-core: Add a description of all of the variables used as input
 input:
-  # Only when we have meta
-  - - meta:
-        type: map
-        description: |
-          Groovy Map containing sample information
-          e.g. `[ id:'sample1' ]`
+  - taxondmp_zip:
+      type: string
+      description: URL to NCBI taxonomy dump archive (taxdump.tar.gz)
+      pattern: ".*taxdump.tar.gz"
 
-    ## TODO nf-core: Delete / customise this example input
-    - bam:
-        type: file
-        description: Sorted BAM/CRAM/SAM file
-        pattern: "*.{bam,cram,sam}"
-        ontologies:
-          - edam: "http://edamontology.org/format_2572" # BAM
-          - edam: "http://edamontology.org/format_2573" # CRAM
-          - edam: "http://edamontology.org/format_3462" # SAM
-
-## TODO nf-core: Add a description of all of the variables used as output
 output:
-  - bam:
-      #Only when we have meta
-      - meta:
-          type: map
-          description: |
-            Groovy Map containing sample information
-            e.g. `[ id:'sample1' ]`
-      ## TODO nf-core: Delete / customise this example output
-      - "*.bam":
+  - taxonnodes:
+      - "taxa/nodes.dmp":
           type: file
-          description: Sorted BAM/CRAM/SAM file
-          pattern: "*.{bam,cram,sam}"
-          ontologies:
-            - edam: "http://edamontology.org/format_2572" # BAM
-            - edam: "http://edamontology.org/format_2573" # CRAM
-            - edam: "http://edamontology.org/format_3462" # SAM
-
+          description: NCBI taxonomy nodes file containing taxonomic hierarchy
+          pattern: "nodes.dmp"
+          
+  - taxonnames:
+      - "taxa/names.dmp":
+          type: file
+          description: NCBI taxonomy names file containing taxon names
+          pattern: "names.dmp"
+          
   - versions:
       - "versions.yml":
           type: file
