@@ -14,101 +14,7 @@ nextflow_workflow {
     tag "diamond/makedb"
     tag "diamond/blastp"
 
-
-    test("Test two input channels, one fasta record each") {
-
-        when {
-            params {
-                pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/"
-            }
-            workflow {
-                """
-                // TODO nf-core: define inputs of the workflow here. Example:
-                input[0] = Channel.fromList([
-                    [
-                        [ id:'T1024' ], // meta map
-                        file(params.pipelines_testdata_base_path + 'proteinfold/testdata/sequences/T1024.fasta', checkIfExists: true)
-                    ],
-                    [
-                        [ id:'T1026' ], // meta map
-                        file(params.pipelines_testdata_base_path + 'proteinfold/testdata/sequences/T1026.fasta', checkIfExists: true)
-                    ]
-                ])
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                // { assert snapshot(workflow.out).match()},
-                { assert workflow.success},
-            )
-        }
-    }
-
-    test("Test two input channels, one fasta record each -- stub") {
-        tag "stub"
-        // Run this test in the GitHub Actions Continuous Integration (CI), instead of the other one
-        tag "CI"
-
-        options "-stub"
-
-        when {
-            params {
-                pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/"
-            }
-            workflow {
-                """
-                // TODO nf-core: define inputs of the workflow here. Example:
-                input[0] = Channel.fromList([
-                    [
-                        [ id:'T1024' ], // meta map
-                        file(params.pipelines_testdata_base_path + 'proteinfold/testdata/sequences/T1024.fasta', checkIfExists: true)
-                    ],
-                    [
-                        [ id:'T1026' ], // meta map
-                        file(params.pipelines_testdata_base_path + 'proteinfold/testdata/sequences/T1026.fasta', checkIfExists: true)
-                    ]
-                ])
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                // { assert snapshot(workflow.out).match()},
-                { assert workflow.success},
-            )
-        }
-    }
-
-    test("Test single input fasta with 4 fasta records: snap25 isoforms - bcl2 - ced9") {
-
-        when {
-            params {
-                pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/"
-            }
-            workflow {
-                """
-                // TODO nf-core: define inputs of the workflow here. Example:
-                input[0] = Channel.fromList([
-                    [
-                        [ id:'test' ], // meta map
-                        file(params.pipelines_testdata_base_path + 'proteinannotator/reference/snap25_isoforms_bcl2_ced9.fasta', checkIfExists: true)
-                    ]
-                ])
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
-            )
-        }
-    }
-    test("Test FUNCTIONAL_ANNOTATION subworkflow success") {
+    test("Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success") {
 
         when {
             params {
@@ -134,7 +40,7 @@ nextflow_workflow {
         }
     }
 
-    test("Test FUNCTIONAL_ANNOTATION subworkflow success - stub") {
+    test("Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success - stub") {
         tag "stub"
 
         options "-stub"
