@@ -21,17 +21,11 @@ input:
       pattern: "*.{fa,fasta,fa.gz,fasta.gz}"
 output:
   - diamond_tsv:
-      - meta:
-          type: map
-          description: |
-            Groovy Map containing sample information
-            e.g. [ id:'test', single_end:false ]
-      - "*.{tsv,tsv.gz}":
-          type: file
-          description: Tab separated file containing taxonomic classification of hits
-          pattern: "*.{tsv,tsv.gz}"
-          ontologies:
-            - edam: http://edamontology.org/format_3475 # TSV
+      type: file
+      description: |
+        Channel containing TSV files with taxonomic classification of DIAMOND hits
+        Structure: [ val(meta), path(tsv) ]
+      pattern: "*.{tsv,tsv.gz}"
   - versions:
       type: file
       description: |
