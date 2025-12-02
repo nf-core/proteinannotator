@@ -39,7 +39,8 @@ workflow NFCORE_PROTEINANNOTATOR {
     //
     PROTEINANNOTATOR (
         samplesheet,
-        params.skip_preprocessing
+        params.skip_preprocessing,
+        params.skip_s4pred
     )
     emit:
     multiqc_report = PROTEINANNOTATOR.out.multiqc_report // channel: /path/to/multiqc_report.html

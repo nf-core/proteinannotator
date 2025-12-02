@@ -25,6 +25,7 @@ workflow PROTEINANNOTATOR {
     take:
     ch_samplesheet      // channel: samplesheet read in from --input
     skip_preprocessing  // boolean
+    skip_s4pred         // boolean
 
     main:
 
@@ -45,8 +46,10 @@ workflow PROTEINANNOTATOR {
     FUNCTIONAL_ANNOTATION( ch_samplesheet_updated )
     ch_versions = ch_versions.mix( FUNCTIONAL_ANNOTATION.out.versions.first() )
 
-    S4PRED_RUNMODEL( ch_samplesheet_updated )
-    ch_versions = ch_versions.mix( S4PRED_RUNMODEL.out.versions.first() )
+    if (!skip_s4pred) {
+        S4PRED_RUNMODEL( ch_samplesheet_updated )
+        ch_versions = ch_versions.mix( S4PRED_RUNMODEL.out.versions.first() )
+    }
 
     //
     // Collate and save software versions
