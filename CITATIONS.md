@@ -22,6 +22,10 @@
 
 > Zdobnov, Evgeni M., and Rolf Apweiler. “InterProScan – an Integration Platform for the Signature-Recognition Methods in InterPro.” Bioinformatics 17, no. 9 (September 1, 2001): 847–48. https://doi.org/10.1093/bioinformatics/17.9.847.
 
+- [s4pred](https://pubmed.ncbi.nlm.nih.gov/34213528/)
+
+> Moffat L, Jones DT. Increasing the accuracy of single sequence prediction methods using a deep semi-supervised learning framework. Bioinformatics. 2021 Nov 1;37(21):3744-51. doi: 10.1093/bioinformatics/btab491. PubMed PMID: 34213528; PubMed Central PMCID: PMC8570780.
+
 <!-- - [MMseqs2](https://www.nature.com/articles/nbt.3988)
 
 > Zdobnov, Evgeni M., and Rolf Apweiler. “InterProScan – an Integration Platform for the Signature-Recognition Methods in InterPro.” Bioinformatics 17, no. 9 (September 1, 2001): 847–48. https://doi.org/10.1093/bioinformatics/17.9.847.

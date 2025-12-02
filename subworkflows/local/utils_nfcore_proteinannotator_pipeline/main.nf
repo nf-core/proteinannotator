@@ -180,10 +180,13 @@ def toolCitationText() {
         params.skip_preprocessing ? "" : "Input sequences were preprocessed with SeqKit (gap trimming, length filtering, validation, duplicate removal) (Shen et al. 2024)."
     ].join(' ').trim()
 
+    def prediction_text = params.skip_s4pred ? "" : "Secondary structures were predicted via the s4pred software (Moffat et al. 2021)."
+
     def postprocessing_text = "Run statistics were reported using MultiQC (Ewels et al. 2016)."
 
     def citation_text = [
         quality_check_text,
+        prediction_text,
         postprocessing_text
     ].join(' ').trim()
 
@@ -196,10 +199,13 @@ def toolBibliographyText() {
         params.skip_preprocessing ? '' : '<li>Shen, W., Sipos, B., & Zhao, L. (2024). SeqKit2: A Swiss army knife for sequence and alignment processing. Imeta, 3(3), e191. doi: <a href="https://doi.org/10.1002/imt2.191">10.1002/imt2.191</a></li>'
     ].join(' ').trim()
 
+    def prediction_text = params.skip_s4pred ? '' : '<li>Moffat, L., & Jones, D. T. (2021). Increasing the accuracy of single sequence prediction methods using a deep semi-supervised learning framework. Bioinformatics, 37(21), 3744-3751. doi: <a href="https://doi.org/10.1093/bioinformatics/btab491">10.1093/bioinformatics/btab491</a></li>'
+
     def postprocessing_text = '<li>Ewels, P., Magnusson, M., Lundin, S., & Käller, M. (2016). MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics, 32(19), 3047–3048. doi: <a href="https://doi.org/10.1093/bioinformatics/btw354">10.1093/bioinformatics/btw354</a></li>'
 
     def reference_text = [
         quality_check_text,
+        prediction_text,
         postprocessing_text
     ].join(' ').trim()
 
