@@ -26,7 +26,7 @@ workflow DOMAIN_ANNOTATION {
             .map{ meta, seqs, _meta2, models -> [meta, models, seqs, false, false, true] }
 
         HMMER_HMMSEARCH( ch_input_for_hmmsearch )
-        ch_versions = ch_versions.mix( HMMER_HMMSEARCH.out.versions )
+        ch_versions = ch_versions.mix( HMMER_HMMSEARCH.out.versions.first() )
     }
 
     emit:

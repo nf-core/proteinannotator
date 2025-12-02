@@ -37,7 +37,7 @@ workflow PROTEINANNOTATOR {
     ch_multiqc_files = channel.empty()
 
     FAA_SEQFU_SEQKIT( ch_samplesheet, skip_preprocessing )
-    ch_versions = ch_versions.mix( FAA_SEQFU_SEQKIT.out.versions.first() )
+    ch_versions = ch_versions.mix( FAA_SEQFU_SEQKIT.out.versions )
 
     // Replace input fasta and join back in samplesheet to ensure in sync in case of multiple sequence files
     ch_samplesheet_updated = ch_samplesheet
@@ -48,10 +48,10 @@ workflow PROTEINANNOTATOR {
         }
 
     DOMAIN_ANNOTATION( ch_samplesheet_updated, skip_pfam, pfam_latest_link, pfam_db )
-    ch_versions = ch_versions.mix( DOMAIN_ANNOTATION.out.versions.first() )
+    ch_versions = ch_versions.mix( DOMAIN_ANNOTATION.out.versions )
 
     FUNCTIONAL_ANNOTATION( ch_samplesheet_updated )
-    ch_versions = ch_versions.mix( FUNCTIONAL_ANNOTATION.out.versions.first() )
+    ch_versions = ch_versions.mix( FUNCTIONAL_ANNOTATION.out.versions )
 
     if (!skip_s4pred) {
         S4PRED_RUNMODEL( ch_samplesheet_updated )
