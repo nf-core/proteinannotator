@@ -174,30 +174,33 @@ def validateInputSamplesheet(input) {
 // Generate methods description for MultiQC
 //
 def toolCitationText() {
+
+    def quality_check_text = [
+        "Amino acid sequence statistics were generated with SeqFu (Telatin et al. 2021).",
+        params.skip_preprocessing ? "" : "Input sequences were preprocessed with SeqKit (gap trimming, length filtering, validation, duplicate removal) (Shen et al. 2024)."
+    ].join(' ').trim()
+
+    def postprocessing_text = "Run statistics were reported using MultiQC (Ewels et al. 2016)."
+
     def citation_text = [
-        "Tools used in the workflow included:",
-        "Nextflow (Di Tommaso et al. 2017),",
-        "nf-core (Ewels et al. 2020),",
-        "Bioconda (Grüning et al. 2018),",
-        "BioContainers (da Veiga Leprevost et al. 2017),",
-        "MultiQC (Ewels et al. 2016),",
-        "SeqKit (Shen 2016),",
-        "Anaconda (Anaconda Software Distribution 2016),",
-        "Docker (Merkel 2014),",
-        "Singularity (Kurtzer et al. 2017)",
-        ".",
+        quality_check_text,
+        postprocessing_text
     ].join(' ').trim()
 
     return citation_text
 }
 
 def toolBibliographyText() {
+    def quality_check_text = [
+        '<li>Telatin, A., Fariselli, P., & Birolo, G. (2021). SeqFu: a suite of utilities for the robust and reproducible manipulation of sequence files. Bioengineering, 8(5), 59. doi: <a href="https://doi.org/10.3390/bioengineering8050059">10.3390/bioengineering8050059</a></li>',
+        params.skip_preprocessing ? '' : '<li>Shen, W., Sipos, B., & Zhao, L. (2024). SeqKit2: A Swiss army knife for sequence and alignment processing. Imeta, 3(3), e191. doi: <a href="https://doi.org/10.1002/imt2.191">10.1002/imt2.191</a></li>'
+    ].join(' ').trim()
+
+    def postprocessing_text = '<li>Ewels, P., Magnusson, M., Lundin, S., & Käller, M. (2016). MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics, 32(19), 3047–3048. doi: <a href="https://doi.org/10.1093/bioinformatics/btw354">10.1093/bioinformatics/btw354</a></li>'
+
     def reference_text = [
-        "<li>Ewels, P., Magnusson, M., Lundin, S., & Käller, M. (2016). MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics , 32(19), 3047–3048. doi: /10.1093/bioinformatics/btw354</li>",
-        "<li>Shen W, Le S, Li Y, Hu F (2016) SeqKit: A Cross-Platform and Ultrafast Toolkit for FASTA/Q File Manipulation. PLoS ONE 11(10): e0163962. doi: https://doi.org/10.1371/journal.pone.0163962</li>",
-        "<li>Anaconda Software Distribution. Computer software. Vers. 2-2.4.0. Anaconda, Nov. 2016. Web.</li>",
-        "<li>Merkel, D. (2014). Docker: lightweight linux containers for consistent development and deployment. Linux Journal, 2014(239), 2. doi: https://10.5555/2600239.2600241.</li>",
-        "<li>Kurtzer GM, Sochat V, Bauer MW. Singularity: Scientific containers for mobility of compute. PLoS One. 2017 May 11;12(5):e0177459. doi: https://10.1371/journal.pone.0177459. eCollection 2017. PubMed PMID: 28494014; PubMed Central PMCID: PMC5426675.</li>",
+        quality_check_text,
+        postprocessing_text
     ].join(' ').trim()
 
     return reference_text

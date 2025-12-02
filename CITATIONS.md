@@ -10,21 +10,29 @@
 
 ## Pipeline tools
 
-- [MultiQC](https://pubmed.ncbi.nlm.nih.gov/27312411/)
+- [SeqFu](https://pubmed.ncbi.nlm.nih.gov/34066939/)
 
-> Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PubMed PMID: 27312411; PubMed Central PMCID: PMC5039924.
+> Telatin A, Fariselli P, Birolo G. SeqFu: a suite of utilities for the robust and reproducible manipulation of sequence files. Bioengineering. 2021 May 7;8(5):59. doi: 10.3390/bioengineering8050059. PubMed PMID: 34066939; PubMed Central PMCID: PMC8148589.
+
+- [SeqKit](https://pubmed.ncbi.nlm.nih.gov/38898985/)
+
+> Shen W, Sipos B, Zhao L. SeqKit2: A Swiss army knife for sequence and alignment processing. iMeta. 2024 Apr 5:e191. doi: 10.1002/imt2.191. PubMed PMID: 38898985; PubMed Central PMCID: PMC11183193.
 
 - [InterProScan](https://academic.oup.com/bioinformatics/article/17/9/847/206564)
 
 > Zdobnov, Evgeni M., and Rolf Apweiler. “InterProScan – an Integration Platform for the Signature-Recognition Methods in InterPro.” Bioinformatics 17, no. 9 (September 1, 2001): 847–48. https://doi.org/10.1093/bioinformatics/17.9.847.
 
-- [MMseqs2](https://www.nature.com/articles/nbt.3988)
+<!-- - [MMseqs2](https://www.nature.com/articles/nbt.3988)
 
 > Zdobnov, Evgeni M., and Rolf Apweiler. “InterProScan – an Integration Platform for the Signature-Recognition Methods in InterPro.” Bioinformatics 17, no. 9 (September 1, 2001): 847–48. https://doi.org/10.1093/bioinformatics/17.9.847.
 
 - [mTM-align](https://academic.oup.com/bioinformatics/article/34/10/1719/4769500)
 
-> Dong, Runze, Zhenling Peng, Yang Zhang, and Jianyi Yang. “mTM-Align: An Algorithm for Fast and Accurate Multiple Protein Structure Alignment.” Bioinformatics 34, no. 10 (May 15, 2018): 1719–25. https://doi.org/10.1093/bioinformatics/btx828.
+> Dong, Runze, Zhenling Peng, Yang Zhang, and Jianyi Yang. “mTM-Align: An Algorithm for Fast and Accurate Multiple Protein Structure Alignment.” Bioinformatics 34, no. 10 (May 15, 2018): 1719–25. https://doi.org/10.1093/bioinformatics/btx828. -->
+
+- [MultiQC](https://pubmed.ncbi.nlm.nih.gov/27312411/)
+
+> Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PubMed PMID: 27312411; PubMed Central PMCID: PMC5039924.
 
 ## Software packaging/containerisation tools
 

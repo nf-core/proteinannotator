@@ -12,11 +12,50 @@ The directories listed below will be created in the results directory after the 
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
+- [Quality check and preprocessing](#quality-check-and-preprocessing)
+  - [SeqFu](#seqfu) for input amino acid sequences quality check (QC)
+  - [SeqKit](#seqkit) for preprocessing input amino acid sequences (i.e., gap removal, convert to upper case, validate, filter by length, replace special characters such as `/`, and remove duplicate sequences)
+
 - [Functional Annotation](#functional-annotation) Annotate proteins with functional domains
   - [InterProScan](#Interproscan) - Search the InterPro database for functional domains
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
-- [SeqKit stats](#seqkit_stats) - Simple statistics for protein FASTA files
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
+
+### Quality check and preprocessing
+
+#### SeqFu
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `qc/`
+  - `<samplename>/`
+    - `<samplename>_before.tsv`: Statistics for the input amino acid sequences before preprocessing
+    - `<samplename>_before_mqc.txt`: Statistics for the input amino acid sequences in MultiQC-ready format before preprocessing
+    - `<samplename>_after.tsv`: (optional) Statistics for the input amino acid sequences after preprocessing
+    - `<samplename>_after_mqc.txt`: (optional) Statistics for the input amino acid sequences in MultiQC-ready format after preprocessing
+    - `<samplename>.log`: (optional) Output file with count of duplicate sequences that were found and removed
+
+</details>
+
+The `seqfu` module is used for statistics generation of input amino acid sequences, both before and after preprocessing.
+
+[SeqFu](https://github.com/telatin/seqfu2) is a cross-platform compiled suite of tools to manipulate and inspect `FASTA` and `FASTQ` files.
+
+#### SeqKit
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `qc/`
+  - `<samplename>/`
+    - `<samplename>.<suffix>`: Updated preprocessed input fasta file
+
+</details>
+
+The `seqkit` module is used for initial preprocessing (i.e., gap removal, convert to upper case, validate, filter by length, replace special characters such as `/`, and remove duplicate sequences) of the input amino acid sequences.
+
+[SeqKit](https://github.com/shenwei356/seqkit) is a cross-platform and ultrafast toolkit for FASTA/Q file manipulation.
 
 ### Functional Annotation
 

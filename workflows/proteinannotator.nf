@@ -40,7 +40,7 @@ workflow PROTEINANNOTATOR {
             meta, _fasta, updated_fasta ->
             [ meta, updated_fasta ]
         }
-    ch_samplesheet_updated.view()
+
     FUNCTIONAL_ANNOTATION( ch_samplesheet_updated )
     ch_versions = ch_versions.mix( FUNCTIONAL_ANNOTATION.out.versions.first() )
 
