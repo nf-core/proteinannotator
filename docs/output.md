@@ -18,6 +18,9 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 
 - [Functional Annotation](#functional-annotation) Annotate proteins with functional domains
   - [InterProScan](#Interproscan) - Search the InterPro database for functional domains
+
+- [s4pred](#s4pred) - Predict secondary structures of sequences, producing per amino acid probabilities of being an α-helix, a β-strand or a coil.
+
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
 
@@ -306,6 +309,22 @@ The XML Schema Definition (XSD) is available [here](http://ftp.ebi.ac.uk/pub/sof
 ```
 
 </details>
+
+#### s4pred
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `s4pred/`
+  - `<samplename>/`
+    - `<s4pred_outfmt>/`
+      - `<samplename>.<s4pred_outfmt>`: The probability of each amino acid to be an α-helix, a β-strand or a coil, in the chosen output format (i.e., 'ss2', 'fas', or 'horiz').
+
+</details>
+
+The `s4pred` module is used to predict secondary structures of amino acid sequences.
+
+[s4pred](https://github.com/psipred/s4pred) is a tool for accurate prediction of a protein's secondary structure from only it's amino acid sequence.
 
 ### MultiQC
 

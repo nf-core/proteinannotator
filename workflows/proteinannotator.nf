@@ -5,6 +5,7 @@
 */
 include { FAA_SEQFU_SEQKIT       } from '../subworkflows/nf-core/faa_seqfu_seqkit/main'
 include { FUNCTIONAL_ANNOTATION  } from '../subworkflows/local/functional_annotation'
+include { S4PRED_RUNMODEL        } from '../modules/nf-core/s4pred/runmodel/main'
 include { MULTIQC                } from '../modules/nf-core/multiqc/main'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
@@ -43,6 +44,9 @@ workflow PROTEINANNOTATOR {
 
     FUNCTIONAL_ANNOTATION( ch_samplesheet_updated )
     ch_versions = ch_versions.mix( FUNCTIONAL_ANNOTATION.out.versions.first() )
+
+    S4PRED_RUNMODEL( ch_samplesheet_updated )
+    ch_versions = ch_versions.mix( S4PRED_RUNMODEL.out.versions.first() )
 
     //
     // Collate and save software versions

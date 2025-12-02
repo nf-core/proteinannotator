@@ -262,6 +262,26 @@
                     "help": "Instead of just removing by similar identifier, the tool also removes duplicate sequences."
                 }
             }
+        },
+        "prediction_params": {
+            "title": "Prediction parameters",
+            "type": "object",
+            "description": "Use these parameters to control the flow of the secondary structure prediction execution.",
+            "properties": {
+                "skip_s4pred": {
+                    "type": "boolean",
+                    "fa_icon": "fas fa-ban",
+                    "description": "Skip the secondary structure prediction.",
+                    "help": "Skips the prediction of the secondary structures of sequences with the s4pred software."
+                },
+                "s4pred_outfmt": {
+                    "type": "string",
+                    "default": "ss2",
+                    "description": "Choose the output format (i.e., 'ss2', 'fas', 'horiz') for the s4pred per amino acid probability predictions (i.e., α-helix, β-strand, coil).",
+                    "help_text": "ss2 is the default and it corresponds to the PSIPRED vertical format (PSIPRED VFORMAT). The fas output returns the sequence FASTA file with the predicted secondary structure concatenated on a second line. The horiz option outputs the results in the PSIPRED horizontal format (PSIPRED HFORMAT).",
+                    "enum": ["ss2", "fas", "horiz"]
+                }
+            }
         }
     },
     "allOf": [
@@ -279,6 +299,9 @@
         },
         {
             "$ref": "#/$defs/quality_check_params"
+        },
+        {
+            "$ref": "#/$defs/prediction_params"
         }
     ]
 }
