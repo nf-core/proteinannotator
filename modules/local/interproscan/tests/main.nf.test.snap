@@ -1,0 +1,269 @@
+{
+    "stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.tsv.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.xml.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.gff3.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.json.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "4": [
+                    "versions.yml:md5,7f61cf700565d5b1ab2ca54b0b72fc71"
+                ],
+                "gff3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.gff3.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "json": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.json.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "tsv": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.tsv.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,7f61cf700565d5b1ab2ca54b0b72fc71"
+                ],
+                "xml": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.xml.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.1"
+        },
+        "timestamp": "2025-06-03T10:20:57.667222"
+    },
+    "test_interproscan": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.tsv.gz:md5,2adf8f4b398bc1612e9d9478b410d2ec"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.xml.gz:md5,9beb149a99617063786988d589e2c643"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.gff3.gz:md5,f04d5325d6af7814eee7d4b575c82f93"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.json.gz:md5,ddbacbf940ae30fb97d0a279b949a37c"
+                    ]
+                ],
+                "4": [
+                    "versions.yml:md5,7f61cf700565d5b1ab2ca54b0b72fc71"
+                ],
+                "gff3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.gff3.gz:md5,f04d5325d6af7814eee7d4b575c82f93"
+                    ]
+                ],
+                "json": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.json.gz:md5,ddbacbf940ae30fb97d0a279b949a37c"
+                    ]
+                ],
+                "tsv": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.tsv.gz:md5,2adf8f4b398bc1612e9d9478b410d2ec"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,7f61cf700565d5b1ab2ca54b0b72fc71"
+                ],
+                "xml": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.xml.gz:md5,9beb149a99617063786988d589e2c643"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.1"
+        },
+        "timestamp": "2025-06-24T10:57:31.077533"
+    },
+    "interproscan": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.tsv.gz:md5,c22726224315c1b63d4ed1a101c8bc24"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.xml.gz:md5,8d3cfa00a43a19e5db34968e8f9fc577"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.gff3.gz:md5,0c998fe859d45764fb4ba679552efd59"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.json.gz:md5,68e7c5481be5236a778068f35734c20e"
+                    ]
+                ],
+                "4": [
+                    "versions.yml:md5,7f61cf700565d5b1ab2ca54b0b72fc71"
+                ],
+                "gff3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.gff3.gz:md5,0c998fe859d45764fb4ba679552efd59"
+                    ]
+                ],
+                "json": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.json.gz:md5,68e7c5481be5236a778068f35734c20e"
+                    ]
+                ],
+                "tsv": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.tsv.gz:md5,c22726224315c1b63d4ed1a101c8bc24"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,7f61cf700565d5b1ab2ca54b0b72fc71"
+                ],
+                "xml": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.xml.gz:md5,8d3cfa00a43a19e5db34968e8f9fc577"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.1"
+        },
+        "timestamp": "2025-05-13T14:39:38.597547"
+    }
+}

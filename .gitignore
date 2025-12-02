@@ -8,6 +8,8 @@ testing*
 *.pyc
 null/
 
-.nf-test/*
+# Nextflow nf-tests output
 .nf-test.log
-.nf-test-*
+.nf-test/tests
+.nf-test-*.nf
+.nf-test/*

@@ -76,6 +76,17 @@ outdir: './results/'
 
 You can also generate such `YAML`/`JSON` files via [nf-core/launch](https://nf-co.re/launch).
 
+## Functional Annotation Options
+
+### InterProScan
+
+Running [InterProScan](https://interproscan-docs.readthedocs.io/) requires a pre-prepared input database. You can provided this as oe of two options:
+
+- `--interproscan_tar_gz`: This is the raw `*.tar.gz` file exactly from InterProScan https://www.ebi.ac.uk/interpro/download/InterProScan/, OR
+- `--interproscan_database`: The decompressed version of the above folder, pointing to the `/data` subfolder
+
+For reproducibility and explicitness, `--interproscan_database_version` is a required parameter. InterProScan is quite resource-intensive and you can also choose to not run InterProScan with `--skip_interproscan`.
+
 ### Updating the pipeline
 
 When you run the above command, Nextflow automatically pulls the pipeline code from GitHub and stores it as a cached version. When running the pipeline after this, it will always use the cached version if available - even if the pipeline has been updated since. To make sure that you're running the latest version of the pipeline, make sure that you regularly update the cached version of the pipeline:
@@ -130,7 +141,7 @@ If `-profile` is not specified, the pipeline will run locally and expect all sof
 - `shifter`
   - A generic configuration profile to be used with [Shifter](https://nersc.gitlab.io/development/shifter/how-to-use/)
 - `charliecloud`
-  - A generic configuration profile to be used with [Charliecloud](https://hpc.github.io/charliecloud/)
+  - A generic configuration profile to be used with [Charliecloud](https://charliecloud.io/)
 - `apptainer`
   - A generic configuration profile to be used with [Apptainer](https://apptainer.org/)
 - `wave`

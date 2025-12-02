@@ -1,0 +1,97 @@
+// TODO nf-core: Once you have added the required tests, please run the following command to build this file:
+// nf-core subworkflows test interproscan
+nextflow_workflow {
+
+    name "Test Subworkflow INTERPROSCAN"
+    script "../main.nf"
+    workflow "INTERPROSCAN"
+
+    tag "subworkflows"
+    tag "subworkflows_"
+    tag "subworkflows/interproscan"
+    // TODO nf-core: Add tags for all modules used within this subworkflow. Example:
+    tag "interproscan"
+    tag "untar"
+
+
+    test("interproscan -- input: tar.gz, untar") {
+
+        when {
+            params {
+                interproscan_tar_gz = "${moduleTestDir}/fixtures/interproscan-5.73-104.0.tar.gz"
+                interproscan_database_version = "interproscan-5.73-104.0"
+                outdir = "results/"
+            }
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test1', single_end:false ], // meta map
+                        file("${moduleTestDir}/fixtures/test1.fasta", checkIfExists: true)
+                    ],
+                    [
+                        [ id:'test2', single_end:false ], // meta map
+                        file("${moduleTestDir}/fixtures/test2.fasta", checkIfExists: true)
+                    ]
+                )
+                """
+        }
+        }
+
+        then {
+            assertAll(
+                { assert snapshot(workflow.out).match() }
+                { assert workflow.success },
+                //TODO nf-core: Add all required assertions to verify the test output.
+            )
+        }
+    }
+
+    test("interproscan -- input: tar.gz, untar -- stub") {
+        tag "stub"
+
+        // Run this test in the GitHub Actions Continuous Integration (CI), instead of the other one
+        tag "CI"
+        options "-stub"
+
+        when {
+            params {
+                interproscan_tar_gz = "${moduleTestDir}/fixtures/interproscan-5.73-104.0.tar.gz"
+                interproscan_database_version = "interproscan-5.73-104.0"
+                outdir = "results/"
+            }
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id:'test1', single_end:false ], // meta map
+                        file("${moduleTestDir}/fixtures/test1.fasta", checkIfExists: true)
+                    ],
+                    [
+                        [ id:'test2', single_end:false ], // meta map
+                        file("${moduleTestDir}/fixtures/test2.fasta", checkIfExists: true)
+                    ]
+                )
+                """
+        }
+        }
+
+        then {
+            println "Number of output channels: ${workflow.out.size()}"
+            assertAll(
+                { assert workflow.success },
+                // For future developers, this is a "load-bearing tomato" (see: https://buttondown.com/chhopsky)
+                // Warning: all of the outputs MUST be in the same order as the emit: "directive(?)"
+                // We chose alphabetical sorting except for versions because you gotta pick some ordering
+                { assert snapshot(
+                    workflow.out.gff3,
+                    workflow.out.json,
+                    workflow.out.tsv,
+                    workflow.out.xml,
+                    workflow.out.versions
+                    ).match()
+                }
+            )
+        }
+    }
+}

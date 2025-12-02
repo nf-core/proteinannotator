@@ -43,6 +43,33 @@
                 }
             }
         },
+        "interproscan_options": {
+            "title": "InterProScan Options",
+            "type": "object",
+            "description": "Options for best-practices domain annotation tool from EBI, InterProScan",
+            "default": "",
+            "properties": {
+                "skip_interproscan": {
+                    "type": "boolean",
+                    "description": "Run InterProScan",
+                    "default": false
+                },
+                "interproscan_tar_gz": {
+                    "type": "string",
+                    "default": "https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.74-105.0/interproscan-5.74-105.0-64-bit.tar.gz",
+                    "description": "Tar.gz file exactly from InterProScan https://www.ebi.ac.uk/interpro/download/InterProScan/"
+                },
+                "interproscan_database": {
+                    "type": "string",
+                    "description": "Path to the InterProScan database, as downloaded from https://www.ebi.ac.uk/interpro/download/InterProScan/, uncompressed, and the `/data` subfolder",
+                    "help_text": "interproscan_database_version must be provided! Exiting."
+                },
+                "interproscan_database_version": {
+                    "type": "string",
+                    "description": "Version number of the InterProScan database, e.g. \"5.73-104.0\""
+                }
+            }
+        },
         "institutional_config_options": {
             "title": "Institutional config options",
             "type": "object",
@@ -189,6 +216,50 @@
                     "fa_icon": "far calendar",
                     "description": "Suffix to add to the trace report filename. Default is the date and time in the format yyyy-MM-dd_HH-mm-ss.",
                     "hidden": true
+                },
+                "help": {
+                    "type": ["boolean", "string"],
+                    "description": "Display the help message."
+                },
+                "help_full": {
+                    "type": "boolean",
+                    "description": "Display the full detailed help message."
+                },
+                "show_hidden": {
+                    "type": "boolean",
+                    "description": "Display hidden parameters in the help message (only works when --help or --help_full are provided)."
+                }
+            }
+        },
+        "quality_check_params": {
+            "title": "Quality check parameters",
+            "type": "object",
+            "description": "Use these parameters to control the flow of the quality check subworkflow execution.",
+            "properties": {
+                "skip_preprocessing": {
+                    "type": "boolean",
+                    "fa_icon": "fas fa-ban",
+                    "description": "Skip all default QC steps for sequences (gap trimming, length filtering, validation, duplicate removal).",
+                    "help": "Skips input amino acid sequence preprocessing transformations, length filtering, duplicate removal and validation checks."
+                },
+                "min_seq_length": {
+                    "type": "integer",
+                    "default": 30,
+                    "fa_icon": "fas fa-ruler-horizontal",
+                    "description": "The minimum allowed sequence length",
+                    "help_text": "Specify the minimum length of amino acid sequences that go into clustering."
+                },
+                "max_seq_length": {
+                    "type": "integer",
+                    "default": 5000,
+                    "fa_icon": "fas fa-ruler-horizontal",
+                    "description": "The maximum allowed sequence length",
+                    "help_text": "Specify the maximum length of amino acid sequences that go into clustering."
+                },
+                "remove_duplicates_on_sequence": {
+                    "type": "boolean",
+                    "description": "Remove duplicate input amino acid sequences, based on the sequence.",
+                    "help": "Instead of just removing by similar identifier, the tool also removes duplicate sequences."
                 }
             }
         }
@@ -198,10 +269,16 @@
             "$ref": "#/$defs/input_output_options"
         },
         {
+            "$ref": "#/$defs/interproscan_options"
+        },
+        {
             "$ref": "#/$defs/institutional_config_options"
         },
         {
             "$ref": "#/$defs/generic_options"
+        },
+        {
+            "$ref": "#/$defs/quality_check_params"
         }
     ]
 }
