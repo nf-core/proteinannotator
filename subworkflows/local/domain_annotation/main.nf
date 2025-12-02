@@ -18,11 +18,13 @@ workflow DOMAIN_ANNOTATION {
 
             ARIA2( ch_pfam_link )
             ch_versions = ch_versions.mix( ARIA2.out.versions )
-            pfam_db = ARIA2.out.downloaded_file
+            ch_pfam_db = ARIA2.out.downloaded_file
+        } else {
+            ch_pfam_db = channel.of([ [ id: 'pfam' ], pfam_db ])
         }
 
         ch_input_for_hmmsearch = ch_fasta
-            .combine(pfam_db)
+            .combine(ch_pfam_db)
             .map{ meta, seqs, _meta2, models -> [meta, models, seqs, false, false, true] }
 
         HMMER_HMMSEARCH( ch_input_for_hmmsearch )
