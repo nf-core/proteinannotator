@@ -1,8 +1,11 @@
 {
     "-profile test": {
         "content": [
-            11,
+            13,
             {
+                "S4PRED_RUNMODEL": {
+                    "s4pred": "1.2.1"
+                },
                 "SEQFU_STATS_BEFORE": {
                     "seqfu": "1.22.3"
                 },
@@ -57,7 +60,14 @@
                 "qc/T1026/T1026_after.tsv",
                 "qc/T1026/T1026_after_mqc.txt",
                 "qc/T1026/T1026_before.tsv",
-                "qc/T1026/T1026_before_mqc.txt"
+                "qc/T1026/T1026_before_mqc.txt",
+                "s4pred",
+                "s4pred/T1024",
+                "s4pred/T1024/ss2",
+                "s4pred/T1024/ss2/T1024.ss2",
+                "s4pred/T1026",
+                "s4pred/T1026/ss2",
+                "s4pred/T1026/ss2/T1026.ss2"
             ],
             [
                 "multiqc_T1024_after.txt:md5,f2a552d4750ff8360941b10cec141499",
@@ -76,13 +86,15 @@
                 "T1026_after.tsv:md5,052ba564eabda203298ffc26ef80b7ab",
                 "T1026_after_mqc.txt:md5,3534726223f5a24dedda4446fd202404",
                 "T1026_before.tsv:md5,052ba564eabda203298ffc26ef80b7ab",
-                "T1026_before_mqc.txt:md5,3534726223f5a24dedda4446fd202404"
+                "T1026_before_mqc.txt:md5,3534726223f5a24dedda4446fd202404",
+                "T1024.ss2:md5,6f2467c4e6974e761333bef106809e88",
+                "T1026.ss2:md5,cc788acb2aefe43fea147d9dd2b6c2c9"
             ]
         ],
         "meta": {
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2025-12-01T14:53:54.397071161"
+        "timestamp": "2025-12-02T10:01:13.30875032"
     }
 }
