@@ -276,6 +276,7 @@
                 },
                 "pfam_db": {
                     "type": "string",
+                    "format": "file-path",
                     "description": "Path to an already installed Pfam HMM database (.hmm.gz).",
                     "help_text": "If left null and skip_pfam is false, the pipeline will start downloading the latest Pfam HMM library."
                 },
