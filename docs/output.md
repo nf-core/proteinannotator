@@ -16,7 +16,11 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
   - [SeqFu](#seqfu) for input amino acid sequences quality check (QC)
   - [SeqKit](#seqkit) for preprocessing input amino acid sequences (i.e., gap removal, convert to upper case, validate, filter by length, replace special characters such as `/`, and remove duplicate sequences)
 
-- [Functional Annotation](#functional-annotation) Annotate proteins with functional domains
+- [Domain annotation](#domain-annotation) Annotate proteins with domains from established repositories.
+  - [aria2](#aria2) - To optionally download the latest Pfam database through the pipeline.
+  - [hmmer](#hmmer) - To optionally match the input sequence to known Pfam domains through `hmmer/hmmsearch`
+
+- [Functional annotation](#functional-annotation) Annotate proteins with functional domains
   - [InterProScan](#Interproscan) - Search the InterPro database for functional domains
 
 - [s4pred](#s4pred) - Predict secondary structures of sequences, producing per amino acid probabilities of being an α-helix, a β-strand or a coil.
@@ -60,7 +64,36 @@ The `seqkit` module is used for initial preprocessing (i.e., gap removal, conver
 
 [SeqKit](https://github.com/shenwei356/seqkit) is a cross-platform and ultrafast toolkit for FASTA/Q file manipulation.
 
-### Functional Annotation
+### Domain annotation
+
+#### aria2
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `downloaded_dbs/`
+  - `Pfam-A*.hmm.gz`: (optional) The latest full, or a minimal test, Pfam-A HMM database that can be downloaded through the pipeline.
+
+</details>
+
+[aria2](https://github.com/aria2/aria2/) is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.
+
+#### hmmer
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `domain_annotation/`
+  - `pfam/`
+    - `<samplename>.domtbl.gz`: `hmmer/hmmsearch` results along parameters info.
+
+</details>
+
+The `domain_annotation/pfam` folder contains a `.domtbl.gz` annotation file per input sample.
+
+[hmmer](https://github.com/EddyRivasLab/hmmer) is a fast and flexible alignment trimming tool that keeps phylogenetically informative sites and removes others.
+
+### Functional annotation
 
 #### InterProScan
 

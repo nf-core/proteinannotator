@@ -18,6 +18,10 @@
 
 > Shen W, Sipos B, Zhao L. SeqKit2: A Swiss army knife for sequence and alignment processing. iMeta. 2024 Apr 5:e191. doi: 10.1002/imt2.191. PubMed PMID: 38898985; PubMed Central PMCID: PMC11183193.
 
+- [hmmer](https://pubmed.ncbi.nlm.nih.gov/29905871/)
+
+> Eddy SR. Accelerated profile HMM searches. PLoS computational biology. 2011 Oct 20;7(10):e1002195. doi: 10.1371/journal.pcbi.1002195. PubMed PMID: 22039361; PubMed Central PMCID: PMC3197634.
+
 - [InterProScan](https://academic.oup.com/bioinformatics/article/17/9/847/206564)
 
 > Zdobnov, Evgeni M., and Rolf Apweiler. “InterProScan – an Integration Platform for the Signature-Recognition Methods in InterPro.” Bioinformatics 17, no. 9 (September 1, 2001): 847–48. https://doi.org/10.1093/bioinformatics/17.9.847.

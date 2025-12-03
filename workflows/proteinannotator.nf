@@ -4,6 +4,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 include { FAA_SEQFU_SEQKIT       } from '../subworkflows/nf-core/faa_seqfu_seqkit/main'
+include { DOMAIN_ANNOTATION      } from '../subworkflows/local/domain_annotation'
 include { FUNCTIONAL_ANNOTATION  } from '../subworkflows/local/functional_annotation'
 include { S4PRED_RUNMODEL        } from '../modules/nf-core/s4pred/runmodel/main'
 include { MULTIQC                } from '../modules/nf-core/multiqc/main'
@@ -25,6 +26,9 @@ workflow PROTEINANNOTATOR {
     take:
     ch_samplesheet      // channel: samplesheet read in from --input
     skip_preprocessing  // boolean
+    skip_pfam           // boolean
+    pfam_latest_link    // string, path to the latest pfam HMM database, to download
+    pfam_db             // string, path to the pfam HMM database, if already exists
     skip_s4pred         // boolean
 
     main:
@@ -33,7 +37,7 @@ workflow PROTEINANNOTATOR {
     ch_multiqc_files = channel.empty()
 
     FAA_SEQFU_SEQKIT( ch_samplesheet, skip_preprocessing )
-    ch_versions = ch_versions.mix( FAA_SEQFU_SEQKIT.out.versions.first() )
+    ch_versions = ch_versions.mix( FAA_SEQFU_SEQKIT.out.versions )
 
     // Replace input fasta and join back in samplesheet to ensure in sync in case of multiple sequence files
     ch_samplesheet_updated = ch_samplesheet
@@ -43,8 +47,11 @@ workflow PROTEINANNOTATOR {
             [ meta, updated_fasta ]
         }
 
+    DOMAIN_ANNOTATION( ch_samplesheet_updated, skip_pfam, pfam_latest_link, pfam_db )
+    ch_versions = ch_versions.mix( DOMAIN_ANNOTATION.out.versions )
+
     FUNCTIONAL_ANNOTATION( ch_samplesheet_updated )
-    ch_versions = ch_versions.mix( FUNCTIONAL_ANNOTATION.out.versions.first() )
+    ch_versions = ch_versions.mix( FUNCTIONAL_ANNOTATION.out.versions )
 
     if (!skip_s4pred) {
         S4PRED_RUNMODEL( ch_samplesheet_updated )

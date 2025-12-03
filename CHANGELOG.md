@@ -9,6 +9,7 @@ Initial release of nf-core/proteinannotator, created with the [nf-core](https://
 
 ### `Added`
 
+- [#61](https://github.com/nf-core/proteinannotator/pull/61) - Added nf-core modules `ARIA2` and `HMMER_HMMSEARCH` to download latest Pfam HMM library (or use path to existing one) and match domains to input sequences. (by @vagkaratzas)
 - [#60](https://github.com/nf-core/proteinannotator/pull/60) - Added nf-core module `S4PRED_RUNMODEL` for secondary structure prediction (i.e., α-helix, a β-strand or a coil). (by @vagkaratzas)
 - [#59](https://github.com/nf-core/proteinannotator/pull/59) - Added nf-core qc and pre-processing subworkflow for amino acid sequences `FAA_SEQFU_SEQKIT`. (by @vagkaratzas)
 - [#57](https://github.com/nf-core/proteinannotator/pull/57) - nf-core tools template update to 3.5.1. (by @vagkaratzas)

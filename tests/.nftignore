@@ -8,3 +8,5 @@ multiqc/multiqc_data/llms-full.txt
 multiqc/multiqc_plots/{svg,pdf,png}/*.{svg,pdf,png}
 multiqc/multiqc_report.html
 pipeline_info/*.{html,json,txt,yml}
+domain_annotation/pfam/T1024.domtbl.gz
+domain_annotation/pfam/T1026.domtbl.gz

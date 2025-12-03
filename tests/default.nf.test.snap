@@ -1,19 +1,43 @@
 {
     "-profile test": {
         "content": [
-            13,
+            16,
             {
+                "ARIA2": {
+                    "aria2": "1.36.0"
+                },
+                "HMMER_HMMSEARCH": {
+                    "hmmer": 3.4
+                },
                 "S4PRED_RUNMODEL": {
                     "s4pred": "1.2.1"
                 },
+                "SEQFU_STATS_AFTER": {
+                    "seqfu": "1.22.3"
+                },
                 "SEQFU_STATS_BEFORE": {
                     "seqfu": "1.22.3"
+                },
+                "SEQKIT_REPLACE": {
+                    "seqkit": "2.9.0"
+                },
+                "SEQKIT_RMDUP": {
+                    "seqkit": "v2.9.0"
+                },
+                "SEQKIT_SEQ": {
+                    "seqkit": "v2.9.0"
                 },
                 "Workflow": {
                     "nf-core/proteinannotator": "v1.0.0dev"
                 }
             },
             [
+                "domain_annotation",
+                "domain_annotation/pfam",
+                "domain_annotation/pfam/T1024.domtbl.gz",
+                "domain_annotation/pfam/T1026.domtbl.gz",
+                "downloaded_dbs",
+                "downloaded_dbs/Pfam-A_test.hmm.gz",
                 "multiqc",
                 "multiqc/multiqc_data",
                 "multiqc/multiqc_data/llms-full.txt",
@@ -70,6 +94,7 @@
                 "s4pred/T1026/ss2/T1026.ss2"
             ],
             [
+                "Pfam-A_test.hmm.gz:md5,a5ab72b2b7bc72c62756684707e2387c",
                 "multiqc_T1024_after.txt:md5,f2a552d4750ff8360941b10cec141499",
                 "multiqc_T1024_before.txt:md5,f2a552d4750ff8360941b10cec141499",
                 "multiqc_T1026_after.txt:md5,aabd4e58ed67d366fd04592ca09dbc9b",
@@ -95,6 +120,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2025-12-02T10:01:13.30875032"
+        "timestamp": "2025-12-02T15:47:22.509332504"
     }
 }

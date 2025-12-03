@@ -263,6 +263,36 @@
                 }
             }
         },
+        "domain_annotation_params": {
+            "title": "Domain annotation parameters",
+            "type": "object",
+            "description": "Use these parameters to control the flow of the domain annotation execution.",
+            "properties": {
+                "skip_pfam": {
+                    "type": "boolean",
+                    "fa_icon": "fas fa-ban",
+                    "description": "Skip the domain annotation with the Pfam database.",
+                    "help": "Skips the domain annotation of input sequence against a Pfam database."
+                },
+                "pfam_db": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "Path to an already installed Pfam HMM database (.hmm.gz).",
+                    "help_text": "If left null and skip_pfam is false, the pipeline will start downloading the latest Pfam HMM library."
+                },
+                "pfam_latest_link": {
+                    "type": "string",
+                    "default": "https://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz",
+                    "description": "InterPro hosted link to the latest Pfam HMM database file.",
+                    "help_text": "Latest version should be a bit more than 350MB."
+                },
+                "hmmsearch_evalue_cutoff": {
+                    "type": "number",
+                    "default": 0.001,
+                    "description": "hmmsearch e-value cutoff threshold for reported results"
+                }
+            }
+        },
         "prediction_params": {
             "title": "Prediction parameters",
             "type": "object",
@@ -299,6 +329,9 @@
         },
         {
             "$ref": "#/$defs/quality_check_params"
+        },
+        {
+            "$ref": "#/$defs/domain_annotation_params"
         },
         {
             "$ref": "#/$defs/prediction_params"
