@@ -180,7 +180,7 @@ def toolCitationText() {
         params.skip_preprocessing ? "" : "Input sequences were preprocessed with SeqKit (gap trimming, length filtering, validation, duplicate removal) (Shen et al. 2024)."
     ].join(' ').trim()
 
-    def domain_annotation_text = params.skip_pfam ? "" : "Pfam domains were searched with hmmer/hmmsearch (Eddy et al. 2011)."
+    def domain_annotation_text = params.skip_pfam ? "" : "Pfam domains were annotated with hmmer/hmmsearch (Eddy et al. 2011)."
 
     def prediction_text = params.skip_s4pred ? "" : "Secondary structures were predicted via the s4pred software (Moffat et al. 2021)."
 
