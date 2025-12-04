@@ -29,10 +29,10 @@ workflow PROTEINANNOTATOR {
     skip_pfam           // boolean
     pfam_latest_link    // string, path to the latest pfam HMM database, to download
     pfam_db             // string, path to the pfam HMM database, if already exists
-    skip_s4pred         // boolean
     skip_funfam         // boolean
     funfam_latest_link  // string, path to the latest pfam HMM database, to download
     funfam_db           // string, path to the pfam HMM database, if already exists
+    skip_s4pred         // boolean
 
     main:
 
