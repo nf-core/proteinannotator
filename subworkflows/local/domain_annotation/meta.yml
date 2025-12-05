@@ -24,7 +24,7 @@ input:
   - pfam_db:
       type: string
       description: |
-        Path to an existing HMM Pfam library on the system
+        Path to an existing HMM Pfam library on the system. If provided, the ARIA2_PFAM db download will be skipped.
   - pfam_latest_link:
       type: string
       description: |
@@ -36,7 +36,7 @@ input:
   - funfam_db:
       type: string
       description: |
-        Path to an existing HMM FunFam library on the system
+        Path to an existing HMM FunFam library on the system. If provided, the ARIA2_FUNFAM db download will be skipped.
   - funfam_latest_link:
       type: string
       description: |
