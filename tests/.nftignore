@@ -10,3 +10,5 @@ multiqc/multiqc_report.html
 pipeline_info/*.{html,json,txt,yml}
 domain_annotation/pfam/T1024.domtbl.gz
 domain_annotation/pfam/T1026.domtbl.gz
+domain_annotation/funfam/T1024.domtbl.gz
+domain_annotation/funfam/T1026.domtbl.gz
