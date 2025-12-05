@@ -41,11 +41,11 @@ workflow NFCORE_PROTEINANNOTATOR {
         samplesheet,
         params.skip_preprocessing,
         params.skip_pfam,
-        params.pfam_latest_link,
         params.pfam_db,
+        params.pfam_latest_link,
         params.skip_funfam,
-        params.funfam_latest_link,
         params.funfam_db,
+        params.funfam_latest_link,
         params.skip_s4pred
     )
     emit:

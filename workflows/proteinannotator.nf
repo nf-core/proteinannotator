@@ -27,11 +27,11 @@ workflow PROTEINANNOTATOR {
     ch_samplesheet      // channel: samplesheet read in from --input
     skip_preprocessing  // boolean
     skip_pfam           // boolean
-    pfam_latest_link    // string, path to the latest pfam HMM database, to download
     pfam_db             // string, path to the pfam HMM database, if already exists
+    pfam_latest_link    // string, path to the latest pfam HMM database, to download
     skip_funfam         // boolean
-    funfam_latest_link  // string, path to the latest pfam HMM database, to download
     funfam_db           // string, path to the pfam HMM database, if already exists
+    funfam_latest_link  // string, path to the latest pfam HMM database, to download
     skip_s4pred         // boolean
 
     main:

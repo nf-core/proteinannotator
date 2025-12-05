@@ -7,11 +7,11 @@ workflow DOMAIN_ANNOTATION {
     take:
     ch_fasta            // channel: [ val(meta), [ fasta ] ]
     skip_pfam           // boolean
-    pfam_latest_link    // string, path to the latest pfam HMM database, to download
     pfam_db             // string, path to the pfam HMM database, if already exists
+    pfam_latest_link    // string, path to the latest pfam HMM database, to download
     skip_funfam         // boolean
-    funfam_latest_link  // string, path to the latest funfam HMM database, to download
     funfam_db           // string, path to the funfam HMM database, if already exists
+    funfam_latest_link  // string, path to the latest funfam HMM database, to download
 
     main:
 
