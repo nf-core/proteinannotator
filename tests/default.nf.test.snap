@@ -1,12 +1,18 @@
 {
     "-profile test": {
         "content": [
-            16,
+            19,
             {
-                "ARIA2": {
+                "ARIA2_FUNFAM": {
                     "aria2": "1.36.0"
                 },
-                "HMMER_HMMSEARCH": {
+                "ARIA2_PFAM": {
+                    "aria2": "1.36.0"
+                },
+                "HMMSEARCH_FUNFAM": {
+                    "hmmer": 3.4
+                },
+                "HMMSEARCH_PFAM": {
                     "hmmer": 3.4
                 },
                 "S4PRED_RUNMODEL": {
@@ -33,11 +39,15 @@
             },
             [
                 "domain_annotation",
+                "domain_annotation/funfam",
+                "domain_annotation/funfam/T1024.domtbl.gz",
+                "domain_annotation/funfam/T1026.domtbl.gz",
                 "domain_annotation/pfam",
                 "domain_annotation/pfam/T1024.domtbl.gz",
                 "domain_annotation/pfam/T1026.domtbl.gz",
                 "downloaded_dbs",
                 "downloaded_dbs/Pfam-A_test.hmm.gz",
+                "downloaded_dbs/funfam-hmm3-v4_3_0_test.lib.gz",
                 "multiqc",
                 "multiqc/multiqc_data",
                 "multiqc/multiqc_data/llms-full.txt",
@@ -95,6 +105,7 @@
             ],
             [
                 "Pfam-A_test.hmm.gz:md5,a5ab72b2b7bc72c62756684707e2387c",
+                "funfam-hmm3-v4_3_0_test.lib.gz:md5,df8b324882e1ceb8f8196155a968ed77",
                 "multiqc_T1024_after.txt:md5,f2a552d4750ff8360941b10cec141499",
                 "multiqc_T1024_before.txt:md5,f2a552d4750ff8360941b10cec141499",
                 "multiqc_T1026_after.txt:md5,aabd4e58ed67d366fd04592ca09dbc9b",
@@ -120,6 +131,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.2"
         },
-        "timestamp": "2025-12-02T15:47:22.509332504"
+        "timestamp": "2025-12-05T08:51:15.803204902"
     }
 }

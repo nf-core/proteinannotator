@@ -286,6 +286,23 @@
                     "description": "InterPro hosted link to the latest Pfam HMM database file.",
                     "help_text": "Latest version should be a bit more than 350MB."
                 },
+                "skip_funfam": {
+                    "type": "boolean",
+                    "fa_icon": "fas fa-ban",
+                    "description": "Skip the domain annotation with the FunFam database.",
+                    "help": "Skips the domain annotation of input sequence against a FunFam database."
+                },
+                "funfam_db": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "Path to an already installed FunFam HMM database (.lib.gz).",
+                    "help_text": "If left null and skip_funfam is false, the pipeline will start downloading the latest FunFam HMM library."
+                },
+                "funfam_latest_link": {
+                    "type": "string",
+                    "default": "https://download.cathdb.info/cath/releases/all-releases/v4_3_0/sequence-data/funfam-hmm3-v4_3_0.lib.gz",
+                    "description": "CATH hosted link to the latest available (v4_3_0) FunFam HMM database file."
+                },
                 "hmmsearch_evalue_cutoff": {
                     "type": "number",
                     "default": 0.001,

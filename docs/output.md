@@ -6,8 +6,6 @@ This document describes the output produced by the pipeline. Most of the plots a
 
 The directories listed below will be created in the results directory after the pipeline has finished. All paths are relative to the top-level results directory.
 
-<!-- TODO nf-core: Write this documentation describing your workflow's output -->
-
 ## Pipeline overview
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
@@ -17,8 +15,8 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
   - [SeqKit](#seqkit) for preprocessing input amino acid sequences (i.e., gap removal, convert to upper case, validate, filter by length, replace special characters such as `/`, and remove duplicate sequences)
 
 - [Domain annotation](#domain-annotation) Annotate proteins with domains from established repositories.
-  - [aria2](#aria2) - To optionally download the latest Pfam database through the pipeline.
-  - [hmmer](#hmmer) - To optionally match the input sequence to known Pfam domains through `hmmer/hmmsearch`
+  - [aria2](#aria2) - To optionally download the latest Pfam and/or FunFam databases through the pipeline.
+  - [hmmer](#hmmer) - To optionally match the input sequence to known Pfam and/or FunFam domains through `hmmer/hmmsearch`
 
 - [Functional annotation](#functional-annotation) Annotate proteins with functional domains
   - [InterProScan](#Interproscan) - Search the InterPro database for functional domains
@@ -73,8 +71,11 @@ The `seqkit` module is used for initial preprocessing (i.e., gap removal, conver
 
 - `downloaded_dbs/`
   - `Pfam-A*.hmm.gz`: (optional) The latest full, or a minimal test, Pfam-A HMM database that can be downloaded through the pipeline.
+  - `funfam-hmm3-v4_3_0*.lib.gz`: (optional) The latest (v4_3_0) full, or a minimal test, FunFam HMM database that can be downloaded through the pipeline.
 
 </details>
+
+If the `skip_*` flags (e.g., `skip_pfam`, `skip_funfam`) for each domain annotation database is set to `true`, or the `*_db` parameter paths (e.g., `pfam_db`, `funfam_db`) are set (i.e., not `null`), or the run is resumed after a successful database download, then the respective database will not be (re)downloaded. The full database links can be found in the main `nextflow.config` file, while minimal test versions can be found in the `test` and `test_full` profiles (i.e., `conf/test.config`, `conf/test_full.config`).
 
 [aria2](https://github.com/aria2/aria2/) is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.
 
@@ -86,10 +87,12 @@ The `seqkit` module is used for initial preprocessing (i.e., gap removal, conver
 - `domain_annotation/`
   - `pfam/`
     - `<samplename>.domtbl.gz`: `hmmer/hmmsearch` results along parameters info.
+  - `funfam/`
+    - `<samplename>.domtbl.gz`: `hmmer/hmmsearch` results along parameters info.
 
 </details>
 
-The `domain_annotation/pfam` folder contains a `.domtbl.gz` annotation file per input sample.
+Each of the `domain_annotation/` subfolders (e.g., `pfam`, `funfam`) contain a `.domtbl.gz` annotation file per input sample, depending on which domain annotation databases were used in the pipeline execution.
 
 [hmmer](https://github.com/EddyRivasLab/hmmer) is a fast and flexible alignment trimming tool that keeps phylogenetically informative sites and removes others.
 
