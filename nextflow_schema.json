@@ -70,6 +70,34 @@
                 }
             }
         },
+        "eggnog_options": {
+            "title": "eggNOG-mapper Options",
+            "type": "object",
+            "description": "Options for eggNOG-mapper functional annotation tool",
+            "default": "",
+            "properties": {
+                "skip_eggnog": {
+                    "type": "boolean",
+                    "description": "Skip eggNOG-mapper annotation",
+                    "default": false
+                },
+                "eggnog_db": {
+                    "type": "string",
+                    "description": "Path to the eggNOG database file (*.db)",
+                    "format": "file-path"
+                },
+                "eggnog_data_dir": {
+                    "type": "string",
+                    "description": "Path to the eggNOG data directory containing database files",
+                    "format": "directory-path"
+                },
+                "eggnog_diamond_db": {
+                    "type": "string",
+                    "description": "Path to the Diamond protein database (*.dmnd)",
+                    "format": "file-path"
+                }
+            }
+        },
         "institutional_config_options": {
             "title": "Institutional config options",
             "type": "object",
@@ -226,6 +254,9 @@
         },
         {
             "$ref": "#/$defs/interproscan_options"
+        },
+        {
+            "$ref": "#/$defs/eggnog_options"
         },
         {
             "$ref": "#/$defs/institutional_config_options"
