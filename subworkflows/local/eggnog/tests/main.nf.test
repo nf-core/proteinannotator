@@ -1,0 +1,159 @@
+nextflow_workflow {
+
+    name "Test Subworkflow EGGNOG"
+    script "../main.nf"
+    workflow "EGGNOG"
+
+    tag "subworkflows"
+    tag "subworkflows_local"
+    tag "subworkflows/eggnog"
+    tag "eggnogmapper"
+    tag "eggnog_download_db"
+
+    test("Test eggNOG-mapper with auto-download databases - stub") {
+        tag "stub"
+        tag "CI"
+
+        options "-stub"
+
+        when {
+            params {
+                pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/"
+                skip_eggnog = false
+                eggnog_data_dir = null
+            }
+            workflow {
+                """
+                input[0] = Channel.fromList([
+                    [
+                        [ id:'test' ],
+                        file(params.pipelines_testdata_base_path + 'proteinfold/testdata/sequences/T1024.fasta', checkIfExists: true)
+                    ]
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success},
+                { assert workflow.out.annotations },
+                { assert workflow.out.orthologs },
+                { assert workflow.out.hits },
+                { assert workflow.out.versions }
+            )
+        }
+    }
+
+    test("Test eggNOG-mapper with provided databases") {
+        tag "eggnog_provided_db"
+
+        when {
+            params {
+                pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/"
+                modules_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/"
+                skip_eggnog = false
+            }
+            workflow {
+                """
+                // Download small test database
+                eggnog_db = file("https://github.com/nf-core/test-datasets/raw/eddf5b0e3336e0f93c81d4b4843b07257f9efaec/data/delete_me/eggnogmapper/eggnog.db", checkIfExists: true)
+                eggnog_db.copyTo("\${workDir}/tmp/eggnog.db")
+
+                params.eggnog_data_dir = "\${workDir}/tmp/"
+
+                input[0] = Channel.fromList([
+                    [
+                        [ id:'test' ],
+                        file(params.modules_testdata_base_path + 'genomics/sarscov2/genome/proteome.fasta', checkIfExists: true)
+                    ]
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success},
+                { assert workflow.out.annotations },
+                { assert workflow.out.orthologs },
+                { assert workflow.out.hits },
+                { assert workflow.out.versions },
+                // Verify files exist
+                { assert path(workflow.out.annotations.get(0).get(1)).exists() },
+                { assert path(workflow.out.orthologs.get(0).get(1)).exists() },
+                { assert path(workflow.out.hits.get(0).get(1)).exists() },
+                // Verify annotation content contains expected data
+                { assert path(workflow.out.annotations.get(0).get(1)).readLines().any { it.contains("ENSSASP00005000002.1") } }
+            )
+        }
+    }
+
+    test("Test skip eggNOG-mapper") {
+
+        when {
+            params {
+                pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/"
+                skip_eggnog = true
+            }
+            workflow {
+                """
+                input[0] = Channel.fromList([
+                    [
+                        [ id:'test' ],
+                        file(params.pipelines_testdata_base_path + 'proteinfold/testdata/sequences/T1024.fasta', checkIfExists: true)
+                    ]
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success},
+                { assert workflow.out.annotations.toList().size() == 0 },
+                { assert workflow.out.orthologs.toList().size() == 0 },
+                { assert workflow.out.hits.toList().size() == 0 }
+            )
+        }
+    }
+
+    test("Test eggNOG-mapper with multiple sequences - stub") {
+        tag "eggnog_multiple"
+        tag "stub"
+
+        options "-stub"
+
+        when {
+            params {
+                pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/"
+                skip_eggnog = false
+                eggnog_data_dir = null
+            }
+            workflow {
+                """
+                input[0] = Channel.fromList([
+                    [
+                        [ id:'T1024' ],
+                        file(params.pipelines_testdata_base_path + 'proteinfold/testdata/sequences/T1024.fasta', checkIfExists: true)
+                    ],
+                    [
+                        [ id:'T1026' ],
+                        file(params.pipelines_testdata_base_path + 'proteinfold/testdata/sequences/T1026.fasta', checkIfExists: true)
+                    ]
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success},
+                { assert workflow.out.annotations },
+                { assert workflow.out.annotations.toList().size() == 2 },
+                { assert workflow.out.orthologs.toList().size() == 2 },
+                { assert workflow.out.hits.toList().size() == 2 }
+            )
+        }
+    }
+}

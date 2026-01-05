@@ -1,6 +1,6 @@
-// Import Annotator Subworfklows
+// Import Annotator Subworkflows
 include { INTERPROSCAN } from '../interproscan/main'
-include { EGGNOGMAPPER } from '../../../modules/nf-core/eggnogmapper/main'
+include { EGGNOG } from '../eggnog/main'
 
 
 workflow FUNCTIONAL_ANNOTATION {
@@ -10,8 +10,6 @@ workflow FUNCTIONAL_ANNOTATION {
     main:
 
     ch_versions = Channel.empty()
-
-    // TODO nf-core: substitute modules here for the modules of your subworkflow
 
     // Create a multifasta, with one fasta per entry, add the sequence ID to the meta id
     ch_fasta
@@ -36,29 +34,17 @@ workflow FUNCTIONAL_ANNOTATION {
     }
 
     //
-    // MODULE: Run eggNOG-mapper
+    // SUBWORKFLOW: Run eggNOG-mapper
     //
 
-    ch_eggnog_annotations = Channel.empty()
-    ch_eggnog_orthologs = Channel.empty()
-    ch_eggnog_hits = Channel.empty()
-
-    if (!params.skip_eggnog) {
-        EGGNOGMAPPER(
-            ch_multifasta,
-            params.eggnog_db ?: [],
-            params.eggnog_data_dir,
-            params.eggnog_diamond_db ? [[id: 'eggnog_diamond'], params.eggnog_diamond_db] : [[id: 'eggnog_diamond'], []]
-        )
-        ch_eggnog_annotations = EGGNOGMAPPER.out.annotations
-        ch_eggnog_orthologs = EGGNOGMAPPER.out.orthologs
-        ch_eggnog_hits = EGGNOGMAPPER.out.hits
-        ch_versions = ch_versions.mix(EGGNOGMAPPER.out.versions.first())
-    }
+    EGGNOG(
+        ch_multifasta
+    )
+    ch_versions = ch_versions.mix(EGGNOG.out.versions)
 
     emit:
-    eggnog_annotations = ch_eggnog_annotations // channel: [ val(meta), path(*.emapper.annotations) ]
-    eggnog_orthologs   = ch_eggnog_orthologs   // channel: [ val(meta), path(*.emapper.seed_orthologs) ]
-    eggnog_hits        = ch_eggnog_hits        // channel: [ val(meta), path(*.emapper.hits) ]
-    versions           = ch_versions           // channel: [ versions.yml ]
+    eggnog_annotations = EGGNOG.out.annotations // channel: [ val(meta), path(*.emapper.annotations) ]
+    eggnog_orthologs   = EGGNOG.out.orthologs   // channel: [ val(meta), path(*.emapper.seed_orthologs) ]
+    eggnog_hits        = EGGNOG.out.hits        // channel: [ val(meta), path(*.emapper.hits) ]
+    versions           = ch_versions            // channel: [ versions.yml ]
 }

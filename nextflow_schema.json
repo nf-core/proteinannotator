@@ -83,17 +83,18 @@
                 },
                 "eggnog_db": {
                     "type": "string",
-                    "description": "Path to the eggNOG database file (*.db)",
+                    "description": "Path to the eggNOG database file (*.db). If not provided along with eggnog_data_dir, databases will be downloaded automatically.",
                     "format": "file-path"
                 },
                 "eggnog_data_dir": {
                     "type": "string",
-                    "description": "Path to the eggNOG data directory containing database files",
-                    "format": "directory-path"
+                    "description": "Path to the eggNOG data directory containing database files. If not provided, databases will be downloaded automatically on first run.",
+                    "format": "directory-path",
+                    "help_text": "Leave empty to auto-download databases. Once downloaded, provide this path in future runs to reuse the databases."
                 },
                 "eggnog_diamond_db": {
                     "type": "string",
-                    "description": "Path to the Diamond protein database (*.dmnd)",
+                    "description": "Path to the Diamond protein database (*.dmnd). If not provided, will be downloaded automatically.",
                     "format": "file-path"
                 }
             }

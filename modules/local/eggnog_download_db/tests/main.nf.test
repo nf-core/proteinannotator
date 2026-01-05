@@ -1,0 +1,67 @@
+nextflow_process {
+
+    name "Test Process EGGNOG_DOWNLOAD_DB"
+    script "../main.nf"
+    process "EGGNOG_DOWNLOAD_DB"
+    tag "modules"
+    tag "modules_local"
+    tag "eggnog_download_db"
+
+    test("Should download eggNOG databases - stub") {
+        tag "stub"
+        tag "CI"
+
+        options '-stub'
+
+        when {
+            params {
+                outdir = "$outputDir"
+            }
+            process {
+                """
+                input[0] = true
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(
+                    process.out,
+                    path(process.out.versions[0]).yaml
+                ).match() }
+            )
+        }
+    }
+
+    test("Should download eggNOG databases - real download (long running test)") {
+        tag "long_running"
+        tag "download"
+
+        when {
+            params {
+                outdir = "$outputDir"
+            }
+            process {
+                """
+                input[0] = true
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert process.out.data_dir },
+                { assert path(process.out.data_dir).exists() },
+                { assert process.out.diamond_db },
+                { assert path(process.out.diamond_db).exists() },
+                { assert path(process.out.diamond_db).name.endsWith('.dmnd') },
+                { assert snapshot(
+                    path(process.out.versions[0]).yaml
+                ).match("versions") }
+            )
+        }
+    }
+}
