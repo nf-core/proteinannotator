@@ -13,7 +13,8 @@ The directories listed below will be created in the results directory after the 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
 - [Functional Annotation](#functional-annotation) Annotate proteins with functional domains
-  - [InterProScan](#Interproscan) - Search the InterPro database for functional domains
+  - [InterProScan](#interproscan) - Search the InterPro database for functional domains
+  - [eggNOG-mapper](#eggnog-mapper) - Fast functional annotation through orthology assignment
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [SeqKit stats](#seqkit_stats) - Simple statistics for protein FASTA files
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
@@ -267,6 +268,64 @@ The XML Schema Definition (XSD) is available [here](http://ftp.ebi.ac.uk/pub/sof
 ```
 
 </details>
+
+#### eggNOG-mapper
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `eggnog/`
+  - `*.emapper.annotations`: Tab-separated file with functional annotations
+  - `*.emapper.seed_orthologs`: Tab-separated file with seed ortholog assignments
+  - `*.emapper.hits`: Tab-separated file with search hits from Diamond
+
+</details>
+
+[eggNOG-mapper](https://github.com/eggnogdb/eggnog-mapper) is a tool for fast functional annotation of novel sequences using orthology assignments. It uses precomputed orthologous groups and phylogenies from the eggNOG database to transfer functional information from the eggNOG orthologous groups to target sequences.
+
+##### Annotations Output
+
+The main output file (`*.emapper.annotations`) is a tab-separated file containing the functional annotations for each query sequence. The columns include:
+
+1. **query**: Query sequence identifier
+2. **seed_ortholog**: Best matching ortholog from eggNOG database
+3. **evalue**: E-value of the best hit
+4. **score**: Bit score of the best hit
+5. **eggNOG_OGs**: Orthologous groups (OGs) assigned to the query
+6. **max_annot_lvl**: Taxonomic level used for annotation
+7. **COG_category**: COG functional category
+8. **Description**: Functional description
+9. **Preferred_name**: Preferred gene name
+10. **GOs**: Gene Ontology terms
+11. **EC**: Enzyme Commission numbers
+12. **KEGG_ko**: KEGG orthology identifiers
+13. **KEGG_Pathway**: KEGG pathway identifiers
+14. **KEGG_Module**: KEGG module identifiers
+15. **KEGG_Reaction**: KEGG reaction identifiers
+16. **KEGG_rclass**: KEGG reaction class
+17. **BRITE**: BRITE hierarchy
+18. **KEGG_TC**: KEGG transporter classification
+19. **CAZy**: CAZy family
+20. **BiGG_Reaction**: BiGG reaction identifiers
+21. **PFAMs**: Pfam domain annotations
+
+<details markdown="1">
+<summary>Example eggNOG-mapper annotations output</summary>
+
+```
+#query	seed_ortholog	evalue	score	eggNOG_OGs	max_annot_lvl	COG_category	Description	Preferred_name	GOs	EC	KEGG_ko	KEGG_Pathway	KEGG_Module	KEGG_Reaction	KEGG_rclass	BRITE	KEGG_TC	CAZy	BiGG_Reaction	PFAMs
+ENSSASP00005000002.1	ENSSASP00005000002.1	0.0	14179.0	COG0498@1|root,COG0498@2|Bacteria,1MUWQ@1224|Proteobacteria,2VHR6@28216|Betaproteobacteria,2KUMA@206389|Rhodocyclales	1224|Proteobacteria	E	threonine synthase	-	-	-	-	-	-	-	-	-	-	-	-	-
+```
+
+</details>
+
+##### Seed Orthologs Output
+
+The seed orthologs file (`*.emapper.seed_orthologs`) contains the list of orthologs that were used as seeds for the functional annotation. This file is useful for understanding which reference sequences were used for annotation transfer.
+
+##### Hits Output
+
+The hits file (`*.emapper.hits`) contains the raw search results from the Diamond homology search against the eggNOG database. This includes all significant hits before filtering and orthology assignment.
 
 ### MultiQC
 

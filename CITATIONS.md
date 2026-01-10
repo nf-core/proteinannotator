@@ -16,7 +16,11 @@
 
 - [InterProScan](https://academic.oup.com/bioinformatics/article/17/9/847/206564)
 
-> Zdobnov, Evgeni M., and Rolf Apweiler. “InterProScan – an Integration Platform for the Signature-Recognition Methods in InterPro.” Bioinformatics 17, no. 9 (September 1, 2001): 847–48. https://doi.org/10.1093/bioinformatics/17.9.847.
+> Zdobnov, Evgeni M., and Rolf Apweiler. "InterProScan – an Integration Platform for the Signature-Recognition Methods in InterPro." Bioinformatics 17, no. 9 (September 1, 2001): 847–48. https://doi.org/10.1093/bioinformatics/17.9.847.
+
+- [eggNOG-mapper](https://doi.org/10.1093/molbev/msab293)
+
+> Cantalapiedra CP, Hernández-Plaza A, Letunic I, Bork P, Huerta-Cepas J. eggNOG-mapper v2: Functional Annotation, Orthology Assignments, and Domain Prediction at the Metagenomic Scale. Mol Biol Evol. 2021 Dec 9;38(12):5825-5829. doi: 10.1093/molbev/msab293. PubMed PMID: 34597405; PubMed Central PMCID: PMC8662630.
 
 - [MMseqs2](https://www.nature.com/articles/nbt.3988)
 

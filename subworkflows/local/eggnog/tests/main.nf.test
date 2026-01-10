@@ -19,7 +19,6 @@ nextflow_workflow {
         when {
             params {
                 pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/"
-                skip_eggnog = false
                 eggnog_data_dir = null
             }
             workflow {
@@ -52,7 +51,6 @@ nextflow_workflow {
             params {
                 pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/"
                 modules_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/"
-                skip_eggnog = false
             }
             workflow {
                 """
@@ -89,35 +87,6 @@ nextflow_workflow {
         }
     }
 
-    test("Test skip eggNOG-mapper") {
-
-        when {
-            params {
-                pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/"
-                skip_eggnog = true
-            }
-            workflow {
-                """
-                input[0] = Channel.fromList([
-                    [
-                        [ id:'test' ],
-                        file(params.pipelines_testdata_base_path + 'proteinfold/testdata/sequences/T1024.fasta', checkIfExists: true)
-                    ]
-                ])
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                { assert workflow.success},
-                { assert workflow.out.annotations.toList().size() == 0 },
-                { assert workflow.out.orthologs.toList().size() == 0 },
-                { assert workflow.out.hits.toList().size() == 0 }
-            )
-        }
-    }
-
     test("Test eggNOG-mapper with multiple sequences - stub") {
         tag "eggnog_multiple"
         tag "stub"
@@ -127,7 +96,6 @@ nextflow_workflow {
         when {
             params {
                 pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/"
-                skip_eggnog = false
                 eggnog_data_dir = null
             }
             workflow {

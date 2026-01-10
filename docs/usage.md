@@ -87,6 +87,45 @@ Running [InterProScan](https://interproscan-docs.readthedocs.io/) requires a pre
 
 For reproducibility and explicitness, `--interproscan_database_version` is a required parameter. InterProScan is quite resource-intensive and you can also choose to not run InterProScan with `--skip_interproscan`.
 
+### eggNOG-mapper
+
+[eggNOG-mapper](https://github.com/eggnogdb/eggnog-mapper) performs fast genome-wide functional annotation through orthology assignment. The pipeline supports automatic database download or using pre-downloaded databases:
+
+#### Automatic Database Download (Recommended for first run)
+
+By default, if no database paths are provided, the pipeline will automatically download the required eggNOG databases:
+
+```bash
+nextflow run nf-core/proteinannotator --input samplesheet.csv --outdir results -profile docker
+```
+
+Downloaded databases are saved to `results/eggnog_databases/eggnog_data/` for reuse in future runs.
+
+#### Using Pre-downloaded Databases (Recommended for subsequent runs)
+
+To avoid re-downloading databases, provide the path to previously downloaded databases:
+
+```bash
+nextflow run nf-core/proteinannotator \
+  --input samplesheet.csv \
+  --outdir results \
+  --eggnog_data_dir results/eggnog_databases/eggnog_data \
+  -profile docker
+```
+
+You can optionally specify individual database files:
+
+- `--eggnog_db`: Path to the eggNOG database file (\*.db)
+- `--eggnog_diamond_db`: Path to the Diamond protein database (\*.dmnd)
+
+#### Skipping eggNOG-mapper
+
+To skip eggNOG-mapper annotation entirely:
+
+```bash
+nextflow run nf-core/proteinannotator --input samplesheet.csv --outdir results --skip_eggnog -profile docker
+```
+
 ### Updating the pipeline
 
 When you run the above command, Nextflow automatically pulls the pipeline code from GitHub and stores it as a cached version. When running the pipeline after this, it will always use the cached version if available - even if the pipeline has been updated since. To make sure that you're running the latest version of the pipeline, make sure that you regularly update the cached version of the pipeline:

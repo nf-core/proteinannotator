@@ -37,14 +37,23 @@ workflow FUNCTIONAL_ANNOTATION {
     // SUBWORKFLOW: Run eggNOG-mapper
     //
 
-    EGGNOG(
-        ch_multifasta
-    )
-    ch_versions = ch_versions.mix(EGGNOG.out.versions)
+    ch_eggnog_annotations = Channel.empty()
+    ch_eggnog_orthologs = Channel.empty()
+    ch_eggnog_hits = Channel.empty()
+
+    if (!params.skip_eggnog) {
+        EGGNOG(
+            ch_multifasta
+        )
+        ch_eggnog_annotations = EGGNOG.out.annotations
+        ch_eggnog_orthologs = EGGNOG.out.orthologs
+        ch_eggnog_hits = EGGNOG.out.hits
+        ch_versions = ch_versions.mix(EGGNOG.out.versions)
+    }
 
     emit:
-    eggnog_annotations = EGGNOG.out.annotations // channel: [ val(meta), path(*.emapper.annotations) ]
-    eggnog_orthologs   = EGGNOG.out.orthologs   // channel: [ val(meta), path(*.emapper.seed_orthologs) ]
-    eggnog_hits        = EGGNOG.out.hits        // channel: [ val(meta), path(*.emapper.hits) ]
-    versions           = ch_versions            // channel: [ versions.yml ]
+    eggnog_annotations = ch_eggnog_annotations // channel: [ val(meta), path(*.emapper.annotations) ]
+    eggnog_orthologs   = ch_eggnog_orthologs   // channel: [ val(meta), path(*.emapper.seed_orthologs) ]
+    eggnog_hits        = ch_eggnog_hits        // channel: [ val(meta), path(*.emapper.hits) ]
+    versions           = ch_versions           // channel: [ versions.yml ]
 }

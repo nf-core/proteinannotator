@@ -9,6 +9,11 @@ Initial release of nf-core/proteinannotator, created with the [nf-core](https://
 
 ### `Added`
 
+- Add [eggNOG-mapper](https://github.com/eggnogdb/eggnog-mapper) module with automatic database download capability
+  - New `EGGNOG` subworkflow for functional annotation
+  - New `EGGNOG_DOWNLOAD_DB` local module for automatic database downloads
+  - Parameters: `--skip_eggnog`, `--eggnog_data_dir`, `--eggnog_db`, `--eggnog_diamond_db`
+  - Comprehensive test suite for database download and annotation workflows
 - [[PR #52](https://github.com/nf-core/proteinannotator/pull/52)] Add option to turn off InterProScan for testing
 - [[PR #51](https://github.com/nf-core/proteinannotator/pull/51)] Update to nf-core/tools v3.3.1
 - [[PR #47](https://github.com/nf-core/proteinannotator/pull/47)] Update metromap with more tools added from [May 2025 Hackathon](https://nf-co.re/events/2025/hackathon-boston)
