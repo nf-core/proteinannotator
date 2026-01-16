@@ -21,30 +21,28 @@
 
 ## Introduction
 
-**nf-core/proteinannotator** is a bioinformatics pipeline that runs statistics of input protein fasta files and identifies the function of proteins based on their sequence data, using state-of-the-art protein annotation tools such as [InterProScan](https://interproscan-docs.readthedocs.io/).
+**nf-core/proteinannotator** is a bioinformatics pipeline that runs statistics of input protein fasta files and identifies
+protein annotations such as conserved domains, functions and secondary structure features, based on their sequence data.
 
-<!-- TODO nf-core:
-   Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
-   major pipeline sections and the types of output it produces. You're giving an overview to someone new
-   to nf-core here, in 15-20 seconds. For an example, see https://github.com/nf-core/rnaseq/blob/master/README.md#introduction
--->
-
-<!-- TODO nf-core: Include a figure that guides the user through the major workflow steps. Many nf-core
-
-     workflows use the "tube map" design for that. See https://nf-co.re/docs/contributing/design_guidelines#examples for examples.   -->
-<!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->
-
-1. Run ([`seqkit stats`](https://bioinf.shenwei.me/seqkit/usage/#stats)) to summarize input protein fasta files
-2. Functional Annotation:
-   1. ([`InterProScan`](https://interproscan-docs.readthedocs.io/en/v5/)) a software tool used to analyze protein sequences by scanning them against the signatures of protein families, domains, and sites in the [InterPro](https://www.ebi.ac.uk/interpro/) database, helping to identify their functional characteristics.
-3. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
-
-<h1>
+<p>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/images/proteinannotator_metromap_dark.png">
     <img alt="Protein annotator metromap. Protein fasta files are summarized with `seqkit stats`, then functionally annotated with InterProScan, DIAMOND-blastp, UniFire, and Kmerseek" src="docs/images/proteinannotator_metromap_light.png">
   </picture>
-</h1>
+</p>
+
+### Check quality and pre-process
+
+Generate input amino acid sequence statistics with ([`SeqFu`](https://github.com/telatin/seqfu2/)) and pre-process them (i.e., gap removal, convert to upper case, validate, filter by length, replace special characters such as `/`, and remove duplicate sequences) with ([`SeqKit`](https://github.com/shenwei356/seqkit/))
+
+### Annotate sequences
+
+1. Conserved domain annotation with ([`hmmer`](https://github.com/EddyRivasLab/hmmer/)) against databases
+   such as [Pfam](https://ftp.ebi.ac.uk/pub/databases/Pfam/) and [FunFam](https://download.cathdb.info/cath/releases/all-releases/)
+2. Functional annotation:
+   - ([`InterProScan`](https://interproscan-docs.readthedocs.io/en/v5/)) a software tool used to analyze protein sequences by scanning them against the signatures of protein families, domains, and sites in the [InterPro](https://www.ebi.ac.uk/interpro/) database, helping to identify their functional characteristics.
+3. Predict secondary structure compositional features such as α-helices, β-strands and coils with ([`s4pred`](https://github.com/psipred/s4pred))
+4. Present QC stats for input sequences before and after initial pre-processing with ([`MultiQC`](http://multiqc.info/))
 
 ## Usage
 
@@ -64,8 +62,6 @@ species2,species2_proteins.fasta
 Each row represents a fasta file of proteins from a single species.
 
 Now, you can run the pipeline using:
-
-<!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
 
 ```bash
 nextflow run nf-core/proteinannotator \
@@ -91,7 +87,8 @@ nf-core/proteinannotator was originally written by Olga Botvinnik.
 
 We thank the following people for their extensive assistance in the development of this pipeline:
 
-<!-- TODO nf-core: If applicable, make list of people who have also contributed -->
+- [Evangelos Karatzas](https://github.com/vagkaratzas)
+- [Martin Beracochea](https://github.com/mberacochea)
 
 ## Contributions and Support
 
@@ -103,8 +100,6 @@ For further information or help, don't hesitate to get in touch on the [Slack `#
 
 <!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi and badge at the top of this file. -->
 <!-- If you use nf-core/proteinannotator for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
-
-<!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
 
 An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
 
