@@ -41,8 +41,8 @@
 
 <h1>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/images/proteinannotator-metromap.dark.excalidraw.png">
-    <img alt="Protein annotator metromap. Protein fasta files are summarized with `seqkit stats`, then functionally annotated with InterProScan, DIAMOND-blastp, UniFire, and Kmerseek" src="docs/images/proteinannotator-metromap.light.excalidraw.png">
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/proteinannotator_metromap_dark.png">
+    <img alt="Protein annotator metromap. Protein fasta files are summarized with `seqkit stats`, then functionally annotated with InterProScan, DIAMOND-blastp, UniFire, and Kmerseek" src="docs/images/proteinannotator_metromap_light.png">
   </picture>
 </h1>
 
