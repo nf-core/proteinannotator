@@ -12,9 +12,6 @@ include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_proteinannotator_pipeline'
-// TODO remove if unused
-// include { MMSEQS_SEARCH } from '../modules/nf-core/mmseqs/search/main'
-// include { MTMALIGN_ALIGN } from '../modules/nf-core/mtmalign/align/main'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -130,7 +127,7 @@ workflow PROTEINANNOTATOR {
         )
     )
 
-    ch_multiqc_files = ch_multiqc_files.mix(FAA_SEQFU_SEQKIT.out.multiqc_files.collect{it[1]}.ifEmpty([]))
+    ch_multiqc_files = ch_multiqc_files.mix(FAA_SEQFU_SEQKIT.out.multiqc_files.collect{ f -> f[1] }.ifEmpty([]))
 
     MULTIQC(
         ch_multiqc_files.collect(),
