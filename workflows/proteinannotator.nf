@@ -127,7 +127,7 @@ workflow PROTEINANNOTATOR {
         )
     )
 
-    ch_multiqc_files = ch_multiqc_files.mix(FAA_SEQFU_SEQKIT.out.multiqc_files.collect{it[1]}.ifEmpty([]))
+    ch_multiqc_files = ch_multiqc_files.mix(FAA_SEQFU_SEQKIT.out.multiqc_files.collect{ f -> f[1] }.ifEmpty([]))
 
     MULTIQC(
         ch_multiqc_files.collect(),

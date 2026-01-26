@@ -13,7 +13,7 @@ workflow INTERPROSCAN {
 
     main:
 
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     if (params.interproscan_tar_gz) {
         interproscan_compressed = [

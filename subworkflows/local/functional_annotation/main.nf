@@ -8,7 +8,7 @@ workflow FUNCTIONAL_ANNOTATION {
 
     main:
 
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     // TODO nf-core: substitute modules here for the modules of your subworkflow
 
