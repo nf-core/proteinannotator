@@ -22,12 +22,12 @@ workflow FUNCTIONAL_ANNOTATION {
             ch_interproscan_db = INTERPROSCAN_DATABASE.out.db
         }
 
-        INTERPROSCAN( ch_fasta, [] ) // TESTING, then switch [] to ch_interproscan_db
+        INTERPROSCAN( ch_fasta, [] ) // TESTING, switch [] to ch_interproscan_db
         ch_versions         = ch_versions.mix(INTERPROSCAN.out.versions.first())
         ch_interproscan_tsv = ch_interproscan_tsv.mix(INTERPROSCAN.out.tsv)
     }
 
     emit:
     interproscan_tsv = ch_interproscan_tsv
-    versions         = ch_versions // channel: [ versions.yml ]
+    versions         = ch_versions         // channel: [ versions.yml ]
 }
