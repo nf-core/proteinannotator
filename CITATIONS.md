@@ -24,19 +24,11 @@
 
 - [InterProScan](https://academic.oup.com/bioinformatics/article/17/9/847/206564)
 
-> Zdobnov, Evgeni M., and Rolf Apweiler. “InterProScan – an Integration Platform for the Signature-Recognition Methods in InterPro.” Bioinformatics 17, no. 9 (September 1, 2001): 847–48. https://doi.org/10.1093/bioinformatics/17.9.847.
+> Jones P, Binns D, Chang HY, Fraser M, Li W, McAnulla C, McWilliam H, Maslen J, Mitchell A, Nuka G, Pesseat S, Quinn, A. F, Sangrador-Vegas A, Scheremetjew M, Yong S-Y, Lopez R, Hunter S. InterProScan 5: genome-scale protein function classification. Bioinformatics. 2014 May 1;30(9):1236-40. doi: 10.1093/bioinformatics/btu031. PubMed PMID: 24451626; PubMed Central PMCID: PMC3998142.
 
 - [s4pred](https://pubmed.ncbi.nlm.nih.gov/34213528/)
 
 > Moffat L, Jones DT. Increasing the accuracy of single sequence prediction methods using a deep semi-supervised learning framework. Bioinformatics. 2021 Nov 1;37(21):3744-51. doi: 10.1093/bioinformatics/btab491. PubMed PMID: 34213528; PubMed Central PMCID: PMC8570780.
-
-<!-- - [MMseqs2](https://www.nature.com/articles/nbt.3988)
-
-> Zdobnov, Evgeni M., and Rolf Apweiler. “InterProScan – an Integration Platform for the Signature-Recognition Methods in InterPro.” Bioinformatics 17, no. 9 (September 1, 2001): 847–48. https://doi.org/10.1093/bioinformatics/17.9.847.
-
-- [mTM-align](https://academic.oup.com/bioinformatics/article/34/10/1719/4769500)
-
-> Dong, Runze, Zhenling Peng, Yang Zhang, and Jianyi Yang. “mTM-Align: An Algorithm for Fast and Accurate Multiple Protein Structure Alignment.” Bioinformatics 34, no. 10 (May 15, 2018): 1719–25. https://doi.org/10.1093/bioinformatics/btx828. -->
 
 - [MultiQC](https://pubmed.ncbi.nlm.nih.gov/27312411/)
 

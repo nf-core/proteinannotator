@@ -1,3 +1,0 @@
-3.40.50.40	-
-3.40.50.1170	L-asparaginase, N-terminal domain
-4.10.75.10	Elafin-like

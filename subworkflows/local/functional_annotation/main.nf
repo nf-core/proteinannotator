@@ -1,6 +1,4 @@
-// Import Annotator Subworfklows
-include { INTERPROSCAN } from '../interproscan/main'
-
+include { INTERPROSCAN } from '../../../modules/nf-core/interproscan/main'
 
 workflow FUNCTIONAL_ANNOTATION {
     take:
@@ -10,7 +8,7 @@ workflow FUNCTIONAL_ANNOTATION {
 
     ch_versions = channel.empty()
 
-    // TODO nf-core: substitute modules here for the modules of your subworkflow
+    // TODO UPDATE according to funcscan below
 
     // Create a multifasta, with one fasta per entry, add the sequence ID to the meta id
     ch_fasta

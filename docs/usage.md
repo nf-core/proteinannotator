@@ -80,14 +80,48 @@ You can also generate such `YAML`/`JSON` files via [nf-core/launch](https://nf-c
 
 ### InterProScan
 
-Running [InterProScan](https://interproscan-docs.readthedocs.io/) requires a pre-prepared input database. You can provided this as oe of two options:
+[InterProScan](https://github.com/ebi-pf-team/interproscan) is used to provide more information about the proteins annotated on the contigs. By default, turning on this subworkflow without `--skip_interproscan` will download and unzip the [InterPro database](http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/) version 5.72-103.0. The database will then be saved in the output directory `<output_directory>/databases/interproscan/`.
 
-- `--interproscan_tar_gz`: This is the raw `*.tar.gz` file exactly from InterProScan https://www.ebi.ac.uk/interpro/download/InterProScan/, OR
-- `--interproscan_database`: The decompressed version of the above folder, pointing to the `/data` subfolder
+:::note
+The huge database download (5.5GB) can take up to 4 hours depending on the bandwidth.
+:::
 
-For reproducibility and explicitness, `--interproscan_database_version` is a required parameter. InterProScan is quite resource-intensive and you can also choose to not run InterProScan with `--skip_interproscan`.
+A local version of the database can be supplied to the pipeline by passing the InterProScan database directory to `--interproscan_db <path/to/downloaded-untarred-interproscan_db-dir/>`. The directory can be created by running (e.g. for database version 5.72-103.0):
 
-### Updating the pipeline
+```
+curl -L https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/interproscan-5.72-103.0-64-bit.tar.gz -o interproscan_db/interproscan-5.72-103.0-64-bit.tar.gz
+tar -xzf interproscan_db/interproscan-5.72-103.0-64-bit.tar.gz -C interproscan_db/
+
+```
+
+The contents of the database directory should include the directory `data` in the top level with a couple of subdirectories:
+
+```
+interproscan_db/
+    └── data/
+    ├── antifam
+    ├── cdd
+    ├── funfam
+    ├── gene3d
+    ├── hamap
+    ├── ncbifam
+    ├── panther
+    | └── [18.0]
+    ├── pfam
+    | └── [36.0]
+    ├── phobius
+    ├── pirsf
+    ├── pirsr
+    ├── prints
+    ├── prosite
+    | └── [2023_05]
+    ├── sfld
+    ├── smart
+    ├── superfamily
+    └── tmhmm
+```
+
+## Updating the pipeline
 
 When you run the above command, Nextflow automatically pulls the pipeline code from GitHub and stores it as a cached version. When running the pipeline after this, it will always use the cached version if available - even if the pipeline has been updated since. To make sure that you're running the latest version of the pipeline, make sure that you regularly update the cached version of the pipeline:
 
@@ -95,7 +129,7 @@ When you run the above command, Nextflow automatically pulls the pipeline code f
 nextflow pull nf-core/proteinannotator
 ```
 
-### Reproducibility
+## Reproducibility
 
 It is a good idea to specify the pipeline version when running the pipeline on your data. This ensures that a specific version of the pipeline code and software are used when you run your pipeline. If you keep using the same tag, you'll be running the same version of the pipeline, even if there have been changes to the code since.
 
