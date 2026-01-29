@@ -21,19 +21,22 @@ include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_prot
 
 workflow PROTEINANNOTATOR {
     take:
-    ch_samplesheet      // channel: samplesheet read in from --input
-    skip_preprocessing  // boolean
-    skip_pfam           // boolean
-    pfam_db             // string, path to the pfam HMM database, if already exists
-    pfam_latest_link    // string, path to the latest pfam HMM database, to download
-    skip_funfam         // boolean
-    funfam_db           // string, path to the pfam HMM database, if already exists
-    funfam_latest_link  // string, path to the latest pfam HMM database, to download
-    skip_s4pred         // boolean
+    ch_samplesheet             // channel: samplesheet read in from --input
+    skip_preprocessing         // boolean
+    skip_pfam                  // boolean
+    pfam_db                    // string, path to the pfam HMM database, if already exists
+    pfam_latest_link           // string, path to the latest pfam HMM database, to download
+    skip_funfam                // boolean
+    funfam_db                  // string, path to the pfam HMM database, if already exists
+    funfam_latest_link         // string, path to the latest pfam HMM database, to download
+    skip_interproscan          // boolean
+    interproscan_db_url        // string, url to download db
+    interproscan_db            // string, existing db
+    skip_s4pred                // boolean
 
     main:
 
-    ch_versions = channel.empty()
+    ch_versions      = channel.empty()
     ch_multiqc_files = channel.empty()
 
     FAA_SEQFU_SEQKIT( ch_samplesheet, skip_preprocessing )
@@ -47,7 +50,7 @@ workflow PROTEINANNOTATOR {
             [ meta, updated_fasta ]
         }
 
-    DOMAIN_ANNOTATION(
+    DOMAIN_ANNOTATION (
         ch_samplesheet_updated,
         skip_pfam,
         pfam_db,
@@ -58,7 +61,12 @@ workflow PROTEINANNOTATOR {
     )
     ch_versions = ch_versions.mix( DOMAIN_ANNOTATION.out.versions )
 
-    FUNCTIONAL_ANNOTATION( ch_samplesheet_updated )
+    FUNCTIONAL_ANNOTATION (
+        ch_samplesheet_updated,
+        skip_interproscan,
+        interproscan_db_url,
+        interproscan_db
+    )
     ch_versions = ch_versions.mix( FUNCTIONAL_ANNOTATION.out.versions )
 
     if (!skip_s4pred) {
