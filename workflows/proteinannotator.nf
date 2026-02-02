@@ -21,18 +21,18 @@ include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_prot
 
 workflow PROTEINANNOTATOR {
     take:
-    ch_samplesheet             // channel: samplesheet read in from --input
-    skip_preprocessing         // boolean
-    skip_pfam                  // boolean
-    pfam_db                    // string, path to the pfam HMM database, if already exists
-    pfam_latest_link           // string, path to the latest pfam HMM database, to download
-    skip_funfam                // boolean
-    funfam_db                  // string, path to the pfam HMM database, if already exists
-    funfam_latest_link         // string, path to the latest pfam HMM database, to download
-    skip_interproscan          // boolean
-    interproscan_db_url        // string, url to download db
-    interproscan_db            // string, existing db
-    skip_s4pred                // boolean
+    ch_samplesheet      // channel: samplesheet read in from --input
+    skip_preprocessing  // boolean
+    skip_pfam           // boolean
+    pfam_db             // string, path to the pfam HMM database, if already exists
+    pfam_latest_link    // string, path to the latest pfam HMM database, to download
+    skip_funfam         // boolean
+    funfam_db           // string, path to the pfam HMM database, if already exists
+    funfam_latest_link  // string, path to the latest pfam HMM database, to download
+    skip_interproscan   // boolean
+    interproscan_db_url // string, url to download db
+    interproscan_db     // string, existing db
+    skip_s4pred         // boolean
 
     main:
 
