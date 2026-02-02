@@ -17,7 +17,7 @@
                     },
                     "interproscan": {
                         "branch": "master",
-                        "git_sha": "41dfa3f7c0ffabb96a6a813fe321c6d1cc5b6e46",
+                        "git_sha": "50ab4e0a9616556589152fef559b50a6e86c326b",
                         "installed_by": ["modules"]
                     },
                     "multiqc": {
