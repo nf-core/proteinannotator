@@ -9,6 +9,7 @@ Initial release of nf-core/proteinannotator, created with the [nf-core](https://
 
 ### `Added`
 
+- [#67](https://github.com/nf-core/proteinannotator/pull/67) - Swapped to the updated, non-buggy, nf-core version of `INTERPROSCAN`. (by @vagkaratzas)
 - [#65](https://github.com/nf-core/proteinannotator/pull/65) - Converted the pipeline schematic to nf-core metromap. (by @vagkaratzas)
 - [#62](https://github.com/nf-core/proteinannotator/pull/62) - Added the option to download and use the latest FunFam HMM library (or use path to an existing one) for domain annotation. (by @vagkaratzas)
 - [#61](https://github.com/nf-core/proteinannotator/pull/61) - Added nf-core modules `ARIA2` and `HMMER_HMMSEARCH` to download latest Pfam HMM library (or use path to existing one) and match domains to input sequences. (by @vagkaratzas)
