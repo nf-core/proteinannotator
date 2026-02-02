@@ -10,5 +10,13 @@ multiqc/multiqc_report.html
 pipeline_info/*.{html,json,txt,yml}
 domain_annotation/pfam/T1024.domtbl.gz
 domain_annotation/pfam/T1026.domtbl.gz
+domain_annotation/pfam/l_arginase.domtbl.gz
 domain_annotation/funfam/T1024.domtbl.gz
 domain_annotation/funfam/T1026.domtbl.gz
+domain_annotation/funfam/l_arginase.domtbl.gz
+functional_annotation/interproscan/T1024.gff3
+functional_annotation/interproscan/T1024.tsv
+functional_annotation/interproscan/T1026.gff3
+functional_annotation/interproscan/T1026.tsv
+functional_annotation/interproscan/l_arginase.gff3
+functional_annotation/interproscan/l_arginase.tsv
