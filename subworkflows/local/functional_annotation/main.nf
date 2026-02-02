@@ -1,5 +1,6 @@
 include { INTERPROSCAN_DATABASE } from '../../../modules/local/interproscan/database/main'
 include { INTERPROSCAN          } from '../../../modules/nf-core/interproscan/main'
+// include { INTERPROSCAN          } from '../../../modules/local/interproscan/interproscan/main'
 
 workflow FUNCTIONAL_ANNOTATION {
     take:
@@ -23,6 +24,9 @@ workflow FUNCTIONAL_ANNOTATION {
         }
 
         INTERPROSCAN( ch_fasta, [] ) // TESTING, switch [] to ch_interproscan_db
+        // ch_interproscan_db = ch_interproscan_db.concat(channel.of("test_version"))
+        // ch_interproscan_db.view()
+        // INTERPROSCAN( ch_fasta, [[], ""] ) // TESTING, switch [] to ch_interproscan_db
         ch_versions         = ch_versions.mix(INTERPROSCAN.out.versions.first())
         ch_interproscan_tsv = ch_interproscan_tsv.mix(INTERPROSCAN.out.tsv)
     }
