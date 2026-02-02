@@ -3,10 +3,10 @@ include { INTERPROSCAN          } from '../../../modules/nf-core/interproscan/ma
 
 workflow FUNCTIONAL_ANNOTATION {
     take:
-    ch_fasta                   // channel: [ val(meta), [ fasta ] ]
-    skip_interproscan          // boolean
-    interproscan_db_url        // string, url to download db
-    interproscan_db            // string, existing db
+    ch_fasta            // channel: [ val(meta), [ fasta ] ]
+    skip_interproscan   // boolean
+    interproscan_db_url // string, url to download db
+    interproscan_db     // string, existing db
 
     main:
     ch_interproscan_tsv = channel.empty()
