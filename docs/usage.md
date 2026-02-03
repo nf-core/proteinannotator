@@ -94,7 +94,7 @@ tar -xzf interproscan_db/interproscan-5.72-103.0-64-bit.tar.gz -C interproscan_d
 
 ```
 
-The contents of the database directory should include the directory `data` in the top level with a couple of subdirectories:
+The contents of the database directory should include the directory `data` in the top level with a number of subdirectories:
 
 ```
 interproscan_db/
