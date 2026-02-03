@@ -119,7 +119,7 @@ Each of the `domain_annotation/` subfolders (e.g., `pfam`, `funfam`) contain a `
 
 [InterProScan](https://interproscan-docs.readthedocs.io/en/v5/#) is a protein annotation tool that searches [InterPro](http://www.ebi.ac.uk/interpro/), a database which integrates predictive information about protein function from a number of member resources, giving an overview of the families that a protein belongs to and the domains and sites it contains.
 For `nf-core/proteinannotator`, the default database applications that are used to functionally annotate sequences include
-Hamap, PANTHER, PIRSF, TIGRFAM and sfld. The main `nextflow.config` contains a [url]("https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/interproscan-5.72-103.0-64-bit.tar.gz") parameter (`--interproscan_db_url`) for the full version of the InterProScan database, whereas the test profiles override that with a minimal test version of the database. If, instead, a local database is provided via the `--interproscan_db` parameter, then the download is skipped.
+Hamap, PANTHER, PIRSF, TIGRFAM and sfld. The main `nextflow.config` contains a [url]("https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/interproscan-5.72-103.0-64-bit.tar.gz") parameter (`--interproscan_db_url`) for the full version of the InterProScan database. If, instead, a local database is provided via the `--interproscan_db` parameter, then the download is skipped.
 
 See also [InterProScan output documentation](https://interproscan-docs.readthedocs.io/en/v5/), where most of these examples are taken from.
 
