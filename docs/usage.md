@@ -98,7 +98,7 @@ The contents of the database directory should include the directory `data` in th
 
 ```
 interproscan_db/
-    └── data/
+  └── data/
     ├── antifam
     ├── cdd
     ├── funfam
