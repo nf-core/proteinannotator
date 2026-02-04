@@ -3,11 +3,9 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## v1.0.0 - [2026/02/04]
+## v1.0.0 - Yellow Saiga - [2026/02/04]
 
 Initial release of nf-core/proteinannotator, created with the [nf-core](https://nf-co.re/) template.
-
-### `Added`
 
 - [#68](https://github.com/nf-core/proteinannotator/pull/68) - Using the `ARIA2` and `UNTAR` nf-core modules to download and decompress the InterProScan database. (by @vagkaratzas)
 - [#67](https://github.com/nf-core/proteinannotator/pull/67) - Swapped to the updated, non-buggy, nf-core version of `INTERPROSCAN`. (by @vagkaratzas)

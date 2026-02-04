@@ -10,8 +10,8 @@ The directories listed below will be created in the results directory after the 
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
-- [Quality check and preprocessing](#quality-check-and-preprocessing)
-  - [SeqFu](#seqfu) for input amino acid sequences quality check (QC)
+- [Quality control and preprocessing](#quality-control-and-preprocessing)
+  - [SeqFu](#seqfu) for input amino acid sequences quality control (QC)
   - [SeqKit](#seqkit) for preprocessing input amino acid sequences (i.e., gap removal, convert to upper case, validate, filter by length, replace special characters such as `/`, and remove duplicate sequences)
 
 - [Database download](#database-download) Optionally download selected databases for annotation.
@@ -23,12 +23,12 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 - [Functional annotation](#functional-annotation) Annotate proteins with functional domains
   - [InterProScan](#Interproscan) - Search the InterProScan database for functional domains
 
-- [s4pred](#s4pred) - Predict secondary structures of sequences, producing per amino acid probabilities of being an α-helix, a β-strand or a coil.
+- [s4pred](#s4pred) - Predict secondary structures of sequences, producing amino acid level probabilities of forming an α-helix, a β-strand or a coil.
 
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
 
-### Quality check and preprocessing
+### Quality control and preprocessing
 
 #### SeqFu
 
@@ -127,7 +127,7 @@ See also [InterProScan output documentation](https://interproscan-docs.readthedo
 
 ##### Generic Feature Format Version 3 (GFF3) Output
 
-The GFF3 format is a flat tab-delimited file, which is much richer then the TSV output format. It allows you to trace back from matches to predicted proteins and to nucleic acid sequences. It also contains a FASTA format representation of the predicted protein sequences and their matches. You will find a documentation of all the columns and attributes used on http://www.sequenceontology.org/gff3.shtml.
+The GFF3 format is a flat tab-delimited file, which is much richer then the TSV output. It allows you to trace back from matches to predicted proteins and to nucleic acid sequences. It also contains a FASTA format representation of the predicted protein sequences and their matches. You will find a documentation of all the columns and attributes used on http://www.sequenceontology.org/gff3.shtml.
 
 <details markdown="1">
 <summary>Example InterProScan GFF output</summary>
