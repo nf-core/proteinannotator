@@ -9,6 +9,7 @@ Initial release of nf-core/proteinannotator, created with the [nf-core](https://
 
 ### `Added`
 
+- [#68](https://github.com/nf-core/proteinannotator/pull/68) - Using the `ARIA2` and `UNTAR` nf-core modules to download and decompress the InterProScan database. (by @vagkaratzas)
 - [#67](https://github.com/nf-core/proteinannotator/pull/67) - Swapped to the updated, non-buggy, nf-core version of `INTERPROSCAN`. (by @vagkaratzas)
 - [#65](https://github.com/nf-core/proteinannotator/pull/65) - Converted the pipeline schematic to nf-core metromap. (by @vagkaratzas)
 - [#62](https://github.com/nf-core/proteinannotator/pull/62) - Added the option to download and use the latest FunFam HMM library (or use path to an existing one) for domain annotation. (by @vagkaratzas)

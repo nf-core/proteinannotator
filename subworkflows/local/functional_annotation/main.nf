@@ -1,5 +1,6 @@
-include { INTERPROSCAN_DATABASE } from '../../../modules/local/interproscan/database/main'
-include { INTERPROSCAN          } from '../../../modules/nf-core/interproscan/main'
+include { ARIA2        } from '../../../modules/nf-core/aria2/main'
+include { UNTAR        } from '../../../modules/nf-core/untar/main'
+include { INTERPROSCAN } from '../../../modules/nf-core/interproscan/main'
 
 workflow FUNCTIONAL_ANNOTATION {
     take:
@@ -17,9 +18,11 @@ workflow FUNCTIONAL_ANNOTATION {
             ch_interproscan_db = channel.fromPath(interproscan_db).first()
         }
         else {
-            INTERPROSCAN_DATABASE( interproscan_db_url )
-            ch_versions        = ch_versions.mix(INTERPROSCAN_DATABASE.out.versions)
-            ch_interproscan_db = INTERPROSCAN_DATABASE.out.db
+            ARIA2( [ [ id:'interproscan_db' ], interproscan_db_url ] )
+            ch_versions = ch_versions.mix(ARIA2.out.versions.first())
+
+            UNTAR( ARIA2.out.downloaded_file )
+            ch_interproscan_db = UNTAR.out.untar.map{ f -> f[1] }
         }
 
         INTERPROSCAN( ch_fasta, ch_interproscan_db )

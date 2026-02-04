@@ -14,12 +14,14 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
   - [SeqFu](#seqfu) for input amino acid sequences quality check (QC)
   - [SeqKit](#seqkit) for preprocessing input amino acid sequences (i.e., gap removal, convert to upper case, validate, filter by length, replace special characters such as `/`, and remove duplicate sequences)
 
+- [Database download](#database-download) Optionally download selected databases for annotation.
+  - [aria2](#aria2) - To optionally download the Pfam, FunFam, and/or InterProScan databases through the pipeline.
+
 - [Domain annotation](#domain-annotation) Annotate proteins with domains from established repositories.
-  - [aria2](#aria2) - To optionally download the latest Pfam and/or FunFam databases through the pipeline.
   - [hmmer](#hmmer) - To optionally match the input sequence to known Pfam and/or FunFam domains through `hmmer/hmmsearch`
 
 - [Functional annotation](#functional-annotation) Annotate proteins with functional domains
-  - [InterProScan](#Interproscan) - Search the InterPro database for functional domains
+  - [InterProScan](#Interproscan) - Search the InterProScan database for functional domains
 
 - [s4pred](#s4pred) - Predict secondary structures of sequences, producing per amino acid probabilities of being an α-helix, a β-strand or a coil.
 
@@ -62,7 +64,7 @@ The `seqkit` module is used for initial preprocessing (i.e., gap removal, conver
 
 [SeqKit](https://github.com/shenwei356/seqkit) is a cross-platform and ultrafast toolkit for FASTA/Q file manipulation.
 
-### Domain annotation
+### Database download
 
 #### aria2
 
@@ -70,14 +72,19 @@ The `seqkit` module is used for initial preprocessing (i.e., gap removal, conver
 <summary>Output files</summary>
 
 - `downloaded_dbs/`
+  - `interproscan_db/`: (optional) uncompressed archive data from the downloaded InterProScan database
+    - `*/`: (optional) one directory for each of the member databases of InterProScan
   - `Pfam-A*.hmm.gz`: (optional) The latest full, or a minimal test, Pfam-A HMM database that can be downloaded through the pipeline.
+  - `interproscan_test.tar.gz`: (optional) the downloaded InterProScan archive of member databases according to the optional user-provided url
   - `funfam-hmm3-v4_3_0*.lib.gz`: (optional) The latest (v4_3_0) full, or a minimal test, FunFam HMM database that can be downloaded through the pipeline.
 
 </details>
 
-If the `skip_*` flags (e.g., `skip_pfam`, `skip_funfam`) for each domain annotation database is set to `true`, or the `*_db` parameter paths (e.g., `pfam_db`, `funfam_db`) are set (i.e., not `null`), or the run is resumed after a successful database download, then the respective database will not be (re)downloaded. The full database links can be found in the main `nextflow.config` file, while minimal test versions can be found in the `test` and `test_full` profiles (i.e., `conf/test.config`, `conf/test_full.config`).
+If the `skip_*` flags (e.g., `skip_pfam`, `skip_funfam`, `skip_interproscan`) for each annotation database is set to `true`, or the `*_db` parameter paths (e.g., `pfam_db`, `funfam_db`, `interproscan_db`) are set (i.e., not `null`), or the run is resumed after a successful database download, then the respective database will not be (re)downloaded. The full database links can be found in the main `nextflow.config` file, while minimal test versions can be found in the `test` and `test_full` profiles (i.e., `conf/test.config`, `conf/test_full.config`).
 
 [aria2](https://github.com/aria2/aria2/) is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.
+
+### Domain annotation
 
 #### hmmer
 
@@ -103,10 +110,6 @@ Each of the `domain_annotation/` subfolders (e.g., `pfam`, `funfam`) contain a `
 <details markdown="1">
 <summary>Output files</summary>
 
-- `downloaded_dbs/`
-  - `data/`: (optional) uncompressed archive data from the downloaded InterProScan database
-    - `*/`: (optional) one directory for each of the member databases of InterProScan
-  - `interproscan_test.tar.gz`: (optional) the downloaded InterProScan archive of member databases according to the optional user-provided url
 - `functional_annotation/`
   - `interproscan/`
     - `<samplename>/`
@@ -117,9 +120,8 @@ Each of the `domain_annotation/` subfolders (e.g., `pfam`, `funfam`) contain a `
 
 </details>
 
-[InterProScan](https://interproscan-docs.readthedocs.io/en/v5/#) is a protein annotation tool that searches [InterPro](http://www.ebi.ac.uk/interpro/), a database which integrates predictive information about protein function from a number of member resources, giving an overview of the families that a protein belongs to and the domains and sites it contains.
-For `nf-core/proteinannotator`, the default database applications that are used to functionally annotate sequences include
-Hamap, PANTHER, PIRSF, TIGRFAM and sfld. The main `nextflow.config` contains a [url]("https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/interproscan-5.72-103.0-64-bit.tar.gz") parameter (`--interproscan_db_url`) for the full version of the InterProScan database. If, instead, a local database is provided via the `--interproscan_db` parameter, then the download is skipped.
+[InterProScan](https://interproscan-docs.readthedocs.io/en/v5/#) is a protein annotation tool that searches [InterPro](http://www.ebi.ac.uk/interpro/), a database which integrates predictive information about protein function from a number of member resources, giving an overview of the families that a protein belongs to and the domains and sites it contains. The default database applications that are used to functionally annotate sequences include
+Hamap, PANTHER, PIRSF, TIGRFAM and sfld, and are set through the `--interproscan_applications` parameter.
 
 See also [InterProScan output documentation](https://interproscan-docs.readthedocs.io/en/v5/), where most of these examples are taken from.
 
