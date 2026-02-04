@@ -19,7 +19,7 @@ workflow FUNCTIONAL_ANNOTATION {
         }
         else {
             ARIA2( [ [ id:'interproscan_db' ], interproscan_db_url ] )
-            ch_versions = ch_versions.mix(ARIA2.out.versions)
+            ch_versions = ch_versions.mix(ARIA2.out.versions.first())
 
             UNTAR( ARIA2.out.downloaded_file )
             ch_interproscan_db = UNTAR.out.untar.map{ f -> f[1] }
