@@ -2,7 +2,7 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://raw.githubusercontent.com/nf-core/proteinannotator/master/nextflow_schema.json",
     "title": "nf-core/proteinannotator pipeline parameters",
-    "description": "The best protein annotation pipeline in the world. Protein fasta -> ??? -> Annotations!",
+    "description": "Generation of sequence-level annotations for amino acid sequences",
     "type": "object",
     "$defs": {
         "input_output_options": {
