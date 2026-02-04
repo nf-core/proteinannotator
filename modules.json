@@ -15,6 +15,11 @@
                         "git_sha": "41dfa3f7c0ffabb96a6a813fe321c6d1cc5b6e46",
                         "installed_by": ["modules"]
                     },
+                    "interproscan": {
+                        "branch": "master",
+                        "git_sha": "50ab4e0a9616556589152fef559b50a6e86c326b",
+                        "installed_by": ["modules"]
+                    },
                     "multiqc": {
                         "branch": "master",
                         "git_sha": "80cba9452fb1e9bb79884976fa1ca0e671949aa2",
@@ -52,7 +57,7 @@
                     },
                     "untar": {
                         "branch": "master",
-                        "git_sha": "00ee87ebb541af0008596400ce6d5f66d79d5408",
+                        "git_sha": "447f7bc0fa41dfc2400c8cad4c0291880dc060cf",
                         "installed_by": ["modules"]
                     }
                 }

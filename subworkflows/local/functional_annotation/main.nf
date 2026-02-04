@@ -1,39 +1,35 @@
-// Import Annotator Subworfklows
-include { INTERPROSCAN } from '../interproscan/main'
-
+include { ARIA2        } from '../../../modules/nf-core/aria2/main'
+include { UNTAR        } from '../../../modules/nf-core/untar/main'
+include { INTERPROSCAN } from '../../../modules/nf-core/interproscan/main'
 
 workflow FUNCTIONAL_ANNOTATION {
     take:
-    ch_fasta // channel: [ val(meta), [ fasta ] ]
+    ch_fasta            // channel: [ val(meta), [ fasta ] ]
+    skip_interproscan   // boolean
+    interproscan_db_url // string, url to download db
+    interproscan_db     // string, existing db
 
     main:
+    ch_interproscan_tsv = channel.empty()
+    ch_versions         = channel.empty()
 
-    ch_versions = channel.empty()
-
-    // TODO nf-core: substitute modules here for the modules of your subworkflow
-
-    // Create a multifasta, with one fasta per entry, add the sequence ID to the meta id
-    ch_fasta
-        .map { meta, fasta ->
-            [
-                [id: "${meta.id}_${fasta.splitFasta(record: [id: true]).id[0].replaceAll(/\|/, '-')}"],
-                fasta.splitFasta(file: true),
-            ]
+    if (!skip_interproscan) {
+        if (interproscan_db != null) {
+            ch_interproscan_db = channel.fromPath(interproscan_db).first()
         }
-        .transpose()
-        .set { ch_multifasta }
+        else {
+            ARIA2( [ [ id:'interproscan_db' ], interproscan_db_url ] )
+            ch_versions = ch_versions.mix(ARIA2.out.versions.first())
 
-    //
-    // SUBWORKFLOW: Run InterProScan
-    //
+            UNTAR( ARIA2.out.downloaded_file )
+            ch_interproscan_db = UNTAR.out.untar.map{ f -> f[1] }
+        }
 
-    if (!params.skip_interproscan) {
-        INTERPROSCAN(
-            ch_multifasta
-        )
-        ch_versions = ch_versions.mix(INTERPROSCAN.out.versions.first())
+        INTERPROSCAN( ch_fasta, ch_interproscan_db )
+        ch_interproscan_tsv = ch_interproscan_tsv.mix(INTERPROSCAN.out.tsv)
     }
 
     emit:
-    versions = ch_versions // channel: [ versions.yml ]
+    interproscan_tsv = ch_interproscan_tsv
+    versions         = ch_versions         // channel: [ versions.yml ]
 }

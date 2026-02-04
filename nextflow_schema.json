@@ -43,33 +43,6 @@
                 }
             }
         },
-        "interproscan_options": {
-            "title": "InterProScan Options",
-            "type": "object",
-            "description": "Options for best-practices domain annotation tool from EBI, InterProScan",
-            "default": "",
-            "properties": {
-                "skip_interproscan": {
-                    "type": "boolean",
-                    "description": "Run InterProScan",
-                    "default": false
-                },
-                "interproscan_tar_gz": {
-                    "type": "string",
-                    "default": "https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.74-105.0/interproscan-5.74-105.0-64-bit.tar.gz",
-                    "description": "Tar.gz file exactly from InterProScan https://www.ebi.ac.uk/interpro/download/InterProScan/"
-                },
-                "interproscan_database": {
-                    "type": "string",
-                    "description": "Path to the InterProScan database, as downloaded from https://www.ebi.ac.uk/interpro/download/InterProScan/, uncompressed, and the `/data` subfolder",
-                    "help_text": "interproscan_database_version must be provided! Exiting."
-                },
-                "interproscan_database_version": {
-                    "type": "string",
-                    "description": "Version number of the InterProScan database, e.g. \"5.73-104.0\""
-                }
-            }
-        },
         "institutional_config_options": {
             "title": "Institutional config options",
             "type": "object",
@@ -310,6 +283,48 @@
                 }
             }
         },
+        "functional_annotation_options": {
+            "title": "Functional annotation parameters",
+            "type": "object",
+            "description": "Use these parameters to control the flow of the functional annotation execution.",
+            "default": "",
+            "properties": {
+                "skip_interproscan": {
+                    "type": "boolean",
+                    "description": "Run InterProScan",
+                    "default": false
+                },
+                "interproscan_db_url": {
+                    "type": "string",
+                    "default": "https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/interproscan-5.72-103.0-64-bit.tar.gz",
+                    "help_text": "This allows the user to change the InterProScan database version that the pipeline will download for you automatically. To instead use a pre-downloaded database, please supply its path to `--interproscan_db`. Changing this URL allows for the use of the latest database release. By default this is set to `http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/interproscan-5.72-103.0-64-bit.tar.gz`. ",
+                    "description": "Change the database version used for annotation.",
+                    "fa_icon": "fas fa-database"
+                },
+                "interproscan_db": {
+                    "type": "string",
+                    "help_text": "Use this to supply the path to a pre-downloaded InterProScan database. This can be any unzipped InterProScan version.\n\nFor more details on where to find different InterProScan databases see tool [documentation](https://interproscan-docs.readthedocs.io/en/latest/UserDocs.html#obtaining-a-copy-of-interproscan).\n",
+                    "description": "Path to pre-downloaded InterProScan database.",
+                    "fa_icon": "fas fa-database"
+                },
+                "interproscan_applications": {
+                    "type": "string",
+                    "default": "Hamap,PANTHER,PIRSF,TIGRFAM,sfld",
+                    "pattern": "^\\w+(,\\w+)*",
+                    "help_text": "A comma-separated string specifying the database(s) to be used to annotate the coding regions annotated during the contig annotation workflow of the pipeline. By default these include `Hamap,PANTHER,PIRSF,TIGRFAM,sfld`.\n\nFor more information about all possible databases see the tool [documentation](https://interproscan-docs.readthedocs.io/en/v5/HowToRun.html).\n\n> Modifies tool parameter(s):\n> - InterProScan: `--applications`",
+                    "description": "Assigns the database(s) to be used to annotate the coding regions.",
+                    "fa_icon": "fas fa-database"
+                },
+                "interproscan_enableprecalc": {
+                    "type": "boolean",
+                    "help_text": "This increases the speed of functional annotation with InterProScan by pre-calculating matches found in the UniProtKB, thereby identifying unique matches in the query sequences for faster annotation. By default this is turned off.\n\nFor more information about this flag see the tool [documentation](https://interproscan-docs.readthedocs.io/en/latest/HowToRun.html).\n\n> Modifies tool parameter(s):\n> - InterProScan: `---diasable-precalc`",
+                    "description": "Pre-calculates residue mutual matches.",
+                    "fa_icon": "fas fa-clock"
+                }
+            },
+            "help_text": "This subworkflow adds additional protein annotations to all input sequences. Currently, only annotation with InterProScan is integrated in the subworkflow.",
+            "fa_icon": "fas fa-file-signature"
+        },
         "prediction_params": {
             "title": "Prediction parameters",
             "type": "object",
@@ -336,9 +351,6 @@
             "$ref": "#/$defs/input_output_options"
         },
         {
-            "$ref": "#/$defs/interproscan_options"
-        },
-        {
             "$ref": "#/$defs/institutional_config_options"
         },
         {
@@ -349,6 +361,10 @@
         },
         {
             "$ref": "#/$defs/domain_annotation_params"
+        },
+
+        {
+            "$ref": "#/$defs/functional_annotation_options"
         },
         {
             "$ref": "#/$defs/prediction_params"
