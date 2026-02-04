@@ -37,7 +37,7 @@
                     },
                     "seqkit/replace": {
                         "branch": "master",
-                        "git_sha": "41dfa3f7c0ffabb96a6a813fe321c6d1cc5b6e46",
+                        "git_sha": "2eccc519c7d25e24c8ef2a5a94062630b8383daf",
                         "installed_by": ["faa_seqfu_seqkit"]
                     },
                     "seqkit/rmdup": {
@@ -52,7 +52,7 @@
                     },
                     "seqkit/stats": {
                         "branch": "master",
-                        "git_sha": "41dfa3f7c0ffabb96a6a813fe321c6d1cc5b6e46",
+                        "git_sha": "28935b89b7e1f19e835f8c6e4c8322d4b505dded",
                         "installed_by": ["modules"]
                     },
                     "untar": {
@@ -66,7 +66,7 @@
                 "nf-core": {
                     "faa_seqfu_seqkit": {
                         "branch": "master",
-                        "git_sha": "911a3c360b0ebdae4e36beaf734e6905174d3507",
+                        "git_sha": "2eccc519c7d25e24c8ef2a5a94062630b8383daf",
                         "installed_by": ["subworkflows"]
                     },
                     "utils_nextflow_pipeline": {
