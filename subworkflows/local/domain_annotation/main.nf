@@ -30,11 +30,11 @@ workflow DOMAIN_ANNOTATION {
             ch_pfam_db = channel.of([ [ id: 'pfam' ], pfam_db ])
         }
 
-        ch_input_for_hmmsearch = ch_fasta
+        ch_input_for_hmmsearch_pfam = ch_fasta
             .combine(ch_pfam_db)
             .map{ meta, seqs, _meta2, models -> [meta, models, seqs, false, false, true] }
 
-        HMMSEARCH_PFAM( ch_input_for_hmmsearch )
+        HMMSEARCH_PFAM( ch_input_for_hmmsearch_pfam )
         ch_versions = ch_versions.mix( HMMSEARCH_PFAM.out.versions.first() )
         ch_pfam_domains = HMMSEARCH_PFAM.out.domain_summary
     }
@@ -50,11 +50,11 @@ workflow DOMAIN_ANNOTATION {
             ch_funfam_db = channel.of([ [ id: 'funfam' ], funfam_db ])
         }
 
-        ch_input_for_hmmsearch = ch_fasta
+        ch_input_for_hmmsearch_funfam = ch_fasta
             .combine(ch_funfam_db)
             .map{ meta, seqs, _meta2, models -> [meta, models, seqs, false, false, true] }
 
-        HMMSEARCH_FUNFAM( ch_input_for_hmmsearch )
+        HMMSEARCH_FUNFAM( ch_input_for_hmmsearch_funfam )
         ch_versions = ch_versions.mix( HMMSEARCH_FUNFAM.out.versions.first() )
         ch_funfam_domains = HMMSEARCH_FUNFAM.out.domain_summary
     }

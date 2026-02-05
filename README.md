@@ -21,13 +21,12 @@
 
 ## Introduction
 
-**nf-core/proteinannotator** is a bioinformatics pipeline that runs statistics of input protein fasta files and identifies
-protein annotations such as conserved domains, functions and secondary structure features, based on their sequence data.
+**nf-core/proteinannotator** is a bioinformatics pipeline that computes statistics on input protein FASTA files and identifies protein annotations such as conserved domains, predicted functions, and secondary structure features based on sequence data.
 
 <p>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/images/proteinannotator_metromap_dark.png">
-    <img alt="Protein annotator metromap. Protein fasta files are summarized with `seqkit stats`, then functionally annotated with InterProScan, DIAMOND-blastp, UniFire, and Kmerseek" src="docs/images/proteinannotator_metromap_light.png">
+    <img alt="nf-core/proteinannotator" src="docs/images/proteinannotator_metromap_light.png">
   </picture>
 </p>
 
@@ -59,7 +58,7 @@ species1,species1_proteins.fasta
 species2,species2_proteins.fasta
 ```
 
-Each row represents a fasta file of proteins from a single species.
+Each row represents a FASTA file of proteins from a single species.
 
 Now, you can run the pipeline using:
 

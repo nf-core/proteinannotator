@@ -14,7 +14,7 @@ workflow FUNCTIONAL_ANNOTATION {
     ch_versions         = channel.empty()
 
     if (!skip_interproscan) {
-        if (interproscan_db != null) {
+        if (interproscan_db) {
             ch_interproscan_db = channel.fromPath(interproscan_db).first()
         }
         else {

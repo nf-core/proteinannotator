@@ -80,7 +80,7 @@ You can also generate such `YAML`/`JSON` files via [nf-core/launch](https://nf-c
 
 ### InterProScan
 
-[InterProScan](https://github.com/ebi-pf-team/interproscan) is used to provide more information about the proteins annotated on the contigs. By default, turning on this subworkflow without `--skip_interproscan` will download and unzip the [InterPro database](http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/) version 5.72-103.0. The database will then be saved in the output directory `<output_directory>/databases/interproscan/`.
+[InterProScan](https://github.com/ebi-pf-team/interproscan) is used to provide more information about the proteins annotated on the contigs. By default, turning on this subworkflow without `--skip_interproscan` will download and unzip the InterPro database. The database will then be saved in the output directory `<output_directory>/downloaded_dbs/interproscan_db/`.
 
 :::note
 The huge database download (5.5GB) can take up to 4 hours depending on the bandwidth.
