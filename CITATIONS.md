@@ -10,9 +10,25 @@
 
 ## Pipeline tools
 
-- [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+- [SeqFu](https://pubmed.ncbi.nlm.nih.gov/34066939/)
 
-> Andrews, S. (2010). FastQC: A Quality Control Tool for High Throughput Sequence Data [Online].
+> Telatin A, Fariselli P, Birolo G. SeqFu: a suite of utilities for the robust and reproducible manipulation of sequence files. Bioengineering. 2021 May 7;8(5):59. doi: 10.3390/bioengineering8050059. PubMed PMID: 34066939; PubMed Central PMCID: PMC8148589.
+
+- [SeqKit](https://pubmed.ncbi.nlm.nih.gov/38898985/)
+
+> Shen W, Sipos B, Zhao L. SeqKit2: A Swiss army knife for sequence and alignment processing. iMeta. 2024 Apr 5:e191. doi: 10.1002/imt2.191. PubMed PMID: 38898985; PubMed Central PMCID: PMC11183193.
+
+- [hmmer](https://pubmed.ncbi.nlm.nih.gov/29905871/)
+
+> Eddy SR. Accelerated profile HMM searches. PLoS computational biology. 2011 Oct 20;7(10):e1002195. doi: 10.1371/journal.pcbi.1002195. PubMed PMID: 22039361; PubMed Central PMCID: PMC3197634.
+
+- [InterProScan](https://academic.oup.com/bioinformatics/article/17/9/847/206564)
+
+> Jones P, Binns D, Chang HY, Fraser M, Li W, McAnulla C, McWilliam H, Maslen J, Mitchell A, Nuka G, Pesseat S, Quinn, A. F, Sangrador-Vegas A, Scheremetjew M, Yong S-Y, Lopez R, Hunter S. InterProScan 5: genome-scale protein function classification. Bioinformatics. 2014 May 1;30(9):1236-40. doi: 10.1093/bioinformatics/btu031. PubMed PMID: 24451626; PubMed Central PMCID: PMC3998142.
+
+- [s4pred](https://pubmed.ncbi.nlm.nih.gov/34213528/)
+
+> Moffat L, Jones DT. Increasing the accuracy of single sequence prediction methods using a deep semi-supervised learning framework. Bioinformatics. 2021 Nov 1;37(21):3744-51. doi: 10.1093/bioinformatics/btab491. PubMed PMID: 34213528; PubMed Central PMCID: PMC8570780.
 
 - [MultiQC](https://pubmed.ncbi.nlm.nih.gov/27312411/)
 

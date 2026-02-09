@@ -1,0 +1,97 @@
+nextflow_workflow {
+
+    name "Test Subworkflow DOMAIN_ANNOTATION"
+    script "../main.nf"
+    workflow "DOMAIN_ANNOTATION"
+
+    test("faa - domain annotation") {
+
+        when {
+            workflow {
+                """
+                input[0] = channel.of([
+                    [ id: 'test' ],
+                    file(params.pipelines_testdata_base_path + '/testdata/sequences/test_proteins.faa', checkIfExists: true)
+                ])
+                input[1] = false                                                                                   // skip_pfam
+                input[2] = null                                                                                    // pfam_db
+                input[3] = params.pipelines_testdata_base_path + '/testdata/pfam/Pfam-A_test.hmm.gz'               // pfam_latest_link
+                input[4] = false                                                                                   // skip_funfam
+                input[5] = null                                                                                    // funfam_db
+                input[6] = params.pipelines_testdata_base_path + '/testdata/funfam/funfam-hmm3-v4_3_0_test.lib.gz' // funfam_latest_link
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success},
+                { assert snapshot(
+                    path(workflow.out.pfam_domains[0][1]).linesGzip[0..7],
+                    path(workflow.out.funfam_domains[0][1]).linesGzip[0..7],
+                    workflow.out.versions.collect { path(it).yaml }.unique()
+                    ).match()}
+            )
+        }
+    }
+
+    test("faa - pfam_db - skip_funfam") {
+
+        when {
+            workflow {
+                """
+                input[0] = channel.of([
+                    [ id: 'test' ],
+                    file(params.pipelines_testdata_base_path + '/testdata/sequences/test_proteins.faa', checkIfExists: true)
+                ])
+                input[1] = false                                                                                   // skip_pfam
+                input[2] = params.pipelines_testdata_base_path + '/testdata/pfam/Pfam-A_test.hmm.gz'               // pfam_db
+                input[3] = params.pipelines_testdata_base_path + '/testdata/pfam/Pfam-A_test.hmm.gz'               // pfam_latest_link
+                input[4] = true                                                                                    // skip_funfam
+                input[5] = null                                                                                    // funfam_db
+                input[6] = params.pipelines_testdata_base_path + '/testdata/funfam/funfam-hmm3-v4_3_0_test.lib.gz' // funfam_latest_link
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success},
+                { assert snapshot(
+                    path(workflow.out.pfam_domains[0][1]).linesGzip[0..7],
+                    workflow.out.versions.collect { path(it).yaml }.unique()
+                    ).match()}
+            )
+        }
+    }
+
+    test("faa - domain annotation - stub") {
+
+        options "-stub"
+
+        when {
+            workflow {
+                """
+                input[0] = channel.of([
+                    [ id: 'test' ],
+                    file(params.pipelines_testdata_base_path + '/testdata/sequences/test_proteins.faa', checkIfExists: true)
+                ])
+                input[1] = false                                                                                   // skip_pfam
+                input[2] = null                                                                                    // pfam_db
+                input[3] = params.pipelines_testdata_base_path + '/testdata/pfam/Pfam-A_test.hmm.gz'               // pfam_latest_link
+                input[4] = false                                                                                   // skip_funfam
+                input[5] = null                                                                                    // funfam_db
+                input[6] = params.pipelines_testdata_base_path + '/testdata/funfam/funfam-hmm3-v4_3_0_test.lib.gz' // funfam_latest_link
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success},
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
+
+}

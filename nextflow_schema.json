@@ -2,7 +2,7 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://raw.githubusercontent.com/nf-core/proteinannotator/master/nextflow_schema.json",
     "title": "nf-core/proteinannotator pipeline parameters",
-    "description": "The best protein annotation pipeline in the world. Protein fasta -> ??? -> Annotations!",
+    "description": "Generation of sequence-level annotations for amino acid sequences",
     "type": "object",
     "$defs": {
         "input_output_options": {
@@ -40,45 +40,6 @@
                     "type": "string",
                     "description": "MultiQC report title. Printed as page header, used for filename if not otherwise specified.",
                     "fa_icon": "fas fa-file-signature"
-                }
-            }
-        },
-        "reference_genome_options": {
-            "title": "Reference genome options",
-            "type": "object",
-            "fa_icon": "fas fa-dna",
-            "description": "Reference genome related files and options required for the workflow.",
-            "properties": {
-                "genome": {
-                    "type": "string",
-                    "description": "Name of iGenomes reference.",
-                    "fa_icon": "fas fa-book",
-                    "help_text": "If using a reference genome configured in the pipeline using iGenomes, use this parameter to give the ID for the reference. This is then used to build the full paths for all required reference genome files e.g. `--genome GRCh38`. \n\nSee the [nf-core website docs](https://nf-co.re/usage/reference_genomes) for more details."
-                },
-                "fasta": {
-                    "type": "string",
-                    "format": "file-path",
-                    "exists": true,
-                    "mimetype": "text/plain",
-                    "pattern": "^\\S+\\.fn?a(sta)?(\\.gz)?$",
-                    "description": "Path to FASTA genome file.",
-                    "help_text": "This parameter is *mandatory* if `--genome` is not specified. If you don't have a BWA index available this will be generated for you automatically. Combine with `--save_reference` to save BWA index for future runs.",
-                    "fa_icon": "far fa-file-code"
-                },
-                "igenomes_ignore": {
-                    "type": "boolean",
-                    "description": "Do not load the iGenomes reference config.",
-                    "fa_icon": "fas fa-ban",
-                    "hidden": true,
-                    "help_text": "Do not load `igenomes.config` when running the pipeline. You may choose this option if you observe clashes between custom parameters and those supplied in `igenomes.config`."
-                },
-                "igenomes_base": {
-                    "type": "string",
-                    "format": "directory-path",
-                    "description": "The base path to the igenomes reference files",
-                    "fa_icon": "fas fa-ban",
-                    "hidden": true,
-                    "default": "s3://ngi-igenomes/igenomes/"
                 }
             }
         },
@@ -219,11 +180,168 @@
                     "default": "https://raw.githubusercontent.com/nf-core/test-datasets/",
                     "hidden": true
                 },
+                "modules_testdata_base_path": {
+                    "type": "string",
+                    "description": "Base URL or local path to location of modules test dataset files"
+                },
                 "trace_report_suffix": {
                     "type": "string",
                     "fa_icon": "far calendar",
                     "description": "Suffix to add to the trace report filename. Default is the date and time in the format yyyy-MM-dd_HH-mm-ss.",
                     "hidden": true
+                },
+                "help": {
+                    "type": ["boolean", "string"],
+                    "description": "Display the help message."
+                },
+                "help_full": {
+                    "type": "boolean",
+                    "description": "Display the full detailed help message."
+                },
+                "show_hidden": {
+                    "type": "boolean",
+                    "description": "Display hidden parameters in the help message (only works when --help or --help_full are provided)."
+                }
+            }
+        },
+        "quality_check_params": {
+            "title": "Quality check parameters",
+            "type": "object",
+            "description": "Use these parameters to control the flow of the quality check subworkflow execution.",
+            "properties": {
+                "skip_preprocessing": {
+                    "type": "boolean",
+                    "fa_icon": "fas fa-ban",
+                    "description": "Skip all default QC steps for sequences (gap trimming, length filtering, validation, duplicate removal).",
+                    "help": "Skips input amino acid sequence preprocessing transformations, length filtering, duplicate removal and validation checks."
+                },
+                "min_seq_length": {
+                    "type": "integer",
+                    "default": 30,
+                    "fa_icon": "fas fa-ruler-horizontal",
+                    "description": "The minimum allowed sequence length",
+                    "help_text": "Specify the minimum length of amino acid sequences that go into clustering. Modifies the --min-len parameter of seqkit seq."
+                },
+                "max_seq_length": {
+                    "type": "integer",
+                    "default": 5000,
+                    "fa_icon": "fas fa-ruler-horizontal",
+                    "description": "The maximum allowed sequence length",
+                    "help_text": "Specify the maximum length of amino acid sequences that go into clustering. Modifies the --max-len parameter of seqkit seq"
+                },
+                "remove_duplicates_on_sequence": {
+                    "type": "boolean",
+                    "description": "Remove duplicate input amino acid sequences, based on the sequence.",
+                    "help": "Instead of just removing by similar identifier, the tool also removes duplicate sequences."
+                }
+            }
+        },
+        "domain_annotation_params": {
+            "title": "Domain annotation parameters",
+            "type": "object",
+            "description": "Use these parameters to control the flow of the domain annotation execution.",
+            "properties": {
+                "skip_pfam": {
+                    "type": "boolean",
+                    "fa_icon": "fas fa-ban",
+                    "description": "Skip the domain annotation with the Pfam database.",
+                    "help": "Skips the domain annotation of input sequence against a Pfam database."
+                },
+                "pfam_db": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "Path to an already installed Pfam HMM database (.hmm.gz).",
+                    "help_text": "If left null and skip_pfam is false, the pipeline will start downloading the latest Pfam HMM library."
+                },
+                "pfam_latest_link": {
+                    "type": "string",
+                    "default": "https://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz",
+                    "description": "InterPro hosted link to the latest Pfam HMM database file.",
+                    "help_text": "Latest version should be a bit more than 350MB."
+                },
+                "skip_funfam": {
+                    "type": "boolean",
+                    "fa_icon": "fas fa-ban",
+                    "description": "Skip the domain annotation with the FunFam database.",
+                    "help": "Skips the domain annotation of input sequence against a FunFam database."
+                },
+                "funfam_db": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "Path to an already installed FunFam HMM database (.lib.gz).",
+                    "help_text": "If left null and skip_funfam is false, the pipeline will start downloading the latest FunFam HMM library."
+                },
+                "funfam_latest_link": {
+                    "type": "string",
+                    "default": "https://download.cathdb.info/cath/releases/all-releases/v4_3_0/sequence-data/funfam-hmm3-v4_3_0.lib.gz",
+                    "description": "CATH hosted link to the latest available (v4_3_0) FunFam HMM database file."
+                },
+                "hmmsearch_evalue_cutoff": {
+                    "type": "number",
+                    "default": 0.001,
+                    "description": "hmmsearch e-value cutoff threshold for reported results. Modifies the -E parameter of hmmsearch."
+                }
+            }
+        },
+        "functional_annotation_options": {
+            "title": "Functional annotation parameters",
+            "type": "object",
+            "description": "Use these parameters to control the flow of the functional annotation execution.",
+            "default": "",
+            "properties": {
+                "skip_interproscan": {
+                    "type": "boolean",
+                    "description": "Run InterProScan",
+                    "default": false
+                },
+                "interproscan_db_url": {
+                    "type": "string",
+                    "default": "https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/interproscan-5.72-103.0-64-bit.tar.gz",
+                    "help_text": "This allows the user to change the InterProScan database version that the pipeline will download for you automatically. To instead use a pre-downloaded database, please supply its path to `--interproscan_db`. Changing this URL allows for the use of the latest database release. By default this is set to `http://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/interproscan-5.72-103.0-64-bit.tar.gz`. ",
+                    "description": "Change the database version used for annotation.",
+                    "fa_icon": "fas fa-database"
+                },
+                "interproscan_db": {
+                    "type": "string",
+                    "help_text": "Use this to supply the path to a pre-downloaded InterProScan database. This can be any unzipped InterProScan version.\n\nFor more details on where to find different InterProScan databases see tool [documentation](https://interproscan-docs.readthedocs.io/en/latest/UserDocs.html#obtaining-a-copy-of-interproscan).\n",
+                    "description": "Path to pre-downloaded InterProScan database.",
+                    "fa_icon": "fas fa-database"
+                },
+                "interproscan_applications": {
+                    "type": "string",
+                    "default": "Hamap,PANTHER,PIRSF,TIGRFAM,sfld",
+                    "pattern": "^\\w+(,\\w+)*",
+                    "help_text": "A comma-separated string specifying the database(s) to be used to annotate the coding regions annotated during the contig annotation workflow of the pipeline. By default these include `Hamap,PANTHER,PIRSF,TIGRFAM,sfld`.\n\nFor more information about all possible databases see the tool [documentation](https://interproscan-docs.readthedocs.io/en/v5/HowToRun.html).\n\n> Modifies tool parameter(s):\n> - InterProScan: `--applications`",
+                    "description": "Assigns the database(s) to be used to annotate the coding regions.",
+                    "fa_icon": "fas fa-database"
+                },
+                "interproscan_enableprecalc": {
+                    "type": "boolean",
+                    "help_text": "This increases the speed of functional annotation with InterProScan by pre-calculating matches found in the UniProtKB, thereby identifying unique matches in the query sequences for faster annotation. By default this is turned off.\n\nFor more information about this flag see the tool [documentation](https://interproscan-docs.readthedocs.io/en/latest/HowToRun.html).\n\n> Modifies tool parameter(s):\n> - InterProScan: `---diasable-precalc`",
+                    "description": "Pre-calculates residue mutual matches.",
+                    "fa_icon": "fas fa-clock"
+                }
+            },
+            "help_text": "This subworkflow adds additional protein annotations to all input sequences. Currently, only annotation with InterProScan is integrated in the subworkflow.",
+            "fa_icon": "fas fa-file-signature"
+        },
+        "prediction_params": {
+            "title": "Prediction parameters",
+            "type": "object",
+            "description": "Use these parameters to control the flow of the secondary structure prediction execution.",
+            "properties": {
+                "skip_s4pred": {
+                    "type": "boolean",
+                    "fa_icon": "fas fa-ban",
+                    "description": "Skip the secondary structure prediction.",
+                    "help": "Skips the prediction of the secondary structures of sequences with the s4pred software."
+                },
+                "s4pred_outfmt": {
+                    "type": "string",
+                    "default": "ss2",
+                    "description": "Choose the output format (i.e., 'ss2', 'fas', 'horiz') for the s4pred per amino acid probability predictions (i.e., α-helix, β-strand, coil). Modifies the --outfmt parameter of s4pred run_model.",
+                    "help_text": "ss2 is the default and it corresponds to the PSIPRED vertical format (PSIPRED VFORMAT). The fas output returns the sequence FASTA file with the predicted secondary structure concatenated on a second line. The horiz option outputs the results in the PSIPRED horizontal format (PSIPRED HFORMAT).",
+                    "enum": ["ss2", "fas", "horiz"]
                 }
             }
         }
@@ -233,13 +351,23 @@
             "$ref": "#/$defs/input_output_options"
         },
         {
-            "$ref": "#/$defs/reference_genome_options"
-        },
-        {
             "$ref": "#/$defs/institutional_config_options"
         },
         {
             "$ref": "#/$defs/generic_options"
+        },
+        {
+            "$ref": "#/$defs/quality_check_params"
+        },
+        {
+            "$ref": "#/$defs/domain_annotation_params"
+        },
+
+        {
+            "$ref": "#/$defs/functional_annotation_options"
+        },
+        {
+            "$ref": "#/$defs/prediction_params"
         }
     ]
 }

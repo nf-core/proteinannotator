@@ -7,3 +7,9 @@ testing/
 testing*
 *.pyc
 null/
+
+# Nextflow nf-tests output
+.nf-test.log
+.nf-test/tests
+.nf-test-*.nf
+.nf-test/*

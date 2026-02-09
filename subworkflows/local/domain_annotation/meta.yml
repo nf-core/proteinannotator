@@ -1,0 +1,61 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
+name: "domain_annotation"
+description: Annotate amino acid fasta files with selected HMM libraries such as Pfam and FunFam
+keywords:
+  - fasta
+  - sequences
+  - domain
+  - annotation
+  - database
+  - download
+  - HMM
+components:
+  - aria2
+  - hmmer/hmmsearch
+input:
+  - ch_fasta:
+      type: file
+      description: |
+        Amino acid fasta file containing amino acid sequences for annotation
+        Structure: [ val(meta), [ path(fasta) ] ]
+  - skip_pfam:
+      type: boolean
+      description: |
+        Skip domain annotation with Pfam
+  - pfam_db:
+      type: string
+      description: |
+        Path to an existing HMM Pfam library on the system. If provided, the ARIA2_PFAM db download will be skipped.
+  - pfam_latest_link:
+      type: string
+      description: |
+        Path to the latest Pfam HMM database, to download
+  - skip_funfam:
+      type: boolean
+      description: |
+        Skip domain annotation with FunFam
+  - funfam_db:
+      type: string
+      description: |
+        Path to an existing HMM FunFam library on the system. If provided, the ARIA2_FUNFAM db download will be skipped.
+  - funfam_latest_link:
+      type: string
+      description: |
+        Path to the latest FunFam HMM database, to download
+output:
+  - pfam_domains:
+      type: file
+      description: |
+        domtbl.gz files with pfam domain annotation for input amino acid sequences
+  - funfam_domains:
+      type: file
+      description: |
+        domtbl.gz files with funfam domain annotation for input amino acid sequences
+  - versions:
+      type: file
+      description: |
+        Versions file containing the software versions used in the workflow
+authors:
+  - "@vagkaratzas"
+maintainers:
+  - "@vagkaratzas"

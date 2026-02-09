@@ -1,0 +1,134 @@
+{
+    "faa - domain annotation": {
+        "content": [
+            [
+                "#                                                                            --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord",
+                "# target name        accession   tlen query name           accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target",
+                "#------------------- ---------- ----- -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------",
+                "T1026                -            172 Nanovirus_coat       PF04660.18   177   1.2e-54  172.1   0.5   1   1   6.7e-55   1.3e-54  172.0   0.5     3   177     4   172     2   172 0.94 FBNSV, , 172 residues|",
+                "T1026                -            172 PUA_NSUN2            PF25378.2     87   1.8e-05   12.2   0.0   1   1   1.3e-05   2.7e-05   11.6   0.0    40    81    68   111    40   116 0.89 FBNSV, , 172 residues|",
+                "T1024                -            408 MFS_1                PF07690.22   347   6.7e-35  107.6  58.0   1   2   1.4e-32   2.9e-32   98.9  38.6     4   346    17   365    15   366 0.78 LmrP, , 408 residues|",
+                "T1024                -            408 MFS_1                PF07690.22   347   6.7e-35  107.6  58.0   2   2   2.6e-09   5.1e-09   22.5  11.4    38   174   262   399   257   407 0.74 LmrP, , 408 residues|",
+                "#"
+            ],
+            [
+                "#                                                                              --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord",
+                "# target name        accession   tlen query name             accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target",
+                "#------------------- ---------- -----   -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------",
+                "T1024                -            408 1.20.1250.20-FF-000637 -            179     1e-09   25.7   6.6   1   2   5.2e-10     1e-09   25.7   6.6    17   173    32   191    24   197 0.81 LmrP, , 408 residues|",
+                "T1024                -            408 1.20.1250.20-FF-000637 -            179     1e-09   25.7   6.6   2   2     0.046     0.093   -0.2   5.0    30   137   261   367   248   402 0.64 LmrP, , 408 residues|",
+                "T1026                -            172 1.10.238.10-FF-000755 -             78   1.2e-05   12.7   0.1   1   2   1.6e-05   3.2e-05   11.3   0.0    16    54    39    79    29    90 0.73 FBNSV, , 172 residues|",
+                "T1026                -            172 1.10.238.10-FF-000755 -             78   1.2e-05   12.7   0.1   2   2       0.3       0.6   -2.4   0.0    38    49   102   113    97   123 0.74 FBNSV, , 172 residues|",
+                "#"
+            ],
+            [
+                {
+                    "DOMAIN_ANNOTATION:HMMSEARCH_FUNFAM": {
+                        "hmmer": 3.4
+                    }
+                },
+                {
+                    "DOMAIN_ANNOTATION:ARIA2_FUNFAM": {
+                        "aria2": "1.36.0"
+                    }
+                },
+                {
+                    "DOMAIN_ANNOTATION:ARIA2_PFAM": {
+                        "aria2": "1.36.0"
+                    }
+                },
+                {
+                    "DOMAIN_ANNOTATION:HMMSEARCH_PFAM": {
+                        "hmmer": 3.4
+                    }
+                }
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2025-12-05T08:44:26.478981734"
+    },
+    "faa - pfam_db - skip_funfam": {
+        "content": [
+            [
+                "#                                                                            --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord",
+                "# target name        accession   tlen query name           accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target",
+                "#------------------- ---------- ----- -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------",
+                "T1026                -            172 Nanovirus_coat       PF04660.18   177   1.2e-54  172.1   0.5   1   1   6.7e-55   1.3e-54  172.0   0.5     3   177     4   172     2   172 0.94 FBNSV, , 172 residues|",
+                "T1026                -            172 PUA_NSUN2            PF25378.2     87   1.8e-05   12.2   0.0   1   1   1.3e-05   2.7e-05   11.6   0.0    40    81    68   111    40   116 0.89 FBNSV, , 172 residues|",
+                "T1024                -            408 MFS_1                PF07690.22   347   6.7e-35  107.6  58.0   1   2   1.4e-32   2.9e-32   98.9  38.6     4   346    17   365    15   366 0.78 LmrP, , 408 residues|",
+                "T1024                -            408 MFS_1                PF07690.22   347   6.7e-35  107.6  58.0   2   2   2.6e-09   5.1e-09   22.5  11.4    38   174   262   399   257   407 0.74 LmrP, , 408 residues|",
+                "#"
+            ],
+            [
+                {
+                    "DOMAIN_ANNOTATION:HMMSEARCH_PFAM": {
+                        "hmmer": 3.4
+                    }
+                }
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2025-12-05T10:10:22.057426358"
+    },
+    "faa - domain annotation - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    "versions.yml:md5,160d4c5a5001cfb4ff57b94fc52b67d9",
+                    "versions.yml:md5,35e41735706132967dd94bb636833a4a",
+                    "versions.yml:md5,a74a0c8fcb741e59bc14424f612b8d09",
+                    "versions.yml:md5,f1d8a406d3dcb97a7c15e9c810926de1"
+                ],
+                "funfam_domains": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "pfam_domains": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,160d4c5a5001cfb4ff57b94fc52b67d9",
+                    "versions.yml:md5,35e41735706132967dd94bb636833a4a",
+                    "versions.yml:md5,a74a0c8fcb741e59bc14424f612b8d09",
+                    "versions.yml:md5,f1d8a406d3dcb97a7c15e9c810926de1"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2025-12-05T08:44:37.015452047"
+    }
+}
