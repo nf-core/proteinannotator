@@ -17,6 +17,7 @@ input:
       type: file
       description: |
         Amino acid fasta file containing amino acid sequences for annotation
+        Structure: [ val(meta), [ path(fasta) ] ]
   - skip_pfam:
       type: boolean
       description: |

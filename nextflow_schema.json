@@ -220,14 +220,14 @@
                     "default": 30,
                     "fa_icon": "fas fa-ruler-horizontal",
                     "description": "The minimum allowed sequence length",
-                    "help_text": "Specify the minimum length of amino acid sequences that go into clustering."
+                    "help_text": "Specify the minimum length of amino acid sequences that go into clustering. Modifies the --min-len parameter of seqkit seq."
                 },
                 "max_seq_length": {
                     "type": "integer",
                     "default": 5000,
                     "fa_icon": "fas fa-ruler-horizontal",
                     "description": "The maximum allowed sequence length",
-                    "help_text": "Specify the maximum length of amino acid sequences that go into clustering."
+                    "help_text": "Specify the maximum length of amino acid sequences that go into clustering. Modifies the --max-len parameter of seqkit seq"
                 },
                 "remove_duplicates_on_sequence": {
                     "type": "boolean",
@@ -279,7 +279,7 @@
                 "hmmsearch_evalue_cutoff": {
                     "type": "number",
                     "default": 0.001,
-                    "description": "hmmsearch e-value cutoff threshold for reported results"
+                    "description": "hmmsearch e-value cutoff threshold for reported results. Modifies the -E parameter of hmmsearch."
                 }
             }
         },
@@ -339,7 +339,7 @@
                 "s4pred_outfmt": {
                     "type": "string",
                     "default": "ss2",
-                    "description": "Choose the output format (i.e., 'ss2', 'fas', 'horiz') for the s4pred per amino acid probability predictions (i.e., α-helix, β-strand, coil).",
+                    "description": "Choose the output format (i.e., 'ss2', 'fas', 'horiz') for the s4pred per amino acid probability predictions (i.e., α-helix, β-strand, coil). Modifies the --outfmt parameter of s4pred run_model.",
                     "help_text": "ss2 is the default and it corresponds to the PSIPRED vertical format (PSIPRED VFORMAT). The fas output returns the sequence FASTA file with the predicted secondary structure concatenated on a second line. The horiz option outputs the results in the PSIPRED horizontal format (PSIPRED HFORMAT).",
                     "enum": ["ss2", "fas", "horiz"]
                 }
