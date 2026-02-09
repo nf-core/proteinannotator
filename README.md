@@ -21,7 +21,7 @@
 
 ## Introduction
 
-**nf-core/proteinannotator** is a bioinformatics pipeline that computes statistics on input protein FASTA files and identifies protein annotations such as conserved domains, predicted functions, and secondary structure features based on sequence data.
+**nf-core/proteinannotator** is a bioinformatics pipeline that computes statistics for protein FASTA inputs and produces protein annotations based on predicted sequence features, including conserved domains, functions, and secondary structure.
 
 <p>
   <picture>
