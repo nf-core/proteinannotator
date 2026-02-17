@@ -2,22 +2,6 @@ include { ARIA2        } from '../../../modules/nf-core/aria2/main'
 include { UNTAR        } from '../../../modules/nf-core/untar/main'
 include { INTERPROSCAN } from '../../../modules/nf-core/interproscan/main'
 
-process CONCAT_TSV {
-    tag "$meta.id"
-    label 'process_single'
-
-    input:
-    tuple val(meta), path(tsvs)
-
-    output:
-    tuple val(meta), path("${meta.id}_interproscan.tsv"), emit: tsv
-
-    script:
-    """
-    cat ${tsvs} > ${meta.id}_interproscan.tsv
-    """
-}
-
 workflow FUNCTIONAL_ANNOTATION {
     take:
     ch_fasta                // channel: [ val(meta), [ fasta ] ]
@@ -59,18 +43,7 @@ workflow FUNCTIONAL_ANNOTATION {
             }
 
         INTERPROSCAN( ch_fasta_batched, ch_interproscan_db )
-
-        // Regroup batch TSV results by original sample ID
-        ch_batched_tsv = INTERPROSCAN.out.tsv
-            .map { meta, tsv ->
-                def original_id = meta.original_id ?: meta.id
-                [ [id: original_id], tsv ]
-            }
-            .groupTuple()
-
-        // Concatenate batch TSVs into one file per sample
-        CONCAT_TSV( ch_batched_tsv )
-        ch_interproscan_tsv = CONCAT_TSV.out.tsv
+        ch_interproscan_tsv = INTERPROSCAN.out.tsv
     }
 
     emit:
