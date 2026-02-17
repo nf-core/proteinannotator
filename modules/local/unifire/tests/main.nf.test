@@ -6,32 +6,18 @@ nextflow_process {
     config './nextflow.config'
 
     tag "modules"
-    tag "modules_nfcore"
+    tag "modules_local"
     tag "unifire"
-    tag "seqkit"
-    tag "seqkit/head"
-
-    setup {
-        run("SEQKIT_HEAD") {
-            script "modules/nf-core/seqkit/head/main.nf"
-            process {
-                """
-                input[0] = Channel.from([
-                    [ id:'test1' ], // meta
-                    [file(params.modules_testdata_base_path + 'kmerseek/reference/snap25_isoforms_human_P60880.fasta', checkIfExists: true)], // fastas
-                    1 // seq_count
-                ])
-                """
-            }
-        }
-    }
 
     test("human - fasta") {
 
         when {
             process {
                 """
-                input[0] = SEQKIT_HEAD.out.subset
+                input[0] = [
+                    [ id:'test1' ],
+                    file("${projectDir}/modules/local/unifire/tests/fixtures/snap25_isoforms_human_P60880.fasta", checkIfExists: true)
+                ]
                 """
             }
         }
@@ -55,7 +41,10 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = SEQKIT_HEAD.out.subset
+                input[0] = [
+                    [ id:'test1' ],
+                    file("${projectDir}/modules/local/unifire/tests/fixtures/snap25_isoforms_human_P60880.fasta", checkIfExists: true)
+                ]
                 """
             }
         }
