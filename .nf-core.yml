@@ -13,7 +13,7 @@ repository_type: pipeline
 template:
   author: Olga Botvinnik, Evangelos Karatzas
   description: Generation of sequence-level annotations for amino acid sequences
-  version: 1.0.0
+  version: 1.1.0dev
   force: true
   outdir: .
   skip_features:
