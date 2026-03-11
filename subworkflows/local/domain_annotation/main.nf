@@ -14,7 +14,7 @@ workflow DOMAIN_ANNOTATION {
     skip_funfam            // boolean
     funfam_db              // string, path to the funfam HMM database, if already exists
     funfam_latest_link     // string, path to the latest funfam HMM database, to download
-    skip_npmfam            // boolean
+    skip_npmsfam           // boolean
     npmsfam_db             // string
     npmsfam_latest_link    // string
 
