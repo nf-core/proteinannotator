@@ -290,7 +290,7 @@
                 },
                 "npmsdfam_latest_link": {
                     "type": "string",
-                    "default": "https://download.cathdb.info/cath/releases/all-releases/v4_3_0/sequence-data/funfam-hmm3-v4_3_0.lib.gz",
+                    "default": "https://pavlopoulos-lab.org/envofams/databases/hmmer/nmpfamsdb.hmm.gz",
                     "description": ""
                 },
                 "hmmsearch_evalue_cutoff": {
