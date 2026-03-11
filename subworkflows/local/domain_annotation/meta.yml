@@ -42,6 +42,18 @@ input:
       type: string
       description: |
         Path to the latest FunFam HMM database, to download
+  - skip_npmsfam:
+      type: boolean
+      description: |
+        Skip domain annotation with NPMFamsDB
+  - npmsfam_db:
+      type: string
+      description: |
+        Path to an existing HMM NPMFamDB library on the system. If provided, the ARIA2_NPMSFAM db download will be skipped.
+  - npmsfam_latest_link:
+      type: string
+      description: |
+        Path to the latest NPMFamsDB HMM database, to download
 output:
   - pfam_domains:
       type: file
@@ -51,6 +63,10 @@ output:
       type: file
       description: |
         domtbl.gz files with funfam domain annotation for input amino acid sequences
+  - npmsfam_domains:
+      type: file
+      description: |
+        domtbl.gz files with npmsfam domain annotation for input amino acid sequences
   - versions:
       type: file
       description: |
