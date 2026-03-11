@@ -52,7 +52,10 @@ workflow PROTEINANNOTATOR {
         pfam_latest_link,
         skip_funfam,
         funfam_db,
-        funfam_latest_link
+        funfam_latest_link,
+        skip_npmsfam,
+        npmsfam_db,
+        npmsfam_latest_link,
     )
     ch_versions = ch_versions.mix( DOMAIN_ANNOTATION.out.versions )
 
