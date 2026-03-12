@@ -58,5 +58,6 @@ output:
         Versions file containing the software versions used in the workflow
 authors:
   - "@vagkaratzas"
+  - "@Muskan-2464"
 maintainers:
   - "@vagkaratzas"
