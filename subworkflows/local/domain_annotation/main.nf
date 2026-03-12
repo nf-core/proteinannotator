@@ -1,9 +1,9 @@
 include { ARIA2 as ARIA2_PFAM                  } from '../../../modules/nf-core/aria2/main'
 include { ARIA2 as ARIA2_FUNFAM                } from '../../../modules/nf-core/aria2/main'
-include { ARIA2 as ARIA2_nmpfams               } from '../../../modules/nf-core/aria2/main'
+include { ARIA2 as ARIA2_NMPFAMS              } from '../../../modules/nf-core/aria2/main'
 include { HMMER_HMMSEARCH as HMMSEARCH_PFAM    } from '../../../modules/nf-core/hmmer/hmmsearch/main'
 include { HMMER_HMMSEARCH as HMMSEARCH_FUNFAM  } from '../../../modules/nf-core/hmmer/hmmsearch/main'
-include { HMMER_HMMSEARCH as HMMSEARCH_nmpfams } from '../../../modules/nf-core/hmmer/hmmsearch/main'
+include { HMMER_HMMSEARCH as HMMSEARCH_NMPFAMS } from '../../../modules/nf-core/hmmer/hmmsearch/main'
 
 workflow DOMAIN_ANNOTATION {
     take:
@@ -69,9 +69,9 @@ workflow DOMAIN_ANNOTATION {
         if (!nmpfams_db) {
             ch_nmpfams_link = channel.of([ [ id: 'nmpfams' ], nmpfams_latest_link ])
 
-            ARIA2_nmpfams( ch_nmpfams_link )
-            ch_versions = ch_versions.mix( ARIA2_nmpfams.out.versions )
-            ch_nmpfams_db = ARIA2_nmpfams.out.downloaded_file
+            ARIA2_NMPFAMS( ch_nmpfams_link )
+            ch_versions = ch_versions.mix( ARIA2_NMPFAMS.out.versions )
+            ch_nmpfams_db = ARIA2_NMPFAMS.out.downloaded_file
         } else {
             ch_nmpfams_db = channel.of([ [ id: 'nmpfams' ], nmpfams_db ])
         }
@@ -80,9 +80,9 @@ workflow DOMAIN_ANNOTATION {
             .combine(ch_nmpfams_db)
             .map{ meta, seqs, _meta2, models -> [meta, models, seqs, false, false, true] }
 
-        HMMSEARCH_nmpfams( ch_input_for_hmmsearch_nmpfams )
-        ch_versions = ch_versions.mix( HMMSEARCH_nmpfams.out.versions.first() )
-        ch_nmpfams_domains = HMMSEARCH_nmpfams.out.domain_summary
+        HMMSEARCH_NMPFAMS( ch_input_for_hmmsearch_nmpfams )
+        ch_versions = ch_versions.mix( HMMSEARCH_NMPFAMS.out.versions.first() )
+        ch_nmpfams_domains = HMMSEARCH_NMPFAMS.out.domain_summary
     }
 
     emit:
