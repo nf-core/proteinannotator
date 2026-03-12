@@ -320,6 +320,14 @@
                     "help_text": "This increases the speed of functional annotation with InterProScan by pre-calculating matches found in the UniProtKB, thereby identifying unique matches in the query sequences for faster annotation. By default this is turned off.\n\nFor more information about this flag see the tool [documentation](https://interproscan-docs.readthedocs.io/en/latest/HowToRun.html).\n\n> Modifies tool parameter(s):\n> - InterProScan: `---diasable-precalc`",
                     "description": "Pre-calculates residue mutual matches.",
                     "fa_icon": "fas fa-clock"
+                },
+                "interproscan_batch_size": {
+                    "type": "integer",
+                    "default": 1000,
+                    "minimum": 1,
+                    "description": "Number of sequences per InterProScan batch.",
+                    "help_text": "Split input FASTA files into batches of this many sequences before running InterProScan. This enables parallel processing of large proteomes and reduces memory usage per job. Results are automatically concatenated after all batches complete. Default: 1000 sequences per batch.",
+                    "fa_icon": "fas fa-layer-group"
                 }
             },
             "help_text": "This subworkflow adds additional protein annotations to all input sequences. Currently, only annotation with InterProScan is integrated in the subworkflow.",

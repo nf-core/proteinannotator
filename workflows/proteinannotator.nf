@@ -29,10 +29,11 @@ workflow PROTEINANNOTATOR {
     skip_funfam         // boolean
     funfam_db           // string, path to the pfam HMM database, if already exists
     funfam_latest_link  // string, path to the latest pfam HMM database, to download
-    skip_interproscan   // boolean
-    interproscan_db_url // string, url to download db
-    interproscan_db     // string, existing db
-    skip_s4pred         // boolean
+    skip_interproscan       // boolean
+    interproscan_db_url     // string, url to download db
+    interproscan_db         // string, existing db
+    interproscan_batch_size // integer, number of sequences per batch
+    skip_s4pred             // boolean
 
     main:
 
@@ -57,7 +58,8 @@ workflow PROTEINANNOTATOR {
         FAA_SEQFU_SEQKIT.out.fasta,
         skip_interproscan,
         interproscan_db_url,
-        interproscan_db
+        interproscan_db,
+        interproscan_batch_size
     )
     ch_versions = ch_versions.mix( FUNCTIONAL_ANNOTATION.out.versions )
 

@@ -49,6 +49,7 @@ workflow NFCORE_PROTEINANNOTATOR {
         params.skip_interproscan,
         params.interproscan_db_url,
         params.interproscan_db,
+        params.interproscan_batch_size,
         params.skip_s4pred
     )
     emit:
