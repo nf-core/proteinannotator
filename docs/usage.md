@@ -6,11 +6,13 @@
 
 ## Introduction
 
-<!-- TODO nf-core: Add documentation about anything specific to running your pipeline. For general topics, please point to (and add to) the main nf-core website. -->
+**nf-core/proteinannotator** is a bioinformatics pipeline that computes statistics and generates sequence-level annotations for amino acid sequences.
+It takes a protein FASTA file as input and performs conserved domain annotation (using Pfam and FunFam HMM databases), functional annotation (using InterProScan), and secondary structure prediction (using s4pred).
+Optionally, paths to pre-downloaded databases can be provided to skip the automatic download steps and speed up repeated runs.
 
 ## Samplesheet input
 
-You will need to create a samplesheet with information about the samples you would like to analyse before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row as shown in the examples below.
+You will need to create a samplesheet with information about the samples you would like to analyse before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 2 columns, and a header row as shown in the examples below.
 
 ```bash
 --input '[path to samplesheet file]'
