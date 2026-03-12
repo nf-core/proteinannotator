@@ -1,0 +1,33 @@
+nextflow_workflow {
+
+    name "Test Subworkflow functional_annotation"
+    script "../main.nf"
+    workflow "functional_annotation"
+
+    test("Should run functional annotation successfully") {
+
+        when {
+            workflow {
+                """
+                input[0] = [
+                    [ id:'test', single_end:false ], // meta map
+                    file(params.test_data['sarscov2']['genome']['genome_fasta'], checkIfExists: true)
+                ]
+                input[1] = false // skip_pfam
+                input[2] = []    // pfam_db
+                input[3] = "https://raw.githubusercontent.com/nf-core/test-datasets/multiqc/testdata/set_indices.txt"
+                input[4] = true  // skip_funfam
+                input[5] = []    // funfam_db
+                input[6] = []    // funfam_latest_link
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
+}
