@@ -1,9 +1,9 @@
 include { ARIA2 as ARIA2_PFAM                  } from '../../../modules/nf-core/aria2/main'
 include { ARIA2 as ARIA2_FUNFAM                } from '../../../modules/nf-core/aria2/main'
-include { ARIA2 as ARIA2_npmfams               } from '../../../modules/nf-core/aria2/main'
+include { ARIA2 as ARIA2_nmpfams               } from '../../../modules/nf-core/aria2/main'
 include { HMMER_HMMSEARCH as HMMSEARCH_PFAM    } from '../../../modules/nf-core/hmmer/hmmsearch/main'
 include { HMMER_HMMSEARCH as HMMSEARCH_FUNFAM  } from '../../../modules/nf-core/hmmer/hmmsearch/main'
-include { HMMER_HMMSEARCH as HMMSEARCH_npmfams } from '../../../modules/nf-core/hmmer/hmmsearch/main'
+include { HMMER_HMMSEARCH as HMMSEARCH_nmpfams } from '../../../modules/nf-core/hmmer/hmmsearch/main'
 
 workflow DOMAIN_ANNOTATION {
     take:
@@ -14,16 +14,16 @@ workflow DOMAIN_ANNOTATION {
     skip_funfam            // boolean
     funfam_db              // string, path to the funfam HMM database, if already exists
     funfam_latest_link     // string, path to the latest funfam HMM database, to download
-    skip_npmfams           // boolean
-    npmfams_db             // string
-    npmfams_latest_link    // string
+    skip_nmpfams           // boolean
+    nmpfams_db             // string
+    nmpfams_latest_link    // string
 
     main:
 
     ch_versions        = channel.empty()
     ch_pfam_domains    = channel.empty()
     ch_funfam_domains  = channel.empty()
-    ch_npmfams_domains = channel.empty()
+    ch_nmpfams_domains = channel.empty()
 
     if (!skip_pfam) {
         if (!pfam_db) {
@@ -65,29 +65,29 @@ workflow DOMAIN_ANNOTATION {
         ch_funfam_domains = HMMSEARCH_FUNFAM.out.domain_summary
     }
 
-    if (!skip_npmfams) {
-        if (!npmfams_db) {
-            ch_npmfams_link = channel.of([ [ id: 'npmfams' ], npmfams_latest_link ])
+    if (!skip_nmpfams) {
+        if (!nmpfams_db) {
+            ch_nmpfams_link = channel.of([ [ id: 'nmpfams' ], nmpfams_latest_link ])
 
-            ARIA2_npmfams( ch_npmfams_link )
-            ch_versions = ch_versions.mix( ARIA2_npmfams.out.versions )
-            ch_npmfams_db = ARIA2_npmfams.out.downloaded_file
+            ARIA2_nmpfams( ch_nmpfams_link )
+            ch_versions = ch_versions.mix( ARIA2_nmpfams.out.versions )
+            ch_nmpfams_db = ARIA2_nmpfams.out.downloaded_file
         } else {
-            ch_npmfams_db = channel.of([ [ id: 'npmfams' ], npmfams_db ])
+            ch_nmpfams_db = channel.of([ [ id: 'nmpfams' ], nmpfams_db ])
         }
 
-        ch_input_for_hmmsearch_npmfams = ch_fasta
-            .combine(ch_npmfams_db)
+        ch_input_for_hmmsearch_nmpfams = ch_fasta
+            .combine(ch_nmpfams_db)
             .map{ meta, seqs, _meta2, models -> [meta, models, seqs, false, false, true] }
 
-        HMMSEARCH_npmfams( ch_input_for_hmmsearch_npmfams )
-        ch_versions = ch_versions.mix( HMMSEARCH_npmfams.out.versions.first() )
-        ch_npmfams_domains = HMMSEARCH_npmfams.out.domain_summary
+        HMMSEARCH_nmpfams( ch_input_for_hmmsearch_nmpfams )
+        ch_versions = ch_versions.mix( HMMSEARCH_nmpfams.out.versions.first() )
+        ch_nmpfams_domains = HMMSEARCH_nmpfams.out.domain_summary
     }
 
     emit:
     pfam_domains    = ch_pfam_domains
     funfam_domains  = ch_funfam_domains
-    npmfams_domains = ch_npmfams_domains
+    nmpfams_domains = ch_nmpfams_domains
     versions        = ch_versions
 }

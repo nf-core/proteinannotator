@@ -19,6 +19,9 @@ nextflow_workflow {
                 input[4] = false                                                                                   // skip_funfam
                 input[5] = null                                                                                    // funfam_db
                 input[6] = params.pipelines_testdata_base_path + '/testdata/funfam/funfam-hmm3-v4_3_0_test.lib.gz' // funfam_latest_link
+                input[7] = false                                                                                   // skip_nmpfams
+                input[8] = null                                                                                    // nmpfams_db
+                input[9] = params.pipelines_testdata_base_path + '/testdata/nmpfams/nmpfams_test.hmm.gz'           // nmpfams_latest_link
                 """
             }
         }
@@ -29,6 +32,7 @@ nextflow_workflow {
                 { assert snapshot(
                     path(workflow.out.pfam_domains[0][1]).linesGzip[0..7],
                     path(workflow.out.funfam_domains[0][1]).linesGzip[0..7],
+                    path(workflow.out.nmpfams_domains[0][1]).linesGzip[0..7],
                     workflow.out.versions.collect { path(it).yaml }.unique()
                     ).match()}
             )
@@ -50,6 +54,9 @@ nextflow_workflow {
                 input[4] = true                                                                                    // skip_funfam
                 input[5] = null                                                                                    // funfam_db
                 input[6] = params.pipelines_testdata_base_path + '/testdata/funfam/funfam-hmm3-v4_3_0_test.lib.gz' // funfam_latest_link
+                input[7] = false                                                                                   // skip_nmpfams
+                input[8] = null                                                                                    // nmpfams_db
+                input[9] = params.pipelines_testdata_base_path + '/testdata/nmpfams/nmpfams_test.hmm.gz'           // nmpfams_latest_link
                 """
             }
         }
@@ -59,6 +66,7 @@ nextflow_workflow {
                 { assert workflow.success},
                 { assert snapshot(
                     path(workflow.out.pfam_domains[0][1]).linesGzip[0..7],
+                    path(workflow.out.nmpfams_domains[0][1]).linesGzip[0..7],
                     workflow.out.versions.collect { path(it).yaml }.unique()
                     ).match()}
             )
@@ -82,6 +90,9 @@ nextflow_workflow {
                 input[4] = false                                                                                   // skip_funfam
                 input[5] = null                                                                                    // funfam_db
                 input[6] = params.pipelines_testdata_base_path + '/testdata/funfam/funfam-hmm3-v4_3_0_test.lib.gz' // funfam_latest_link
+                input[7] = false                                                                                   // skip_nmpfams
+                input[8] = null                                                                                    // nmpfams_db
+                input[9] = params.pipelines_testdata_base_path + '/testdata/nmpfams/nmpfams_test.hmm.gz'           // nmpfams_latest_link
                 """
             }
         }
