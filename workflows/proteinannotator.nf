@@ -29,6 +29,9 @@ workflow PROTEINANNOTATOR {
     skip_funfam         // boolean
     funfam_db           // string, path to the pfam HMM database, if already exists
     funfam_latest_link  // string, path to the latest pfam HMM database, to download
+    skip_mroot          // boolean
+    mroot_db            // string, path to the metagroot HMM database, if already exists
+    mroot_latest_link   // string, path to the latest metagroot HMM database, to download
     skip_interproscan   // boolean
     interproscan_db_url // string, url to download db
     interproscan_db     // string, existing db
@@ -49,7 +52,10 @@ workflow PROTEINANNOTATOR {
         pfam_latest_link,
         skip_funfam,
         funfam_db,
-        funfam_latest_link
+        funfam_latest_link,
+        skip_mroot,
+        mroot_db,
+        mroot_latest_link
     )
     ch_versions = ch_versions.mix( DOMAIN_ANNOTATION.out.versions )
 
