@@ -288,7 +288,7 @@
                     "description": "Path to an already installed NMPFams HMM database.",
                     "help_text": "If left null and skip_funfam is false, the pipeline will start downloading the latest FunFam HMM library."
                 },
-                "npmsdfam_latest_link": {
+                "nmpfams_latest_link": {
                     "type": "string",
                     "default": "https://pavlopoulos-lab.org/envofams/databases/hmmer/nmpfamsdb.hmm.gz",
                     "description": ""
