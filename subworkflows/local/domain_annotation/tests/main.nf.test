@@ -21,7 +21,7 @@ nextflow_workflow {
                 input[6] = params.pipelines_testdata_base_path + '/testdata/funfam/funfam-hmm3-v4_3_0_test.lib.gz' // funfam_latest_link
                 input[7] = false                                                                                   // skip_nmpfams
                 input[8] = null                                                                                    // nmpfams_db
-                input[9] = params.pipelines_testdata_base_path + '/testdata/nmpfams/nmpfams_test.hmm.gz'           // nmpfams_latest_link
+                input[9] = params.pipelines_testdata_base_path + '/testdata/nmpfams/nmpfamsdb_test.hmm.gz'           // nmpfams_latest_link
                 """
             }
         }
@@ -56,7 +56,7 @@ nextflow_workflow {
                 input[6] = params.pipelines_testdata_base_path + '/testdata/funfam/funfam-hmm3-v4_3_0_test.lib.gz' // funfam_latest_link
                 input[7] = false                                                                                   // skip_nmpfams
                 input[8] = null                                                                                    // nmpfams_db
-                input[9] = params.pipelines_testdata_base_path + '/testdata/nmpfams/nmpfams_test.hmm.gz'           // nmpfams_latest_link
+                input[9] = params.pipelines_testdata_base_path + '/testdata/nmpfams/nmpfamsdb_test.hmm.gz'           // nmpfams_latest_link
                 """
             }
         }
@@ -92,7 +92,7 @@ nextflow_workflow {
                 input[6] = params.pipelines_testdata_base_path + '/testdata/funfam/funfam-hmm3-v4_3_0_test.lib.gz' // funfam_latest_link
                 input[7] = false                                                                                   // skip_nmpfams
                 input[8] = null                                                                                    // nmpfams_db
-                input[9] = params.pipelines_testdata_base_path + '/testdata/nmpfams/nmpfams_test.hmm.gz'           // nmpfams_latest_link
+                input[9] = params.pipelines_testdata_base_path + '/testdata/nmpfams/nmpfamsdb_test.hmm.gz'           // nmpfams_latest_link
                 """
             }
         }
