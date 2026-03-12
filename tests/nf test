@@ -2,7 +2,7 @@ nextflow_workflow {
 
     name "Test Subworkflow functional_annotation"
     script "../main.nf"
-    workflow "functional_annotation"
+    workflow "FUNCTIIONAL_ANNOTATIONS"
 
     test("Should run functional annotation successfully") {
 
