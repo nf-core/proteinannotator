@@ -1,42 +1,60 @@
-name: "functional_annotation"
-description: Performs functional annotation of protein sequences, specifically using InterProScan with automated database download/extraction.
+name: functional_annotation
+description: |
+  Performs functional annotation of protein sequences using InterProScan.
+  Optionally downloads and extracts the InterProScan database automatically
+  using ARIA2 and UNTAR if no local database is provided.
 keywords:
   - annotation
+  - functional
   - interproscan
-  - proteomics
   - proteins
+  - fasta
+
 components:
-  - aria2/main
-  - untar/main
-  - interproscan/main
+  - aria2
+  - untar
+  - interproscan
 
 input:
   - ch_fasta:
-      type: list
+      type: file
       description: |
-        List of [ meta, fasta ]
-        meta: Groovy Map containing sample information (e.g. [ id:'test' ])
-        fasta: Protein FASTA file to be annotated
+        Channel containing FASTA files to be annotated.
+        Structure: [ val(meta), [ path(fasta) ] ]
+      pattern: "*.{fa,fasta,faa}"
   - skip_interproscan:
       type: boolean
-      description: Set to true to skip the InterProScan annotation process.
+      description: |
+        Flag to skip the InterProScan annotation step entirely.
   - interproscan_db_url:
       type: string
-      description: Remote URL to download the InterProScan database if not provided locally.
+      description: |
+        URL to download the InterProScan database archive.
+        Used only when skip_interproscan is false and interproscan_db is not provided.
   - interproscan_db:
       type: string
-      description: Path to a local InterProScan database directory.
+      description: |
+        Path to a pre-existing local InterProScan database directory.
+        If provided, skips the download and extraction steps.
 
 output:
   - interproscan_tsv:
       type: file
-      description: TSV file containing the functional annotation results from InterProScan.
-      pattern: "*.{tsv}"
+      description: |
+        TSV file containing InterProScan functional annotation results.
+        Structure: [ val(meta), path(tsv) ]
+      pattern: "*.tsv"
   - versions:
       type: file
-      description: File containing software versions.
+      description: |
+        File containing software versions for all tools used in the workflow.
+        Structure: [ path(versions.yml) ]
       pattern: "versions.yml"
 
 authors:
-  - "@Muskan" 
-  - "@Muskan"
+  - "@vagkaratzas"
+  - "@Muskan-2464
+maintainers:
+  - "@vagkaratzas"
+
+
