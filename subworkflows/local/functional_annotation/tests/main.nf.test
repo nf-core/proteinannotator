@@ -1,0 +1,31 @@
+nextflow_subworkflow {
+
+    name "Test Subworkflow FUNCTIONAL_ANNOTATION"
+    script "../main.nf"
+    config "./nextflow.config"
+    workflow "FUNCTIONAL_ANNOTATION"
+
+    test("Should run functional annotation with InterProScan") {
+
+        when {
+            workflow {
+                """
+                input[0] = [
+                    [ id:'test' ], // meta map
+                    file(params.test_data['sarscov2']['genome']['proteome_fasta'], checkIfExists: true)
+                ]
+                input[1] = true // skip_interproscan (set to true to avoid heavy DB download)
+                input[2] = 'https://raw.githubusercontent.com/nf-core/test-datasets/multiplesequencealignment/testdata/dummy_db.tar.gz'
+                input[3] = null // interproscan_db
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
+}
