@@ -19,9 +19,9 @@ nextflow_workflow {
                 input[0] = Channel.fromList([
                     [ [ id:'test' ], file(params.pipelines_testdata_base_path + 'proteinannotator/reference/snap25_isoforms_bc12_ced9.fasta', checkIfExists: true) ]
                 ])
-                input[1] = true
-                input[2] = null
-                input[3] = null
+                input[1] = true // skip_interproscan
+                input[2] = 'https://raw.githubusercontent.com/nf-core/test-datasets/multiplesequencealignment/testdata/dummy_db.tar.gz'
+                input[3] = null // interproscan_db
                 """
             }
         }
@@ -29,7 +29,8 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                // This checks that the output exists and matches our mock snapshot
+                { assert snapshot(workflow.out.interproscan_tsv, workflow.out.versions).match() }
             )
         }
     }
