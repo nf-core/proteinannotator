@@ -6,7 +6,8 @@ nextflow_workflow {
     tag "subworkflows"
     tag "functional_annotation"
 
-    test("skip interproscan - no db needed") {
+    test("stub run - skip interproscan ") {
+         options "-stub"
 
         when {
             workflow {
