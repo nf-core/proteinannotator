@@ -1,0 +1,43 @@
+# yaml-name: "functional_annotation"
+description: Annotate amino acid fasta files with functional databases using InterProScan
+keywords:
+  - fasta
+  - sequences
+  - functional
+  - annotation
+  - database
+  - interproscan
+components:
+  - aria2
+  - untar
+  - interproscan
+input:
+  - ch_fasta:
+      type: file
+      description: |
+        Amino acid fasta file containing amino acid sequences for annotation
+        Structure: [ val(meta), [ path(fasta) ] ]
+  - skip_interproscan:
+      type: boolean
+      description: Skip functional annotation with InterProScan
+  - interproscan_db_url:
+      type: string
+      description: URL to download the InterProScan database
+  - interproscan_db:
+      type: string
+      description: Path to an existing InterProScan library on the system. If provided, the ARIA2 download will be skipped.
+output:
+  - interproscan_tsv:
+      type: file
+      description: TSV files with InterProScan functional annotation for input amino acid sequences
+      pattern: "*.tsv"
+  - versions:
+      type: file
+      description: Versions file containing the software versions used in the workflow
+      pattern: "versions.yml"
+authors:
+  - "@vagkaratzas"
+  - "@Muskan"
+maintainers:
+  - "@vagkaratzas"
+  
