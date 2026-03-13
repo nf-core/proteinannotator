@@ -6,11 +6,13 @@ keywords:
   - functional
 components:
   - interproscan
+  - aria2
+  - untar
 input:
   - ch_fasta:
       type: file
       description: The input channel containing the fasta files
-      Structure: [ val(meta), path(fasta) ]
+      structure: [ val(meta), path(fasta) ]
       pattern: "*.{fa,fasta,fa.gz,fasta.gz}"
   - skip_interproscan:
       type: boolean
@@ -25,11 +27,12 @@ output:
   - interproscan_tsv:
       type: file
       description: TSV files with InterProScan functional annotation
+      structure: [ val(meta), path(tsv) ]
       pattern: "*.tsv"
   - versions:
       type: file
       description: File containing software versions
-      Structure: [ path(versions.yml) ]
+      structure: [ path(versions.yml) ]
       pattern: "versions.yml"
 authors:
   - "@Muskan"
