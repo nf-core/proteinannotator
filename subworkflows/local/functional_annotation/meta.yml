@@ -16,7 +16,6 @@ input:
   - ch_fasta:
       type: file
       description: Channel containing FASTA files to be annotated.
-        Structure: [ val(meta), [ path(fasta) ] ]
       pattern: "*.{fa,fasta,faa}"
   - skip_interproscan:
       type: boolean
@@ -24,7 +23,6 @@ input:
   - interproscan_db_url:
       type: string
       description: URL to download the InterProScan database archive.
-        Used only when skip_interproscan is false and interproscan_db is not provided.
   - interproscan_db:
       type: string
       description: Path to a pre-existing local InterProScan database directory.
