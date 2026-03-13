@@ -1,8 +1,5 @@
 name: functional_annotation
-description: |
-  Performs functional annotation of protein sequences using InterProScan.
-  Optionally downloads and extracts the InterProScan database automatically
-  using ARIA2 and UNTAR if no local database is provided.
+description: Performs functional annotation of protien sequences 
 keywords:
   - annotation
   - functional
