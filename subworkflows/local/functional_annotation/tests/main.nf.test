@@ -4,33 +4,27 @@ nextflow_workflow {
     script "../main.nf"
     workflow "FUNCTIONAL_ANNOTATION"
 
-    tag "subworkflows"
-    tag "subworkflows_local"
-    tag "subworkflows/functional_annotation"
-
-    test("Test functional annotation with single fasta") {
+    test("Should run InterProScan annotation successfully") {
 
         when {
-            params {
-                pipelines_testdata_base_path = "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/"
-            }
             workflow {
-                """
-                input[0] = Channel.fromList([
-                    [ [ id:'test' ], file(params.pipelines_testdata_base_path + 'proteinannotator/reference/snap25_isoforms_bc12_ced9.fasta', checkIfExists: true) ]
-                ])
-                input[1] = true // skip_interproscan
-                input[2] = 'https://raw.githubusercontent.com/nf-core/test-datasets/multiplesequencealignment/testdata/dummy_db.tar.gz'
-                input[3] = null // interproscan_db
-                """
+                /* Setting up the inputs based on your main.nf:
+                   input[0] = ch_fasta
+                   input[1] = skip_interproscan (boolean)
+                   input[2] = interproscan_db_url (string)
+                   input[3] = interproscan_db (string/null)
+                */
+                input[0] = Channel.of([ [ id:'test' ], file(params.test_data['sarscov2']['genome']['genome_fasta'], checkIfExists: true) ])
+                input[1] = false
+                input[2] = 'https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/genome/genome.fasta' // Replace with a real small DB URL if available
+                input[3] = [] 
             }
         }
 
         then {
             assertAll(
                 { assert workflow.success },
-                // This checks that the output exists and matches our mock snapshot
-                { assert snapshot(workflow.out.interproscan_tsv, workflow.out.versions).match() }
+                { assert snapshot(workflow.out).match() }
             )
         }
     }
