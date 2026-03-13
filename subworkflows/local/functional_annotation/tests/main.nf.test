@@ -4,10 +4,13 @@ nextflow_workflow {
     script "../main.nf"
     workflow "FUNCTIONAL_ANNOTATION"
     tag "subworkflows"
+    tag "subworkflows_local"
     tag "functional_annotation"
 
-    test("stub run - skip interproscan ") {
-         options "-stub"
+    // -------------------------------------------------------
+    // TEST 1: Skip InterProScan (safest for CI, no DB needed)
+    // -------------------------------------------------------
+    test("fasta - skip_interproscan true") {
 
         when {
             workflow {
@@ -17,9 +20,9 @@ nextflow_workflow {
                     file(params.modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz',
                     checkIfExists: true)
                 ])
-                input[1] = true    
-                input[2] = []      
-                input[3] = []      
+                input[1] = true    // skip_interproscan
+                input[2] = []      // no url
+                input[3] = []      // no local db
                 """
             }
         }
@@ -27,14 +30,16 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.interproscan_tsv == [] },  
-                { assert workflow.out.versions == [] }
+                { assert workflow.out.interproscan_tsv == [] },
+                { assert snapshot(workflow.out.versions).match("versions_skip") }
             )
         }
     }
 
-    // Stub test - no real DB download
-    test("stub run - local db") {
+    // -------------------------------------------------------
+    // TEST 2: Stub run with skip=false (no real DB download)
+    // -------------------------------------------------------
+    test("fasta - skip_interproscan false - stub") {
 
         options "-stub"
 
@@ -47,8 +52,8 @@ nextflow_workflow {
                     checkIfExists: true)
                 ])
                 input[1] = false
-                input[2] = []
-                input[3] = []     
+                input[2] = "https://ftp.ebi.ac.uk/pub/databases/interpro/releases/5.62-94.0/alt/interproscan-data-5.62-94.0.tar.gz"
+                input[3] = []
                 """
             }
         }
@@ -56,7 +61,38 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                { assert snapshot(workflow.out).match("stub") }
+            )
+        }
+    }
+
+    // -------------------------------------------------------
+    // TEST 3: Stub run - skip interproscan
+    // -------------------------------------------------------
+    test("fasta - skip_interproscan true - stub") {
+
+        options "-stub"
+
+        when {
+            workflow {
+                """
+                input[0] = Channel.of([
+                    [ id:'test_sample' ],
+                    file(params.modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz',
+                    checkIfExists: true)
+                ])
+                input[1] = true
+                input[2] = []
+                input[3] = []
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert workflow.out.interproscan_tsv == [] },
+                { assert snapshot(workflow.out.versions).match("versions_stub_skip") }
             )
         }
     }
