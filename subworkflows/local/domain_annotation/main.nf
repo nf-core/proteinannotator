@@ -1,6 +1,6 @@
 include { ARIA2 as ARIA2_PFAM                  } from '../../../modules/nf-core/aria2/main'
 include { ARIA2 as ARIA2_FUNFAM                } from '../../../modules/nf-core/aria2/main'
-include { ARIA2 as ARIA2_NMPFAMS              } from '../../../modules/nf-core/aria2/main'
+include { ARIA2 as ARIA2_NMPFAMS               } from '../../../modules/nf-core/aria2/main'
 include { HMMER_HMMSEARCH as HMMSEARCH_PFAM    } from '../../../modules/nf-core/hmmer/hmmsearch/main'
 include { HMMER_HMMSEARCH as HMMSEARCH_FUNFAM  } from '../../../modules/nf-core/hmmer/hmmsearch/main'
 include { HMMER_HMMSEARCH as HMMSEARCH_NMPFAMS } from '../../../modules/nf-core/hmmer/hmmsearch/main'
