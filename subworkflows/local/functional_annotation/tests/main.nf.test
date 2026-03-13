@@ -1,4 +1,4 @@
-nextflow_subworkflow {
+nextflow_workflow {
 
     name "Test Subworkflow FUNCTIONAL_ANNOTATION"
     script "../main.nf"
