@@ -1,41 +1,42 @@
 name: "functional_annotation"
-description: Functional annotation of proteins using InterProScan
+description: Performs functional annotation of protein sequences, specifically using InterProScan with automated database download/extraction.
 keywords:
-  - fasta
   - annotation
-  - functional
-components:
   - interproscan
-  - aria2
-  - untar
+  - proteomics
+  - proteins
+components:
+  - aria2/main
+  - untar/main
+  - interproscan/main
+
 input:
   - ch_fasta:
-      type: file
-      description: The input channel containing the fasta files
-      structure: [ val(meta), path(fasta) ]
-      pattern: "*.{fa,fasta,fa.gz,fasta.gz}"
+      type: list
+      description: |
+        List of [ meta, fasta ]
+        meta: Groovy Map containing sample information (e.g. [ id:'test' ])
+        fasta: Protein FASTA file to be annotated
   - skip_interproscan:
       type: boolean
-      description: Skip functional annotation with InterProScan
+      description: Set to true to skip the InterProScan annotation process.
   - interproscan_db_url:
       type: string
-      description: URL to download the InterProScan database
+      description: Remote URL to download the InterProScan database if not provided locally.
   - interproscan_db:
       type: string
-      description: Path to an existing InterProScan library
+      description: Path to a local InterProScan database directory.
+
 output:
   - interproscan_tsv:
       type: file
-      description: TSV files with InterProScan functional annotation
-      structure: [ val(meta), path(tsv) ]
-      pattern: "*.tsv"
+      description: TSV file containing the functional annotation results from InterProScan.
+      pattern: "*.{tsv}"
   - versions:
       type: file
-      description: File containing software versions
-      structure: [ path(versions.yml) ]
+      description: File containing software versions.
       pattern: "versions.yml"
+
 authors:
+  - "@Muskan" 
   - "@Muskan"
-maintainers:
-  - "@Muskan"
-  - "@vagkaratzas"
