@@ -1,31 +1,121 @@
 nextflow_workflow {
 
-    name "Test Subworkflow FUNCTIONAL_ANNOTATION"
+    name "Test Workflow FUNCTIONAL_ANNOTATION"
     script "../main.nf"
     workflow "FUNCTIONAL_ANNOTATION"
+    tag "subworkflows"
+    tag "subworkflows_local"
+    tag "functional_annotation"
 
-    test("Should run InterProScan annotation successfully") {
+
+    // TEST 1: Run with a pre-existing local InterProScan DB
+   
+    test("fasta - skip_interproscan false - local db") {
 
         when {
             workflow {
-                /* Setting up the inputs based on your main.nf:
-                   input[0] = ch_fasta
-                   input[1] = skip_interproscan (boolean)
-                   input[2] = interproscan_db_url (string)
-                   input[3] = interproscan_db (string/null)
-                */
-                input[0] = Channel.of([ [ id:'test' ], file(params.test_data['sarscov2']['genome']['genome_fasta'], checkIfExists: true) ])
+                """
+                input[0] = Channel.of([
+                    [ id:'test_sample' ],
+                    file(params.modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz', checkIfExists: true)
+                ])
                 input[1] = false
-                input[2] = 'https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/genomics/sarscov2/genome/genome.fasta' // Replace with a real small DB URL if available
-                input[3] = [] 
+                input[2] = null
+                input[3] = file(params.modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/interproscan_db', checkIfExists: true)
+                """
             }
         }
 
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                { assert snapshot(workflow.out.interproscan_tsv).match("interproscan_tsv_local_db") },
+                { assert snapshot(workflow.out.versions).match("versions_local_db") }
+            )
+        }
+    }
+
+
+    // TEST 2: Run with DB download via ARIA2 + UNTAR
+   
+    test("fasta - skip_interproscan false - download db") {
+
+        when {
+            workflow {
+                """
+                input[0] = Channel.of([
+                    [ id:'test_sample' ],
+                    file(params.modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz', checkIfExists: true)
+                ])
+                input[1] = false
+                input[2] = "https://ftp.ebi.ac.uk/pub/databases/interpro/releases/5.62-94.0/alt/interproscan-data-5.62-94.0.tar.gz"
+                input[3] = null
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out.interproscan_tsv).match("interproscan_tsv_download_db") },
+                { assert snapshot(workflow.out.versions).match("versions_download_db") }
+            )
+        }
+    }
+
+   
+    // TEST 3: Skip InterProScan entirely
+    test("fasta - skip_interproscan true") {
+
+        when {
+            workflow {
+                """
+                input[0] = Channel.of([
+                    [ id:'test_sample' ],
+                    file(params.modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz', checkIfExists: true)
+                ])
+                input[1] = true
+                input[2] = null
+                input[3] = null
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert workflow.out.interproscan_tsv == [] },
+                { assert snapshot(workflow.out.versions).match("versions_skip") }
+            )
+        }
+    }
+
+    
+    // TEST 4: Stub run
+    test("fasta - skip_interproscan false - local db - stub") {
+
+        options "-stub"
+
+        when {
+            workflow {
+                """
+                input[0] = Channel.of([
+                    [ id:'test_sample' ],
+                    file(params.modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz', checkIfExists: true)
+                ])
+                input[1] = false
+                input[2] = null
+                input[3] = file(params.modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/interproscan_db', checkIfExists: true)
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match("stub") }
             )
         }
     }
 }
+
