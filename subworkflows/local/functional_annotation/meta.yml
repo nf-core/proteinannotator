@@ -15,36 +15,30 @@ components:
 input:
   - ch_fasta:
       type: file
-      description: |
-        Channel containing FASTA files to be annotated.
+      description: Channel containing FASTA files to be annotated.
         Structure: [ val(meta), [ path(fasta) ] ]
       pattern: "*.{fa,fasta,faa}"
   - skip_interproscan:
       type: boolean
-      description: |
-        Flag to skip the InterProScan annotation step entirely.
+      description: Flag to skip the InterProScan annotation step entirely.
   - interproscan_db_url:
       type: string
-      description: |
-        URL to download the InterProScan database archive.
+      description: URL to download the InterProScan database archive.
         Used only when skip_interproscan is false and interproscan_db is not provided.
   - interproscan_db:
       type: string
-      description: |
-        Path to a pre-existing local InterProScan database directory.
+      description: Path to a pre-existing local InterProScan database directory.
         If provided, skips the download and extraction steps.
 
 output:
   - interproscan_tsv:
       type: file
-      description: |
-        TSV file containing InterProScan functional annotation results.
+      description: TSV file containing InterProScan functional annotation results.
         Structure: [ val(meta), path(tsv) ]
       pattern: "*.tsv"
   - versions:
       type: file
-      description: |
-        File containing software versions for all tools used in the workflow.
+      description: File containing software versions for all tools used in the workflow.
         Structure: [ path(versions.yml) ]
       pattern: "versions.yml"
 
