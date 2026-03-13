@@ -1,5 +1,5 @@
 name: functional_annotation
-description: Performs functional annotation of protien sequences 
+description: Performs functional annotation of protien sequences
 keywords:
   - annotation
   - functional
@@ -45,5 +45,3 @@ authors:
   - "@Muskan-2464
 maintainers:
   - "@vagkaratzas"
-
-
