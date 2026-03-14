@@ -7,7 +7,7 @@
 ## Introduction
 
 **nf-core/proteinannotator** is a bioinformatics pipeline that computes statistics and generates sequence-level annotations for amino acid sequences.
-It takes a protein FASTA file as input and performs conserved domain annotation (using Pfam and FunFam HMM databases), functional annotation (using InterProScan), and secondary structure prediction (using s4pred).
+It takes a protein FASTA file as input and performs conserved domain annotation (using Pfam, FunFam and NMPFams HMM databases), functional annotation (using InterProScan), and secondary structure prediction (using s4pred).
 Optionally, paths to pre-downloaded databases can be provided to skip the automatic download steps and speed up repeated runs.
 
 ## Samplesheet input

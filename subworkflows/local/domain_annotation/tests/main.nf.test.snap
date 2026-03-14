@@ -44,11 +44,42 @@
                 }
             ]
         ],
+        "timestamp": "2026-03-13T14:51:37.636657",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.2"
-        },
-        "timestamp": "2025-12-05T08:44:26.478981734"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "faa - nmpfams": {
+        "content": [
+            [
+                "#                                                                            --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord",
+                "# target name        accession   tlen query name           accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target",
+                "#------------------- ---------- ----- -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------",
+                "T1026                -            172 F049289              -             90     1e-05   12.9   0.0   1   1   9.8e-06     2e-05   12.0   0.0    34    76    43    85    33    88 0.93 FBNSV, , 172 residues|",
+                "T1024                -            408 F075270              -             57   1.5e-06   15.3   2.4   1   3   0.00095    0.0019    5.3   0.0     6    25    72    91    68    98 0.85 LmrP, , 408 residues|",
+                "T1024                -            408 F075270              -             57   1.5e-06   15.3   2.4   2   3      0.36      0.71   -2.9   0.0    42    49   148   155   135   162 0.68 LmrP, , 408 residues|",
+                "T1024                -            408 F075270              -             57   1.5e-06   15.3   2.4   3   3   0.00017   0.00033    7.8   0.4    10    48   266   304   257   311 0.89 LmrP, , 408 residues|",
+                "T1024                -            408 F093539              -             93   3.1e-05   11.0   0.1   1   4   1.6e-05   3.1e-05   11.0   0.1    57    75    50    68     6    75 0.82 LmrP, , 408 residues|"
+            ],
+            [
+                {
+                    "DOMAIN_ANNOTATION:HMMSEARCH_NMPFAMS": {
+                        "hmmer": 3.4
+                    }
+                },
+                {
+                    "DOMAIN_ANNOTATION:ARIA2_NMPFAMS": {
+                        "aria2": "1.36.0"
+                    }
+                }
+            ]
+        ],
+        "timestamp": "2026-03-13T14:53:51.847817",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     },
     "faa - pfam_db - skip_funfam": {
         "content": [
@@ -70,11 +101,11 @@
                 }
             ]
         ],
+        "timestamp": "2026-03-13T14:51:45.461466",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.2"
-        },
-        "timestamp": "2025-12-05T10:10:22.057426358"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     },
     "faa - domain annotation - stub": {
         "content": [
@@ -96,12 +127,30 @@
                     ]
                 ],
                 "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
                     "versions.yml:md5,160d4c5a5001cfb4ff57b94fc52b67d9",
+                    "versions.yml:md5,1b7d208e42364fb87160693faa4e83b9",
                     "versions.yml:md5,35e41735706132967dd94bb636833a4a",
+                    "versions.yml:md5,9045f482d64e7666e62932b0578b665e",
                     "versions.yml:md5,a74a0c8fcb741e59bc14424f612b8d09",
                     "versions.yml:md5,f1d8a406d3dcb97a7c15e9c810926de1"
                 ],
                 "funfam_domains": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "nmpfams_domains": [
                     [
                         {
                             "id": "test"
@@ -119,16 +168,18 @@
                 ],
                 "versions": [
                     "versions.yml:md5,160d4c5a5001cfb4ff57b94fc52b67d9",
+                    "versions.yml:md5,1b7d208e42364fb87160693faa4e83b9",
                     "versions.yml:md5,35e41735706132967dd94bb636833a4a",
+                    "versions.yml:md5,9045f482d64e7666e62932b0578b665e",
                     "versions.yml:md5,a74a0c8fcb741e59bc14424f612b8d09",
                     "versions.yml:md5,f1d8a406d3dcb97a7c15e9c810926de1"
                 ]
             }
         ],
+        "timestamp": "2026-03-13T09:45:07.520815",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.2"
-        },
-        "timestamp": "2025-12-05T08:44:37.015452047"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     }
 }

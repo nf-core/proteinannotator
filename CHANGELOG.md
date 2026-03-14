@@ -7,11 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Added`
 
-- [85](https://github.com/nf-core/proteinannotator/pull/85) - Added zenodo doi in `nextflow.config`. (by @vagkaratzas)
+- [#87](https://github.com/nf-core/proteinannotator/pull/87) - Added the option to download and use the latest `NMPFams` HMM library (or use path to an existing one) for domain annotation. (by @npechl)
+- [#85](https://github.com/nf-core/proteinannotator/pull/85) - Added zenodo doi in `nextflow.config`. (by @vagkaratzas)
 
 ### `Changed`
 
-- [85](https://github.com/nf-core/proteinannotator/pull/85) - `test_full.config` input samplesheet path is now set properly. (by @vagkaratzas)
+- [#85](https://github.com/nf-core/proteinannotator/pull/85) - `test_full.config` input samplesheet path is now set properly. (by @vagkaratzas)
 
 ## v1.0.0 - Yellow Saiga - [2026/02/09]
 
