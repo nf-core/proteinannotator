@@ -1,7 +1,7 @@
 {
     "-profile test": {
         "content": [
-            20,
+            36,
             {
                 "ARIA2": {
                     "aria2": "1.36.0"
@@ -15,11 +15,29 @@
                 "ARIA2_PFAM": {
                     "aria2": "1.36.0"
                 },
+                "HMMSEARCH_FUNFAM": {
+                    "hmmer": 3.4
+                },
+                "HMMSEARCH_NMPFAMS": {
+                    "hmmer": 3.4
+                },
+                "HMMSEARCH_PFAM": {
+                    "hmmer": 3.4
+                },
+                "INTERPROSCAN": {
+                    "interproscan": "5.59-91.0"
+                },
+                "S4PRED_RUNMODEL": {
+                    "s4pred": "1.2.1"
+                },
                 "SEQFU_STATS_AFTER": {
                     "seqfu": "1.22.3"
                 },
                 "SEQFU_STATS_BEFORE": {
                     "seqfu": "1.22.3"
+                },
+                "SEQKIT_REPLACE": {
+                    "seqkit": "2.9.0"
                 },
                 "SEQKIT_RMDUP": {
                     "seqkit": "v2.9.0"
@@ -27,13 +45,27 @@
                 "SEQKIT_SEQ": {
                     "seqkit": "v2.9.0"
                 },
+                "UNTAR": {
+                    "untar": 1.34
+                },
                 "Workflow": {
                     "nf-core/proteinannotator": "v1.1.0dev"
                 }
             },
             [
-                "aria2",
-                "aria2/nmpfamsdb_test.hmm.gz",
+                "domain_annotation",
+                "domain_annotation/funfam",
+                "domain_annotation/funfam/T1024.domtbl.gz",
+                "domain_annotation/funfam/T1026.domtbl.gz",
+                "domain_annotation/funfam/l_arginase.domtbl.gz",
+                "domain_annotation/nmpfams",
+                "domain_annotation/nmpfams/T1024.domtbl.gz",
+                "domain_annotation/nmpfams/T1026.domtbl.gz",
+                "domain_annotation/nmpfams/l_arginase.domtbl.gz",
+                "domain_annotation/pfam",
+                "domain_annotation/pfam/T1024.domtbl.gz",
+                "domain_annotation/pfam/T1026.domtbl.gz",
+                "domain_annotation/pfam/l_arginase.domtbl.gz",
                 "downloaded_dbs",
                 "downloaded_dbs/Pfam-A_test.hmm.gz",
                 "downloaded_dbs/funfam-hmm3-v4_3_0_test.lib.gz",
@@ -56,6 +88,62 @@
                 "downloaded_dbs/interproscan_db/tigrfam/15.0/TIGRFAMs_15.0_HMM.LIB",
                 "downloaded_dbs/interproscan_db/tigrfam/15.0/TIGRFAMs_HMM.LIB",
                 "downloaded_dbs/interproscan_test.tar.gz",
+                "downloaded_dbs/nmpfamsdb_test.hmm.gz",
+                "functional_annotation",
+                "functional_annotation/interproscan",
+                "functional_annotation/interproscan/T1024",
+                "functional_annotation/interproscan/T1024/T1024.gff3",
+                "functional_annotation/interproscan/T1024/T1024.json",
+                "functional_annotation/interproscan/T1024/T1024.tsv",
+                "functional_annotation/interproscan/T1024/T1024.xml",
+                "functional_annotation/interproscan/T1026",
+                "functional_annotation/interproscan/T1026/T1026.gff3",
+                "functional_annotation/interproscan/T1026/T1026.json",
+                "functional_annotation/interproscan/T1026/T1026.tsv",
+                "functional_annotation/interproscan/T1026/T1026.xml",
+                "functional_annotation/interproscan/l_arginase",
+                "functional_annotation/interproscan/l_arginase/l_arginase.gff3",
+                "functional_annotation/interproscan/l_arginase/l_arginase.json",
+                "functional_annotation/interproscan/l_arginase/l_arginase.tsv",
+                "functional_annotation/interproscan/l_arginase/l_arginase.xml",
+                "multiqc",
+                "multiqc/multiqc_data",
+                "multiqc/multiqc_data/llms-full.txt",
+                "multiqc/multiqc_data/multiqc.log",
+                "multiqc/multiqc_data/multiqc.parquet",
+                "multiqc/multiqc_data/multiqc_T1024_after.txt",
+                "multiqc/multiqc_data/multiqc_T1024_before.txt",
+                "multiqc/multiqc_data/multiqc_T1026_after.txt",
+                "multiqc/multiqc_data/multiqc_T1026_before.txt",
+                "multiqc/multiqc_data/multiqc_citations.txt",
+                "multiqc/multiqc_data/multiqc_data.json",
+                "multiqc/multiqc_data/multiqc_l_arginase_after.txt",
+                "multiqc/multiqc_data/multiqc_l_arginase_before.txt",
+                "multiqc/multiqc_data/multiqc_software_versions.txt",
+                "multiqc/multiqc_data/multiqc_sources.txt",
+                "multiqc/multiqc_plots",
+                "multiqc/multiqc_plots/pdf",
+                "multiqc/multiqc_plots/pdf/T1024_after.pdf",
+                "multiqc/multiqc_plots/pdf/T1024_before.pdf",
+                "multiqc/multiqc_plots/pdf/T1026_after.pdf",
+                "multiqc/multiqc_plots/pdf/T1026_before.pdf",
+                "multiqc/multiqc_plots/pdf/l_arginase_after.pdf",
+                "multiqc/multiqc_plots/pdf/l_arginase_before.pdf",
+                "multiqc/multiqc_plots/png",
+                "multiqc/multiqc_plots/png/T1024_after.png",
+                "multiqc/multiqc_plots/png/T1024_before.png",
+                "multiqc/multiqc_plots/png/T1026_after.png",
+                "multiqc/multiqc_plots/png/T1026_before.png",
+                "multiqc/multiqc_plots/png/l_arginase_after.png",
+                "multiqc/multiqc_plots/png/l_arginase_before.png",
+                "multiqc/multiqc_plots/svg",
+                "multiqc/multiqc_plots/svg/T1024_after.svg",
+                "multiqc/multiqc_plots/svg/T1024_before.svg",
+                "multiqc/multiqc_plots/svg/T1026_after.svg",
+                "multiqc/multiqc_plots/svg/T1026_before.svg",
+                "multiqc/multiqc_plots/svg/l_arginase_after.svg",
+                "multiqc/multiqc_plots/svg/l_arginase_before.svg",
+                "multiqc/multiqc_report.html",
                 "pipeline_info",
                 "pipeline_info/nf_core_proteinannotator_software_mqc_versions.yml",
                 "qc",
@@ -79,10 +167,19 @@
                 "qc/l_arginase/l_arginase_after.tsv",
                 "qc/l_arginase/l_arginase_after_mqc.txt",
                 "qc/l_arginase/l_arginase_before.tsv",
-                "qc/l_arginase/l_arginase_before_mqc.txt"
+                "qc/l_arginase/l_arginase_before_mqc.txt",
+                "s4pred",
+                "s4pred/T1024",
+                "s4pred/T1024/ss2",
+                "s4pred/T1024/ss2/T1024.ss2",
+                "s4pred/T1026",
+                "s4pred/T1026/ss2",
+                "s4pred/T1026/ss2/T1026.ss2",
+                "s4pred/l_arginase",
+                "s4pred/l_arginase/ss2",
+                "s4pred/l_arginase/ss2/GI|225038609|EFDID|719595|FULL.ss2"
             ],
             [
-                "nmpfamsdb_test.hmm.gz:md5,ad7a094618ccfdaeed1c03e93f6abf1e",
                 "Pfam-A_test.hmm.gz:md5,a5ab72b2b7bc72c62756684707e2387c",
                 "funfam-hmm3-v4_3_0_test.lib.gz:md5,df8b324882e1ceb8f8196155a968ed77",
                 "hamap.hmm.lib:md5,8c589a7f459284080e674e79454434d3",
@@ -96,6 +193,20 @@
                 "TIGRFAMs_15.0_HMM.LIB:md5,64f2b2c9e834b47b17d91bb9a6a0067e",
                 "TIGRFAMs_HMM.LIB:md5,543da3f4b65eed9ec393986c6c6ff0ba",
                 "interproscan_test.tar.gz:md5,cde88c0cd841c84dc1203e64854c762b",
+                "nmpfamsdb_test.hmm.gz:md5,ad7a094618ccfdaeed1c03e93f6abf1e",
+                "T1024.json:md5,0288f7551a14faedc409dd374b3e073e",
+                "T1024.xml:md5,63a3db0eb0e1f76403411602c23b721e",
+                "T1026.json:md5,5c2a40474b1cfb50cd043fe0be5e5d52",
+                "T1026.xml:md5,335552ce1703548565212a1d54681d75",
+                "l_arginase.json:md5,e0d127dd8a952cbd798999851d1338e6",
+                "l_arginase.xml:md5,7248992d9c1618cf7baa7515ae79ce32",
+                "multiqc_T1024_after.txt:md5,f2a552d4750ff8360941b10cec141499",
+                "multiqc_T1024_before.txt:md5,f2a552d4750ff8360941b10cec141499",
+                "multiqc_T1026_after.txt:md5,aabd4e58ed67d366fd04592ca09dbc9b",
+                "multiqc_T1026_before.txt:md5,aabd4e58ed67d366fd04592ca09dbc9b",
+                "multiqc_citations.txt:md5,4c806e63a283ec1b7e78cdae3a923d4f",
+                "multiqc_l_arginase_after.txt:md5,5df939cbafd732aa5095dad4434a4a33",
+                "multiqc_l_arginase_before.txt:md5,dd8e50549823ef944d6e36d0e2af56f7",
                 "T1024.fasta:md5,aa546680bf58fcb8aeb10e1617e6d5bd",
                 "T1024.log:md5,a41135cfe024baaf42f135583fe73f0d",
                 "T1024_after.tsv:md5,2daf830aba484edbcf25e811f5769ad0",
@@ -113,13 +224,16 @@
                 "l_arginase_after.tsv:md5,6c4fe965aa0905f437f3731ed8eed98e",
                 "l_arginase_after_mqc.txt:md5,af14b7e79260ece0074d4ea82a3b3ce6",
                 "l_arginase_before.tsv:md5,31a34ec0257053f34a449270f23d98ff",
-                "l_arginase_before_mqc.txt:md5,7ab718f12ea5460f254b8c43cfd11040"
+                "l_arginase_before_mqc.txt:md5,7ab718f12ea5460f254b8c43cfd11040",
+                "T1024.ss2:md5,6f2467c4e6974e761333bef106809e88",
+                "T1026.ss2:md5,cc788acb2aefe43fea147d9dd2b6c2c9",
+                "GI|225038609|EFDID|719595|FULL.ss2:md5,e7d8eaa84d46a6a714ffe00d7f21cdfb"
             ]
         ],
-        "timestamp": "2026-03-13T15:33:22.609858",
         "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.4"
-        }
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-03-14T10:06:42.466898492"
     }
 }
