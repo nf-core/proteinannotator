@@ -1,5 +1,4 @@
 nextflow_workflow {
-
     name "Test Subworkflow FUNCTIONAL_ANNOTATION"
     script "../main.nf"
     workflow "FUNCTIONAL_ANNOTATION"
@@ -7,14 +6,12 @@ nextflow_workflow {
     tag "subworkflows_local"
     tag "functional_annotation"
     test("faa - functional annotation") {
-
         when {
             workflow {
                 """
                 input[0] = channel.of([
                     [ id:'test_sample' ],
                     file(params.pipelines_testdata_base_path + '/testdata/sequences/test_proteins.faa', checkIfExists: true)
-                    checkIfExists: true)
                 ])
                 input[1] = false
                 input[2] = params.pipelines_testdata_base_path + 'proteinannotator/testdata/interproscan/interproscan_test.tar.gz'
@@ -22,22 +19,18 @@ nextflow_workflow {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert workflow.success },
                 { assert snapshot(
                     path(workflow.out.interproscan_tsv[0][1]).linesGzip[0..7],
                     workflow.out.versions.collect{ path(it).yaml }.unique()
-             ).match()}
-        )
+                ).match()}
+            )
+        }
     }
-
-
     test("faa - functional annotation - stub") {
-
         options "-stub"
-
         when {
             workflow {
                 """
@@ -51,7 +44,6 @@ nextflow_workflow {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert workflow.success },
@@ -59,5 +51,4 @@ nextflow_workflow {
             )
         }
     }
-}
 }
