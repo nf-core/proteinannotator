@@ -6,7 +6,7 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_local"
     tag "functional_annotation"
-    test("faa - functional annotation) {
+    test("faa - functional annotation") {
 
         when {
             workflow {
