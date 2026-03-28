@@ -1,5 +1,5 @@
 name: functional_annotation
-description: Performs functional annotation of protien sequences
+description: Performs functional annotation of protein sequences
 keywords:
   - annotation
   - functional
@@ -31,17 +31,19 @@ input:
 output:
   - interproscan_tsv:
       type: file
-      description: TSV file containing InterProScan functional annotation results.
+      description: |
+        TSV file containing InterProScan functional annotation results.
         Structure: [ val(meta), path(tsv) ]
       pattern: "*.tsv"
   - versions:
       type: file
-      description: File containing software versions for all tools used in the workflow.
+      description: |
+        File containing software versions for all tools used in the workflow.
         Structure: [ path(versions.yml) ]
       pattern: "versions.yml"
 
 authors:
   - "@vagkaratzas"
-  - "@Muskan-2464
+  - "@Muskan-2464"
 maintainers:
   - "@vagkaratzas"

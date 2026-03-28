@@ -1,28 +1,24 @@
 nextflow_workflow {
 
-    name "Test Workflow FUNCTIONAL_ANNOTATION"
+    name "Test Subworkflow FUNCTIONAL_ANNOTATION"
     script "../main.nf"
     workflow "FUNCTIONAL_ANNOTATION"
     tag "subworkflows"
     tag "subworkflows_local"
     tag "functional_annotation"
-
-    // -------------------------------------------------------
-    // TEST 1: Skip InterProScan (safest for CI, no DB needed)
-    // -------------------------------------------------------
-    test("fasta - skip_interproscan true") {
+    test("faa - functional annotation) {
 
         when {
             workflow {
                 """
-                input[0] = Channel.of([
+                input[0] = channel.of([
                     [ id:'test_sample' ],
-                    file(params.modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz',
+                    file(params.pipelines_testdata_base_path + '/testdata/sequences/test_proteins.faa', checkIfExists: true)
                     checkIfExists: true)
                 ])
-                input[1] = true    // skip_interproscan
-                input[2] = []      // no url
-                input[3] = []      // no local db
+                input[1] = false
+                input[2] = params.pipelines_testdata_base_path + 'proteinannotator/testdata/interproscan/interproscan_test.tar.gz'
+                input[3] = []
                 """
             }
         }
@@ -30,26 +26,24 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.interproscan_tsv == [] },
-                { assert snapshot(workflow.out.versions).match("versions_skip") }
-            )
-        }
+                { assert snapshot(
+                    path(workflow.out.interproscan_tsv[0][1]).linesGzip[0..7],
+                    workflow.out.versions.collect{ path(it).yaml }.unique()
+             ).match()}
+        )
     }
 
-    // -------------------------------------------------------
-    // TEST 2: Stub run with skip=false (no real DB download)
-    // -------------------------------------------------------
-    test("stub run - skip interproscan") {
+
+    test("faa - functional annotation - stub") {
 
         options "-stub"
 
         when {
             workflow {
                 """
-                input[0] = Channel.of([
+                input[0] = channel.of([
                     [ id:'test_sample' ],
-                    file(params.modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz',
-                    checkIfExists: true)
+                    file(params.pipelines_testdata_base_path + '/testdata/sequences/test_proteins.faa', checkIfExists: true)
                 ])
                 input[1] = true
                 input[2] = []
@@ -61,38 +55,7 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match("stub") }
-            )
-        }
-    }
-
-    // -------------------------------------------------------
-    // TEST 3: Stub run - skip interproscan
-    // -------------------------------------------------------
-    test("fasta - skip_interproscan true - stub") {
-
-        options "-stub"
-
-        when {
-            workflow {
-                """
-                input[0] = Channel.of([
-                    [ id:'test_sample' ],
-                    file(params.modules_testdata_base_path + 'genomics/prokaryotes/bacteroides_fragilis/genome/genome.fna.gz',
-                    checkIfExists: true)
-                ])
-                input[1] = true
-                input[2] = []
-                input[3] = []
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                { assert workflow.success },
-                { assert workflow.out.interproscan_tsv == [] },
-                { assert workflow.out.versions == [] }
+                { assert snapshot(workflow.out).match() }
             )
         }
     }
