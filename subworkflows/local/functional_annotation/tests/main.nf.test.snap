@@ -1,39 +1,4 @@
 {
-    "versions_skip": {
-        "content": [
-            [
-                
-            ]
-        ],
-        "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.4"
-        },
-        "timestamp": "2026-03-13T17:28:57.029553387"
-    },
-    "stub": {
-        "content": [
-            {
-                "0": [
-                    
-                ],
-                "1": [
-                    
-                ],
-                "interproscan_tsv": [
-                    
-                ],
-                "versions": [
-                    
-                ]
-            }
-        ],
-        "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.4"
-        },
-        "timestamp": "2026-03-13T17:29:04.51251929"
-    },
     "faa - functional annotation - stub": {
         "content": [
             {
@@ -55,6 +20,6 @@
             "nf-test": "0.9.3",
             "nextflow": "25.10.4"
         },
-        "timestamp": "2026-03-28T15:30:05.768569839"
+        "timestamp": "2026-03-29T15:14:06.543059702"
     }
 }
