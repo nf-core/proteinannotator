@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Added`
 
+- [#90](https://github.com/nf-core/proteinannotator/pull/90) - Added the option to download and use the latest `MetagRoot` HMM library (or use path to an existing one) for domain annotation. (by @angelphanth)
 - [#87](https://github.com/nf-core/proteinannotator/pull/87) - Added the option to download and use the latest `NMPFams` HMM library (or use path to an existing one) for domain annotation. (by @npechl)
 - [#85](https://github.com/nf-core/proteinannotator/pull/85) - Added zenodo doi in `nextflow.config`. (by @vagkaratzas)
 
