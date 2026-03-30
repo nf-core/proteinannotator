@@ -142,8 +142,7 @@ nextflow_workflow {
             assertAll(
                 { assert workflow.success},
                 { assert snapshot(
-                    path(workflow.out.pfam_domains[0][1]).linesGzip[0..7],
-                    path(workflow.out.funfam_domains[0][1]).linesGzip[0..7],
+                    path(workflow.out.metagroot_domains[0][1]).linesGzip[0..7],
                     workflow.out.versions.collect { path(it).yaml }.unique()
                     ).match()}
             )
