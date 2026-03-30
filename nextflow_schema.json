@@ -276,6 +276,23 @@
                     "default": "https://download.cathdb.info/cath/releases/all-releases/v4_3_0/sequence-data/funfam-hmm3-v4_3_0.lib.gz",
                     "description": "CATH hosted link to the latest available (v4_3_0) FunFam HMM database file."
                 },
+                "skip_nmpfams": {
+                    "type": "boolean",
+                    "fa_icon": "fas fa-ban",
+                    "description": "Skip the domain annotation with the NMPFams database.",
+                    "help": "Skips the domain annotation of input sequence against a NMPFams database."
+                },
+                "nmpfams_db": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "Path to an already installed NMPFams HMM database.",
+                    "help_text": "If left null and skip_funfam is false, the pipeline will start downloading the latest FunFam HMM library."
+                },
+                "nmpfams_latest_link": {
+                    "type": "string",
+                    "default": "https://pavlopoulos-lab.org/envofams/databases/hmmer/nmpfamsdb.hmm.gz",
+                    "description": ""
+                },
                 "skip_mroot": {
                     "type": "boolean",
                     "fa_icon": "fas fa-ban",
@@ -285,14 +302,13 @@
                 "mroot_db": {
                     "type": "string",
                     "format": "file-path",
-                    "description": "Path to an already installed MetagRoot HMM database (.tar.gz).",
+                    "description": "Path to an already installed MetagRoot HMM database (.hmm.gz).",
                     "help_text": "If left null and skip_mroot is false, the pipeline will start downloading the latest MetagRoot HMM library."
                 },
                 "mroot_latest_link": {
                     "type": "string",
-                    "default": "https://pavlopoulos-lab.org/metagroot/DownloadHmm",
+                    "default": "https://pavlopoulos-lab.org/envofams/databases/hmmer/metagroot.hmm.gz",
                     "description": "MetagRoot hosted link to the latest available MetagRoot HMM database file."
-                },
                 "hmmsearch_evalue_cutoff": {
                     "type": "number",
                     "default": 0.001,
