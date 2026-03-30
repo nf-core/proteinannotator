@@ -1,11 +1,11 @@
-include { ARIA2 as ARIA2_PFAM                  } from '../../../modules/nf-core/aria2/main'
-include { ARIA2 as ARIA2_FUNFAM                } from '../../../modules/nf-core/aria2/main'
-include { ARIA2 as ARIA2_NMPFAMS               } from '../../../modules/nf-core/aria2/main'
-include { ARIA2 as ARIA2_METAGROOT                 } from '../../../modules/nf-core/aria2/main'
-include { HMMER_HMMSEARCH as HMMSEARCH_PFAM    } from '../../../modules/nf-core/hmmer/hmmsearch/main'
-include { HMMER_HMMSEARCH as HMMSEARCH_FUNFAM  } from '../../../modules/nf-core/hmmer/hmmsearch/main'
-include { HMMER_HMMSEARCH as HMMSEARCH_NMPFAMS } from '../../../modules/nf-core/hmmer/hmmsearch/main'
-include { HMMER_HMMSEARCH as HMMSEARCH_METAGROOT   } from '../../../modules/nf-core/hmmer/hmmsearch/main'
+include { ARIA2 as ARIA2_PFAM                       } from '../../../modules/nf-core/aria2/main'
+include { ARIA2 as ARIA2_FUNFAM                     } from '../../../modules/nf-core/aria2/main'
+include { ARIA2 as ARIA2_NMPFAMS                    } from '../../../modules/nf-core/aria2/main'
+include { ARIA2 as ARIA2_METAGROOT                  } from '../../../modules/nf-core/aria2/main'
+include { HMMER_HMMSEARCH as HMMSEARCH_PFAM         } from '../../../modules/nf-core/hmmer/hmmsearch/main'
+include { HMMER_HMMSEARCH as HMMSEARCH_FUNFAM       } from '../../../modules/nf-core/hmmer/hmmsearch/main'
+include { HMMER_HMMSEARCH as HMMSEARCH_NMPFAMS      } from '../../../modules/nf-core/hmmer/hmmsearch/main'
+include { HMMER_HMMSEARCH as HMMSEARCH_METAGROOT    } from '../../../modules/nf-core/hmmer/hmmsearch/main'
 
 workflow DOMAIN_ANNOTATION {
     take:
@@ -19,17 +19,17 @@ workflow DOMAIN_ANNOTATION {
     skip_nmpfams           // boolean
     nmpfams_db             // string
     nmpfams_latest_link    // string
-    skip_metagroot             // boolean
-    metagroot_db               // string, path to the metagroot HMM database, if already exists
-    metagroot_latest_link      // string, path to the latest metagroot HMM database, to download
+    skip_metagroot         // boolean
+    metagroot_db           // string, path to the metagroot HMM database, if already exists
+    metagroot_latest_link  // string, path to the latest metagroot HMM database, to download
 
     main:
 
-    ch_versions        = channel.empty()
-    ch_pfam_domains    = channel.empty()
-    ch_funfam_domains  = channel.empty()
-    ch_nmpfams_domains = channel.empty()
-    ch_metagroot_domains   = channel.empty()
+    ch_versions             = channel.empty()
+    ch_pfam_domains         = channel.empty()
+    ch_funfam_domains       = channel.empty()
+    ch_nmpfams_domains      = channel.empty()
+    ch_metagroot_domains    = channel.empty()
 
     if (!skip_pfam) {
         if (!pfam_db) {
@@ -112,9 +112,9 @@ workflow DOMAIN_ANNOTATION {
     }
 
     emit:
-    pfam_domains    = ch_pfam_domains
-    funfam_domains  = ch_funfam_domains
-    nmpfams_domains = ch_nmpfams_domains
+    pfam_domains        = ch_pfam_domains
+    funfam_domains      = ch_funfam_domains
+    nmpfams_domains     = ch_nmpfams_domains
     metagroot_domains   = ch_metagroot_domains
-    versions        = ch_versions
+    versions            = ch_versions
 }
