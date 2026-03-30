@@ -5,12 +5,13 @@
   </picture>
 </h1>
 
-[![GitHub Actions CI Status](https://github.com/nf-core/proteinannotator/actions/workflows/ci.yml/badge.svg)](https://github.com/nf-core/proteinannotator/actions/workflows/ci.yml)
-[![GitHub Actions Linting Status](https://github.com/nf-core/proteinannotator/actions/workflows/linting.yml/badge.svg)](https://github.com/nf-core/proteinannotator/actions/workflows/linting.yml)[![AWS CI](https://img.shields.io/badge/CI%20tests-full%20size-FF9900?labelColor=000000&logo=Amazon%20AWS)](https://nf-co.re/proteinannotator/results)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.XXXXXXX-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![Open in GitHub Codespaces](https://img.shields.io/badge/Open_In_GitHub_Codespaces-black?labelColor=grey&logo=github)](https://github.com/codespaces/new/nf-core/proteinannotator)
+[![GitHub Actions CI Status](https://github.com/nf-core/proteinannotator/actions/workflows/nf-test.yml/badge.svg)](https://github.com/nf-core/proteinannotator/actions/workflows/nf-test.yml)
+[![GitHub Actions Linting Status](https://github.com/nf-core/proteinannotator/actions/workflows/linting.yml/badge.svg)](https://github.com/nf-core/proteinannotator/actions/workflows/linting.yml)[![AWS CI](https://img.shields.io/badge/CI%20tests-full%20size-FF9900?labelColor=000000&logo=Amazon%20AWS)](https://nf-co.re/proteinannotator/results)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.18547735-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.18547735)
 [![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)
 
-[![Nextflow](https://img.shields.io/badge/version-%E2%89%A524.04.2-green?style=flat&logo=nextflow&logoColor=white&color=%230DC09D&link=https%3A%2F%2Fnextflow.io)](https://www.nextflow.io/)
-[![nf-core template version](https://img.shields.io/badge/nf--core_template-3.3.1-green?style=flat&logo=nfcore&logoColor=white&color=%2324B064&link=https%3A%2F%2Fnf-co.re)](https://github.com/nf-core/tools/releases/tag/3.3.1)
+[![Nextflow](https://img.shields.io/badge/version-%E2%89%A525.10.0-green?style=flat&logo=nextflow&logoColor=white&color=%230DC09D&link=https%3A%2F%2Fnextflow.io)](https://www.nextflow.io/)
+[![nf-core template version](https://img.shields.io/badge/nf--core_template-3.5.2-green?style=flat&logo=nfcore&logoColor=white&color=%2324B064&link=https%3A%2F%2Fnf-co.re)](https://github.com/nf-core/tools/releases/tag/3.5.2)
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
 [![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
@@ -20,20 +21,7 @@
 
 ## Introduction
 
-**nf-core/proteinannotator** is a bioinformatics pipeline that runs statistics of input protein fasta files and identifies the function of proteins based on their sequence data, using state-of-the-art protein annotation tools such as [InterProScan](https://interproscan-docs.readthedocs.io/).
-
-<!-- TODO nf-core:
-   Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
-   major pipeline sections and the types of output it produces. You're giving an overview to someone new
-   to nf-core here, in 15-20 seconds. For an example, see https://github.com/nf-core/rnaseq/blob/master/README.md#introduction
--->
-
-<!-- TODO nf-core: Include a figure that guides the user through the major workflow steps. Many nf-core
-
-     workflows use the "tube map" design for that. See https://nf-co.re/docs/contributing/design_guidelines#examples for examples.   -->
-<!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->
-
-
+**nf-core/proteinannotator** is a bioinformatics pipeline that computes statistics for protein FASTA inputs and produces protein annotations based on predicted sequence features, including conserved domains, functions, and secondary structure.
 
 1. Run ([`seqkit stats`](https://bioinf.shenwei.me/seqkit/usage/#stats)) to summarize input protein fasta files
 2. Functional Annotation:
@@ -43,11 +31,25 @@
 
 
 <h1>
+<p>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/images/proteinannotator-metromap.dark.excalidraw.png">
-    <img alt="Protein annotator metromap. Protein fasta files are summarized with `seqkit stats`, then functionally annotated with InterProScan, DIAMOND-blastp, UniFire, and Kmerseek" src="docs/images/proteinannotator-metromap.light.excalidraw.png">
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/proteinannotator_metromap_dark.png">
+    <img alt="nf-core/proteinannotator" src="docs/images/proteinannotator_metromap_light.png">
   </picture>
-</h1>
+</p>
+
+### Check quality and pre-process
+
+Generate input amino acid sequence statistics with ([`SeqFu`](https://github.com/telatin/seqfu2/)) and pre-process them (i.e., gap removal, convert to upper case, validate, filter by length, replace special characters such as `/`, and remove duplicate sequences) with ([`SeqKit`](https://github.com/shenwei356/seqkit/))
+
+### Annotate sequences
+
+1. Conserved domain annotation with ([`hmmer`](https://github.com/EddyRivasLab/hmmer/)) against databases
+   such as [Pfam](https://ftp.ebi.ac.uk/pub/databases/Pfam/), [FunFam](https://download.cathdb.info/cath/releases/all-releases/), and [NMPFams](https://pavlopoulos-lab.org/envofams/databases/hmmer/)
+2. Functional annotation:
+   - ([`InterProScan`](https://interproscan-docs.readthedocs.io/en/v5/)) a software tool used to analyze protein sequences by scanning them against the signatures of protein families, domains, and sites in the [InterPro](https://www.ebi.ac.uk/interpro/) database, helping to identify their functional characteristics.
+3. Predict secondary structure compositional features such as α-helices, β-strands and coils with ([`s4pred`](https://github.com/psipred/s4pred))
+4. Present QC stats for input sequences before and after initial pre-processing with ([`MultiQC`](http://multiqc.info/))
 
 ## Usage
 
@@ -64,11 +66,9 @@ species1,species1_proteins.fasta
 species2,species2_proteins.fasta
 ```
 
-Each row represents a fasta file of proteins from a single species.
+Each row represents a FASTA file of proteins from a single species.
 
 Now, you can run the pipeline using:
-
-<!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
 
 ```bash
 nextflow run nf-core/proteinannotator \
@@ -90,11 +90,14 @@ For more details about the output files and reports, please refer to the
 
 ## Credits
 
-nf-core/proteinannotator was originally written by Olga Botvinnik.
+nf-core/proteinannotator was originally written by Olga Botvinnik and Evangelos Karatzas.
 
 We thank the following people for their extensive assistance in the development of this pipeline:
 
-<!-- TODO nf-core: If applicable, make list of people who have also contributed -->
+- [Michael L Heuer](https://github.com/heuermh)
+- [Edmund Miller](https://github.com/edmundmiller)
+- [Eric Wei](https://github.com/eweizy)
+- [Martin Beracochea](https://github.com/mberacochea)
 
 ## Contributions and Support
 
@@ -104,10 +107,7 @@ For further information or help, don't hesitate to get in touch on the [Slack `#
 
 ## Citations
 
-<!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi and badge at the top of this file. -->
-<!-- If you use nf-core/proteinannotator for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
-
-<!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
+If you use nf-core/proteinannotator for your analysis, please cite it using the following doi: [10.5281/zenodo.18547735](https://doi.org/10.5281/zenodo.18547735)
 
 An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
 

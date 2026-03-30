@@ -1,6 +1,9 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
-name: "functional_annotation"
-description: Functional annotation of proteins
+name: functional_annotation
+description: |
+  Performs functional annotation of protein sequences using InterProScan.
+  Optionally downloads and extracts the InterProScan database via ARIA2 and UNTAR,
+  or uses a pre-existing local database. The annotation step can be skipped entirely.
 keywords:
   - annotation
   - functional
@@ -12,13 +15,38 @@ keywords:
 components:
   - diamond
   - interproscan
+  - interproscan
+  - proteins
+  - fasta
+
+components:
+  - aria2
+  - untar
+  - interproscan
+
 input:
   - ch_fasta:
       type: file
       description: |
-        The input channel containing the fasta files
+        Channel containing FASTA files with protein sequences to annotate.
         Structure: [ val(meta), path(fasta) ]
-      pattern: "*.{fa,fasta,fa.gz,fasta.gz}"
+      pattern: "*.{fa,fasta,faa}"
+  - skip_interproscan:
+      type: boolean
+      description: |
+        If true, the entire InterProScan annotation step is skipped and no
+        output TSV is produced.
+  - interproscan_db_url:
+      type: string
+      description: |
+        URL to download the InterProScan database archive (tar.gz). Used when
+        interproscan_db is not provided and skip_interproscan is false.
+  - interproscan_db:
+      type: string
+      description: |
+        Path to a pre-existing local InterProScan database directory. When
+        provided, the download and extraction steps are skipped.
+
 output:
   - diamond_tsv:
       type: file
@@ -26,15 +54,28 @@ output:
         Channel containing TSV files with taxonomic classification of DIAMOND hits
         Structure: [ val(meta), path(tsv) ]
       pattern: "*.{tsv,tsv.gz}"
+  - interproscan_tsv:
+      type: file
+      description: |
+        TSV file containing InterProScan functional annotation results.
+        Optional — only produced when skip_interproscan is false.
+        Structure: [ val(meta), path(tsv) ]
+      pattern: "*.tsv"
   - versions:
       type: file
       description: |
-        File containing software versions
+        File containing software versions for all tools used in the subworkflow.
+        Only populated when skip_interproscan is false (ARIA2 versions collected).
         Structure: [ path(versions.yml) ]
       pattern: "versions.yml"
+
 authors:
   - "@eweizy"
   - "@tracelail"
 maintainers:
   - "@eweizy"
   - "@tracelail"
+  - "@vagkaratzas"
+  - "@Muskan-2464"
+maintainers:
+  - "@vagkaratzas"

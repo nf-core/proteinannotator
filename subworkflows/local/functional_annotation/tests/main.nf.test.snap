@@ -3,13 +3,13 @@
         "content": [
             {
                 "0": [
-                    
+
                 ],
                 "1": [
                     "versions.yml:md5,a7c2e489f7420594e92efbbc61cb22f7"
                 ],
                 "diamond_tsv": [
-                    
+
                 ],
                 "versions": [
                     "versions.yml:md5,a7c2e489f7420594e92efbbc61cb22f7"
@@ -23,19 +23,44 @@
         "timestamp": "2025-10-02T15:01:50.951164221"
     },
     "Test FUNCTIONAL_ANNOTATION subworkflow success - simple protein fasta - stub": {
+    "l_asparaginase - faa - functional annotation": {
+        "content": [
+            true,
+            [
+                {
+                    "FUNCTIONAL_ANNOTATION:ARIA2": {
+                        "aria2": "1.36.0"
+                    }
+                }
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-03-30T08:43:09.611782169"
+    },
+    "faa - functional annotation - stub": {
         "content": [
             {
                 "0": [
-                    
+
                 ],
                 "1": [
                     "versions.yml:md5,fd24ea3d2a1506fd14f5212e104d8fd5"
                 ],
                 "diamond_tsv": [
-                    
+
                 ],
                 "versions": [
                     "versions.yml:md5,fd24ea3d2a1506fd14f5212e104d8fd5"
+
+                ],
+                "interproscan_tsv": [
+
+                ],
+                "versions": [
+
                 ]
             }
         ],
@@ -44,5 +69,9 @@
             "nextflow": "25.04.6"
         },
         "timestamp": "2025-10-02T15:02:01.341422546"
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-03-30T08:32:05.103561412"
     }
 }

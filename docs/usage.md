@@ -6,11 +6,13 @@
 
 ## Introduction
 
-<!-- TODO nf-core: Add documentation about anything specific to running your pipeline. For general topics, please point to (and add to) the main nf-core website. -->
+**nf-core/proteinannotator** is a bioinformatics pipeline that computes statistics and generates sequence-level annotations for amino acid sequences.
+It takes a protein FASTA file as input and performs conserved domain annotation (using Pfam, FunFam and NMPFams HMM databases), functional annotation (using InterProScan), and secondary structure prediction (using s4pred).
+Optionally, paths to pre-downloaded databases can be provided to skip the automatic download steps and speed up repeated runs.
 
 ## Samplesheet input
 
-You will need to create a samplesheet with information about the samples you would like to analyse before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row as shown in the examples below.
+You will need to create a samplesheet with information about the samples you would like to analyse before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 2 columns, and a header row as shown in the examples below.
 
 ```bash
 --input '[path to samplesheet file]'
@@ -81,11 +83,13 @@ You can also generate such `YAML`/`JSON` files via [nf-core/launch](https://nf-c
 ### InterProScan
 
 Running [InterProScan](https://interproscan-docs.readthedocs.io/) requires a pre-prepared input database. You can provided this as one of two options:
+[InterProScan](https://github.com/ebi-pf-team/interproscan) is used to provide more information about the proteins annotated on the contigs. By default, turning on this subworkflow without `--skip_interproscan` will download and unzip the InterPro database. The database will then be saved in the output directory `<output_directory>/downloaded_dbs/interproscan_db/`. We recommend keeping a copy of this directory for future reuse in case the results folder is deleted.
 
-- `--interproscan_tar_gz`: This is the raw `*.tar.gz` file exactly from InterProScan https://www.ebi.ac.uk/interpro/download/InterProScan/, OR
-- `--interproscan_database`: The decompressed version of the above folder, pointing to the `/data` subfolder
+:::note
+The large database download (5.5GB) can take up to 4 hours depending on the bandwidth.
+:::
 
-For reproducibility and explicitness, `--interproscan_database_version` is a required parameter. InterProScan is quite resource-intensive and you can also choose to not run InterProScan with `--skip_interproscan`.
+A local version of the database can be supplied to the pipeline by passing the InterProScan database directory to `--interproscan_db <path/to/downloaded-untarred-interproscan_db-dir/>`. The directory can be created by running (e.g. for database version 5.72-103.0):
 
 ### DIAMOND
 
@@ -97,14 +101,48 @@ Running [Diamond](https://github.com/bbuchfink/diamond) requires five inputs par
 - `--diamond_outfmt`: One of seven optional output formats for [`diamond/blastp`](https://nf-co.re/modules/diamond_blastp/), indicated by a digit code. Options include:
   - `*.blast (0)`: (Basic Local Alignment Search Tool) BLAST pairwise format
   - `*.xml (5)`: BLAST Extensible Markup Language (XML) format
-  - `*.txt (6)`: BLAST tabular format (default). This format can be customized, the 6 may be followed by a space-separated list of the blast_columns keywords, each specifying a field of the output. 
-  - `*.daa (100)`: DIAMOND alignment archive (DAA). The DAA format is a proprietary binary format that can subsequently be used to generate other output formats using the view command. It is also supported by MEGAN and allows a quick import of results. 
-  - `*.sam (101)`: SAM format. 
-  - `*.tsv (102)`: Taxonomic classification. This format will not print alignments but only a taxonomic classification for each query using the LCA algorithm. 
+  - `*.txt (6)`: BLAST tabular format (default). This format can be customized, the 6 may be followed by a space-separated list of the blast_columns keywords, each specifying a field of the output.
+  - `*.daa (100)`: DIAMOND alignment archive (DAA). The DAA format is a proprietary binary format that can subsequently be used to generate other output formats using the view command. It is also supported by MEGAN and allows a quick import of results.
+  - `*.sam (101)`: SAM format.
+  - `*.tsv (102)`: Taxonomic classification. This format will not print alignments but only a taxonomic classification for each query using the LCA algorithm.
   - `*.paf (103)`: PAF format. The custom fields in the format are AS (bit score), ZR (raw score) and ZE (e-value)
 - `--diamond_blast_columns`: Accompanied optional input parameter to `diamond_outfmt`: `*.txt (6)` output format. Space separated list of columns to be included. Options: qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore.
 
 ### Updating the pipeline
+```
+curl -L https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/interproscan-5.72-103.0-64-bit.tar.gz -o interproscan_db/interproscan-5.72-103.0-64-bit.tar.gz
+tar -xzf interproscan_db/interproscan-5.72-103.0-64-bit.tar.gz -C interproscan_db/
+
+```
+
+The contents of the database directory should include the directory `data` in the top level with a number of subdirectories:
+
+```
+interproscan_db/
+  └── data/
+    ├── antifam
+    ├── cdd
+    ├── funfam
+    ├── gene3d
+    ├── hamap
+    ├── ncbifam
+    ├── panther
+    | └── [18.0]
+    ├── pfam
+    | └── [36.0]
+    ├── phobius
+    ├── pirsf
+    ├── pirsr
+    ├── prints
+    ├── prosite
+    | └── [2023_05]
+    ├── sfld
+    ├── smart
+    ├── superfamily
+    └── tmhmm
+```
+
+## Updating the pipeline
 
 When you run the above command, Nextflow automatically pulls the pipeline code from GitHub and stores it as a cached version. When running the pipeline after this, it will always use the cached version if available - even if the pipeline has been updated since. To make sure that you're running the latest version of the pipeline, make sure that you regularly update the cached version of the pipeline:
 
@@ -112,7 +150,7 @@ When you run the above command, Nextflow automatically pulls the pipeline code f
 nextflow pull nf-core/proteinannotator
 ```
 
-### Reproducibility
+## Reproducibility
 
 It is a good idea to specify the pipeline version when running the pipeline on your data. This ensures that a specific version of the pipeline code and software are used when you run your pipeline. If you keep using the same tag, you'll be running the same version of the pipeline, even if there have been changes to the code since.
 
@@ -158,7 +196,7 @@ If `-profile` is not specified, the pipeline will run locally and expect all sof
 - `shifter`
   - A generic configuration profile to be used with [Shifter](https://nersc.gitlab.io/development/shifter/how-to-use/)
 - `charliecloud`
-  - A generic configuration profile to be used with [Charliecloud](https://hpc.github.io/charliecloud/)
+  - A generic configuration profile to be used with [Charliecloud](https://charliecloud.io/)
 - `apptainer`
   - A generic configuration profile to be used with [Apptainer](https://apptainer.org/)
 - `wave`

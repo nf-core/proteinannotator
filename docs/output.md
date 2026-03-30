@@ -6,41 +6,132 @@ This document describes the output produced by the pipeline. Most of the plots a
 
 The directories listed below will be created in the results directory after the pipeline has finished. All paths are relative to the top-level results directory.
 
-<!-- TODO nf-core: Write this documentation describing your workflow's output -->
-
 ## Pipeline overview
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
+<<<<<<< HEAD
 - [Functional Annotation](#functional-annotation) Annotate proteins with functional domains
   - [InterProScan](#Interproscan) - Search the InterPro database for functional domains
   - [Diamond] (#Diamond) - Provide potential homologous protein matches between species
+=======
+- [Quality control and preprocessing](#quality-control-and-preprocessing)
+  - [SeqFu](#seqfu) for input amino acid sequences quality control (QC)
+  - [SeqKit](#seqkit) for preprocessing input amino acid sequences (i.e., gap removal, convert to upper case, validate, filter by length, replace special characters such as `/`, and remove duplicate sequences)
+- [Database download](#database-download) Optionally download selected databases for annotation.
+  - [aria2](#aria2) - To optionally download the Pfam, FunFam, NMPFams and/or InterProScan databases through the pipeline.
+- [Domain annotation](#domain-annotation) Annotate proteins with domains from established repositories.
+  - [hmmer](#hmmer) - To optionally match the input sequence to known Pfam, FunFam and/or NMPFams domains through `hmmer/hmmsearch`
+- [Functional annotation](#functional-annotation) Annotate proteins with functional domains
+  - [InterProScan](#Interproscan) - Search the InterProScan database for functional domains
+- [s4pred](#s4pred) - Predict secondary structures of sequences, producing amino acid level probabilities of forming an α-helix, a β-strand or a coil.
+>>>>>>> dev
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
-- [SeqKit stats](#seqkit_stats) - Simple statistics for protein FASTA files
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
 
-### Functional Annotation
+### Quality control and preprocessing
+
+#### SeqFu
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `qc/`
+  - `<samplename>/`
+    - `<samplename>_before.tsv`: Statistics for the input amino acid sequences before preprocessing
+    - `<samplename>_before_mqc.txt`: Statistics for the input amino acid sequences in MultiQC-ready format before preprocessing
+    - `<samplename>_after.tsv`: (optional) Statistics for the input amino acid sequences after preprocessing
+    - `<samplename>_after_mqc.txt`: (optional) Statistics for the input amino acid sequences in MultiQC-ready format after preprocessing
+    - `<samplename>.log`: (optional) Output file with count of duplicate sequences that were found and removed
+
+</details>
+
+The `seqfu` module is used for statistics generation of input amino acid sequences, both before and after preprocessing.
+
+[SeqFu](https://github.com/telatin/seqfu2) is a cross-platform compiled suite of tools to manipulate and inspect `FASTA` and `FASTQ` files.
+
+#### SeqKit
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `qc/`
+  - `<samplename>/`
+    - `<samplename>.<suffix>`: Updated preprocessed input fasta file
+
+</details>
+
+The `seqkit` module is used for initial preprocessing (i.e., gap removal, convert to upper case, validate, filter by length, replace special characters such as `/`, and remove duplicate sequences) of the input amino acid sequences.
+
+[SeqKit](https://github.com/shenwei356/seqkit) is a cross-platform and ultrafast toolkit for FASTA/Q file manipulation.
+
+### Database download
+
+#### aria2
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `downloaded_dbs/`
+  - `interproscan_db/`: (optional) uncompressed archive data from the downloaded InterProScan database
+    - `*/`: (optional) one directory for each of the member databases of InterProScan
+  - `Pfam-A*.hmm.gz`: (optional) The latest full, or a minimal test, Pfam-A HMM database that can be downloaded through the pipeline.
+  - `interproscan_test.tar.gz`: (optional) the downloaded InterProScan archive of member databases according to the optional user-provided url
+  - `funfam-hmm3-v4_3_0*.lib.gz`: (optional) The latest (v4_3_0) full, or a minimal test, FunFam HMM database that can be downloaded through the pipeline.
+  - `nmpfamsdb.hmm.gz`: (optional) The latest full, or a minimal test, NMPFams HMM database that can be downloaded through the pipeline.
+
+</details>
+
+If the `skip_*` flags (e.g., `skip_pfam`, `skip_funfam`, `skip_nmpfams`, `skip_interproscan`) for each annotation database is set to `true`, or the `*_db` parameter paths (e.g., `pfam_db`, `funfam_db`, `nmpfams_db`, `interproscan_db`) are set (i.e., not `null`), or the run is resumed after a successful database download, then the respective database will not be (re)downloaded. The full database links can be found in the main `nextflow.config` file, while minimal test versions can be found in the `test` and `test_full` profiles (i.e., `conf/test.config`, `conf/test_full.config`).
+
+[aria2](https://github.com/aria2/aria2/) is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.
+
+### Domain annotation
+
+#### hmmer
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `domain_annotation/`
+  - `pfam/`
+    - `<samplename>.domtbl.gz`: `hmmer/hmmsearch` results along parameters info.
+  - `funfam/`
+    - `<samplename>.domtbl.gz`: `hmmer/hmmsearch` results along parameters info.
+  - `nmpfams/`
+    - `<samplename>.domtbl.gz`: `hmmer/hmmsearch` results along parameters info.
+
+</details>
+
+Each of the `domain_annotation/` subfolders (e.g., `pfam`, `funfam`, `nmpfams`) contain a `.domtbl.gz` annotation file per input sample, depending on which domain annotation databases were used in the pipeline execution.
+
+[hmmer](https://github.com/EddyRivasLab/hmmer) is a fast and flexible alignment trimming tool that keeps phylogenetically informative sites and removes others.
+
+### Functional annotation
 
 #### InterProScan
 
 <details markdown="1">
 <summary>Output files</summary>
 
-- `functional_annotation/interproscan`
-  - `*.gff.gz`: gzip-compressed general feature format (GFF) file
-  - `*.json.gz`: gzip-compressed javascript object notation (JSON) file
-  - `*.tsv.gz`: gzip-compressed tab-separated variable (TSV) file
-  - `*.xml.gz`: gzip-compressed eXtensible markup language (XML) file
+- `functional_annotation/`
+  - `interproscan/`
+    - `<samplename>/`
+      - `<samplename>.gff`: general feature format (GFF) file
+      - `<samplename>.json`: javascript object notation (JSON) file
+      - `<samplename>.tsv`: tab-separated variable (TSV) file
+      - `<samplename>.xml`: eXtensible markup language (XML) file
 
 </details>
 
-[InterProScan](https://interproscan-docs.readthedocs.io/en/v5/#) is a protein annotation tool that searches [InterPro](http://www.ebi.ac.uk/interpro/), a database which integrates together predictive information about proteins’ function from a number of partner resources, giving an overview of the families that a protein belongs to and the domains and sites it contains.
+[InterProScan](https://interproscan-docs.readthedocs.io/en/v5/#) is a protein annotation tool that searches [InterPro](http://www.ebi.ac.uk/interpro/), a database which integrates predictive information about protein function from a number of member resources, giving an overview of the families that a protein belongs to and the domains and sites it contains. The default database applications that are used to functionally annotate sequences include
+Hamap, PANTHER, PIRSF, TIGRFAM and sfld, and are set through the `--interproscan_applications` parameter.
 
 See also [InterProScan output documentation](https://interproscan-docs.readthedocs.io/en/v5/), where most of these examples are taken from.
 
 ##### Generic Feature Format Version 3 (GFF3) Output
 
-The GFF3 format is a flat tab-delimited file, which is much richer then the TSV output format. It allows you to trace back from matches to predicted proteins and to nucleic acid sequences. It also contains a FASTA format representation of the predicted protein sequences and their matches. You will find a documentation of all the columns and attributes used on http://www.sequenceontology.org/gff3.shtml.
+The GFF3 format is a flat tab-delimited file, which is much richer then the TSV output. It allows you to trace back from matches to predicted proteins and to nucleic acid sequences. It also contains a FASTA format representation of the predicted protein sequences and their matches. You will find a documentation of all the columns and attributes used on http://www.sequenceontology.org/gff3.shtml.
 
 <details markdown="1">
 <summary>Example InterProScan GFF output</summary>
@@ -270,6 +361,7 @@ The XML Schema Definition (XSD) is available [here](http://ftp.ebi.ac.uk/pub/sof
 </details>
 
 #### Diamond
+#### s4pred
 
 <details markdown="1">
 <summary>Output files</summary>
@@ -277,10 +369,10 @@ The XML Schema Definition (XSD) is available [here](http://ftp.ebi.ac.uk/pub/sof
 - `functional_annotation/diamond`
   - `*.blast (0)`: (Basic Local Alignment Search Tool) BLAST pairwise format
   - `*.xml (5)`: BLAST Extensible Markup Language (XML) format
-  - `*.txt (6)`: BLAST tabular format (default). This format can be customized, the 6 may be followed by a space-separated list of the blast_columns keywords, each specifying a field of the output. 
-  - `*.daa (100)`: DIAMOND alignment archive (DAA). The DAA format is a proprietary binary format that can subsequently be used to generate other output formats using the view command. It is also supported by MEGAN and allows a quick import of results. 
-  - `*.sam (101)`: SAM format. 
-  - `*.tsv (102)`: Taxonomic classification. This format will not print alignments but only a taxonomic classification for each query using the LCA algorithm. 
+  - `*.txt (6)`: BLAST tabular format (default). This format can be customized, the 6 may be followed by a space-separated list of the blast_columns keywords, each specifying a field of the output.
+  - `*.daa (100)`: DIAMOND alignment archive (DAA). The DAA format is a proprietary binary format that can subsequently be used to generate other output formats using the view command. It is also supported by MEGAN and allows a quick import of results.
+  - `*.sam (101)`: SAM format.
+  - `*.tsv (102)`: Taxonomic classification. This format will not print alignments but only a taxonomic classification for each query using the LCA algorithm.
   - `*.paf (103)`: PAF format. The custom fields in the format are AS (bit score), ZR (raw score) and ZE (e-value)
 
 </details>
@@ -425,7 +517,7 @@ WP_168247881.1	WP_168247882.1	95.2	395	19	0	1	395	1	395	1.20e-282	756
 
 ##### DIAMOND Alignment Archive (DAA) Output
 
-DIAMOND alignment archive (DAA) is a compressed proprietary binary format that is can be converted to any of the other output formats (.blast, .xml, .txt, .sam, .tsv, .paf) with the DIAMOND view command without rerunning the pipeline. It can also be used in some meta-genomic analysis software. 
+DIAMOND alignment archive (DAA) is a compressed proprietary binary format that is can be converted to any of the other output formats (.blast, .xml, .txt, .sam, .tsv, .paf) with the DIAMOND view command without rerunning the pipeline. It can also be used in some meta-genomic analysis software.
 
 ##### Sequence Alignment/Map (SAM) Output
 
@@ -470,7 +562,7 @@ WP_168247881.1	0	0
 
 ##### Pairwise Mapping Format (PAF)
 
-The PAF (Pairwise mApping Format) file that is originally used for long read sequencing. DIAMOND adds three additional variables, AS (bit score), ZR (raw alignment score), and ZE (E-value), to provide statistical evidence for protein alignment. This format is useful if one is looking for positional information and statistical significance. 
+The PAF (Pairwise mApping Format) file that is originally used for long read sequencing. DIAMOND adds three additional variables, AS (bit score), ZR (raw alignment score), and ZE (E-value), to provide statistical evidence for protein alignment. This format is useful if one is looking for positional information and statistical significance.
 
 <details markdown="1">
 <summary>Example Pairwise Mapping Format (PAF) output</summary>
@@ -486,6 +578,16 @@ WP_168247881.1	395
 ```
 
 </details>
+- `s4pred/`
+  - `<samplename>/`
+    - `<s4pred_outfmt>/`
+      - `<samplename>.<s4pred_outfmt>`: The probability of each amino acid to be an α-helix, a β-strand or a coil, in the chosen output format (i.e., 'ss2', 'fas', or 'horiz').
+
+</details>
+
+The `s4pred` module is used to predict secondary structures of amino acid sequences.
+
+[s4pred](https://github.com/psipred/s4pred) is a tool for accurate prediction of a protein's secondary structure from only it's amino acid sequence.
 
 ### MultiQC
 

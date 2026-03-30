@@ -12,10 +12,6 @@ nextflow_pipeline {
         when {
             params {
                 outdir = "$outputDir"
-                interproscan_tar_gz = null
-                interproscan_database              = "$projectDir/modules/local/interproscan/tests/fixtures/interproscan_db/data"
-                interproscan_database_version      = "5.73-104.0"
-
             }
         }
 
