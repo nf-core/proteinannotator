@@ -1,11 +1,11 @@
 include { ARIA2 as ARIA2_PFAM                  } from '../../../modules/nf-core/aria2/main'
 include { ARIA2 as ARIA2_FUNFAM                } from '../../../modules/nf-core/aria2/main'
 include { ARIA2 as ARIA2_NMPFAMS               } from '../../../modules/nf-core/aria2/main'
-include { ARIA2 as ARIA2_MROOT                 } from '../../../modules/nf-core/aria2/main'
+include { ARIA2 as ARIA2_METAGROOT                 } from '../../../modules/nf-core/aria2/main'
 include { HMMER_HMMSEARCH as HMMSEARCH_PFAM    } from '../../../modules/nf-core/hmmer/hmmsearch/main'
 include { HMMER_HMMSEARCH as HMMSEARCH_FUNFAM  } from '../../../modules/nf-core/hmmer/hmmsearch/main'
 include { HMMER_HMMSEARCH as HMMSEARCH_NMPFAMS } from '../../../modules/nf-core/hmmer/hmmsearch/main'
-include { HMMER_HMMSEARCH as HMMSEARCH_MROOT   } from '../../../modules/nf-core/hmmer/hmmsearch/main'
+include { HMMER_HMMSEARCH as HMMSEARCH_METAGROOT   } from '../../../modules/nf-core/hmmer/hmmsearch/main'
 
 workflow DOMAIN_ANNOTATION {
     take:
@@ -19,9 +19,9 @@ workflow DOMAIN_ANNOTATION {
     skip_nmpfams           // boolean
     nmpfams_db             // string
     nmpfams_latest_link    // string
-    skip_mroot             // boolean
-    mroot_db               // string, path to the metagroot HMM database, if already exists
-    mroot_latest_link      // string, path to the latest metagroot HMM database, to download
+    skip_metagroot             // boolean
+    metagroot_db               // string, path to the metagroot HMM database, if already exists
+    metagroot_latest_link      // string, path to the latest metagroot HMM database, to download
 
     main:
 
@@ -29,7 +29,7 @@ workflow DOMAIN_ANNOTATION {
     ch_pfam_domains    = channel.empty()
     ch_funfam_domains  = channel.empty()
     ch_nmpfams_domains = channel.empty()
-    ch_mroot_domains   = channel.empty()
+    ch_metagroot_domains   = channel.empty()
 
     if (!skip_pfam) {
         if (!pfam_db) {
@@ -91,30 +91,30 @@ workflow DOMAIN_ANNOTATION {
         ch_nmpfams_domains = HMMSEARCH_NMPFAMS.out.domain_summary
     }
 
-    if (!skip_mroot) {
-        if (!mroot_db) {
-            ch_mroot_link = channel.of([ [ id: 'mroot' ], mroot_latest_link ])
+    if (!skip_metagroot) {
+        if (!metagroot_db) {
+            ch_metagroot_link = channel.of([ [ id: 'metagroot' ], metagroot_latest_link ])
 
-            ARIA2_MROOT( ch_mroot_link )
-            ch_versions = ch_versions.mix( ARIA2_MROOT.out.versions )
-            ch_mroot_db = ARIA2_MROOT.out.downloaded_file
+            ARIA2_METAGROOT( ch_metagroot_link )
+            ch_versions = ch_versions.mix( ARIA2_METAGROOT.out.versions )
+            ch_metagroot_db = ARIA2_METAGROOT.out.downloaded_file
         } else {
-            ch_mroot_db = channel.of([ [ id: 'mroot' ], mroot_db ])
+            ch_metagroot_db = channel.of([ [ id: 'metagroot' ], metagroot_db ])
         }
 
-        ch_input_for_hmmsearch_mroot = ch_fasta
-            .combine(ch_mroot_db)
+        ch_input_for_hmmsearch_metagroot = ch_fasta
+            .combine(ch_metagroot_db)
             .map{ meta, seqs, _meta2, models -> [meta, models, seqs, false, false, true] }
 
-        HMMSEARCH_MROOT( ch_input_for_hmmsearch_mroot )
-        ch_versions = ch_versions.mix( HMMSEARCH_MROOT.out.versions.first() )
-        ch_mroot_domains = HMMSEARCH_MROOT.out.domain_summary
+        HMMSEARCH_METAGROOT( ch_input_for_hmmsearch_metagroot )
+        ch_versions = ch_versions.mix( HMMSEARCH_METAGROOT.out.versions.first() )
+        ch_metagroot_domains = HMMSEARCH_METAGROOT.out.domain_summary
     }
 
     emit:
     pfam_domains    = ch_pfam_domains
     funfam_domains  = ch_funfam_domains
     nmpfams_domains = ch_nmpfams_domains
-    mroot_domains   = ch_mroot_domains
+    metagroot_domains   = ch_metagroot_domains
     versions        = ch_versions
 }

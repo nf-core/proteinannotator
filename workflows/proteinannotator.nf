@@ -21,24 +21,24 @@ include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_prot
 
 workflow PROTEINANNOTATOR {
     take:
-    ch_samplesheet      // channel: samplesheet read in from --input
-    skip_preprocessing  // boolean
-    skip_pfam           // boolean
-    pfam_db             // string, path to the pfam HMM database, if already exists
-    pfam_latest_link    // string, path to the latest pfam HMM database, to download
-    skip_funfam         // boolean
-    funfam_db           // string, path to the pfam HMM database, if already exists
-    funfam_latest_link  // string, path to the latest pfam HMM database, to download
-    skip_nmpfams        // boolean
-    nmpfams_db          // string
-    nmpfams_latest_link // string
-    skip_mroot          // boolean
-    mroot_db            // string, path to the metagroot HMM database, if already exists
-    mroot_latest_link   // string, path to the latest metagroot HMM database, to download
-    skip_interproscan   // boolean
-    interproscan_db_url // string, url to download db
-    interproscan_db     // string, existing db
-    skip_s4pred         // boolean
+    ch_samplesheet          // channel: samplesheet read in from --input
+    skip_preprocessing      // boolean
+    skip_pfam               // boolean
+    pfam_db                 // string, path to the pfam HMM database, if already exists
+    pfam_latest_link        // string, path to the latest pfam HMM database, to download
+    skip_funfam             // boolean
+    funfam_db               // string, path to the pfam HMM database, if already exists
+    funfam_latest_link      // string, path to the latest pfam HMM database, to download
+    skip_nmpfams            // boolean
+    nmpfams_db              // string
+    nmpfams_latest_link     // string
+    skip_metagroot          // boolean
+    metagroot_db            // string, path to the metagroot HMM database, if already exists
+    metagroot_latest_link   // string, path to the latest metagroot HMM database, to download
+    skip_interproscan       // boolean
+    interproscan_db_url     // string, url to download db
+    interproscan_db         // string, existing db
+    skip_s4pred             // boolean
 
     main:
 
@@ -59,9 +59,9 @@ workflow PROTEINANNOTATOR {
         skip_nmpfams,
         nmpfams_db,
         nmpfams_latest_link,
-        skip_mroot,
-        mroot_db,
-        mroot_latest_link
+        skip_metagroot,
+        metagroot_db,
+        metagroot_latest_link
     )
     ch_versions = ch_versions.mix( DOMAIN_ANNOTATION.out.versions )
 
