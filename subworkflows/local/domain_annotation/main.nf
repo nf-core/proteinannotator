@@ -1,7 +1,7 @@
 include { ARIA2 as ARIA2_PFAM                  } from '../../../modules/nf-core/aria2/main'
 include { ARIA2 as ARIA2_FUNFAM                } from '../../../modules/nf-core/aria2/main'
 include { ARIA2 as ARIA2_NMPFAMS               } from '../../../modules/nf-core/aria2/main'
-include { ARIA2 as ARIA2_NMPFAMS               } from '../../../modules/nf-core/aria2/main'
+include { ARIA2 as ARIA2_MROOT                 } from '../../../modules/nf-core/aria2/main'
 include { HMMER_HMMSEARCH as HMMSEARCH_PFAM    } from '../../../modules/nf-core/hmmer/hmmsearch/main'
 include { HMMER_HMMSEARCH as HMMSEARCH_FUNFAM  } from '../../../modules/nf-core/hmmer/hmmsearch/main'
 include { HMMER_HMMSEARCH as HMMSEARCH_NMPFAMS } from '../../../modules/nf-core/hmmer/hmmsearch/main'
@@ -19,10 +19,10 @@ workflow DOMAIN_ANNOTATION {
     skip_nmpfams           // boolean
     nmpfams_db             // string
     nmpfams_latest_link    // string
-    skip_mroot          // boolean
-    mroot_db            // string, path to the metagroot HMM database, if already exists
-    mroot_latest_link   // string, path to the latest metagroot HMM database, to download
-    
+    skip_mroot             // boolean
+    mroot_db               // string, path to the metagroot HMM database, if already exists
+    mroot_latest_link      // string, path to the latest metagroot HMM database, to download
+
     main:
 
     ch_versions        = channel.empty()
@@ -90,7 +90,7 @@ workflow DOMAIN_ANNOTATION {
         ch_versions = ch_versions.mix( HMMSEARCH_NMPFAMS.out.versions.first() )
         ch_nmpfams_domains = HMMSEARCH_NMPFAMS.out.domain_summary
     }
-    
+
     if (!skip_mroot) {
         if (!mroot_db) {
             ch_mroot_link = channel.of([ [ id: 'mroot' ], mroot_latest_link ])
