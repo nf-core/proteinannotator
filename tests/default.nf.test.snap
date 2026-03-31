@@ -1,12 +1,15 @@
 {
     "-profile test": {
         "content": [
-            36,
+            40,
             {
                 "ARIA2": {
                     "aria2": "1.36.0"
                 },
                 "ARIA2_FUNFAM": {
+                    "aria2": "1.36.0"
+                },
+                "ARIA2_METAGROOT": {
                     "aria2": "1.36.0"
                 },
                 "ARIA2_NMPFAMS": {
@@ -16,6 +19,9 @@
                     "aria2": "1.36.0"
                 },
                 "HMMSEARCH_FUNFAM": {
+                    "hmmer": 3.4
+                },
+                "HMMSEARCH_METAGROOT": {
                     "hmmer": 3.4
                 },
                 "HMMSEARCH_NMPFAMS": {
@@ -58,6 +64,10 @@
                 "domain_annotation/funfam/T1024.domtbl.gz",
                 "domain_annotation/funfam/T1026.domtbl.gz",
                 "domain_annotation/funfam/l_arginase.domtbl.gz",
+                "domain_annotation/metagroot",
+                "domain_annotation/metagroot/T1024.domtbl.gz",
+                "domain_annotation/metagroot/T1026.domtbl.gz",
+                "domain_annotation/metagroot/l_arginase.domtbl.gz",
                 "domain_annotation/nmpfams",
                 "domain_annotation/nmpfams/T1024.domtbl.gz",
                 "domain_annotation/nmpfams/T1026.domtbl.gz",
@@ -88,6 +98,7 @@
                 "downloaded_dbs/interproscan_db/tigrfam/15.0/TIGRFAMs_15.0_HMM.LIB",
                 "downloaded_dbs/interproscan_db/tigrfam/15.0/TIGRFAMs_HMM.LIB",
                 "downloaded_dbs/interproscan_test.tar.gz",
+                "downloaded_dbs/metagroot_test.hmm.gz",
                 "downloaded_dbs/nmpfamsdb_test.hmm.gz",
                 "functional_annotation",
                 "functional_annotation/interproscan",
@@ -193,6 +204,7 @@
                 "TIGRFAMs_15.0_HMM.LIB:md5,64f2b2c9e834b47b17d91bb9a6a0067e",
                 "TIGRFAMs_HMM.LIB:md5,543da3f4b65eed9ec393986c6c6ff0ba",
                 "interproscan_test.tar.gz:md5,cde88c0cd841c84dc1203e64854c762b",
+                "metagroot_test.hmm.gz:md5,d23de95bf39fb6e27ffb266ce61ac98e",
                 "nmpfamsdb_test.hmm.gz:md5,ad7a094618ccfdaeed1c03e93f6abf1e",
                 "T1024.json:md5,0288f7551a14faedc409dd374b3e073e",
                 "T1024.xml:md5,63a3db0eb0e1f76403411602c23b721e",
@@ -232,8 +244,8 @@
         ],
         "meta": {
             "nf-test": "0.9.3",
-            "nextflow": "25.10.2"
+            "nextflow": "25.10.4"
         },
-        "timestamp": "2026-03-14T10:06:42.466898492"
+        "timestamp": "2026-03-31T11:50:46.606922418"
     }
 }
