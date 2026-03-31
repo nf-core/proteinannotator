@@ -433,15 +433,12 @@
             "$ref": "#/$defs/input_output_options"
         },
         {
-<<<<<<< HEAD
             "$ref": "#/$defs/interproscan_options"
         },
         {
             "$ref": "#/$defs/diamond_options"
         },
         {
-=======
->>>>>>> dev
             "$ref": "#/$defs/institutional_config_options"
         },
         {
