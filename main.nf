@@ -49,6 +49,7 @@ workflow NFCORE_PROTEINANNOTATOR {
         params.skip_nmpfams,
         params.nmpfams_db,
         params.nmpfams_latest_link,
+        params.skip_metagroot,
         params.metagroot_db,
         params.metagroot_latest_link,
         params.skip_interproscan,
