@@ -296,19 +296,19 @@
                 "skip_metagroot": {
                     "type": "boolean",
                     "fa_icon": "fas fa-ban",
-                    "description": "Skip the domain annotation with the MetagRoot database.",
-                    "help": "Skips the domain annotation of input sequence against a MetagRoot database."
+                    "description": "Skip the domain annotation with the metagRoot database.",
+                    "help": "Skips the domain annotation of input sequence against a metagRoot database."
                 },
                 "metagroot_db": {
                     "type": "string",
                     "format": "file-path",
-                    "description": "Path to an already installed MetagRoot HMM database (.hmm.gz).",
-                    "help_text": "If left null and skip_metagroot is false, the pipeline will start downloading the latest MetagRoot HMM library."
+                    "description": "Path to an already installed metagRoot HMM database (.hmm.gz).",
+                    "help_text": "If left null and skip_metagroot is false, the pipeline will start downloading the latest metagRoot HMM library."
                 },
                 "metagroot_latest_link": {
                     "type": "string",
                     "default": "https://pavlopoulos-lab.org/envofams/databases/hmmer/metagroot.hmm.gz",
-                    "description": "MetagRoot hosted link to the latest available MetagRoot HMM database file."
+                    "description": "metagRoot hosted link to the latest available metagRoot HMM database file."
                 },
                 "hmmsearch_evalue_cutoff": {
                     "type": "number",

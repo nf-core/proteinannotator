@@ -57,15 +57,15 @@ input:
   - skip_metagroot:
       type: boolean
       description: |
-        Skip domain annotation with MetagRoot
+        Skip domain annotation with metagRoot
   - metagroot_db:
       type: string
       description: |
-        Path to an existing HMM MetagRoot library on the system. If provided, the ARIA2_METAGROOT db download will be skipped.
+        Path to an existing HMM metagRoot library on the system. If provided, the ARIA2_METAGROOT db download will be skipped.
   - metagroot_latest_link:
       type: string
       description: |
-        Path to the latest MetagRoot HMM database, to download
+        Path to the latest metagRoot HMM database, to download
 output:
   - pfam_domains:
       type: file

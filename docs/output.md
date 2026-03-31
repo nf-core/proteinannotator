@@ -14,9 +14,9 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
   - [SeqFu](#seqfu) for input amino acid sequences quality control (QC)
   - [SeqKit](#seqkit) for preprocessing input amino acid sequences (i.e., gap removal, convert to upper case, validate, filter by length, replace special characters such as `/`, and remove duplicate sequences)
 - [Database download](#database-download) Optionally download selected databases for annotation.
-  - [aria2](#aria2) - To optionally download the Pfam, FunFam, NMPFams, MetagRoot and/or InterProScan databases through the pipeline.
+  - [aria2](#aria2) - To optionally download the Pfam, FunFam, NMPFams, metagRoot and/or InterProScan databases through the pipeline.
 - [Domain annotation](#domain-annotation) Annotate proteins with domains from established repositories.
-  - [hmmer](#hmmer) - To optionally match the input sequence to known Pfam, FunFam, NMPFams and/or MetagRoot domains through `hmmer/hmmsearch`
+  - [hmmer](#hmmer) - To optionally match the input sequence to known Pfam, FunFam, NMPFams and/or metagRoot domains through `hmmer/hmmsearch`
 - [Functional annotation](#functional-annotation) Annotate proteins with functional domains
   - [InterProScan](#Interproscan) - Search the InterProScan database for functional domains
 - [s4pred](#s4pred) - Predict secondary structures of sequences, producing amino acid level probabilities of forming an α-helix, a β-strand or a coil.
@@ -73,7 +73,7 @@ The `seqkit` module is used for initial preprocessing (i.e., gap removal, conver
   - `interproscan_test.tar.gz`: (optional) the downloaded InterProScan archive of member databases according to the optional user-provided url
   - `funfam-hmm3-v4_3_0*.lib.gz`: (optional) The latest (v4_3_0) full, or a minimal test, FunFam HMM database that can be downloaded through the pipeline.
   - `nmpfamsdb.hmm.gz`: (optional) The latest full, or a minimal test, NMPFams HMM database that can be downloaded through the pipeline.
-  - `metagroot.hmm.gz`: (optional) The latest full, or a minimal test, MetagRoot HMM database that can be downloaded through the pipeline.
+  - `metagroot.hmm.gz`: (optional) The latest full, or a minimal test, metagRoot HMM database that can be downloaded through the pipeline.
 
 </details>
 

@@ -37,7 +37,7 @@ Generate input amino acid sequence statistics with ([`SeqFu`](https://github.com
 ### Annotate sequences
 
 1. Conserved domain annotation with ([`hmmer`](https://github.com/EddyRivasLab/hmmer/)) against databases
-   such as [Pfam](https://ftp.ebi.ac.uk/pub/databases/Pfam/), [FunFam](https://download.cathdb.info/cath/releases/all-releases/), and [NMPFams and MetagRoot](https://pavlopoulos-lab.org/envofams/databases/hmmer/)
+   such as [Pfam](https://ftp.ebi.ac.uk/pub/databases/Pfam/), [FunFam](https://download.cathdb.info/cath/releases/all-releases/), and [NMPFams and metagRoot](https://pavlopoulos-lab.org/envofams/databases/hmmer/)
 2. Functional annotation:
    - ([`InterProScan`](https://interproscan-docs.readthedocs.io/en/v5/)) a software tool used to analyze protein sequences by scanning them against the signatures of protein families, domains, and sites in the [InterPro](https://www.ebi.ac.uk/interpro/) database, helping to identify their functional characteristics.
 3. Predict secondary structure compositional features such as α-helices, β-strands and coils with ([`s4pred`](https://github.com/psipred/s4pred))
