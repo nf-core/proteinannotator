@@ -10,11 +10,6 @@ The directories listed below will be created in the results directory after the 
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
-<<<<<<< HEAD
-- [Functional Annotation](#functional-annotation) Annotate proteins with functional domains
-  - [InterProScan](#Interproscan) - Search the InterPro database for functional domains
-  - [Diamond] (#Diamond) - Provide potential homologous protein matches between species
-=======
 - [Quality control and preprocessing](#quality-control-and-preprocessing)
   - [SeqFu](#seqfu) for input amino acid sequences quality control (QC)
   - [SeqKit](#seqkit) for preprocessing input amino acid sequences (i.e., gap removal, convert to upper case, validate, filter by length, replace special characters such as `/`, and remove duplicate sequences)
@@ -23,9 +18,9 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 - [Domain annotation](#domain-annotation) Annotate proteins with domains from established repositories.
   - [hmmer](#hmmer) - To optionally match the input sequence to known Pfam, FunFam and/or NMPFams domains through `hmmer/hmmsearch`
 - [Functional annotation](#functional-annotation) Annotate proteins with functional domains
+  - [Diamond](#Diamond) - Provide potential homologous protein matches between species
   - [InterProScan](#Interproscan) - Search the InterProScan database for functional domains
 - [s4pred](#s4pred) - Predict secondary structures of sequences, producing amino acid level probabilities of forming an α-helix, a β-strand or a coil.
->>>>>>> dev
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
 
@@ -361,7 +356,6 @@ The XML Schema Definition (XSD) is available [here](http://ftp.ebi.ac.uk/pub/sof
 </details>
 
 #### Diamond
-#### s4pred
 
 <details markdown="1">
 <summary>Output files</summary>
@@ -566,18 +560,19 @@ The PAF (Pairwise mApping Format) file that is originally used for long read seq
 
 <details markdown="1">
 <summary>Example Pairwise Mapping Format (PAF) output</summary>
-
 ```
-WP_031942563.1	401
-WP_430799656.1	267
-WP_148044478.1	547
-WP_168247882.1	395
-WP_168247882.1	395
-WP_168247881.1	395
-WP_168247881.1	395
+WP_031942563.1	401	0	401	+	WP_031942563.1	401	0	401	401	401	255	AS:i:771	ZR:i:1991	ZE:f:1.53e-288
+WP_430799656.1	267	0	267	+	WP_430799656.1	267	0	267	267	267	255	AS:i:528	ZR:i:1361	ZE:f:4.90e-197
+WP_148044478.1	547	0	547	+	WP_148044478.1	547	0	547	547	547	255	AS:i:1087	ZR:i:2812	ZE:f:0.0
 ```
 
 </details>
+
+#### s4pred
+
+<details markdown="1">
+<summary>Output files</summary>
+
 - `s4pred/`
   - `<samplename>/`
     - `<s4pred_outfmt>/`
@@ -588,7 +583,6 @@ WP_168247881.1	395
 The `s4pred` module is used to predict secondary structures of amino acid sequences.
 
 [s4pred](https://github.com/psipred/s4pred) is a tool for accurate prediction of a protein's secondary structure from only it's amino acid sequence.
-
 ### MultiQC
 
 <details markdown="1">
