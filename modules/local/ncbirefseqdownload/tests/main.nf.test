@@ -13,10 +13,6 @@ nextflow_process {
     test("Should download ncbi refseq 'other' zipped protein fasta") {
 
         when {
-            params{
-                // outdir = 'results'
-            }
-
             process {
                 """
                 input[0] = 'other'
@@ -25,37 +21,35 @@ nextflow_process {
         }
 
         then {
-            // Make sure the process works
             assert process.success
-            
-            // Check number of tasks and output file sizes
             assert process.trace.tasks().size() == 1
             assert process.out.refseq_fasta.size() == 1
-
-            // Assert that the output file refseq_fasta.fa.gz exists
             assert snapshot(process.out).match()
-            assert file(process.out.get(0).find { file(it).name }).exists()
-            // Added check for content match
-                // None working assertions
-                    // assert new File(process.out.refseq_fasta).exists()
-                    // assert process.out.refseq_fasta.exists()
-                    // assert new File("refseq_fasta.fa.gz").exists()
-            
-                // troubleshooting print path
-                    // println("refseq_fasta: " + process.out.refseq_fasta[0])
-                    // assert file(process.out.get(0).find { println(file(it).name) })
-            
-            // assert versioning
             assert snapshot(process.out.versions).match("versions")
+        }
 
-            // Assert other.wp_protein.1.protein.faa.gz is downloaded -- not sure I can assert if it is not a output variable
-            // println ("launchDir: $launchDir")
-            // println ("workDir:   $workDir")
-            // println ("outputDir: $outputDir")
-            // assert new File("$workDir/*/*/ncbi_refseq/other/other.wp_protein.1.protein.faa.gz").exists()
+    }
 
-            // check ncbi_refseq/ directory was created
-            // check ${refseq_release}/ directory was created
+    test("Should download ncbi refseq 'other' zipped protein fasta -- stub") {
+        tag "stub"
+        tag "CI"
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = 'other'
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert process.trace.tasks().size() == 1
+            assert process.out.refseq_fasta.size() == 1
+            assert snapshot(process.out).match()
+            assert snapshot(process.out.versions).match("versions_stub")
         }
 
     }

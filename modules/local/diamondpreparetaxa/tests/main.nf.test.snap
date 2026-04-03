@@ -1,43 +1,72 @@
 {
+    "Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files -- stub": {
+        "content": [
+            {
+                "0": [
+                    "nodes.dmp:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ],
+                "1": [
+                    "names.dmp:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ],
+                "2": [
+                    "versions.yml:md5,be0d7739d57b5d477b474b357352dab0"
+                ],
+                "taxonnames": [
+                    "names.dmp:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ],
+                "taxonnodes": [
+                    "nodes.dmp:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ],
+                "versions": [
+                    "versions.yml:md5,be0d7739d57b5d477b474b357352dab0"
+                ]
+            }
+        ],
+        "timestamp": "2026-03-31T10:30:49.787632184",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
     "Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files": {
         "content": [
             {
                 "0": [
-                    "nodes.dmp:md5,1bfa63b09c297eb0fd11fb357d3b89f4"
+                    "nodes.dmp:md5,f2e815cd1d59cde3ddecfee69cf5efa2"
                 ],
                 "1": [
-                    "names.dmp:md5,53c087be5d811bd7284603fead32d0b1"
+                    "names.dmp:md5,aee11a2c577ee4a82bc3ffd3e73e58cb"
                 ],
                 "2": [
-                    "versions.yml:md5,32e482f39dd2786ece9329f2a81d0f62"
+                    "versions.yml:md5,4b9270df8cf486eeb865561ab70f12e7"
                 ],
                 "taxonnames": [
-                    "names.dmp:md5,53c087be5d811bd7284603fead32d0b1"
+                    "names.dmp:md5,aee11a2c577ee4a82bc3ffd3e73e58cb"
                 ],
                 "taxonnodes": [
-                    "nodes.dmp:md5,1bfa63b09c297eb0fd11fb357d3b89f4"
+                    "nodes.dmp:md5,f2e815cd1d59cde3ddecfee69cf5efa2"
                 ],
                 "versions": [
-                    "versions.yml:md5,32e482f39dd2786ece9329f2a81d0f62"
+                    "versions.yml:md5,4b9270df8cf486eeb865561ab70f12e7"
                 ]
             }
         ],
+        "timestamp": "2026-03-31T10:28:19.285395333",
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.6"
-        },
-        "timestamp": "2025-07-29T10:33:07.445040564"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     },
     "versions": {
         "content": [
             [
-                "versions.yml:md5,32e482f39dd2786ece9329f2a81d0f62"
+                "versions.yml:md5,be0d7739d57b5d477b474b357352dab0"
             ]
         ],
+        "timestamp": "2026-03-31T10:31:14.224256905",
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "24.10.6"
-        },
-        "timestamp": "2025-06-30T09:23:10.987180894"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     }
 }

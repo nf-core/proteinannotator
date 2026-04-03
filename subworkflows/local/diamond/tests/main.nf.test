@@ -16,10 +16,10 @@ nextflow_workflow {
 
         when {
             params {
-                refseq_release = 'other'
-                taxondmp_zip = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
-                taxonmap =  "${moduleTestDir}/mini_prot.accession2taxid.gz"
-                diamond_outfmt = 6
+                refseq_release        = 'other'
+                taxondmp_zip          = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
+                taxonmap              = "${moduleTestDir}/mini_prot.accession2taxid.gz"
+                diamond_outfmt        = 6
                 diamond_blast_columns = ''
             }
             workflow {
@@ -31,8 +31,100 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
+                { assert workflow.success },
+                { assert workflow.out.tsv.size() > 0 },
+                { assert snapshot(workflow.out).match() },
+                { assert snapshot(workflow.out.versions).match("versions") }
+            )
+        }
+    }
+
+    test("Test Diamond subworkflow success -- 6 - TXT output - no columns specified -- stub") {
+        tag "stub"
+        tag "CI"
+
+        options "-stub"
+
+        when {
+            params {
+                refseq_release        = 'other'
+                taxondmp_zip          = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
+                taxonmap              = "${moduleTestDir}/mini_prot.accession2taxid.gz"
+                diamond_outfmt        = 6
+                diamond_blast_columns = ''
+            }
+            workflow {
+                """
+                input[0] = [ [id:'test'], file("${moduleTestDir}/test_refseq.fasta", checkIfExists: false)]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() },
+                { assert snapshot(workflow.out.versions).match("versions_stub") }
+            )
+        }
+    }
+
+        test("Test Diamond subworkflow -- 6 - TXT output - with columns -- stub") {
+        tag "stub"
+        tag "CI"
+
+        options "-stub"
+
+        when {
+            params {
+                refseq_release        = 'other'
+                taxondmp_zip          = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
+                taxonmap              = "${moduleTestDir}/mini_prot.accession2taxid.gz"
+                diamond_outfmt        = 6
+                diamond_blast_columns = 'qseqid sseqid pident length evalue bitscore'
+            }
+            workflow {
+                """
+                input[0] = [ [id:'test'], file("${moduleTestDir}/test_refseq.fasta", checkIfExists: false)]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() },
+                { assert snapshot(workflow.out.versions).match("versions_stub_columns") }
+            )
+        }
+    }
+
+    test("Test Diamond subworkflow -- 0 - BLAST output -- stub") {
+        tag "stub"
+        tag "CI"
+
+        options "-stub"
+
+        when {
+            params {
+                refseq_release        = 'other'
+                taxondmp_zip          = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
+                taxonmap              = "${moduleTestDir}/mini_prot.accession2taxid.gz"
+                diamond_outfmt        = 0
+                diamond_blast_columns = ''
+            }
+            workflow {
+                """
+                input[0] = [ [id:'test'], file("${moduleTestDir}/test_refseq.fasta", checkIfExists: false)]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() },
+                { assert snapshot(workflow.out.versions).match("versions_stub_outfmt0") }
             )
         }
     }

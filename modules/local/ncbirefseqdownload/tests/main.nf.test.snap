@@ -1,37 +1,72 @@
 {
+    "versions_stub": {
+        "content": [
+            [
+                "versions.yml:md5,21b64f64575fb928a9829f198ffbb8e1"
+            ]
+        ],
+        "timestamp": "2026-03-31T10:47:47.583755748",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
     "versions": {
         "content": [
             [
-                "versions.yml:md5,9fabe17275a444ef94e5e2dedcac4f32"
+                "versions.yml:md5,3799a0b1fc5359fd1bdc1c8f20167431"
             ]
         ],
+        "timestamp": "2026-03-31T10:44:07.054453638",
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.6"
-        },
-        "timestamp": "2025-08-07T11:39:03.033767638"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Should download ncbi refseq 'other' zipped protein fasta -- stub": {
+        "content": [
+            {
+                "0": [
+                    "refseq_fasta.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                ],
+                "1": [
+                    "versions.yml:md5,21b64f64575fb928a9829f198ffbb8e1"
+                ],
+                "refseq_fasta": [
+                    "refseq_fasta.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                ],
+                "versions": [
+                    "versions.yml:md5,21b64f64575fb928a9829f198ffbb8e1"
+                ]
+            }
+        ],
+        "timestamp": "2026-03-31T10:42:34.738664449",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     },
     "Should download ncbi refseq 'other' zipped protein fasta": {
         "content": [
             {
                 "0": [
-                    "refseq_fasta.fa.gz:md5,05b2f82e0366f27ddfdbd9e7f51880c3"
+                    "refseq_fasta.fa.gz:md5,af9fbb4c725173a9286979c7f1c6a67e"
                 ],
                 "1": [
-                    "versions.yml:md5,9fabe17275a444ef94e5e2dedcac4f32"
+                    "versions.yml:md5,3799a0b1fc5359fd1bdc1c8f20167431"
                 ],
                 "refseq_fasta": [
-                    "refseq_fasta.fa.gz:md5,05b2f82e0366f27ddfdbd9e7f51880c3"
+                    "refseq_fasta.fa.gz:md5,af9fbb4c725173a9286979c7f1c6a67e"
                 ],
                 "versions": [
-                    "versions.yml:md5,9fabe17275a444ef94e5e2dedcac4f32"
+                    "versions.yml:md5,3799a0b1fc5359fd1bdc1c8f20167431"
                 ]
             }
         ],
+        "timestamp": "2026-03-31T10:44:07.029739562",
         "meta": {
-            "nf-test": "0.9.2",
-            "nextflow": "25.04.6"
-        },
-        "timestamp": "2025-08-07T11:39:03.00481177"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     }
 }

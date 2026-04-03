@@ -3,41 +3,32 @@ include { DIAMONDPREPARETAXA } from '../../../modules/local/diamondpreparetaxa/m
 include { DIAMOND_MAKEDB } from '../../../modules/nf-core/diamond/makedb/main'
 include { DIAMOND_BLASTP  } from '../../../modules/nf-core/diamond/blastp/main'
 
-/*
-* Default Pipeline parameters
-*/
-// params.refseq_release = 'complete'
-// params.taxondmp_zip = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
-// params.taxonmap = 'ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/prot.accession2taxid.gz'
-// params.diamond_outfmt = 6
-// params.diamond_blast_columns = qseqid
-
 workflow DIAMOND {
     take:
     ch_fasta // channel: [ val(meta), [ fasta ] ]
 
     main:
 
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
-    // Modules of Diamond subworkflow
+    // Local modules of Diamond subworkflow
     NCBIREFSEQDOWNLOAD(
-        params.refseq_release // ncbi refseq release category
+        params.refseq_release
     )
     ch_diamond_reference_fasta = NCBIREFSEQDOWNLOAD.out.refseq_fasta.map { file -> [ [id: 'refseq'], file ] }
     ch_versions = ch_versions.mix(NCBIREFSEQDOWNLOAD.out.versions.first())
 
     DIAMONDPREPARETAXA (
-        params.taxondmp_zip // default ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
+        params.taxondmp_zip
     )
     ch_taxonnodes = DIAMONDPREPARETAXA.out.taxonnodes
     ch_taxonnames = DIAMONDPREPARETAXA.out.taxonnames
     ch_versions = ch_versions.mix(DIAMONDPREPARETAXA.out.versions.first())
 
-
+    // Local modules of Diamond subworkflow
     DIAMOND_MAKEDB (
         ch_diamond_reference_fasta,
-        params.taxonmap, // default ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/prot.accession2taxid.gz
+        params.taxonmap,
         ch_taxonnodes,
         ch_taxonnames
     )
@@ -54,7 +45,7 @@ workflow DIAMOND {
 
     emit:
     blast = DIAMOND_BLASTP.out.blast
-    sml = DIAMOND_BLASTP.out.xml
+    xml = DIAMOND_BLASTP.out.xml
     txt = DIAMOND_BLASTP.out.txt
     daa = DIAMOND_BLASTP.out.daa
     sam = DIAMOND_BLASTP.out.sam
