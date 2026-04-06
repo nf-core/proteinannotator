@@ -43,33 +43,6 @@
                 }
             }
         },
-        "interproscan_options": {
-            "title": "InterProScan Options",
-            "type": "object",
-            "description": "Options for best-practices domain annotation tool from EBI, InterProScan",
-            "default": "",
-            "properties": {
-                "skip_interproscan": {
-                    "type": "boolean",
-                    "description": "Run InterProScan",
-                    "default": false
-                },
-                "interproscan_tar_gz": {
-                    "type": "string",
-                    "default": "https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.74-105.0/interproscan-5.74-105.0-64-bit.tar.gz",
-                    "description": "Tar.gz file exactly from InterProScan https://www.ebi.ac.uk/interpro/download/InterProScan/"
-                },
-                "interproscan_database": {
-                    "type": "string",
-                    "description": "Path to the InterProScan database, as downloaded from https://www.ebi.ac.uk/interpro/download/InterProScan/, uncompressed, and the `/data` subfolder",
-                    "help_text": "interproscan_database_version must be provided! Exiting."
-                },
-                "interproscan_database_version": {
-                    "type": "string",
-                    "description": "Version number of the InterProScan database, e.g. \"5.73-104.0\""
-                }
-            }
-        },
         "diamond_options": {
             "title": "DIAMOND Options",
             "type": "object",
@@ -358,6 +331,23 @@
                     "default": "https://pavlopoulos-lab.org/envofams/databases/hmmer/nmpfamsdb.hmm.gz",
                     "description": ""
                 },
+                "skip_metagroot": {
+                    "type": "boolean",
+                    "fa_icon": "fas fa-ban",
+                    "description": "Skip the domain annotation with the metagRoot database.",
+                    "help": "Skips the domain annotation of input sequence against a metagRoot database."
+                },
+                "metagroot_db": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "Path to an already installed metagRoot HMM database (.hmm.gz).",
+                    "help_text": "If left null and skip_metagroot is false, the pipeline will start downloading the latest metagRoot HMM library."
+                },
+                "metagroot_latest_link": {
+                    "type": "string",
+                    "default": "https://pavlopoulos-lab.org/envofams/databases/hmmer/metagroot.hmm.gz",
+                    "description": "metagRoot hosted link to the latest available metagRoot HMM database file."
+                },
                 "hmmsearch_evalue_cutoff": {
                     "type": "number",
                     "default": 0.001,
@@ -433,9 +423,6 @@
             "$ref": "#/$defs/input_output_options"
         },
         {
-            "$ref": "#/$defs/interproscan_options"
-        },
-        {
             "$ref": "#/$defs/diamond_options"
         },
         {
@@ -450,7 +437,6 @@
         {
             "$ref": "#/$defs/domain_annotation_params"
         },
-
         {
             "$ref": "#/$defs/functional_annotation_options"
         },
