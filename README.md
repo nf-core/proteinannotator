@@ -48,6 +48,7 @@ Generate input amino acid sequence statistics with ([`SeqFu`](https://github.com
    such as [Pfam](https://ftp.ebi.ac.uk/pub/databases/Pfam/), [FunFam](https://download.cathdb.info/cath/releases/all-releases/), and [NMPFams](https://pavlopoulos-lab.org/envofams/databases/hmmer/)
 2. Functional annotation:
    - ([`InterProScan`](https://interproscan-docs.readthedocs.io/en/v5/)) a software tool used to analyze protein sequences by scanning them against the signatures of protein families, domains, and sites in the [InterPro](https://www.ebi.ac.uk/interpro/) database, helping to identify their functional characteristics.
+   - ([`DIAMOND`](https://github.com/bbuchfink/diamond)) a rapid and sensitive protein sequence aligner used to search input sequences against a reference database built from NCBI RefSeq protein sequences with taxonomic information, providing potential homologous protein matches across species.
 3. Predict secondary structure compositional features such as α-helices, β-strands and coils with ([`s4pred`](https://github.com/psipred/s4pred))
 4. Present QC stats for input sequences before and after initial pre-processing with ([`MultiQC`](http://multiqc.info/))
 
