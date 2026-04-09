@@ -5,7 +5,8 @@
                 "0": [
                     [
                         {
-                            "id": "test"
+                            "id": "test",
+                            "db": "refseq"
                         },
                         "test.blast:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
@@ -29,15 +30,14 @@
                     
                 ],
                 "7": [
-                    "versions.yml:md5,88882983f101071ff12ab9ad8862946c",
                     "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
-                    "versions.yml:md5,af268b7575a939dcbb762d66f0d34775",
                     "versions.yml:md5,fd77953bb9df9417c91759e312630970"
                 ],
                 "blast": [
                     [
                         {
-                            "id": "test"
+                            "id": "test",
+                            "db": "refseq"
                         },
                         "test.blast:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
@@ -58,9 +58,7 @@
                     
                 ],
                 "versions": [
-                    "versions.yml:md5,88882983f101071ff12ab9ad8862946c",
                     "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
-                    "versions.yml:md5,af268b7575a939dcbb762d66f0d34775",
                     "versions.yml:md5,fd77953bb9df9417c91759e312630970"
                 ],
                 "xml": [
@@ -68,7 +66,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-04-06T13:40:55.485333522",
+        "timestamp": "2026-04-09T10:11:32.44382452",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -146,7 +144,8 @@
                 "2": [
                     [
                         {
-                            "id": "test"
+                            "id": "test",
+                            "db": "refseq"
                         },
                         "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
@@ -164,9 +163,7 @@
                     
                 ],
                 "7": [
-                    "versions.yml:md5,88882983f101071ff12ab9ad8862946c",
                     "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
-                    "versions.yml:md5,af268b7575a939dcbb762d66f0d34775",
                     "versions.yml:md5,fd77953bb9df9417c91759e312630970"
                 ],
                 "blast": [
@@ -187,15 +184,14 @@
                 "txt": [
                     [
                         {
-                            "id": "test"
+                            "id": "test",
+                            "db": "refseq"
                         },
                         "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,88882983f101071ff12ab9ad8862946c",
                     "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
-                    "versions.yml:md5,af268b7575a939dcbb762d66f0d34775",
                     "versions.yml:md5,fd77953bb9df9417c91759e312630970"
                 ],
                 "xml": [
@@ -203,7 +199,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-04-06T13:40:32.025632768",
+        "timestamp": "2026-04-09T10:11:09.260636361",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -371,9 +367,10 @@
                 "2": [
                     [
                         {
-                            "id": "test"
+                            "id": "test",
+                            "db": "refseq"
                         },
-                        "test.txt:md5,f58fdf4044f9e4bf42da7e2c05f581f5"
+                        "test.refseq.txt:md5,f58fdf4044f9e4bf42da7e2c05f581f5"
                     ]
                 ],
                 "3": [
@@ -390,8 +387,6 @@
                 ],
                 "7": [
                     "versions.yml:md5,4b60d5e52704e15aa6a464a001e875a1",
-                    "versions.yml:md5,88882983f101071ff12ab9ad8862946c",
-                    "versions.yml:md5,af268b7575a939dcbb762d66f0d34775",
                     "versions.yml:md5,be8e9e782750442e8150f83181c2b96d"
                 ],
                 "blast": [
@@ -412,15 +407,14 @@
                 "txt": [
                     [
                         {
-                            "id": "test"
+                            "id": "test",
+                            "db": "refseq"
                         },
-                        "test.txt:md5,f58fdf4044f9e4bf42da7e2c05f581f5"
+                        "test.refseq.txt:md5,f58fdf4044f9e4bf42da7e2c05f581f5"
                     ]
                 ],
                 "versions": [
                     "versions.yml:md5,4b60d5e52704e15aa6a464a001e875a1",
-                    "versions.yml:md5,88882983f101071ff12ab9ad8862946c",
-                    "versions.yml:md5,af268b7575a939dcbb762d66f0d34775",
                     "versions.yml:md5,be8e9e782750442e8150f83181c2b96d"
                 ],
                 "xml": [
@@ -428,7 +422,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-04-06T13:40:20.297573872",
+        "timestamp": "2026-04-09T10:10:56.207273523",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -446,7 +440,8 @@
                 "2": [
                     [
                         {
-                            "id": "test"
+                            "id": "test",
+                            "db": "refseq"
                         },
                         "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
@@ -464,9 +459,7 @@
                     
                 ],
                 "7": [
-                    "versions.yml:md5,88882983f101071ff12ab9ad8862946c",
                     "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
-                    "versions.yml:md5,af268b7575a939dcbb762d66f0d34775",
                     "versions.yml:md5,fd77953bb9df9417c91759e312630970"
                 ],
                 "blast": [
@@ -487,15 +480,14 @@
                 "txt": [
                     [
                         {
-                            "id": "test"
+                            "id": "test",
+                            "db": "refseq"
                         },
                         "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,88882983f101071ff12ab9ad8862946c",
                     "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
-                    "versions.yml:md5,af268b7575a939dcbb762d66f0d34775",
                     "versions.yml:md5,fd77953bb9df9417c91759e312630970"
                 ],
                 "xml": [
@@ -503,7 +495,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-04-06T13:40:43.806148521",
+        "timestamp": "2026-04-09T10:11:20.950526077",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

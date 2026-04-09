@@ -33,8 +33,7 @@ nextflow_workflow {
             assertAll(
                 { assert workflow.success },
                 { assert workflow.out.txt.size() > 0 },
-                { assert snapshot(workflow.out).match() },
-                { assert snapshot(workflow.out.versions).match("versions") }
+                { assert snapshot(workflow.out).match() }
             )
         }
     }
@@ -63,8 +62,7 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() },
-                { assert snapshot(workflow.out.versions).match("versions_stub") }
+                { assert snapshot(workflow.out).match() }
             )
         }
     }
@@ -93,8 +91,7 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() },
-                { assert snapshot(workflow.out.versions).match("versions_stub_columns") }
+                { assert snapshot(workflow.out).match() }
             )
         }
     }
@@ -123,8 +120,7 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() },
-                { assert snapshot(workflow.out.versions).match("versions_stub_outfmt0") }
+                { assert snapshot(workflow.out).match() }
             )
         }
     }

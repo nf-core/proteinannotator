@@ -9,7 +9,7 @@
                     
                 ],
                 "2": [
-                    "versions.yml:md5,a7c2e489f7420594e92efbbc61cb22f7"
+                    "versions.yml:md5,360c40011f1cc989e92af5ec14d367c8"
                 ],
                 "diamond_tsv": [
                     
@@ -18,11 +18,11 @@
                     
                 ],
                 "versions": [
-                    "versions.yml:md5,a7c2e489f7420594e92efbbc61cb22f7"
+                    "versions.yml:md5,360c40011f1cc989e92af5ec14d367c8"
                 ]
             }
         ],
-        "timestamp": "2026-04-06T17:44:46.474415007",
+        "timestamp": "2026-04-09T10:13:40.576061038",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

@@ -33,7 +33,6 @@ workflow DIAMOND {
         ch_taxonnames
     )
     ch_diamond_db = DIAMOND_MAKEDB.out.db
-    ch_versions = ch_versions.mix(DIAMOND_MAKEDB.out.versions.first())
 
     DIAMOND_BLASTP (
         ch_fasta,
@@ -41,7 +40,6 @@ workflow DIAMOND {
         params.diamond_outfmt,
         params.diamond_blast_columns ?: '',
     )
-    ch_versions = ch_versions.mix(DIAMOND_BLASTP.out.versions.first())
 
     emit:
     blast = DIAMOND_BLASTP.out.blast
