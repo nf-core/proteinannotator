@@ -1,4 +1,35 @@
 {
+    "faa - metagroot": {
+        "content": [
+            [
+                "#                                                                            --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord",
+                "# target name        accession   tlen query name           accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target",
+                "#------------------- ---------- ----- -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------",
+                "T1024                -            408 F101326              -            425   9.3e-13   34.9  26.2   1   1   1.8e-12   3.6e-12   33.0  26.2    13   351    18   340    12   407 0.74 LmrP, , 408 residues|",
+                "T1024                -            408 F226054              -            421   1.3e-13   37.4  26.4   1   1   8.6e-14   1.7e-13   37.0  26.4     2   404     2   404     1   408 0.73 LmrP, , 408 residues|",
+                "T1024                -            408 F240027              -            384   8.4e-10   25.0   5.2   1   1     8e-10   1.6e-09   24.1   5.2    26   163    26   160     6   178 0.88 LmrP, , 408 residues|",
+                "T1024                -            408 F287588              -            413     2e-10   26.9  23.3   1   1   1.6e-10   3.1e-10   26.3  23.3    48   363    42   370    30   406 0.74 LmrP, , 408 residues|",
+                "T1024                -            408 F294204              -            387   3.8e-06   12.8  25.9   1   1   2.8e-06   5.6e-06   12.3  25.9    16   372    41   406    30   408 0.76 LmrP, , 408 residues|"
+            ],
+            [
+                {
+                    "DOMAIN_ANNOTATION:HMMSEARCH_METAGROOT": {
+                        "hmmer": 3.4
+                    }
+                },
+                {
+                    "DOMAIN_ANNOTATION:ARIA2_METAGROOT": {
+                        "aria2": "1.36.0"
+                    }
+                }
+            ]
+        ],
+        "timestamp": "2026-03-30T17:28:28.71093",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
     "faa - domain annotation": {
         "content": [
             [
@@ -44,7 +75,7 @@
                 }
             ]
         ],
-        "timestamp": "2026-03-13T14:51:37.636657",
+        "timestamp": "2026-03-30T17:28:01.729059",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -111,34 +142,48 @@
         "content": [
             {
                 "0": [
-                    
+
                 ],
                 "1": [
-                    
+
                 ],
                 "2": [
-                    
+
                 ],
                 "3": [
+                    "versions.yml:md5,160d4c5a5001cfb4ff57b94fc52b67d9",
+                    "versions.yml:md5,1b7d208e42364fb87160693faa4e83b9",
+                    "versions.yml:md5,35e41735706132967dd94bb636833a4a",
                     "versions.yml:md5,9045f482d64e7666e62932b0578b665e",
                     "versions.yml:md5,a74a0c8fcb741e59bc14424f612b8d09"
                 ],
                 "funfam_domains": [
-                    
+
+                ],
+                "metagroot_domains": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
                 ],
                 "nmpfams_domains": [
-                    
+
                 ],
                 "pfam_domains": [
-                    
+
                 ],
                 "versions": [
+                    "versions.yml:md5,160d4c5a5001cfb4ff57b94fc52b67d9",
+                    "versions.yml:md5,1b7d208e42364fb87160693faa4e83b9",
+                    "versions.yml:md5,35e41735706132967dd94bb636833a4a",
                     "versions.yml:md5,9045f482d64e7666e62932b0578b665e",
                     "versions.yml:md5,a74a0c8fcb741e59bc14424f612b8d09"
                 ]
             }
         ],
-        "timestamp": "2026-04-06T17:44:17.579152411",
+        "timestamp": "2026-03-13T09:45:07.520815",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
