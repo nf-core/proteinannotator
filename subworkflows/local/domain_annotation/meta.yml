@@ -54,6 +54,18 @@ input:
       type: string
       description: |
         Path to the latest nmpfamsDB HMM database, to download
+  - skip_metagroot:
+      type: boolean
+      description: |
+        Skip domain annotation with metagRoot
+  - metagroot_db:
+      type: string
+      description: |
+        Path to an existing HMM metagRoot library on the system. If provided, the ARIA2_METAGROOT db download will be skipped.
+  - metagroot_latest_link:
+      type: string
+      description: |
+        Path to the latest metagRoot HMM database, to download
 output:
   - pfam_domains:
       type: file
@@ -67,6 +79,10 @@ output:
       type: file
       description: |
         domtbl.gz files with nmpfams domain annotation for input amino acid sequences
+  - metagroot_domains:
+      type: file
+      description: |
+        domtbl.gz files with metagroot domain annotation for input amino acid sequences
   - versions:
       type: file
       description: |

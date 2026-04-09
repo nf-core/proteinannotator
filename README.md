@@ -45,7 +45,7 @@ Generate input amino acid sequence statistics with ([`SeqFu`](https://github.com
 ### Annotate sequences
 
 1. Conserved domain annotation with ([`hmmer`](https://github.com/EddyRivasLab/hmmer/)) against databases
-   such as [Pfam](https://ftp.ebi.ac.uk/pub/databases/Pfam/), [FunFam](https://download.cathdb.info/cath/releases/all-releases/), and [NMPFams](https://pavlopoulos-lab.org/envofams/databases/hmmer/)
+   such as [Pfam](https://ftp.ebi.ac.uk/pub/databases/Pfam/), [FunFam](https://download.cathdb.info/cath/releases/all-releases/), and [NMPFams and metagRoot](https://pavlopoulos-lab.org/envofams/databases/hmmer/)
 2. Functional annotation:
    - ([`InterProScan`](https://interproscan-docs.readthedocs.io/en/v5/)) a software tool used to analyze protein sequences by scanning them against the signatures of protein families, domains, and sites in the [InterPro](https://www.ebi.ac.uk/interpro/) database, helping to identify their functional characteristics.
    - ([`DIAMOND`](https://github.com/bbuchfink/diamond)) a rapid and sensitive protein sequence aligner used to search input sequences against a reference database built from NCBI RefSeq protein sequences with taxonomic information, providing potential homologous protein matches across species.

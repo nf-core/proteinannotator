@@ -151,14 +151,32 @@
 
                 ],
                 "3": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "4": [
+                    "versions.yml:md5,046e5161e3e1dff2ab111ddf4bb27331",
                     "versions.yml:md5,160d4c5a5001cfb4ff57b94fc52b67d9",
                     "versions.yml:md5,1b7d208e42364fb87160693faa4e83b9",
                     "versions.yml:md5,35e41735706132967dd94bb636833a4a",
+                    "versions.yml:md5,55939a7ab71dab922d448cf99472feeb",
                     "versions.yml:md5,9045f482d64e7666e62932b0578b665e",
                     "versions.yml:md5,a74a0c8fcb741e59bc14424f612b8d09"
                 ],
                 "funfam_domains": [
 
+                ],
+                "metagroot_domains": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
                 ],
                 "metagroot_domains": [
                     [
@@ -175,15 +193,17 @@
 
                 ],
                 "versions": [
+                    "versions.yml:md5,046e5161e3e1dff2ab111ddf4bb27331",
                     "versions.yml:md5,160d4c5a5001cfb4ff57b94fc52b67d9",
                     "versions.yml:md5,1b7d208e42364fb87160693faa4e83b9",
                     "versions.yml:md5,35e41735706132967dd94bb636833a4a",
+                    "versions.yml:md5,55939a7ab71dab922d448cf99472feeb",
                     "versions.yml:md5,9045f482d64e7666e62932b0578b665e",
                     "versions.yml:md5,a74a0c8fcb741e59bc14424f612b8d09"
                 ]
             }
         ],
-        "timestamp": "2026-03-13T09:45:07.520815",
+        "timestamp": "2026-03-30T17:28:37.677345",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
