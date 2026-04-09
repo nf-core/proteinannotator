@@ -32,7 +32,7 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert workflow.out.tsv.size() > 0 },
+                { assert workflow.out.txt.size() > 0 },
                 { assert snapshot(workflow.out).match() },
                 { assert snapshot(workflow.out.versions).match("versions") }
             )

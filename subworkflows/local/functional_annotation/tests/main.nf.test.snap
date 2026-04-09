@@ -9,7 +9,7 @@
                     
                 ],
                 "2": [
-                    "versions.yml:md5,360c40011f1cc989e92af5ec14d367c8"
+                    "versions.yml:md5,a7c2e489f7420594e92efbbc61cb22f7"
                 ],
                 "diamond_tsv": [
                     
@@ -18,11 +18,11 @@
                     
                 ],
                 "versions": [
-                    "versions.yml:md5,360c40011f1cc989e92af5ec14d367c8"
+                    "versions.yml:md5,a7c2e489f7420594e92efbbc61cb22f7"
                 ]
             }
         ],
-        "timestamp": "2026-04-03T15:44:57.103678793",
+        "timestamp": "2026-04-06T17:44:46.474415007",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -38,7 +38,7 @@
                     
                 ],
                 "2": [
-                    "versions.yml:md5,3679418d0b849be38d10435e4272ea4d"
+                    "versions.yml:md5,0f07f649936a9d30bb0203870dc9c256"
                 ],
                 "diamond_tsv": [
                     
@@ -47,11 +47,11 @@
                     
                 ],
                 "versions": [
-                    "versions.yml:md5,3679418d0b849be38d10435e4272ea4d"
+                    "versions.yml:md5,0f07f649936a9d30bb0203870dc9c256"
                 ]
             }
         ],
-        "timestamp": "2026-04-03T15:45:09.695642071",
+        "timestamp": "2026-04-06T17:45:00.005789225",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

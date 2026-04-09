@@ -39,7 +39,7 @@ workflow DIAMOND {
         ch_fasta,
         ch_diamond_db,
         params.diamond_outfmt,
-        params.diamond_blast_columns,
+        params.diamond_blast_columns ?: '',
     )
     ch_versions = ch_versions.mix(DIAMOND_BLASTP.out.versions.first())
 

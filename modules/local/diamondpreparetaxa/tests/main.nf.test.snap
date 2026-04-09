@@ -28,30 +28,42 @@
             "nextflow": "25.10.4"
         }
     },
+    "versions_stub": {
+        "content": [
+            [
+                "versions.yml:md5,be0d7739d57b5d477b474b357352dab0"
+            ]
+        ],
+        "timestamp": "2026-04-06T13:29:32.794272399",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
     "Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files": {
         "content": [
             {
                 "0": [
-                    "nodes.dmp:md5,f2e815cd1d59cde3ddecfee69cf5efa2"
+                    "nodes.dmp:md5,7c21b70339999dfd85f459a5ae187cf0"
                 ],
                 "1": [
-                    "names.dmp:md5,aee11a2c577ee4a82bc3ffd3e73e58cb"
+                    "names.dmp:md5,4eaa51c0606a0660d5a011a90d6affb7"
                 ],
                 "2": [
-                    "versions.yml:md5,4b9270df8cf486eeb865561ab70f12e7"
+                    "versions.yml:md5,24c6cd07f2d7c7f03cf23a4bba0a1b94"
                 ],
                 "taxonnames": [
-                    "names.dmp:md5,aee11a2c577ee4a82bc3ffd3e73e58cb"
+                    "names.dmp:md5,4eaa51c0606a0660d5a011a90d6affb7"
                 ],
                 "taxonnodes": [
-                    "nodes.dmp:md5,f2e815cd1d59cde3ddecfee69cf5efa2"
+                    "nodes.dmp:md5,7c21b70339999dfd85f459a5ae187cf0"
                 ],
                 "versions": [
-                    "versions.yml:md5,4b9270df8cf486eeb865561ab70f12e7"
+                    "versions.yml:md5,24c6cd07f2d7c7f03cf23a4bba0a1b94"
                 ]
             }
         ],
-        "timestamp": "2026-03-31T10:28:19.285395333",
+        "timestamp": "2026-04-06T17:41:57.014062501",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -60,10 +72,10 @@
     "versions": {
         "content": [
             [
-                "versions.yml:md5,be0d7739d57b5d477b474b357352dab0"
+                "versions.yml:md5,24c6cd07f2d7c7f03cf23a4bba0a1b94"
             ]
         ],
-        "timestamp": "2026-03-31T10:31:14.224256905",
+        "timestamp": "2026-04-06T13:39:28.606614998",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

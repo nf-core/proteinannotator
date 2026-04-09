@@ -14,10 +14,10 @@
     "versions": {
         "content": [
             [
-                "versions.yml:md5,3799a0b1fc5359fd1bdc1c8f20167431"
+                "versions.yml:md5,9fabe17275a444ef94e5e2dedcac4f32"
             ]
         ],
-        "timestamp": "2026-03-31T10:44:07.054453638",
+        "timestamp": "2026-04-06T13:39:51.888472042",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"
@@ -53,17 +53,17 @@
                     "refseq_fasta.fa.gz:md5,af9fbb4c725173a9286979c7f1c6a67e"
                 ],
                 "1": [
-                    "versions.yml:md5,3799a0b1fc5359fd1bdc1c8f20167431"
+                    "versions.yml:md5,9fabe17275a444ef94e5e2dedcac4f32"
                 ],
                 "refseq_fasta": [
                     "refseq_fasta.fa.gz:md5,af9fbb4c725173a9286979c7f1c6a67e"
                 ],
                 "versions": [
-                    "versions.yml:md5,3799a0b1fc5359fd1bdc1c8f20167431"
+                    "versions.yml:md5,9fabe17275a444ef94e5e2dedcac4f32"
                 ]
             }
         ],
-        "timestamp": "2026-03-31T10:44:07.029739562",
+        "timestamp": "2026-04-06T13:39:51.876586473",
         "meta": {
             "nf-test": "0.9.4",
             "nextflow": "25.10.4"

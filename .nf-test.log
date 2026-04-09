@@ -1,19 +1,265 @@
-Apr-03 18:44:36.535 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.4
-Apr-03 18:44:36.560 [main] INFO  com.askimed.nf.test.App - Arguments: [test, subworkflows/local/functional_annotation/tests/main.nf.test, --tag, stub]
-Apr-03 18:44:37.530 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 25.10.4
-Apr-03 18:44:37.532 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Load config from file /home/trace/projects/proteinannotator/nf-test.config...
-Apr-03 18:44:38.505 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 37 files from directory /home/trace/projects/proteinannotator in 0.245 sec
-Apr-03 18:44:38.507 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 1 files containing tests.
-Apr-03 18:44:38.507 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/tests/main.nf.test]
-Apr-03 18:44:38.886 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 4 tests to execute.
-Apr-03 18:44:38.887 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Started test plan
-Apr-03 18:44:38.888 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Subworkflow FUNCTIONAL_ANNOTATION' from file '/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/tests/main.nf.test'.
-Apr-03 18:44:38.888 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'c3e153a5: Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success' skipped.
-Apr-03 18:44:38.889 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '45132abc: Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success - stub'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
-Apr-03 18:44:50.347 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Load snapshots from file '/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/tests/main.nf.test.snap'
-Apr-03 18:44:50.359 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success - stub' match.
-Apr-03 18:44:50.360 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '45132abc: Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success - stub' finished. status: PASSED
-Apr-03 18:44:50.362 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '4dcdc77b: l_asparaginase - faa - functional annotation' skipped.
-Apr-03 18:44:50.362 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '810a2a59: faa - functional annotation - stub' skipped.
-Apr-03 18:44:50.363 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Subworkflow FUNCTIONAL_ANNOTATION' finished. snapshot file: true, skipped tests: true, failed tests: false
-Apr-03 18:44:50.363 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Executed 1 tests. 0 tests failed. Done!
+Apr-06 17:41:34.778 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.4
+Apr-06 17:41:34.797 [main] INFO  com.askimed.nf.test.App - Arguments: [test, modules/local, subworkflows/local, --profile, test,docker,debug, --update-snapshot]
+Apr-06 17:41:35.661 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 25.10.4
+Apr-06 17:41:35.663 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Load config from file /home/trace/projects/proteinannotator/nf-test.config...
+Apr-06 17:41:36.654 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 37 files from directory /home/trace/projects/proteinannotator in 0.255 sec
+Apr-06 17:41:36.657 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 5 files containing tests.
+Apr-06 17:41:36.657 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/tests/main.nf.test, /home/trace/projects/proteinannotator/modules/local/ncbirefseqdownload/tests/main.nf.test, /home/trace/projects/proteinannotator/subworkflows/local/diamond/tests/main.nf.test, /home/trace/projects/proteinannotator/subworkflows/local/domain_annotation/tests/main.nf.test, /home/trace/projects/proteinannotator/modules/local/diamondpreparetaxa/tests/main.nf.test]
+Apr-06 17:41:37.452 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 16 tests to execute.
+Apr-06 17:41:37.453 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Started test plan
+Apr-06 17:41:37.453 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Process DIAMONDPREPARETAXA' from file '/home/trace/projects/proteinannotator/modules/local/diamondpreparetaxa/tests/main.nf.test'.
+Apr-06 17:41:37.453 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'd9252286: Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files'. type: com.askimed.nf.test.lang.process.ProcessTest
+Apr-06 17:41:53.469 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Load snapshots from file '/home/trace/projects/proteinannotator/modules/local/diamondpreparetaxa/tests/main.nf.test.snap'
+Apr-06 17:41:57.013 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files' do not match. Update snapshots flag set.
+Apr-06 17:41:57.014 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Updated snapshot 'Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files'
+Apr-06 17:42:01.996 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Wrote snapshots to file '/home/trace/projects/proteinannotator/modules/local/diamondpreparetaxa/tests/main.nf.test.snap'
+Apr-06 17:42:01.998 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'versions' match.
+Apr-06 17:42:01.999 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'd9252286: Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files' finished. status: PASSED
+Apr-06 17:42:02.001 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'e7bfeb3d: Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files -- stub'. type: com.askimed.nf.test.lang.process.ProcessTest
+Apr-06 17:42:10.999 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files -- stub' match.
+Apr-06 17:42:11.003 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'versions_stub' match.
+Apr-06 17:42:11.004 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'e7bfeb3d: Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files -- stub' finished. status: PASSED
+Apr-06 17:42:11.004 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Process DIAMONDPREPARETAXA' finished. snapshot file: true, skipped tests: false, failed tests: false
+Apr-06 17:42:11.008 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Process NCBIREFSEQDOWNLOAD' from file '/home/trace/projects/proteinannotator/modules/local/ncbirefseqdownload/tests/main.nf.test'.
+Apr-06 17:42:11.008 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '7e996768: Should download ncbi refseq 'other' zipped protein fasta'. type: com.askimed.nf.test.lang.process.ProcessTest
+Apr-06 17:42:21.013 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Load snapshots from file '/home/trace/projects/proteinannotator/modules/local/ncbirefseqdownload/tests/main.nf.test.snap'
+Apr-06 17:42:21.016 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Should download ncbi refseq 'other' zipped protein fasta' match.
+Apr-06 17:42:21.018 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'versions' match.
+Apr-06 17:42:21.018 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '7e996768: Should download ncbi refseq 'other' zipped protein fasta' finished. status: PASSED
+Apr-06 17:42:21.019 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'f4bf5c95: Should download ncbi refseq 'other' zipped protein fasta -- stub'. type: com.askimed.nf.test.lang.process.ProcessTest
+Apr-06 17:42:30.634 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Should download ncbi refseq 'other' zipped protein fasta -- stub' match.
+Apr-06 17:42:30.636 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'versions_stub' match.
+Apr-06 17:42:30.637 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'f4bf5c95: Should download ncbi refseq 'other' zipped protein fasta -- stub' finished. status: PASSED
+Apr-06 17:42:30.638 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Process NCBIREFSEQDOWNLOAD' finished. snapshot file: true, skipped tests: false, failed tests: false
+Apr-06 17:42:30.638 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Subworkflow DIAMOND' from file '/home/trace/projects/proteinannotator/subworkflows/local/diamond/tests/main.nf.test'.
+Apr-06 17:42:30.638 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '18fd3d6c: Test Diamond subworkflow success -- 6 - TXT output - no columns specified'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
+Apr-06 17:42:55.234 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Load snapshots from file '/home/trace/projects/proteinannotator/subworkflows/local/diamond/tests/main.nf.test.snap'
+Apr-06 17:42:55.239 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Test Diamond subworkflow success -- 6 - TXT output - no columns specified' match.
+Apr-06 17:42:55.244 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'versions' match.
+Apr-06 17:42:55.245 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '18fd3d6c: Test Diamond subworkflow success -- 6 - TXT output - no columns specified' finished. status: PASSED
+Apr-06 17:42:55.245 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '64dc6960: Test Diamond subworkflow success -- 6 - TXT output - no columns specified -- stub'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
+Apr-06 17:43:08.355 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Test Diamond subworkflow success -- 6 - TXT output - no columns specified -- stub' match.
+Apr-06 17:43:08.358 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'versions_stub' match.
+Apr-06 17:43:08.358 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '64dc6960: Test Diamond subworkflow success -- 6 - TXT output - no columns specified -- stub' finished. status: PASSED
+Apr-06 17:43:08.359 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '2a989f7d: Test Diamond subworkflow -- 6 - TXT output - with columns -- stub'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
+Apr-06 17:43:20.682 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Test Diamond subworkflow -- 6 - TXT output - with columns -- stub' match.
+Apr-06 17:43:20.686 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'versions_stub_columns' match.
+Apr-06 17:43:20.687 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '2a989f7d: Test Diamond subworkflow -- 6 - TXT output - with columns -- stub' finished. status: PASSED
+Apr-06 17:43:20.687 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '589b1f4f: Test Diamond subworkflow -- 0 - BLAST output -- stub'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
+Apr-06 17:43:32.780 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Test Diamond subworkflow -- 0 - BLAST output -- stub' match.
+Apr-06 17:43:32.783 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'versions_stub_outfmt0' match.
+Apr-06 17:43:32.784 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '589b1f4f: Test Diamond subworkflow -- 0 - BLAST output -- stub' finished. status: PASSED
+Apr-06 17:43:32.784 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Subworkflow DIAMOND' finished. snapshot file: true, skipped tests: false, failed tests: false
+Apr-06 17:43:32.785 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Subworkflow DOMAIN_ANNOTATION' from file '/home/trace/projects/proteinannotator/subworkflows/local/domain_annotation/tests/main.nf.test'.
+Apr-06 17:43:32.785 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '4f09c656: faa - domain annotation'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
+Apr-06 17:43:44.458 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '4f09c656: faa - domain annotation' finished. status: FAILED
+org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions failed
+	at com.askimed.nf.test.lang.extensions.GlobalMethods.assertAll(GlobalMethods.java:47)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at main_nf$_run_closure1$_closure2$_closure7.doCall(main.nf.test:30)
+	at main_nf$_run_closure1$_closure2$_closure7.doCall(main.nf.test)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1009)
+	at groovy.lang.Closure.call(Closure.java:433)
+	at groovy.lang.Closure.call(Closure.java:412)
+	at com.askimed.nf.test.lang.TestCode.execute(TestCode.java:16)
+	at com.askimed.nf.test.lang.workflow.WorkflowTest.execute(WorkflowTest.java:178)
+	at com.askimed.nf.test.core.TestExecutionEngine.execute(TestExecutionEngine.java:172)
+	at com.askimed.nf.test.commands.RunTestsCommand.execute(RunTestsCommand.java:322)
+	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:43)
+	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:18)
+	at picocli.CommandLine.executeUserObject(CommandLine.java:1953)
+	at picocli.CommandLine.access$1300(CommandLine.java:145)
+	at picocli.CommandLine$RunLast.executeUserObjectOfLastSubcommandWithSameParent(CommandLine.java:2352)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2346)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2311)
+	at picocli.CommandLine$AbstractParseResultHandler.execute(CommandLine.java:2179)
+	at picocli.CommandLine.execute(CommandLine.java:2078)
+	at com.askimed.nf.test.App.run(App.java:39)
+	at com.askimed.nf.test.App.main(App.java:46)
+Apr-06 17:43:44.462 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '5511e671: faa - pfam_db - skip_funfam'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
+Apr-06 17:43:55.266 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '5511e671: faa - pfam_db - skip_funfam' finished. status: FAILED
+org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions failed
+	at com.askimed.nf.test.lang.extensions.GlobalMethods.assertAll(GlobalMethods.java:47)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at main_nf$_run_closure1$_closure3$_closure13.doCall(main.nf.test:64)
+	at main_nf$_run_closure1$_closure3$_closure13.doCall(main.nf.test)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1009)
+	at groovy.lang.Closure.call(Closure.java:433)
+	at groovy.lang.Closure.call(Closure.java:412)
+	at com.askimed.nf.test.lang.TestCode.execute(TestCode.java:16)
+	at com.askimed.nf.test.lang.workflow.WorkflowTest.execute(WorkflowTest.java:178)
+	at com.askimed.nf.test.core.TestExecutionEngine.execute(TestExecutionEngine.java:172)
+	at com.askimed.nf.test.commands.RunTestsCommand.execute(RunTestsCommand.java:322)
+	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:43)
+	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:18)
+	at picocli.CommandLine.executeUserObject(CommandLine.java:1953)
+	at picocli.CommandLine.access$1300(CommandLine.java:145)
+	at picocli.CommandLine$RunLast.executeUserObjectOfLastSubcommandWithSameParent(CommandLine.java:2352)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2346)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2311)
+	at picocli.CommandLine$AbstractParseResultHandler.execute(CommandLine.java:2179)
+	at picocli.CommandLine.execute(CommandLine.java:2078)
+	at com.askimed.nf.test.App.run(App.java:39)
+	at com.askimed.nf.test.App.main(App.java:46)
+Apr-06 17:43:55.267 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '89f90a04: faa - nmpfams'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
+Apr-06 17:44:05.910 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '89f90a04: faa - nmpfams' finished. status: FAILED
+org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions failed
+	at com.askimed.nf.test.lang.extensions.GlobalMethods.assertAll(GlobalMethods.java:47)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at main_nf$_run_closure1$_closure4$_closure19.doCall(main.nf.test:97)
+	at main_nf$_run_closure1$_closure4$_closure19.doCall(main.nf.test)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1009)
+	at groovy.lang.Closure.call(Closure.java:433)
+	at groovy.lang.Closure.call(Closure.java:412)
+	at com.askimed.nf.test.lang.TestCode.execute(TestCode.java:16)
+	at com.askimed.nf.test.lang.workflow.WorkflowTest.execute(WorkflowTest.java:178)
+	at com.askimed.nf.test.core.TestExecutionEngine.execute(TestExecutionEngine.java:172)
+	at com.askimed.nf.test.commands.RunTestsCommand.execute(RunTestsCommand.java:322)
+	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:43)
+	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:18)
+	at picocli.CommandLine.executeUserObject(CommandLine.java:1953)
+	at picocli.CommandLine.access$1300(CommandLine.java:145)
+	at picocli.CommandLine$RunLast.executeUserObjectOfLastSubcommandWithSameParent(CommandLine.java:2352)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2346)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2311)
+	at picocli.CommandLine$AbstractParseResultHandler.execute(CommandLine.java:2179)
+	at picocli.CommandLine.execute(CommandLine.java:2078)
+	at com.askimed.nf.test.App.run(App.java:39)
+	at com.askimed.nf.test.App.main(App.java:46)
+Apr-06 17:44:05.912 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'cfa44dbb: faa - domain annotation - stub'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
+Apr-06 17:44:17.571 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Load snapshots from file '/home/trace/projects/proteinannotator/subworkflows/local/domain_annotation/tests/main.nf.test.snap'
+Apr-06 17:44:17.578 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'faa - domain annotation - stub' do not match. Update snapshots flag set.
+Apr-06 17:44:17.579 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Updated snapshot 'faa - domain annotation - stub'
+Apr-06 17:44:17.589 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Wrote snapshots to file '/home/trace/projects/proteinannotator/subworkflows/local/domain_annotation/tests/main.nf.test.snap'
+Apr-06 17:44:17.591 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'cfa44dbb: faa - domain annotation - stub' finished. status: FAILED
+org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 1 of 2 assertions failed
+	at com.askimed.nf.test.lang.extensions.GlobalMethods.assertAll(GlobalMethods.java:47)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at main_nf$_run_closure1$_closure5$_closure25.doCall(main.nf.test:132)
+	at main_nf$_run_closure1$_closure5$_closure25.doCall(main.nf.test)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1009)
+	at groovy.lang.Closure.call(Closure.java:433)
+	at groovy.lang.Closure.call(Closure.java:412)
+	at com.askimed.nf.test.lang.TestCode.execute(TestCode.java:16)
+	at com.askimed.nf.test.lang.workflow.WorkflowTest.execute(WorkflowTest.java:178)
+	at com.askimed.nf.test.core.TestExecutionEngine.execute(TestExecutionEngine.java:172)
+	at com.askimed.nf.test.commands.RunTestsCommand.execute(RunTestsCommand.java:322)
+	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:43)
+	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:18)
+	at picocli.CommandLine.executeUserObject(CommandLine.java:1953)
+	at picocli.CommandLine.access$1300(CommandLine.java:145)
+	at picocli.CommandLine$RunLast.executeUserObjectOfLastSubcommandWithSameParent(CommandLine.java:2352)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2346)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2311)
+	at picocli.CommandLine$AbstractParseResultHandler.execute(CommandLine.java:2179)
+	at picocli.CommandLine.execute(CommandLine.java:2078)
+	at com.askimed.nf.test.App.run(App.java:39)
+	at com.askimed.nf.test.App.main(App.java:46)
+Apr-06 17:44:17.592 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Subworkflow DOMAIN_ANNOTATION' finished. snapshot file: true, skipped tests: false, failed tests: true
+Apr-06 17:44:17.592 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test Subworkflow FUNCTIONAL_ANNOTATION' from file '/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/tests/main.nf.test'.
+Apr-06 17:44:17.593 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test 'c3e153a5: Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
+Apr-06 17:44:46.462 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Load snapshots from file '/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/tests/main.nf.test.snap'
+Apr-06 17:44:46.474 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success' do not match. Update snapshots flag set.
+Apr-06 17:44:46.474 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Updated snapshot 'Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success'
+Apr-06 17:44:46.477 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Wrote snapshots to file '/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/tests/main.nf.test.snap'
+Apr-06 17:44:46.478 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test 'c3e153a5: Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success' finished. status: PASSED
+Apr-06 17:44:46.478 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '45132abc: Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success - stub'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
+Apr-06 17:45:00.005 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshots 'Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success - stub' do not match. Update snapshots flag set.
+Apr-06 17:45:00.005 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Updated snapshot 'Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success - stub'
+Apr-06 17:45:00.009 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Wrote snapshots to file '/home/trace/projects/proteinannotator/subworkflows/local/functional_annotation/tests/main.nf.test.snap'
+Apr-06 17:45:00.009 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '45132abc: Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success - stub' finished. status: PASSED
+Apr-06 17:45:00.010 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '4dcdc77b: l_asparaginase - faa - functional annotation'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
+Apr-06 18:12:15.496 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '4dcdc77b: l_asparaginase - faa - functional annotation' finished. status: FAILED
+org.codehaus.groovy.runtime.powerassert.PowerAssertionError: 2 of 2 assertions failed
+	at com.askimed.nf.test.lang.extensions.GlobalMethods.assertAll(GlobalMethods.java:47)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at main_nf$_run_closure1$_closure4$_closure19.doCall(main.nf.test:93)
+	at main_nf$_run_closure1$_closure4$_closure19.doCall(main.nf.test)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1009)
+	at groovy.lang.Closure.call(Closure.java:433)
+	at groovy.lang.Closure.call(Closure.java:412)
+	at com.askimed.nf.test.lang.TestCode.execute(TestCode.java:16)
+	at com.askimed.nf.test.lang.workflow.WorkflowTest.execute(WorkflowTest.java:178)
+	at com.askimed.nf.test.core.TestExecutionEngine.execute(TestExecutionEngine.java:172)
+	at com.askimed.nf.test.commands.RunTestsCommand.execute(RunTestsCommand.java:322)
+	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:43)
+	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:18)
+	at picocli.CommandLine.executeUserObject(CommandLine.java:1953)
+	at picocli.CommandLine.access$1300(CommandLine.java:145)
+	at picocli.CommandLine$RunLast.executeUserObjectOfLastSubcommandWithSameParent(CommandLine.java:2352)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2346)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2311)
+	at picocli.CommandLine$AbstractParseResultHandler.execute(CommandLine.java:2179)
+	at picocli.CommandLine.execute(CommandLine.java:2078)
+	at com.askimed.nf.test.App.run(App.java:39)
+	at com.askimed.nf.test.App.main(App.java:46)
+Apr-06 18:12:15.500 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '810a2a59: faa - functional annotation - stub'. type: com.askimed.nf.test.lang.workflow.WorkflowTest
+Apr-06 18:12:43.528 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '810a2a59: faa - functional annotation - stub' finished. status: FAILED
+org.codehaus.groovy.runtime.powerassert.PowerAssertionError: assert workflow.success
+       |        |
+       workflow false
+	at org.codehaus.groovy.runtime.InvokerHelper.createAssertError(InvokerHelper.java:414)
+	at main_nf$_run_closure1$_closure5$_closure25.doCall(main.nf.test:120)
+	at main_nf$_run_closure1$_closure5$_closure25.doCall(main.nf.test)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1009)
+	at groovy.lang.Closure.call(Closure.java:433)
+	at groovy.lang.Closure.call(Closure.java:412)
+	at com.askimed.nf.test.lang.TestCode.execute(TestCode.java:16)
+	at com.askimed.nf.test.lang.workflow.WorkflowTest.execute(WorkflowTest.java:178)
+	at com.askimed.nf.test.core.TestExecutionEngine.execute(TestExecutionEngine.java:172)
+	at com.askimed.nf.test.commands.RunTestsCommand.execute(RunTestsCommand.java:322)
+	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:43)
+	at com.askimed.nf.test.commands.AbstractCommand.call(AbstractCommand.java:18)
+	at picocli.CommandLine.executeUserObject(CommandLine.java:1953)
+	at picocli.CommandLine.access$1300(CommandLine.java:145)
+	at picocli.CommandLine$RunLast.executeUserObjectOfLastSubcommandWithSameParent(CommandLine.java:2352)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2346)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2311)
+	at picocli.CommandLine$AbstractParseResultHandler.execute(CommandLine.java:2179)
+	at picocli.CommandLine.execute(CommandLine.java:2078)
+	at com.askimed.nf.test.App.run(App.java:39)
+	at com.askimed.nf.test.App.main(App.java:46)
+Apr-06 18:12:43.529 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test Subworkflow FUNCTIONAL_ANNOTATION' finished. snapshot file: true, skipped tests: false, failed tests: true
+Apr-06 18:12:43.530 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Executed 16 tests. 6 tests failed. Done!
