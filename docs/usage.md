@@ -82,6 +82,7 @@ You can also generate such `YAML`/`JSON` files via [nf-core/launch](https://nf-c
 
 ### InterProScan
 
+Running [InterProScan](https://interproscan-docs.readthedocs.io/) requires a pre-prepared input database. You can provided this as one of two options:
 [InterProScan](https://github.com/ebi-pf-team/interproscan) is used to provide more information about the proteins annotated on the contigs. By default, turning on this subworkflow without `--skip_interproscan` will download and unzip the InterPro database. The database will then be saved in the output directory `<output_directory>/downloaded_dbs/interproscan_db/`. We recommend keeping a copy of this directory for future reuse in case the results folder is deleted.
 
 :::note
@@ -90,6 +91,24 @@ The large database download (5.5GB) can take up to 4 hours depending on the band
 
 A local version of the database can be supplied to the pipeline by passing the InterProScan database directory to `--interproscan_db <path/to/downloaded-untarred-interproscan_db-dir/>`. The directory can be created by running (e.g. for database version 5.72-103.0):
 
+### DIAMOND
+
+Running [Diamond](https://github.com/bbuchfink/diamond) requires five inputs parameters.
+
+- `--refseq_release`: NCBI refseq release category of protein fastas for creation of a protein reference database using [`diamond/makedb`](https://nf-co.re/modules/diamond_makedb)
+- `--taxondmp_zip`: Compressed taxon dmp file path to provide taxon names and nodes files for creation of a protein reference database using [`diamond/makedb`]
+- `--taxonmap`: Compressed taxon map file path to provide taxon mapping file for creation of a protein reference database using [`diamond/makedb`]
+- `--diamond_outfmt`: One of seven optional output formats for [`diamond/blastp`](https://nf-co.re/modules/diamond_blastp/), indicated by a digit code. Options include:
+  - `*.blast (0)`: (Basic Local Alignment Search Tool) BLAST pairwise format
+  - `*.xml (5)`: BLAST Extensible Markup Language (XML) format
+  - `*.txt (6)`: BLAST tabular format (default). This format can be customized, the 6 may be followed by a space-separated list of the blast_columns keywords, each specifying a field of the output.
+  - `*.daa (100)`: DIAMOND alignment archive (DAA). The DAA format is a proprietary binary format that can subsequently be used to generate other output formats using the view command. It is also supported by MEGAN and allows a quick import of results.
+  - `*.sam (101)`: SAM format.
+  - `*.tsv (102)`: Taxonomic classification. This format will not print alignments but only a taxonomic classification for each query using the LCA algorithm.
+  - `*.paf (103)`: PAF format. The custom fields in the format are AS (bit score), ZR (raw score) and ZE (e-value)
+- `--diamond_blast_columns`: Accompanied optional input parameter to `diamond_outfmt`: `*.txt (6)` output format. Space separated list of columns to be included. Options: qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore.
+
+### Updating the pipeline
 ```
 curl -L https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/interproscan-5.72-103.0-64-bit.tar.gz -o interproscan_db/interproscan-5.72-103.0-64-bit.tar.gz
 tar -xzf interproscan_db/interproscan-5.72-103.0-64-bit.tar.gz -C interproscan_db/

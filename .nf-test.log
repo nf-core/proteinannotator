@@ -1,0 +1,8 @@
+Apr-09 11:11:33.550 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.4
+Apr-09 11:11:33.572 [main] INFO  com.askimed.nf.test.App - Arguments: [test, subworkflows/local/domain_annotation, --profile, test,docker, --update-snapshot, --tag, stub]
+Apr-09 11:11:34.489 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 25.10.4
+Apr-09 11:11:34.491 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Load config from file /home/trace/projects/proteinannotator/nf-test.config...
+Apr-09 11:11:35.532 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 37 files from directory /home/trace/projects/proteinannotator in 0.188 sec
+Apr-09 11:11:35.535 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 1 files containing tests.
+Apr-09 11:11:35.535 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/home/trace/projects/proteinannotator/subworkflows/local/domain_annotation/tests/main.nf.test]
+Apr-09 11:11:35.960 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 0 tests to execute.

@@ -1,3 +1,6 @@
+// Import Diamond Subworkflow
+include { DIAMOND } from '../diamond/main'
+
 include { ARIA2        } from '../../../modules/nf-core/aria2/main'
 include { UNTAR        } from '../../../modules/nf-core/untar/main'
 include { INTERPROSCAN } from '../../../modules/nf-core/interproscan/main'
@@ -13,6 +16,19 @@ workflow FUNCTIONAL_ANNOTATION {
     ch_interproscan_tsv = channel.empty()
     ch_versions         = channel.empty()
 
+    //
+    // SUBWORKFLOW: Run Diamond
+    //
+
+    DIAMOND(
+        ch_fasta
+    )
+    ch_diamond_tsv = DIAMOND.out.tsv
+    ch_versions = ch_versions.mix(DIAMOND.out.versions.first())
+
+    //
+    // SUBWORKFLOW: Run Interproscan
+    //
     if (!skip_interproscan) {
         if (interproscan_db) {
             ch_interproscan_db = channel.fromPath(interproscan_db).first()
@@ -30,6 +46,7 @@ workflow FUNCTIONAL_ANNOTATION {
     }
 
     emit:
+    diamond_tsv      = ch_diamond_tsv
     interproscan_tsv = ch_interproscan_tsv
     versions         = ch_versions         // channel: [ versions.yml ]
 }

@@ -1,22 +1,5 @@
 {
-    "l_asparaginase - faa - functional annotation": {
-        "content": [
-            true,
-            [
-                {
-                    "FUNCTIONAL_ANNOTATION:ARIA2": {
-                        "aria2": "1.36.0"
-                    }
-                }
-            ]
-        ],
-        "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.2"
-        },
-        "timestamp": "2026-03-30T08:43:09.611782169"
-    },
-    "faa - functional annotation - stub": {
+    "Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success": {
         "content": [
             {
                 "0": [
@@ -25,18 +8,53 @@
                 "1": [
                     
                 ],
+                "2": [
+                    "versions.yml:md5,360c40011f1cc989e92af5ec14d367c8"
+                ],
+                "diamond_tsv": [
+                    
+                ],
                 "interproscan_tsv": [
                     
                 ],
                 "versions": [
-                    
+                    "versions.yml:md5,360c40011f1cc989e92af5ec14d367c8"
                 ]
             }
         ],
+        "timestamp": "2026-04-09T10:13:40.576061038",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.2"
-        },
-        "timestamp": "2026-03-30T08:32:05.103561412"
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success - stub": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    "versions.yml:md5,0f07f649936a9d30bb0203870dc9c256"
+                ],
+                "diamond_tsv": [
+                    
+                ],
+                "interproscan_tsv": [
+                    
+                ],
+                "versions": [
+                    "versions.yml:md5,0f07f649936a9d30bb0203870dc9c256"
+                ]
+            }
+        ],
+        "timestamp": "2026-04-06T17:45:00.005789225",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
     }
 }

@@ -18,6 +18,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 - [Domain annotation](#domain-annotation) Annotate proteins with domains from established repositories.
   - [hmmer](#hmmer) - To optionally match the input sequence to known Pfam, FunFam, NMPFams and/or metagRoot domains through `hmmer/hmmsearch`
 - [Functional annotation](#functional-annotation) Annotate proteins with functional domains
+  - [Diamond](#Diamond) - Provide potential homologous protein matches between species
   - [InterProScan](#Interproscan) - Search the InterProScan database for functional domains
 - [s4pred](#s4pred) - Predict secondary structures of sequences, producing amino acid level probabilities of forming an α-helix, a β-strand or a coil.
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
@@ -164,7 +165,7 @@ AKRLERIETINREIIDMAGGAGSSNGTGGMLTKIKAATIATESGVPVYICS
 
 </details>
 
-#### JavaScript Object Notation (JSON) Output
+##### JavaScript Object Notation (JSON) Output
 
 JSON representation of the matches - an alternative to XML format. As new releases are made public, the changes to the expected JSON format are documented in [Change log for InterProScan JSON output format](https://interproscan-docs.readthedocs.io/en/v5/JSONOutputFormatHistory.html#change-log-for-interproscan-json-output-format).
 
@@ -357,6 +358,219 @@ The XML Schema Definition (XSD) is available [here](http://ftp.ebi.ac.uk/pub/sof
 
 </details>
 
+#### Diamond
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `functional_annotation/diamond`
+  - `*.blast (0)`: (Basic Local Alignment Search Tool) BLAST pairwise format
+  - `*.xml (5)`: BLAST Extensible Markup Language (XML) format
+  - `*.txt (6)`: BLAST tabular format (default). This format can be customized, the 6 may be followed by a space-separated list of the blast_columns keywords, each specifying a field of the output.
+  - `*.daa (100)`: DIAMOND alignment archive (DAA). The DAA format is a proprietary binary format that can subsequently be used to generate other output formats using the view command. It is also supported by MEGAN and allows a quick import of results.
+  - `*.sam (101)`: SAM format.
+  - `*.tsv (102)`: Taxonomic classification. This format will not print alignments but only a taxonomic classification for each query using the LCA algorithm.
+  - `*.paf (103)`: PAF format. The custom fields in the format are AS (bit score), ZR (raw score) and ZE (e-value)
+
+</details>
+
+[Diamond](https://github.com/bbuchfink/diamond) provides sensitive protein sequence alignment. The process provides potential homologous protein matches between species, indicating a evolutionary relationship, derived by protein sequence similarity.
+
+##### Pairwise Alignment Format (.blast) Output
+
+The pairwise BLAST format is a human readable format that is useful for visual inspection, if one desires to get full alignment details for individual alignments.
+
+<details markdown="1">
+<summary>Example Pairwise Alignment Format output</summary>
+
+```
+BLASTP 2.3.0+
+
+
+Query= WP_031942563.1 tetracycline efflux MFS transporter Tet(B) [Transposon Tn10]
+
+Length=401
+
+>WP_031942563.1 tetracycline efflux MFS transporter Tet(B) [Transposon Tn10]
+Length=401
+
+ Score = 771 bits (1991),  Expect = 1.53e-288
+ Identities = 401/401 (100%), Positives = 401/401 (100%), Gaps = 0/401 (0%)
+
+Query    1  MNSSTKIALVITLLDAMGIGLIMPVLPTLLREFIASEDIANHFGVLLALYALMQVIFAPW 60
+            MNSSTKIALVITLLDAMGIGLIMPVLPTLLREFIASEDIANHFGVLLALYALMQVIFAPW
+Sbjct    1  MNSSTKIALVITLLDAMGIGLIMPVLPTLLREFIASEDIANHFGVLLALYALMQVIFAPW 60
+
+Query   61  LGKMSDRFGRRPVLLLSLIGASLDYLLLAFSSALWMLYLGRLLSGITGATGAVAASVIAD 120
+            LGKMSDRFGRRPVLLLSLIGASLDYLLLAFSSALWMLYLGRLLSGITGATGAVAASVIAD
+Sbjct   61  LGKMSDRFGRRPVLLLSLIGASLDYLLLAFSSALWMLYLGRLLSGITGATGAVAASVIAD 120
+
+Query  121  TTSASQRVKWFGWLGASFGLGLIAGPIIGGFAGEISPHSPFFIAALLNIVTFLVVMFWFR 180
+            TTSASQRVKWFGWLGASFGLGLIAGPIIGGFAGEISPHSPFFIAALLNIVTFLVVMFWFR
+Sbjct  121  TTSASQRVKWFGWLGASFGLGLIAGPIIGGFAGEISPHSPFFIAALLNIVTFLVVMFWFR 180
+
+Query  181  ETKNTRDNTDTEVGVETQSNSVYITLFKTMPILLIIYFSAQLIGQIPATVWVLFTENRFG 240
+            ETKNTRDNTDTEVGVETQSNSVYITLFKTMPILLIIYFSAQLIGQIPATVWVLFTENRFG
+Sbjct  181  ETKNTRDNTDTEVGVETQSNSVYITLFKTMPILLIIYFSAQLIGQIPATVWVLFTENRFG 240
+
+Query  241  WNSMMVGFSLAGLGLLHSVFQAFVAGRIATKWGEKTAVLLEFIADSSAFAFLAFISEGWL 300
+            WNSMMVGFSLAGLGLLHSVFQAFVAGRIATKWGEKTAVLLEFIADSSAFAFLAFISEGWL
+Sbjct  241  WNSMMVGFSLAGLGLLHSVFQAFVAGRIATKWGEKTAVLLEFIADSSAFAFLAFISEGWL 300
+
+Query  301  DFPVLILLAGGGIALPALQGVMSIQTKSHEQGALQGLLVSLTNATGVIGPLLFTVIYNHS 360
+            DFPVLILLAGGGIALPALQGVMSIQTKSHEQGALQGLLVSLTNATGVIGPLLFTVIYNHS
+Sbjct  301  DFPVLILLAGGGIALPALQGVMSIQTKSHEQGALQGLLVSLTNATGVIGPLLFTVIYNHS 360
+
+Query  361  LPIWDGWIWIIGLAFYCIIILLSMTFMLTPQAQGSKQETSA 401
+            LPIWDGWIWIIGLAFYCIIILLSMTFMLTPQAQGSKQETSA
+Sbjct  361  LPIWDGWIWIIGLAFYCIIILLSMTFMLTPQAQGSKQETSA 401
+```
+
+</details>
+
+##### BLAST Extensible Markup Language (XML) Output
+
+XML (Extensible Markup Language) file has the same information as the pairwise file but is suited for bioinformatics software and scripts (machine readable), due to it’s structure and parsing of data.
+
+<details markdown="1">
+<summary>Example Extensible Markup Language (XML) output</summary>
+
+```
+<?xml version="1.0"?>
+<!DOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd">
+<BlastOutput>
+  <BlastOutput_program>blastp</BlastOutput_program>
+  <BlastOutput_version>diamond 2.1.12</BlastOutput_version>
+  <BlastOutput_reference>Benjamin Buchfink, Xie Chao, and Daniel Huson (2015), &quot;Fast and sensitive protein alignment using DIAMOND&quot;, Nature Methods 12:59-60.</BlastOutput_reference>
+  <BlastOutput_db>refseq.dmnd</BlastOutput_db>
+  <BlastOutput_query-ID>Query_1</BlastOutput_query-ID>
+  <BlastOutput_query-def>WP_031942563.1 tetracycline efflux MFS transporter Tet(B) [Transposon Tn10]</BlastOutput_query-def>
+  <BlastOutput_query-len>401</BlastOutput_query-len>
+  <BlastOutput_param>
+    <Parameters>
+      <Parameters_matrix>blosum62</Parameters_matrix>
+      <Parameters_expect>0.001</Parameters_expect>
+      <Parameters_gap-open>11</Parameters_gap-open>
+      <Parameters_gap-extend>1</Parameters_gap-extend>
+      <Parameters_filter>F</Parameters_filter>
+    </Parameters>
+  </BlastOutput_param>
+<BlastOutput_iterations>
+<Iteration>
+  <Iteration_iter-num>1</Iteration_iter-num>
+  <Iteration_query-ID>Query_1</Iteration_query-ID>
+  <Iteration_query-def>WP_031942563.1 tetracycline efflux MFS transporter Tet(B) [Transposon Tn10]</Iteration_query-def>
+  <Iteration_query-len>401</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>WP_031942563.1</Hit_id>
+  <Hit_def>tetracycline efflux MFS transporter Tet(B) [Transposon Tn10]</Hit_def>
+  <Hit_accession>WP_031942563</Hit_accession>
+  <Hit_len>401</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>771</Hsp_bit-score>
+      <Hsp_score>1991</Hsp_score>
+      <Hsp_evalue>1.53e-288</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>401</Hsp_query-to>
+      <Hsp_hit-from>1</Hsp_hit-from>
+      <Hsp_hit-to>401</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>401</Hsp_identity>
+      <Hsp_positive>401</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>401</Hsp_align-len>
+         <Hsp_qseq>MNSSTKIALVITLLDAMGIGLIMPVLPTLLREFIASEDIANHFGVLLALYALMQVIFAPWLGKMSDRFGRRPVLLLSLIGASLDYLLLAFSSALWMLYLGRLLSGITGATGAVAASVIADTTSASQRVKWFGWLGASFGLGLIAGPIIGGFAGEISPHSPFFIAALLNIVTFLVVMFWFRETKNTRDNTDTEVGVETQSNSVYITLFKTMPILLIIYFSAQLIGQIPATVWVLFTENRFGWNSMMVGFSLAGLGLLHSVFQAFVAGRIATKWGEKTAVLLEFIADSSAFAFLAFISEGWLDFPVLILLAGGGIALPALQGVMSIQTKSHEQGALQGLLVSLTNATGVIGPLLFTVIYNHSLPIWDGWIWIIGLAFYCIIILLSMTFMLTPQAQGSKQETSA</Hsp_qseq>
+         <Hsp_hseq>MNSSTKIALVITLLDAMGIGLIMPVLPTLLREFIASEDIANHFGVLLALYALMQVIFAPWLGKMSDRFGRRPVLLLSLIGASLDYLLLAFSSALWMLYLGRLLSGITGATGAVAASVIADTTSASQRVKWFGWLGASFGLGLIAGPIIGGFAGEISPHSPFFIAALLNIVTFLVVMFWFRETKNTRDNTDTEVGVETQSNSVYITLFKTMPILLIIYFSAQLIGQIPATVWVLFTENRFGWNSMMVGFSLAGLGLLHSVFQAFVAGRIATKWGEKTAVLLEFIADSSAFAFLAFISEGWLDFPVLILLAGGGIALPALQGVMSIQTKSHEQGALQGLLVSLTNATGVIGPLLFTVIYNHSLPIWDGWIWIIGLAFYCIIILLSMTFMLTPQAQGSKQETSA</Hsp_hseq>
+      <Hsp_midline>MNSSTKIALVITLLDAMGIGLIMPVLPTLLREFIASEDIANHFGVLLALYALMQVIFAPWLGKMSDRFGRRPVLLLSLIGASLDYLLLAFSSALWMLYLGRLLSGITGATGAVAASVIADTTSASQRVKWFGWLGASFGLGLIAGPIIGGFAGEISPHSPFFIAALLNIVTFLVVMFWFRETKNTRDNTDTEVGVETQSNSVYITLFKTMPILLIIYFSAQLIGQIPATVWVLFTENRFGWNSMMVGFSLAGLGLLHSVFQAFVAGRIATKWGEKTAVLLEFIADSSAFAFLAFISEGWLDFPVLILLAGGGIALPALQGVMSIQTKSHEQGALQGLLVSLTNATGVIGPLLFTVIYNHSLPIWDGWIWIIGLAFYCIIILLSMTFMLTPQAQGSKQETSA</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+```
+
+</details>
+
+##### Text File (TXT) Output --default
+
+The BLAST tabular format is the default output and the output columns can be modified depending on analysis needs. This format is much smaller than the other BLAST formats and compatible with most all forward processing and is easily filtered and analyzed.
+
+<details markdown="1">
+<summary>Example Text File (TXT) output</summary>
+
+```
+WP_031942563.1	WP_031942563.1	100	401	0	0	1	401	1	401	1.53e-288	771
+WP_430799656.1	WP_430799656.1	100	267	0	0	1	267	1	267	4.90e-197	528
+WP_148044478.1	WP_148044478.1	100	547	0	0	1	547	1	547	0.0	1087
+WP_168247882.1	WP_168247882.1	100	395	0	0	1	395	1	395	4.62e-296	790
+WP_168247882.1	WP_168247881.1	95.2	395	19	0	1	395	1	395	8.43e-283	756
+WP_168247881.1	WP_168247881.1	100	395	0	0	1	395	1	395	7.99e-297	791
+WP_168247881.1	WP_168247882.1	95.2	395	19	0	1	395	1	395	1.20e-282	756
+```
+
+</details>
+
+##### DIAMOND Alignment Archive (DAA) Output
+
+DIAMOND alignment archive (DAA) is a compressed proprietary binary format that is can be converted to any of the other output formats (.blast, .xml, .txt, .sam, .tsv, .paf) with the DIAMOND view command without rerunning the pipeline. It can also be used in some meta-genomic analysis software.
+
+##### Sequence Alignment/Map (SAM) Output
+
+The SAM (Sequence Alignment/Map) file adapts the DIAMOND protein alignment output in a similar fashion to the genomic alignment. This allows for easy integration into SAM/BAM pipelines and protein alignment visualization with IGV browser.
+
+<details markdown="1">
+<summary>Example Sequence Alignment/Map (SAM) output</summary>
+
+```
+@HD	VN:1.5	SO:query
+@PG	PN:DIAMOND	VN:2.1.12	CL:diamond blastp --threads 1 --db refseq.dmnd --query test_refseq.fasta --outfmt 101 --out test.sam
+@mm	BlastP
+@CO	BlastP-like alignments
+@CO	Reporting AS: bitScore, ZR: rawScore, ZE: expected, ZI: percent identity, ZL: reference length, ZF: frame, ZS: query start DNA coordinate
+WP_031942563.1	0	WP_031942563.1	1	255	401M	*	0	0	MNSSTKIALVITLLDAMGIGLIMPVLPTLLREFIASEDIANHFGVLLALYALMQVIFAPWLGKMSDRFGRRPVLLLSLIGASLDYLLLAFSSALWMLYLGRLLSGITGATGAVAASVIADTTSASQRVKWFGWLGASFGLGLIAGPIIGGFAGEISPHSPFFIAALLNIVTFLVVMFWFRETKNTRDNTDTEVGVETQSNSVYITLFKTMPILLIIYFSAQLIGQIPATVWVLFTENRFGWNSMMVGFSLAGLGLLHSVFQAFVAGRIATKWGEKTAVLLEFIADSSAFAFLAFISEGWLDFPVLILLAGGGIALPALQGVMSIQTKSHEQGALQGLLVSLTNATGVIGPLLFTVIYNHSLPIWDGWIWIIGLAFYCIIILLSMTFMLTPQAQGSKQETSA	*	AS:i:771	NM:i:0	ZL:i:401	ZR:i:1991	ZE:f:1.53e-288	ZI:i:100	ZF:i:1	ZS:i:1	MD:Z:401
+WP_430799656.1	0	WP_430799656.1	1	255	267M	*	0	0	MNKYLALLILLVYSQVSMAESIRENKSWNEVFAQESVEGVFVLCKSSKNDCITNNKERALLAFIPASTFKIANALIALETGVVKSEHQIFKWGGEPRDMKQWEQDFTLRGAMQASAVPVFQQFAREIGEKRMQSYLGEFAYGNSNIDGGIDLFWLEGGLRISAINQIGFLESLYENKLPISERNQLIVKDALISEATPAYLIRSKTGYTGIKGKIQPGIAWWVGWVEKGTEVYFFAFNMNIDNESKLPARKSIPTKIMQSEGVLNGS	*	AS:i:528	NM:i:0	ZL:i:267	ZR:i:1361	ZE:f:4.90e-197	ZI:i:100	ZF:i:1	ZS:i:1	MD:Z:267
+WP_148044478.1	0	WP_148044478.1	1	255	547M	*	0	0	MRLSAFITFLKMRPQVRTEFLTLFISLVFTLLCNGVFWNALLAGRDSLTSGTWLMLLCTGLLITGLQWLLLLLVATRWSVKPLLILLAVMTPAAVYFMRNYGVYFDKAMLRNLMETDVREASELLQWRMLPYLLVAAVSVWWIARVRVLRTGWKQAVMMRSACLAGALAMISMGLWPVMDVLIPTLRENKPLRYLITPANYVISGIRVLTEQASSSADEAREVVAADAHRGPQEQGRRPRALVLVVGETVRAANWGLSGYERQTTPELAARDVINFSDVTSCGTDTATSLPCMFSLNGRRDYDERQIRRRESVLHVLNRSDVNILWRDNQSGCKGVCDGLPFENLSSAGHPTLCHGERCLDEILLEGLAEKITTSRSDMLIVLHMLGNHGPAYFQRYPASYRRWSPTCDTTDLASCSHEALVNTYDNAVLYTDHVLARTIDLLSGIRSHDTALLYVSDHGESLGEKGLYLHGIPYVIAPDEQIKVPMIWWQSSQVYADQACMQTHASRAPVSHDHLFHTLLGMFDVKTAAYTPELDLLATCRKGQPQ	*	AS:i:1087	NM:i:0	ZL:i:547	ZR:i:2812	ZE:f:0.0	ZI:i:100	ZF:i:1	ZS:i:1	MD:Z:547
+WP_168247882.1	0	WP_168247882.1	1	255	395M	*	0	0	MPRTESVPSKSLVVRTLLLVFACLFPMAVPAVEDTSRVRTTVDAAILPLMSQHDIPGMVVGLILDGQPYVVTYGVASKEANVPVAEATLFEIGSVSKVFTATLAAYAQTTGKLSLDDHPGKYLPQLKGTPIDQATLLHLGTYTAGGLPLQFPDEVTGEVAVMDYFRNWTPLAPPGTRREYSNASPGLLGLVAASALDDDFATLMQSTVFPAFGMTDSFIHVPDRKMPDYAWGYRKDRPVRVNEGPLDEQAYGVKTTVSDLLRFVQANIDPSSLEPSMRRAVEATQVGYFRAGTLVQGLGWEKYPYPVSREWLLGGNAKEMLFDPQPAYRLTDQTAGERYLFNKTGSTGGFATYVAFVPARKIGIVMLANRSYPIPDRVEAAWIILEQLASGTDSN	*	AS:i:790	NM:i:0	ZL:i:395	ZR:i:2039	ZE:f:4.62e-296	ZI:i:100	ZF:i:1	ZS:i:1	MD:Z:395
+WP_168247882.1	0	WP_168247881.1	1	255	395M	*	0	0	MPRTESVPSKSLVVRTLLLVFACLFPMAVPAVEDTSRVRTTVDAAILPLMSQHDIPGMVVGLILDGQPYVVTYGVASKEANVPVAEATLFEIGSVSKVFTATLAAYAQTTGKLSLDDHPGKYLPQLKGTPIDQATLLHLGTYTAGGLPLQFPDEVTGEVAVMDYFRNWTPLAPPGTRREYSNASPGLLGLVAASALDDDFATLMQSTVFPAFGMTDSFIHVPDRKMPDYAWGYRKDRPVRVNEGPLDEQAYGVKTTVSDLLRFVQANIDPSSLEPSMRRAVEATQVGYFRAGTLVQGLGWEKYPYPVSREWLLGGNAKEMLFDPQPAYRLTDQTAGERYLFNKTGSTGGFATYVAFVPARKIGIVMLANRSYPIPDRVEAAWIILEQLASGTDSN	*	AS:i:756	NM:i:19	ZL:i:395	ZR:i:1952	ZE:f:8.43e-283	ZI:i:95	ZF:i:1	ZS:i:1	MD:Z:34S4AA17A20T24T3A15H3A29A3N26V15T31R32N7H57GQ44M12
+WP_168247881.1	0	WP_168247881.1	1	255	395M	*	0	0	MPRTESVPSKSLVVRTLLLVFACLFPMAVPAVEDSSRVRAAVDAAILPLMSQHDIPGMAVGLILDGQPYVVTYGVASKETNVPVAEATLFEIGSVSKVFTATLATYAQATGKLSLDDHPGKYLPHLKGAPIDQATLLHLGTYTAGGLPLQFPDEVTGEAAVMNYFRNWTPLAPPGTRREYSNASPGLLGVVAASALDDDFATLMQTTVFPAFGMTDSFIHVPDRKMPDYAWGYRKDRRVRVNEGPLDEQAYGVKTTVSDLLRFVQANIDPNSLEPSMRHAVEATQVGYFRAGTLVQGLGWEKYPYPVSREWLLGGNAKEMLFDPQPAYRLTDQTAGGQYLFNKTGSTGGFATYVAFVPARKIGIVMLANRSYPIPDRVEAAWMILEQLASGTDSN	*	AS:i:791	NM:i:0	ZL:i:395	ZR:i:2044	ZE:f:7.99e-297	ZI:i:100	ZF:i:1	ZS:i:1	MD:Z:395
+WP_168247881.1	0	WP_168247882.1	1	255	395M	*	0	0	MPRTESVPSKSLVVRTLLLVFACLFPMAVPAVEDSSRVRAAVDAAILPLMSQHDIPGMAVGLILDGQPYVVTYGVASKETNVPVAEATLFEIGSVSKVFTATLATYAQATGKLSLDDHPGKYLPHLKGAPIDQATLLHLGTYTAGGLPLQFPDEVTGEAAVMNYFRNWTPLAPPGTRREYSNASPGLLGVVAASALDDDFATLMQTTVFPAFGMTDSFIHVPDRKMPDYAWGYRKDRRVRVNEGPLDEQAYGVKTTVSDLLRFVQANIDPNSLEPSMRHAVEATQVGYFRAGTLVQGLGWEKYPYPVSREWLLGGNAKEMLFDPQPAYRLTDQTAGGQYLFNKTGSTGGFATYVAFVPARKIGIVMLANRSYPIPDRVEAAWMILEQLASGTDSN	*	AS:i:756	NM:i:19	ZL:i:395	ZR:i:1951	ZE:f:1.20e-282	ZI:i:95	ZF:i:1	ZS:i:1	MD:Z:34T4TT17V20A24A3T15Q3T29V3D26L15S31P32S7R57ER44I12
+```
+
+</details>
+
+##### Tab-Separated Values (TSV) Output
+
+The taxonomic classification (.tsv) output provides taxonomic composition and is useful for biological interpretation rather than alignment comparison.
+
+<details markdown="1">
+<summary>Example Tab-Separated Values (TSV) output</summary>
+
+```
+WP_031942563.1	2389	1.53e-288
+WP_430799656.1	2931384	4.90e-197
+WP_148044478.1	1755691	0.0
+WP_168247882.1	0	0
+WP_168247881.1	0	0
+```
+
+</details>
+
+##### Pairwise Mapping Format (PAF)
+
+The PAF (Pairwise mApping Format) file that is originally used for long read sequencing. DIAMOND adds three additional variables, AS (bit score), ZR (raw alignment score), and ZE (E-value), to provide statistical evidence for protein alignment. This format is useful if one is looking for positional information and statistical significance.
+
+<details markdown="1">
+<summary>Example Pairwise Mapping Format (PAF) output</summary>
+```
+WP_031942563.1	401	0	401	+	WP_031942563.1	401	0	401	401	401	255	AS:i:771	ZR:i:1991	ZE:f:1.53e-288
+WP_430799656.1	267	0	267	+	WP_430799656.1	267	0	267	267	267	255	AS:i:528	ZR:i:1361	ZE:f:4.90e-197
+WP_148044478.1	547	0	547	+	WP_148044478.1	547	0	547	547	547	255	AS:i:1087	ZR:i:2812	ZE:f:0.0
+```
+
+</details>
+
 #### s4pred
 
 <details markdown="1">
@@ -372,7 +586,6 @@ The XML Schema Definition (XSD) is available [here](http://ftp.ebi.ac.uk/pub/sof
 The `s4pred` module is used to predict secondary structures of amino acid sequences.
 
 [s4pred](https://github.com/psipred/s4pred) is a tool for accurate prediction of a protein's secondary structure from only it's amino acid sequence.
-
 ### MultiQC
 
 <details markdown="1">

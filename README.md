@@ -23,6 +23,14 @@
 
 **nf-core/proteinannotator** is a bioinformatics pipeline that computes statistics for protein FASTA inputs and produces protein annotations based on predicted sequence features, including conserved domains, functions, and secondary structure.
 
+1. Run ([`seqkit stats`](https://bioinf.shenwei.me/seqkit/usage/#stats)) to summarize input protein fasta files
+2. Functional Annotation:
+   1. ([`InterProScan`](https://interproscan-docs.readthedocs.io/en/v5/)) a software tool used to analyze protein sequences by scanning them against the signatures of protein families, domains, and sites in the [InterPro](https://www.ebi.ac.uk/interpro/) database, helping to identify their functional characteristics.
+   2. ([`DIAMOND`](https://github.com/bbuchfink/diamond)) tool used for sensitive protein sequence alignment, comparing to a reference database created from combined protein fastas and taxonic information (taxon names, nodes, and map).
+3. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
+
+
+<h1>
 <p>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/images/proteinannotator_metromap_dark.png">
@@ -40,6 +48,7 @@ Generate input amino acid sequence statistics with ([`SeqFu`](https://github.com
    such as [Pfam](https://ftp.ebi.ac.uk/pub/databases/Pfam/), [FunFam](https://download.cathdb.info/cath/releases/all-releases/), and [NMPFams and metagRoot](https://pavlopoulos-lab.org/envofams/databases/hmmer/)
 2. Functional annotation:
    - ([`InterProScan`](https://interproscan-docs.readthedocs.io/en/v5/)) a software tool used to analyze protein sequences by scanning them against the signatures of protein families, domains, and sites in the [InterPro](https://www.ebi.ac.uk/interpro/) database, helping to identify their functional characteristics.
+   - ([`DIAMOND`](https://github.com/bbuchfink/diamond)) a rapid and sensitive protein sequence aligner used to search input sequences against a reference database built from NCBI RefSeq protein sequences with taxonomic information, providing potential homologous protein matches across species.
 3. Predict secondary structure compositional features such as α-helices, β-strands and coils with ([`s4pred`](https://github.com/psipred/s4pred))
 4. Present QC stats for input sequences before and after initial pre-processing with ([`MultiQC`](http://multiqc.info/))
 

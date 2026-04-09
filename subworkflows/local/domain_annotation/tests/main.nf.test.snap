@@ -142,28 +142,13 @@
         "content": [
             {
                 "0": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
+
                 ],
                 "1": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
+
                 ],
                 "2": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
+
                 ],
                 "3": [
                     [
@@ -180,10 +165,12 @@
                     "versions.yml:md5,35e41735706132967dd94bb636833a4a",
                     "versions.yml:md5,55939a7ab71dab922d448cf99472feeb",
                     "versions.yml:md5,9045f482d64e7666e62932b0578b665e",
-                    "versions.yml:md5,a74a0c8fcb741e59bc14424f612b8d09",
-                    "versions.yml:md5,f1d8a406d3dcb97a7c15e9c810926de1"
+                    "versions.yml:md5,a74a0c8fcb741e59bc14424f612b8d09"
                 ],
                 "funfam_domains": [
+
+                ],
+                "metagroot_domains": [
                     [
                         {
                             "id": "test"
@@ -200,20 +187,10 @@
                     ]
                 ],
                 "nmpfams_domains": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
+
                 ],
                 "pfam_domains": [
-                    [
-                        {
-                            "id": "test"
-                        },
-                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
+
                 ],
                 "versions": [
                     "versions.yml:md5,046e5161e3e1dff2ab111ddf4bb27331",
@@ -222,8 +199,7 @@
                     "versions.yml:md5,35e41735706132967dd94bb636833a4a",
                     "versions.yml:md5,55939a7ab71dab922d448cf99472feeb",
                     "versions.yml:md5,9045f482d64e7666e62932b0578b665e",
-                    "versions.yml:md5,a74a0c8fcb741e59bc14424f612b8d09",
-                    "versions.yml:md5,f1d8a406d3dcb97a7c15e9c810926de1"
+                    "versions.yml:md5,a74a0c8fcb741e59bc14424f612b8d09"
                 ]
             }
         ],

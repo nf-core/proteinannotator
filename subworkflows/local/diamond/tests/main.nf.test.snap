@@ -1,0 +1,504 @@
+{
+    "Test Diamond subworkflow -- 0 - BLAST output -- stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "db": "refseq"
+                        },
+                        "test.blast:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    
+                ],
+                "7": [
+                    "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
+                    "versions.yml:md5,fd77953bb9df9417c91759e312630970"
+                ],
+                "blast": [
+                    [
+                        {
+                            "id": "test",
+                            "db": "refseq"
+                        },
+                        "test.blast:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "daa": [
+                    
+                ],
+                "paf": [
+                    
+                ],
+                "sam": [
+                    
+                ],
+                "tsv": [
+                    
+                ],
+                "txt": [
+                    
+                ],
+                "versions": [
+                    "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
+                    "versions.yml:md5,fd77953bb9df9417c91759e312630970"
+                ],
+                "xml": [
+                    
+                ]
+            }
+        ],
+        "timestamp": "2026-04-09T10:11:32.44382452",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "versions_stub_outfmt0": {
+        "content": [
+            [
+                "versions.yml:md5,88882983f101071ff12ab9ad8862946c",
+                "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
+                "versions.yml:md5,af268b7575a939dcbb762d66f0d34775",
+                "versions.yml:md5,fd77953bb9df9417c91759e312630970"
+            ]
+        ],
+        "timestamp": "2026-04-06T13:40:55.505482355",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "versions_stub": {
+        "content": [
+            [
+                "versions.yml:md5,88882983f101071ff12ab9ad8862946c",
+                "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
+                "versions.yml:md5,af268b7575a939dcbb762d66f0d34775",
+                "versions.yml:md5,fd77953bb9df9417c91759e312630970"
+            ]
+        ],
+        "timestamp": "2026-04-06T13:40:32.043632868",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "versions_stub_columns": {
+        "content": [
+            [
+                "versions.yml:md5,88882983f101071ff12ab9ad8862946c",
+                "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
+                "versions.yml:md5,af268b7575a939dcbb762d66f0d34775",
+                "versions.yml:md5,fd77953bb9df9417c91759e312630970"
+            ]
+        ],
+        "timestamp": "2026-04-06T13:40:43.827166513",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "versions": {
+        "content": [
+            [
+                "versions.yml:md5,4b60d5e52704e15aa6a464a001e875a1",
+                "versions.yml:md5,88882983f101071ff12ab9ad8862946c",
+                "versions.yml:md5,af268b7575a939dcbb762d66f0d34775",
+                "versions.yml:md5,be8e9e782750442e8150f83181c2b96d"
+            ]
+        ],
+        "timestamp": "2026-04-06T13:40:20.319529478",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Test Diamond subworkflow success -- 6 - TXT output - no columns specified -- stub": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "db": "refseq"
+                        },
+                        "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    
+                ],
+                "7": [
+                    "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
+                    "versions.yml:md5,fd77953bb9df9417c91759e312630970"
+                ],
+                "blast": [
+                    
+                ],
+                "daa": [
+                    
+                ],
+                "paf": [
+                    
+                ],
+                "sam": [
+                    
+                ],
+                "tsv": [
+                    
+                ],
+                "txt": [
+                    [
+                        {
+                            "id": "test",
+                            "db": "refseq"
+                        },
+                        "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
+                    "versions.yml:md5,fd77953bb9df9417c91759e312630970"
+                ],
+                "xml": [
+                    
+                ]
+            }
+        ],
+        "timestamp": "2026-04-09T10:11:09.260636361",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Test Diamond subworkflow -- outfmt 6 with columns -- stub": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    
+                ],
+                "7": [
+                    "versions.yml:md5,1391f8cce96fafd55bdede8ec85c39c7",
+                    "versions.yml:md5,80e189917535cac95750651a49f69858",
+                    "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
+                    "versions.yml:md5,fd77953bb9df9417c91759e312630970"
+                ],
+                "blast": [
+                    
+                ],
+                "daa": [
+                    
+                ],
+                "paf": [
+                    
+                ],
+                "sam": [
+                    
+                ],
+                "tsv": [
+                    
+                ],
+                "txt": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,1391f8cce96fafd55bdede8ec85c39c7",
+                    "versions.yml:md5,80e189917535cac95750651a49f69858",
+                    "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
+                    "versions.yml:md5,fd77953bb9df9417c91759e312630970"
+                ],
+                "xml": [
+                    
+                ]
+            }
+        ],
+        "timestamp": "2026-03-31T11:15:15.991809553",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Test Diamond subworkflow -- outfmt 0 txt output -- stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.blast:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    
+                ],
+                "7": [
+                    "versions.yml:md5,840f3993fa9f5a9a676d5308554e4cc0",
+                    "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
+                    "versions.yml:md5,d820aab4674fbcc2483c9fcc7f03e48c",
+                    "versions.yml:md5,fd77953bb9df9417c91759e312630970"
+                ],
+                "blast": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.blast:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "daa": [
+                    
+                ],
+                "paf": [
+                    
+                ],
+                "sam": [
+                    
+                ],
+                "tsv": [
+                    
+                ],
+                "txt": [
+                    
+                ],
+                "versions": [
+                    "versions.yml:md5,840f3993fa9f5a9a676d5308554e4cc0",
+                    "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
+                    "versions.yml:md5,d820aab4674fbcc2483c9fcc7f03e48c",
+                    "versions.yml:md5,fd77953bb9df9417c91759e312630970"
+                ],
+                "xml": [
+                    
+                ]
+            }
+        ],
+        "timestamp": "2026-03-31T11:15:25.063735348",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Test Diamond subworkflow success -- 6 - TXT output - no columns specified": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "db": "refseq"
+                        },
+                        "test.refseq.txt:md5,f58fdf4044f9e4bf42da7e2c05f581f5"
+                    ]
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    
+                ],
+                "7": [
+                    "versions.yml:md5,4b60d5e52704e15aa6a464a001e875a1",
+                    "versions.yml:md5,be8e9e782750442e8150f83181c2b96d"
+                ],
+                "blast": [
+                    
+                ],
+                "daa": [
+                    
+                ],
+                "paf": [
+                    
+                ],
+                "sam": [
+                    
+                ],
+                "tsv": [
+                    
+                ],
+                "txt": [
+                    [
+                        {
+                            "id": "test",
+                            "db": "refseq"
+                        },
+                        "test.refseq.txt:md5,f58fdf4044f9e4bf42da7e2c05f581f5"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,4b60d5e52704e15aa6a464a001e875a1",
+                    "versions.yml:md5,be8e9e782750442e8150f83181c2b96d"
+                ],
+                "xml": [
+                    
+                ]
+            }
+        ],
+        "timestamp": "2026-04-09T10:10:56.207273523",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Test Diamond subworkflow -- 6 - TXT output - with columns -- stub": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "db": "refseq"
+                        },
+                        "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    
+                ],
+                "7": [
+                    "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
+                    "versions.yml:md5,fd77953bb9df9417c91759e312630970"
+                ],
+                "blast": [
+                    
+                ],
+                "daa": [
+                    
+                ],
+                "paf": [
+                    
+                ],
+                "sam": [
+                    
+                ],
+                "tsv": [
+                    
+                ],
+                "txt": [
+                    [
+                        {
+                            "id": "test",
+                            "db": "refseq"
+                        },
+                        "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,aacdcbf79da04117d0786d0423161380",
+                    "versions.yml:md5,fd77953bb9df9417c91759e312630970"
+                ],
+                "xml": [
+                    
+                ]
+            }
+        ],
+        "timestamp": "2026-04-09T10:11:20.950526077",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    }
+}

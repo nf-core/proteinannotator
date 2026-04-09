@@ -7,11 +7,17 @@ description: |
 keywords:
   - annotation
   - functional
+  - protein
+  - diamond
+  - interproscan
+  - blastp
+
+components:
+  - diamond
+  - interproscan
   - interproscan
   - proteins
   - fasta
-
-components:
   - aria2
   - untar
   - interproscan
@@ -40,6 +46,12 @@ input:
         provided, the download and extraction steps are skipped.
 
 output:
+  - diamond_tsv:
+      type: file
+      description: |
+        Channel containing TSV files with taxonomic classification of DIAMOND hits
+        Structure: [ val(meta), path(tsv) ]
+      pattern: "*.{tsv,tsv.gz}"
   - interproscan_tsv:
       type: file
       description: |
@@ -56,7 +68,10 @@ output:
       pattern: "versions.yml"
 
 authors:
+  - "@eweizy"
+  - "@tracelail"
+maintainers:
+  - "@eweizy"
+  - "@tracelail"
   - "@vagkaratzas"
   - "@Muskan-2464"
-maintainers:
-  - "@vagkaratzas"

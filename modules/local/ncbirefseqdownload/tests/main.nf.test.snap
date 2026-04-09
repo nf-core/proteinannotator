@@ -1,0 +1,72 @@
+{
+    "versions_stub": {
+        "content": [
+            [
+                "versions.yml:md5,21b64f64575fb928a9829f198ffbb8e1"
+            ]
+        ],
+        "timestamp": "2026-03-31T10:47:47.583755748",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "versions": {
+        "content": [
+            [
+                "versions.yml:md5,9fabe17275a444ef94e5e2dedcac4f32"
+            ]
+        ],
+        "timestamp": "2026-04-06T13:39:51.888472042",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Should download ncbi refseq 'other' zipped protein fasta -- stub": {
+        "content": [
+            {
+                "0": [
+                    "refseq_fasta.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                ],
+                "1": [
+                    "versions.yml:md5,21b64f64575fb928a9829f198ffbb8e1"
+                ],
+                "refseq_fasta": [
+                    "refseq_fasta.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                ],
+                "versions": [
+                    "versions.yml:md5,21b64f64575fb928a9829f198ffbb8e1"
+                ]
+            }
+        ],
+        "timestamp": "2026-03-31T10:42:34.738664449",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "Should download ncbi refseq 'other' zipped protein fasta": {
+        "content": [
+            {
+                "0": [
+                    "refseq_fasta.fa.gz:md5,af9fbb4c725173a9286979c7f1c6a67e"
+                ],
+                "1": [
+                    "versions.yml:md5,9fabe17275a444ef94e5e2dedcac4f32"
+                ],
+                "refseq_fasta": [
+                    "refseq_fasta.fa.gz:md5,af9fbb4c725173a9286979c7f1c6a67e"
+                ],
+                "versions": [
+                    "versions.yml:md5,9fabe17275a444ef94e5e2dedcac4f32"
+                ]
+            }
+        ],
+        "timestamp": "2026-04-06T13:39:51.876586473",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    }
+}

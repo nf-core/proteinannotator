@@ -10,6 +10,11 @@
 
 ## Pipeline tools
 
+
+- [DIAMOND](https://github.com/bbuchfink/diamond)
+
+> Buchfink B, Xie C, Huson DH, "Fast and sensitive protein alignment using DIAMOND", Nature Methods 12, 59-60 (2015). doi:10.1038/nmeth.3176
+
 - [SeqFu](https://pubmed.ncbi.nlm.nih.gov/34066939/)
 
 > Telatin A, Fariselli P, Birolo G. SeqFu: a suite of utilities for the robust and reproducible manipulation of sequence files. Bioengineering. 2021 May 7;8(5):59. doi: 10.3390/bioengineering8050059. PubMed PMID: 34066939; PubMed Central PMCID: PMC8148589.

@@ -1,21 +1,19 @@
-// nf-core subworkflows test functional_annotation
 nextflow_workflow {
-    name "Test Subworkflow FUNCTIONAL_ANNOTATION"
+
+    name "Test Subworkflow DIAMOND"
     script "../main.nf"
-    workflow "FUNCTIONAL_ANNOTATION"
+    workflow "DIAMOND"
 
     tag "subworkflows"
     tag "subworkflows_"
-    tag "subworkflows_local"
-    tag "subworkflows/functional_annotation"
-    tag "functional_annotation"
-    tag "diamond"
+    tag "subworkflows/diamond"
     tag "ncbirefseqdownload"
     tag "diamondpreparetaxa"
     tag "diamond/makedb"
     tag "diamond/blastp"
 
-    test("Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success") {
+    test("Test Diamond subworkflow success -- 6 - TXT output - no columns specified") {
+
         when {
             params {
                 refseq_release        = 'other'
@@ -23,26 +21,24 @@ nextflow_workflow {
                 taxonmap              = "${moduleTestDir}/mini_prot.accession2taxid.gz"
                 diamond_outfmt        = 6
                 diamond_blast_columns = ''
-                skip_interproscan     = true
             }
             workflow {
                 """
                 input[0] = [ [id:'test'], file("${moduleTestDir}/test_refseq.fasta", checkIfExists: true)]
-                input[1] = true
-                input[2] = []
-                input[3] = []
                 """
             }
         }
+
         then {
             assertAll(
                 { assert workflow.success },
+                { assert workflow.out.txt.size() > 0 },
                 { assert snapshot(workflow.out).match() }
             )
         }
     }
 
-    test("Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success - stub") {
+    test("Test Diamond subworkflow success -- 6 - TXT output - no columns specified -- stub") {
         tag "stub"
         tag "CI"
 
@@ -55,17 +51,14 @@ nextflow_workflow {
                 taxonmap              = "${moduleTestDir}/mini_prot.accession2taxid.gz"
                 diamond_outfmt        = 6
                 diamond_blast_columns = ''
-                skip_interproscan     = true
             }
             workflow {
                 """
                 input[0] = [ [id:'test'], file("${moduleTestDir}/test_refseq.fasta", checkIfExists: false)]
-                input[1] = true
-                input[2] = []
-                input[3] = []
                 """
             }
         }
+
         then {
             assertAll(
                 { assert workflow.success },
@@ -74,51 +67,59 @@ nextflow_workflow {
         }
     }
 
-    test("l_asparaginase - faa - functional annotation") {
-        config "./nextflow.config"
+        test("Test Diamond subworkflow -- 6 - TXT output - with columns -- stub") {
+        tag "stub"
+        tag "CI"
+
+        options "-stub"
+
         when {
+            params {
+                refseq_release        = 'other'
+                taxondmp_zip          = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
+                taxonmap              = "${moduleTestDir}/mini_prot.accession2taxid.gz"
+                diamond_outfmt        = 6
+                diamond_blast_columns = 'qseqid sseqid pident length evalue bitscore'
+            }
             workflow {
                 """
-                input[0] = channel.of([
-                    [ id:'test_sample' ],
-                    file(params.modules_testdata_base_path + 'proteomics/interproscan/l_arginase.faa', checkIfExists: true)
-                ])
-                input[1] = false
-                input[2] = params.pipelines_testdata_base_path + '/testdata/interproscan/interproscan_test.tar.gz'
-                input[3] = []
+                input[0] = [ [id:'test'], file("${moduleTestDir}/test_refseq.fasta", checkIfExists: false)]
                 """
             }
         }
+
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(
-                    path(workflow.out.interproscan_tsv[0][1]).readLines()[0]
-                        .contains("GI|225038609|EFDID|719595|FULL       079fff43a0270e432d339ea71b6f0acf        350     SFLD    SFLDS00057      Glutaminase/Asparaginase        17      347     0.0     T"),
-                    workflow.out.versions.collect{ path(it).yaml }.unique()
-                ).match()}
+                { assert snapshot(workflow.out).match() }
             )
         }
     }
 
-    test("faa - functional annotation - stub") {
+    test("Test Diamond subworkflow -- 0 - BLAST output -- stub") {
+        tag "stub"
+        tag "CI"
+
         options "-stub"
+
         when {
+            params {
+                refseq_release        = 'other'
+                taxondmp_zip          = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
+                taxonmap              = "${moduleTestDir}/mini_prot.accession2taxid.gz"
+                diamond_outfmt        = 0
+                diamond_blast_columns = ''
+            }
             workflow {
                 """
-                input[0] = channel.of([
-                    [ id:'test_sample' ],
-                    file(params.pipelines_testdata_base_path + '/testdata/sequences/test_proteins.faa', checkIfExists: true)
-                ])
-                input[1] = true
-                input[2] = []
-                input[3] = []
+                input[0] = [ [id:'test'], file("${moduleTestDir}/test_refseq.fasta", checkIfExists: false)]
                 """
             }
         }
+
         then {
-            assert workflow.success
             assertAll(
+                { assert workflow.success },
                 { assert snapshot(workflow.out).match() }
             )
         }

@@ -43,6 +43,43 @@
                 }
             }
         },
+        "diamond_options": {
+            "title": "DIAMOND Options",
+            "type": "object",
+            "description": "Options for DIAMOND blastp subworkflow for protein homology searches",
+            "default": "",
+            "properties": {
+                "refseq_release": {
+                    "type": "string",
+                    "description": "NCBI refseq release category of protein fastas from ftp.ncbi.nlm.nih.gov/refseq/release/",
+                    "default": "complete"
+                },
+                "taxondmp_zip": {
+                    "type": "string",
+                    "mimetype": "text/plain",
+                    "pattern": "^.*\\.(tar\\.gz|gz)$",
+                    "description": "Path to a compressed taxon dmp file",
+                    "default": "ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz"
+                },
+                "taxonmap": {
+                    "type": "string",
+                    "mimetype": "text/plain",
+                    "pattern": "^.*\\.(tar\\.gz|gz)$",
+                    "description": "Path to a compressed taxon map file",
+                    "default": "ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/prot.accession2taxid.gz"
+                },
+                "diamond_outfmt": {
+                    "type": "integer",
+                    "description": "One of seven optional output formats for [`diamond/blastp`](https://nf-co.re/modules/diamond_blastp/), indicated by a digit code.",
+                    "enum": [0, 5, 6, 100, 101, 102, 103],
+                    "default": 6
+                },
+                "diamond_blast_columns": {
+                    "type": "string",
+                    "description": "Accompanied optional input parameter to `diamond_outfmt`: `*.txt (6)` output format. Space separated list of columns to be included. Options: qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore."
+                }
+            }
+        },
         "institutional_config_options": {
             "title": "Institutional config options",
             "type": "object",
@@ -383,6 +420,9 @@
     "allOf": [
         {
             "$ref": "#/$defs/input_output_options"
+        },
+        {
+            "$ref": "#/$defs/diamond_options"
         },
         {
             "$ref": "#/$defs/institutional_config_options"
