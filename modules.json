@@ -12,12 +12,12 @@
                     },
                     "diamond/blastp": {
                         "branch": "master",
-                        "git_sha": "41dfa3f7c0ffabb96a6a813fe321c6d1cc5b6e46",
+                        "git_sha": "422966026b45f2852cbe1a919dadc52082bf62f1",
                         "installed_by": ["modules"]
                     },
                     "diamond/makedb": {
                         "branch": "master",
-                        "git_sha": "41dfa3f7c0ffabb96a6a813fe321c6d1cc5b6e46",
+                        "git_sha": "96595d56273108853c872fb90bbefc675af7911a",
                         "installed_by": ["modules"]
                     },
                     "hmmer/hmmsearch": {
