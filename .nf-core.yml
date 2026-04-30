@@ -8,7 +8,7 @@ lint:
     - docs/images/nf-core-proteinannotator_logo_light.png
     - docs/images/nf-core-proteinannotator_logo_dark.png
     - .github/PULL_REQUEST_TEMPLATE.md
-nf_core_version: 4.0.0
+nf_core_version: 4.0.2
 repository_type: pipeline
 template:
   author: Olga Botvinnik, Evangelos Karatzas
