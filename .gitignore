@@ -7,7 +7,7 @@ testing/
 testing*
 *.pyc
 null/
-
+.lineage/
 # Nextflow nf-tests output
 .nf-test.log
 .nf-test/tests

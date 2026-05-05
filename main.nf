@@ -39,6 +39,10 @@ workflow NFCORE_PROTEINANNOTATOR {
     //
     PROTEINANNOTATOR (
         samplesheet,
+        params.multiqc_config,
+        params.multiqc_logo,
+        params.multiqc_methods_description,
+        params.outdir,
         params.skip_preprocessing,
         params.skip_pfam,
         params.pfam_db,
@@ -99,7 +103,6 @@ workflow {
         params.plaintext_email,
         params.outdir,
         params.monochrome_logs,
-        params.hook_url,
         NFCORE_PROTEINANNOTATOR.out.multiqc_report
     )
 }
