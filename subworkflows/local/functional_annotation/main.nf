@@ -11,7 +11,6 @@ workflow FUNCTIONAL_ANNOTATION {
 
     main:
     ch_interproscan_tsv = channel.empty()
-    ch_versions         = channel.empty()
 
     if (!skip_interproscan) {
         if (interproscan_db) {
@@ -30,5 +29,4 @@ workflow FUNCTIONAL_ANNOTATION {
 
     emit:
     interproscan_tsv = ch_interproscan_tsv
-    versions         = ch_versions         // channel: [ versions.yml ]
 }
