@@ -29,8 +29,7 @@ nextflow_workflow {
                 { assert workflow.success },
                 { assert snapshot(
                     path(workflow.out.interproscan_tsv[0][1]).readLines()[0]
-                        .contains("GI|225038609|EFDID|719595|FULL	079fff43a0270e432d339ea71b6f0acf	350	SFLD	SFLDS00057	Glutaminase/Asparaginase	17	347	0.0	T"),
-                    workflow.out.versions.collect{ path(it).yaml }.unique()
+                        .contains("GI|225038609|EFDID|719595|FULL	079fff43a0270e432d339ea71b6f0acf	350	SFLD	SFLDS00057	Glutaminase/Asparaginase	17	347	0.0	T")
                 ).match()}
             )
         }

@@ -4,19 +4,19 @@
             40,
             {
                 "ARIA2": {
-                    "aria2": "1.36.0"
+                    "aria2": "1.37.0"
                 },
                 "ARIA2_FUNFAM": {
-                    "aria2": "1.36.0"
+                    "aria2": "1.37.0"
                 },
                 "ARIA2_METAGROOT": {
-                    "aria2": "1.36.0"
+                    "aria2": "1.37.0"
                 },
                 "ARIA2_NMPFAMS": {
-                    "aria2": "1.36.0"
+                    "aria2": "1.37.0"
                 },
                 "ARIA2_PFAM": {
-                    "aria2": "1.36.0"
+                    "aria2": "1.37.0"
                 },
                 "HMMSEARCH_FUNFAM": {
                     "hmmer": 3.4
@@ -46,10 +46,10 @@
                     "seqkit": "2.9.0"
                 },
                 "SEQKIT_RMDUP": {
-                    "seqkit": "v2.9.0"
+                    "seqkit": "2.9.0"
                 },
                 "SEQKIT_SEQ": {
-                    "seqkit": "v2.9.0"
+                    "seqkit": "2.9.0"
                 },
                 "UNTAR": {
                     "untar": 1.34
@@ -242,10 +242,10 @@
                 "GI|225038609|EFDID|719595|FULL.ss2:md5,e7d8eaa84d46a6a714ffe00d7f21cdfb"
             ]
         ],
+        "timestamp": "2026-05-05T11:10:57.929189129",
         "meta": {
-            "nf-test": "0.9.3",
-            "nextflow": "25.10.4"
-        },
-        "timestamp": "2026-03-31T11:50:46.606922418"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.0"
+        }
     }
 }

@@ -49,7 +49,6 @@ workflow PROTEINANNOTATOR {
     def ch_multiqc_files = channel.empty()
 
     FAA_SEQFU_SEQKIT( ch_samplesheet, skip_preprocessing )
-    ch_versions = ch_versions.mix( FAA_SEQFU_SEQKIT.out.versions )
 
     DOMAIN_ANNOTATION (
         FAA_SEQFU_SEQKIT.out.fasta,
@@ -74,7 +73,6 @@ workflow PROTEINANNOTATOR {
         interproscan_db_url,
         interproscan_db
     )
-    ch_versions = ch_versions.mix( FUNCTIONAL_ANNOTATION.out.versions )
 
     if (!skip_s4pred) {
         S4PRED_RUNMODEL( FAA_SEQFU_SEQKIT.out.fasta )
