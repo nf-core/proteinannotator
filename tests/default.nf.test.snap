@@ -55,7 +55,7 @@
                     "untar": 1.34
                 },
                 "Workflow": {
-                    "nf-core/proteinannotator": "v1.1.0dev"
+                    "nf-core/proteinannotator": "v1.1.0"
                 }
             },
             [
