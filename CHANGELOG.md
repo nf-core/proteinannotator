@@ -13,7 +13,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Changed`
 
+- [#93](https://github.com/nf-core/proteinfamilies/pull/93) - nf-core tools template update to 4.0.2. (by @vagkaratzas)
 - [#85](https://github.com/nf-core/proteinannotator/pull/85) - `test_full.config` input samplesheet path is now set properly. (by @vagkaratzas)
+
+### `Dependencies`
+
+| Tool    | Previous version | New version |
+| ------- | ---------------- | ----------- |
+| aria2   | 1.36.0           | 1.37.0      |
+| multiqc | 1.33             | 1.34        |
 
 ## v1.0.0 - Yellow Saiga - [2026/02/09]
 

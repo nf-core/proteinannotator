@@ -49,7 +49,6 @@ workflow PROTEINANNOTATOR {
     def ch_multiqc_files = channel.empty()
 
     FAA_SEQFU_SEQKIT( ch_samplesheet, skip_preprocessing )
-    ch_versions = ch_versions.mix( FAA_SEQFU_SEQKIT.out.versions )
 
     DOMAIN_ANNOTATION (
         FAA_SEQFU_SEQKIT.out.fasta,
