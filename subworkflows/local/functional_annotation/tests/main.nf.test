@@ -1,0 +1,64 @@
+nextflow_workflow {
+
+    name "Test Subworkflow FUNCTIONAL_ANNOTATION"
+    script "../main.nf"
+    workflow "FUNCTIONAL_ANNOTATION"
+
+    tag "subworkflows"
+    tag "subworkflows_local"
+    tag "functional_annotation"
+
+    test("l_asparaginase - faa - functional annotation") {
+        config "./nextflow.config"
+
+        when {
+            workflow {
+                """
+                input[0] = channel.of([
+                    [ id:'test_sample' ],
+                    file(params.modules_testdata_base_path + 'proteomics/interproscan/l_arginase.faa', checkIfExists: true)
+                ])
+                input[1] = false
+                input[2] = params.pipelines_testdata_base_path + '/testdata/interproscan/interproscan_test.tar.gz'
+                input[3] = []
+                """
+            }
+        }
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(
+                    path(workflow.out.interproscan_tsv[0][1]).readLines()[0]
+                        .contains("GI|225038609|EFDID|719595|FULL	079fff43a0270e432d339ea71b6f0acf	350	SFLD	SFLDS00057	Glutaminase/Asparaginase	17	347	0.0	T"),
+                    workflow.out.versions.collect{ path(it).yaml }.unique()
+                ).match()}
+            )
+        }
+    }
+
+    test("faa - functional annotation - stub") {
+
+        options "-stub"
+
+        when {
+            workflow {
+                """
+                input[0] = channel.of([
+                    [ id:'test_sample' ],
+                    file(params.pipelines_testdata_base_path + '/testdata/sequences/test_proteins.faa', checkIfExists: true)
+                ])
+                input[1] = true
+                input[2] = []
+                input[3] = []
+                """
+            }
+        }
+
+        then {
+            assert workflow.success
+            assertAll(
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
+}

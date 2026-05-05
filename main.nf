@@ -43,6 +43,23 @@ workflow NFCORE_PROTEINANNOTATOR {
         params.multiqc_logo,
         params.multiqc_methods_description,
         params.outdir,
+        params.skip_preprocessing,
+        params.skip_pfam,
+        params.pfam_db,
+        params.pfam_latest_link,
+        params.skip_funfam,
+        params.funfam_db,
+        params.funfam_latest_link,
+        params.skip_nmpfams,
+        params.nmpfams_db,
+        params.nmpfams_latest_link,
+        params.skip_metagroot,
+        params.metagroot_db,
+        params.metagroot_latest_link,
+        params.skip_interproscan,
+        params.interproscan_db_url,
+        params.interproscan_db,
+        params.skip_s4pred
     )
     emit:
     multiqc_report = PROTEINANNOTATOR.out.multiqc_report // channel: /path/to/multiqc_report.html

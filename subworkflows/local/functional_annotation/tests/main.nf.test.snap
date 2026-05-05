@@ -1,0 +1,42 @@
+{
+    "l_asparaginase - faa - functional annotation": {
+        "content": [
+            true,
+            [
+                {
+                    "FUNCTIONAL_ANNOTATION:ARIA2": {
+                        "aria2": "1.36.0"
+                    }
+                }
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-03-30T08:43:09.611782169"
+    },
+    "faa - functional annotation - stub": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
+                "interproscan_tsv": [
+                    
+                ],
+                "versions": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-03-30T08:32:05.103561412"
+    }
+}
