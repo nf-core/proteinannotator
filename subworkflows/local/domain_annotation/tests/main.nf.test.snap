@@ -14,15 +14,15 @@
             [
                 {
                     "DOMAIN_ANNOTATION:HMMSEARCH_METAGROOT": {
-                        "hmmer": "3.3.2"
+                        "hmmer": 3.4
                     }
                 }
             ]
         ],
-        "timestamp": "2026-05-05T11:33:51.766590967",
+        "timestamp": "2026-05-05T12:04:06.829501961",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.4"
+            "nextflow": "26.04.0"
         }
     },
     "faa - domain annotation": {
@@ -49,21 +49,21 @@
             ],
             [
                 {
-                    "DOMAIN_ANNOTATION:HMMSEARCH_PFAM": {
-                        "hmmer": "3.3.2"
+                    "DOMAIN_ANNOTATION:HMMSEARCH_FUNFAM": {
+                        "hmmer": 3.4
                     }
                 },
                 {
-                    "DOMAIN_ANNOTATION:HMMSEARCH_FUNFAM": {
-                        "hmmer": "3.3.2"
+                    "DOMAIN_ANNOTATION:HMMSEARCH_PFAM": {
+                        "hmmer": 3.4
                     }
                 }
             ]
         ],
-        "timestamp": "2026-05-05T11:33:25.209533078",
+        "timestamp": "2026-05-05T12:03:39.329831075",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.4"
+            "nextflow": "26.04.0"
         }
     },
     "faa - nmpfams": {
@@ -81,15 +81,15 @@
             [
                 {
                     "DOMAIN_ANNOTATION:HMMSEARCH_NMPFAMS": {
-                        "hmmer": "3.3.2"
+                        "hmmer": 3.4
                     }
                 }
             ]
         ],
-        "timestamp": "2026-05-05T11:33:42.711344229",
+        "timestamp": "2026-05-05T12:03:56.511344799",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.4"
+            "nextflow": "26.04.0"
         }
     },
     "faa - pfam_db - skip_funfam": {
@@ -107,15 +107,15 @@
             [
                 {
                     "DOMAIN_ANNOTATION:HMMSEARCH_PFAM": {
-                        "hmmer": "3.3.2"
+                        "hmmer": 3.4
                     }
                 }
             ]
         ],
-        "timestamp": "2026-05-05T11:33:34.150320552",
+        "timestamp": "2026-05-05T12:03:46.249313972",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.4"
+            "nextflow": "26.04.0"
         }
     },
     "faa - domain annotation - stub": {
@@ -154,10 +154,10 @@
                     ]
                 ],
                 "4": [
-                    "versions.yml:md5,0c00df631657bd24c98cb05f8ed8c148",
-                    "versions.yml:md5,100343d0ff38a8d1c6cef488e722a29f",
-                    "versions.yml:md5,2244378bde5f3f89ac88b450212d7194",
-                    "versions.yml:md5,43a3d4354c1318edeac7a0019187f5c4"
+                    "versions.yml:md5,046e5161e3e1dff2ab111ddf4bb27331",
+                    "versions.yml:md5,160d4c5a5001cfb4ff57b94fc52b67d9",
+                    "versions.yml:md5,1b7d208e42364fb87160693faa4e83b9",
+                    "versions.yml:md5,f1d8a406d3dcb97a7c15e9c810926de1"
                 ],
                 "funfam_domains": [
                     [
@@ -192,17 +192,17 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,0c00df631657bd24c98cb05f8ed8c148",
-                    "versions.yml:md5,100343d0ff38a8d1c6cef488e722a29f",
-                    "versions.yml:md5,2244378bde5f3f89ac88b450212d7194",
-                    "versions.yml:md5,43a3d4354c1318edeac7a0019187f5c4"
+                    "versions.yml:md5,046e5161e3e1dff2ab111ddf4bb27331",
+                    "versions.yml:md5,160d4c5a5001cfb4ff57b94fc52b67d9",
+                    "versions.yml:md5,1b7d208e42364fb87160693faa4e83b9",
+                    "versions.yml:md5,f1d8a406d3dcb97a7c15e9c810926de1"
                 ]
             }
         ],
-        "timestamp": "2026-05-05T11:34:00.8070491",
+        "timestamp": "2026-05-05T12:04:18.642602538",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.4"
+            "nextflow": "26.04.0"
         }
     }
 }
