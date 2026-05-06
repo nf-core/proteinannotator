@@ -84,9 +84,8 @@ You can also generate such `YAML`/`JSON` files via [nf-core/launch](https://nf-c
 
 [InterProScan](https://github.com/ebi-pf-team/interproscan) is used to provide more information about the proteins annotated on the contigs. By default, turning on this subworkflow without `--skip_interproscan` will download and unzip the InterPro database. The database will then be saved in the output directory `<output_directory>/downloaded_dbs/interproscan_db/`. We recommend keeping a copy of this directory for future reuse in case the results folder is deleted.
 
-:::note
-The large database download (5.5GB) can take up to 4 hours depending on the bandwidth.
-:::
+> [!NOTE]
+> The large database download (5.5GB) can take up to 4 hours depending on the bandwidth.
 
 A local version of the database can be supplied to the pipeline by passing the InterProScan database directory to `--interproscan_db <path/to/downloaded-untarred-interproscan_db-dir/>`. The directory can be created by running (e.g. for database version 5.72-103.0):
 
