@@ -8,17 +8,17 @@ lint:
     - docs/images/nf-core-proteinannotator_logo_light.png
     - docs/images/nf-core-proteinannotator_logo_dark.png
     - .github/PULL_REQUEST_TEMPLATE.md
-nf_core_version: 3.5.1
+nf_core_version: 4.0.2
 repository_type: pipeline
 template:
   author: Olga Botvinnik, Evangelos Karatzas
   description: Generation of sequence-level annotations for amino acid sequences
-  version: 1.0.0
-  force: true
+  force: false
+  is_nfcore: true
+  name: proteinannotator
+  org: nf-core
   outdir: .
   skip_features:
     - fastqc
     - igenomes
-  is_nfcore: true
-  name: proteinannotator
-  org: nf-core
+  version: 1.1.0

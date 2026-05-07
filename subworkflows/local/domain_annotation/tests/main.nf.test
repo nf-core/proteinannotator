@@ -19,6 +19,12 @@ nextflow_workflow {
                 input[4] = false                                                                                   // skip_funfam
                 input[5] = null                                                                                    // funfam_db
                 input[6] = params.pipelines_testdata_base_path + '/testdata/funfam/funfam-hmm3-v4_3_0_test.lib.gz' // funfam_latest_link
+                input[7] = true                                                                                    // skip_nmpfams
+                input[8] = null                                                                                    // nmpfams_db
+                input[9] = params.pipelines_testdata_base_path + '/testdata/nmpfams/nmpfamsdb_test.hmm.gz'         // nmpfams_latest_link
+                input[10] = true                                                                                   // skip_metagroot
+                input[11] = null                                                                                   // metagroot_db
+                input[12] = params.pipelines_testdata_base_path + '/testdata/metagroot/metagroot_test.hmm.gz'      // metagroot_latest_link
                 """
             }
         }
@@ -50,6 +56,12 @@ nextflow_workflow {
                 input[4] = true                                                                                    // skip_funfam
                 input[5] = null                                                                                    // funfam_db
                 input[6] = params.pipelines_testdata_base_path + '/testdata/funfam/funfam-hmm3-v4_3_0_test.lib.gz' // funfam_latest_link
+                input[7] = true                                                                                    // skip_nmpfams
+                input[8] = null                                                                                    // nmpfams_db
+                input[9] = params.pipelines_testdata_base_path + '/testdata/nmpfams/nmpfamsdb_test.hmm.gz'         // nmpfams_latest_link
+                input[10] = true                                                                                   // skip_metagroot
+                input[11] = null                                                                                   // metagroot_db
+                input[12] = params.pipelines_testdata_base_path + '/testdata/metagroot/metagroot_test.hmm.gz'      // metagroot_latest_link
                 """
             }
         }
@@ -59,6 +71,78 @@ nextflow_workflow {
                 { assert workflow.success},
                 { assert snapshot(
                     path(workflow.out.pfam_domains[0][1]).linesGzip[0..7],
+                    workflow.out.versions.collect { path(it).yaml }.unique()
+                    ).match()}
+            )
+        }
+    }
+
+    test("faa - nmpfams") {
+
+        when {
+            workflow {
+                """
+                input[0] = channel.of([
+                    [ id: 'test' ],
+                    file(params.pipelines_testdata_base_path + '/testdata/sequences/test_proteins.faa', checkIfExists: true)
+                ])
+                input[1] = true                                                                                    // skip_pfam
+                input[2] = params.pipelines_testdata_base_path + '/testdata/pfam/Pfam-A_test.hmm.gz'               // pfam_db
+                input[3] = params.pipelines_testdata_base_path + '/testdata/pfam/Pfam-A_test.hmm.gz'               // pfam_latest_link
+                input[4] = true                                                                                    // skip_funfam
+                input[5] = null                                                                                    // funfam_db
+                input[6] = params.pipelines_testdata_base_path + '/testdata/funfam/funfam-hmm3-v4_3_0_test.lib.gz' // funfam_latest_link
+                input[7] = false                                                                                   // skip_nmpfams
+                input[8] = null                                                                                    // nmpfams_db
+                input[9] = params.pipelines_testdata_base_path + '/testdata/nmpfams/nmpfamsdb_test.hmm.gz'         // nmpfams_latest_link
+                input[10] = true                                                                                   // skip_metagroot
+                input[11] = null                                                                                   // metagroot_db
+                input[12] = params.pipelines_testdata_base_path + '/testdata/metagroot/metagroot_test.hmm.gz'      // metagroot_latest_link
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success},
+                { assert snapshot(
+                    path(workflow.out.nmpfams_domains[0][1]).linesGzip[0..7],
+                    workflow.out.versions.collect { path(it).yaml }.unique()
+                    ).match()}
+            )
+        }
+    }
+
+    test("faa - metagroot") {
+
+        when {
+            workflow {
+                """
+                input[0] = channel.of([
+                    [ id: 'test' ],
+                    file(params.pipelines_testdata_base_path + '/testdata/sequences/test_proteins.faa', checkIfExists: true)
+                ])
+                input[1] = true                                                                                    // skip_pfam
+                input[2] = null                                                                                    // pfam_db
+                input[3] = params.pipelines_testdata_base_path + '/testdata/pfam/Pfam-A_test.hmm.gz'               // pfam_latest_link
+                input[4] = true                                                                                    // skip_funfam
+                input[5] = null                                                                                    // funfam_db
+                input[6] = params.pipelines_testdata_base_path + '/testdata/funfam/funfam-hmm3-v4_3_0_test.lib.gz' // funfam_latest_link
+                input[7] = true                                                                                    // skip_nmpfams
+                input[8] = null                                                                                    // nmpfams_db
+                input[9] = params.pipelines_testdata_base_path + '/testdata/nmpfams/nmpfamsdb_test.hmm.gz'         // nmpfams_latest_link
+                input[10] = false                                                                                  // skip_metagroot
+                input[11] = null                                                                                   // metagroot_db
+                input[12] = params.pipelines_testdata_base_path + '/testdata/metagroot/metagroot_test.hmm.gz'      // metagroot_latest_link
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success},
+                { assert snapshot(
+                    path(workflow.out.metagroot_domains[0][1]).linesGzip[0..7],
                     workflow.out.versions.collect { path(it).yaml }.unique()
                     ).match()}
             )
@@ -82,6 +166,12 @@ nextflow_workflow {
                 input[4] = false                                                                                   // skip_funfam
                 input[5] = null                                                                                    // funfam_db
                 input[6] = params.pipelines_testdata_base_path + '/testdata/funfam/funfam-hmm3-v4_3_0_test.lib.gz' // funfam_latest_link
+                input[7] = false                                                                                   // skip_nmpfams
+                input[8] = null                                                                                    // nmpfams_db
+                input[9] = params.pipelines_testdata_base_path + '/testdata/nmpfams/nmpfamsdb_test.hmm.gz'         // nmpfams_latest_link
+                input[10] = false                                                                                  // skip_metagroot
+                input[11] = null                                                                                   // metagroot_db
+                input[12] = params.pipelines_testdata_base_path + '/testdata/metagroot/metagroot_test.hmm.gz'      // metagroot_latest_link
                 """
             }
         }

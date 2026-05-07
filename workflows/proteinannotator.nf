@@ -21,26 +21,34 @@ include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_prot
 
 workflow PROTEINANNOTATOR {
     take:
-    ch_samplesheet      // channel: samplesheet read in from --input
-    skip_preprocessing  // boolean
-    skip_pfam           // boolean
-    pfam_db             // string, path to the pfam HMM database, if already exists
-    pfam_latest_link    // string, path to the latest pfam HMM database, to download
-    skip_funfam         // boolean
-    funfam_db           // string, path to the pfam HMM database, if already exists
-    funfam_latest_link  // string, path to the latest pfam HMM database, to download
-    skip_interproscan   // boolean
-    interproscan_db_url // string, url to download db
-    interproscan_db     // string, existing db
-    skip_s4pred         // boolean
+    ch_samplesheet // channel: samplesheet read in from --input
+    multiqc_config
+    multiqc_logo
+    multiqc_methods_description
+    outdir
+    skip_preprocessing      // boolean
+    skip_pfam               // boolean
+    pfam_db                 // string, path to the pfam HMM database, if already exists
+    pfam_latest_link        // string, path to the latest pfam HMM database, to download
+    skip_funfam             // boolean
+    funfam_db               // string, path to the pfam HMM database, if already exists
+    funfam_latest_link      // string, path to the latest pfam HMM database, to download
+    skip_nmpfams            // boolean
+    nmpfams_db              // string
+    nmpfams_latest_link     // string
+    skip_metagroot          // boolean
+    metagroot_db            // string, path to the metagroot HMM database, if already exists
+    metagroot_latest_link   // string, path to the latest metagroot HMM database, to download
+    skip_interproscan       // boolean
+    interproscan_db_url     // string, url to download db
+    interproscan_db         // string, existing db
+    skip_s4pred             // boolean
 
     main:
-
-    ch_versions      = channel.empty()
-    ch_multiqc_files = channel.empty()
+    def ch_versions = channel.empty()
+    def ch_multiqc_files = channel.empty()
 
     FAA_SEQFU_SEQKIT( ch_samplesheet, skip_preprocessing )
-    ch_versions = ch_versions.mix( FAA_SEQFU_SEQKIT.out.versions )
 
     DOMAIN_ANNOTATION (
         FAA_SEQFU_SEQKIT.out.fasta,
@@ -49,7 +57,13 @@ workflow PROTEINANNOTATOR {
         pfam_latest_link,
         skip_funfam,
         funfam_db,
-        funfam_latest_link
+        funfam_latest_link,
+        skip_nmpfams,
+        nmpfams_db,
+        nmpfams_latest_link,
+        skip_metagroot,
+        metagroot_db,
+        metagroot_latest_link
     )
     ch_versions = ch_versions.mix( DOMAIN_ANNOTATION.out.versions )
 
@@ -59,7 +73,6 @@ workflow PROTEINANNOTATOR {
         interproscan_db_url,
         interproscan_db
     )
-    ch_versions = ch_versions.mix( FUNCTIONAL_ANNOTATION.out.versions )
 
     if (!skip_s4pred) {
         S4PRED_RUNMODEL( FAA_SEQFU_SEQKIT.out.fasta )
@@ -86,59 +99,42 @@ workflow PROTEINANNOTATOR {
             "${process}:\n${tool_versions.join('\n')}"
         }
 
-    softwareVersionsToYAML(ch_versions.mix(topic_versions.versions_file))
+    def ch_collated_versions = softwareVersionsToYAML(ch_versions.mix(topic_versions.versions_file))
         .mix(topic_versions_string)
         .collectFile(
-            storeDir: "${params.outdir}/pipeline_info",
-            name: 'nf_core_' + 'proteinannotator_software_' + 'mqc_' + 'versions.yml',
+            storeDir: "${outdir}/pipeline_info",
+            name: 'nf_core_'  +  'proteinannotator_software_'  + 'mqc_'  + 'versions.yml',
             sort: true,
-            newLine: true,
+            newLine: true
         )
-        .set { ch_collated_versions }
 
     //
     // MODULE: MultiQC
     //
-    ch_multiqc_config        = channel.fromPath(
-        "$projectDir/assets/multiqc_config.yml", checkIfExists: true)
-    ch_multiqc_custom_config = params.multiqc_config ?
-        channel.fromPath(params.multiqc_config, checkIfExists: true) :
-        channel.empty()
-    ch_multiqc_logo          = params.multiqc_logo ?
-        channel.fromPath(params.multiqc_logo, checkIfExists: true) :
-        channel.empty()
-
-    summary_params      = paramsSummaryMap(
-        workflow, parameters_schema: "nextflow_schema.json")
-    ch_workflow_summary = channel.value(paramsSummaryMultiqc(summary_params))
-    ch_multiqc_files = ch_multiqc_files.mix(
-        ch_workflow_summary.collectFile(name: 'workflow_summary_mqc.yaml'))
-    ch_multiqc_custom_methods_description = params.multiqc_methods_description ?
-        file(params.multiqc_methods_description, checkIfExists: true) :
-        file("$projectDir/assets/methods_description_template.yml", checkIfExists: true)
-    ch_methods_description                = channel.value(
-        methodsDescriptionText(ch_multiqc_custom_methods_description))
-
     ch_multiqc_files = ch_multiqc_files.mix(ch_collated_versions)
-    ch_multiqc_files = ch_multiqc_files.mix(
-        ch_methods_description.collectFile(
-            name: 'methods_description_mqc.yaml',
-            sort: true,
-        )
-    )
-
+    def ch_summary_params = paramsSummaryMap(workflow, parameters_schema: "nextflow_schema.json")
+    def ch_workflow_summary = channel.value(paramsSummaryMultiqc(ch_summary_params))
+    ch_multiqc_files = ch_multiqc_files.mix(ch_workflow_summary.collectFile(name: 'workflow_summary_mqc.yaml'))
+    def ch_multiqc_custom_methods_description = multiqc_methods_description
+        ? file(multiqc_methods_description, checkIfExists: true)
+        : file("${projectDir}/assets/methods_description_template.yml", checkIfExists: true)
+    def ch_methods_description = channel.value(methodsDescriptionText(ch_multiqc_custom_methods_description))
+    ch_multiqc_files = ch_multiqc_files.mix(ch_methods_description.collectFile(name: 'methods_description_mqc.yaml', sort: true))
     ch_multiqc_files = ch_multiqc_files.mix(FAA_SEQFU_SEQKIT.out.multiqc_files.collect{ f -> f[1] }.ifEmpty([]))
-
     MULTIQC(
-        ch_multiqc_files.collect(),
-        ch_multiqc_config.toList(),
-        ch_multiqc_custom_config.toList(),
-        ch_multiqc_logo.toList(),
-        [],
-        [],
+        ch_multiqc_files.flatten().collect().map { files ->
+            [
+                [id: 'proteinannotator'],
+                files,
+                multiqc_config
+                    ? file(multiqc_config, checkIfExists: true)
+                    : file("${projectDir}/assets/multiqc_config.yml", checkIfExists: true),
+                multiqc_logo ? file(multiqc_logo, checkIfExists: true) : [],
+                [],
+                [],
+            ]
+        }
     )
-
-    emit:
-    multiqc_report = MULTIQC.out.report.toList() // channel: /path/to/multiqc_report.html
-    versions = ch_versions // channel: [ path(versions.yml) ]
+    emit:multiqc_report = MULTIQC.out.report.map { _meta, report -> [report] }.toList() // channel: /path/to/multiqc_report.html
+    versions       = ch_versions                 // channel: [ path(versions.yml) ]
 }

@@ -141,13 +141,6 @@
                     "fa_icon": "fas fa-palette",
                     "hidden": true
                 },
-                "hook_url": {
-                    "type": "string",
-                    "description": "Incoming hook URL for messaging service",
-                    "fa_icon": "fas fa-people-group",
-                    "help_text": "Incoming hook URL for messaging service. Currently, MS Teams and Slack are supported.",
-                    "hidden": true
-                },
                 "multiqc_config": {
                     "type": "string",
                     "format": "file-path",
@@ -276,6 +269,40 @@
                     "default": "https://download.cathdb.info/cath/releases/all-releases/v4_3_0/sequence-data/funfam-hmm3-v4_3_0.lib.gz",
                     "description": "CATH hosted link to the latest available (v4_3_0) FunFam HMM database file."
                 },
+                "skip_nmpfams": {
+                    "type": "boolean",
+                    "fa_icon": "fas fa-ban",
+                    "description": "Skip the domain annotation with the NMPFams database.",
+                    "help": "Skips the domain annotation of input sequence against a NMPFams database."
+                },
+                "nmpfams_db": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "Path to an already installed NMPFams HMM database.",
+                    "help_text": "If left null and skip_nmpfams is false, the pipeline will start downloading the latest NMPFams HMM library."
+                },
+                "nmpfams_latest_link": {
+                    "type": "string",
+                    "default": "https://pavlopoulos-lab.org/envofams/databases/hmmer/nmpfamsdb.hmm.gz",
+                    "description": "NMPFams hosted link to the latest NMPFams HMM database file."
+                },
+                "skip_metagroot": {
+                    "type": "boolean",
+                    "fa_icon": "fas fa-ban",
+                    "description": "Skip the domain annotation with the metagRoot database.",
+                    "help": "Skips the domain annotation of input sequence against a metagRoot database."
+                },
+                "metagroot_db": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "Path to an already installed metagRoot HMM database (.hmm.gz).",
+                    "help_text": "If left null and skip_metagroot is false, the pipeline will start downloading the latest metagRoot HMM library."
+                },
+                "metagroot_latest_link": {
+                    "type": "string",
+                    "default": "https://pavlopoulos-lab.org/envofams/databases/hmmer/metagroot.hmm.gz",
+                    "description": "metagRoot hosted link to the latest available metagRoot HMM database file."
+                },
                 "hmmsearch_evalue_cutoff": {
                     "type": "number",
                     "default": 0.001,
@@ -291,8 +318,7 @@
             "properties": {
                 "skip_interproscan": {
                     "type": "boolean",
-                    "description": "Run InterProScan",
-                    "default": false
+                    "description": "Skip the functional annotation with InterProScan."
                 },
                 "interproscan_db_url": {
                     "type": "string",
@@ -317,7 +343,7 @@
                 },
                 "interproscan_enableprecalc": {
                     "type": "boolean",
-                    "help_text": "This increases the speed of functional annotation with InterProScan by pre-calculating matches found in the UniProtKB, thereby identifying unique matches in the query sequences for faster annotation. By default this is turned off.\n\nFor more information about this flag see the tool [documentation](https://interproscan-docs.readthedocs.io/en/latest/HowToRun.html).\n\n> Modifies tool parameter(s):\n> - InterProScan: `---diasable-precalc`",
+                    "help_text": "This increases the speed of functional annotation with InterProScan by pre-calculating matches found in the UniProtKB, thereby identifying unique matches in the query sequences for faster annotation. By default this is turned off.\n\nFor more information about this flag see the tool [documentation](https://interproscan-docs.readthedocs.io/en/latest/HowToRun.html).\n\n> Modifies tool parameter(s):\n> - InterProScan: `--disable-precalc`",
                     "description": "Pre-calculates residue mutual matches.",
                     "fa_icon": "fas fa-clock"
                 }
@@ -362,7 +388,6 @@
         {
             "$ref": "#/$defs/domain_annotation_params"
         },
-
         {
             "$ref": "#/$defs/functional_annotation_options"
         },
