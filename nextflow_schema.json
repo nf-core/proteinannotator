@@ -279,12 +279,12 @@
                     "type": "string",
                     "format": "file-path",
                     "description": "Path to an already installed NMPFams HMM database.",
-                    "help_text": "If left null and skip_funfam is false, the pipeline will start downloading the latest FunFam HMM library."
+                    "help_text": "If left null and skip_nmpfams is false, the pipeline will start downloading the latest NMPFams HMM library."
                 },
                 "nmpfams_latest_link": {
                     "type": "string",
                     "default": "https://pavlopoulos-lab.org/envofams/databases/hmmer/nmpfamsdb.hmm.gz",
-                    "description": ""
+                    "description": "NMPFams hosted link to the latest NMPFams HMM database file."
                 },
                 "skip_metagroot": {
                     "type": "boolean",

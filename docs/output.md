@@ -102,7 +102,7 @@ If the `skip_*` flags (e.g., `skip_pfam`, `skip_funfam`, `skip_nmpfams`, `skip_m
 
 Each of the `domain_annotation/` subfolders (e.g., `pfam`, `funfam`, `nmpfams`, `metagroot`) contain a `.domtbl.gz` annotation file per input sample, depending on which domain annotation databases were used in the pipeline execution.
 
-[hmmer](https://github.com/EddyRivasLab/hmmer) is a fast and flexible alignment trimming tool that keeps phylogenetically informative sites and removes others.
+[hmmer](https://github.com/EddyRivasLab/hmmer) (HMMER) is a sequence search tool that uses profile hidden Markov models (profile HMMs) to identify homologous sequences against curated databases such as Pfam, FunFam, NMPFams and metagRoot.
 
 ### Functional annotation
 
