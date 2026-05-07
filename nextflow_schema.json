@@ -279,12 +279,12 @@
                     "type": "string",
                     "format": "file-path",
                     "description": "Path to an already installed NMPFams HMM database.",
-                    "help_text": "If left null and skip_funfam is false, the pipeline will start downloading the latest FunFam HMM library."
+                    "help_text": "If left null and skip_nmpfams is false, the pipeline will start downloading the latest NMPFams HMM library."
                 },
                 "nmpfams_latest_link": {
                     "type": "string",
                     "default": "https://pavlopoulos-lab.org/envofams/databases/hmmer/nmpfamsdb.hmm.gz",
-                    "description": ""
+                    "description": "NMPFams hosted link to the latest NMPFams HMM database file."
                 },
                 "skip_metagroot": {
                     "type": "boolean",
@@ -318,8 +318,7 @@
             "properties": {
                 "skip_interproscan": {
                     "type": "boolean",
-                    "description": "Run InterProScan",
-                    "default": false
+                    "description": "Skip the functional annotation with InterProScan."
                 },
                 "interproscan_db_url": {
                     "type": "string",
@@ -344,7 +343,7 @@
                 },
                 "interproscan_enableprecalc": {
                     "type": "boolean",
-                    "help_text": "This increases the speed of functional annotation with InterProScan by pre-calculating matches found in the UniProtKB, thereby identifying unique matches in the query sequences for faster annotation. By default this is turned off.\n\nFor more information about this flag see the tool [documentation](https://interproscan-docs.readthedocs.io/en/latest/HowToRun.html).\n\n> Modifies tool parameter(s):\n> - InterProScan: `---diasable-precalc`",
+                    "help_text": "This increases the speed of functional annotation with InterProScan by pre-calculating matches found in the UniProtKB, thereby identifying unique matches in the query sequences for faster annotation. By default this is turned off.\n\nFor more information about this flag see the tool [documentation](https://interproscan-docs.readthedocs.io/en/latest/HowToRun.html).\n\n> Modifies tool parameter(s):\n> - InterProScan: `--disable-precalc`",
                     "description": "Pre-calculates residue mutual matches.",
                     "fa_icon": "fas fa-clock"
                 }

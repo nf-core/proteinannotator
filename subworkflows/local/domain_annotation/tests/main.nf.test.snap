@@ -12,14 +12,10 @@
                 "T1024                -            408 F294204              -            387   3.8e-06   12.8  25.9   1   1   2.8e-06   5.6e-06   12.3  25.9    16   372    41   406    30   408 0.76 LmrP, , 408 residues|"
             ],
             [
-                {
-                    "DOMAIN_ANNOTATION:HMMSEARCH_METAGROOT": {
-                        "hmmer": 3.4
-                    }
-                }
+                
             ]
         ],
-        "timestamp": "2026-05-05T12:04:06.829501961",
+        "timestamp": "2026-05-07T13:34:53.191301436",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.0"
@@ -48,19 +44,10 @@
                 "#"
             ],
             [
-                {
-                    "DOMAIN_ANNOTATION:HMMSEARCH_FUNFAM": {
-                        "hmmer": 3.4
-                    }
-                },
-                {
-                    "DOMAIN_ANNOTATION:HMMSEARCH_PFAM": {
-                        "hmmer": 3.4
-                    }
-                }
+                
             ]
         ],
-        "timestamp": "2026-05-05T12:03:39.329831075",
+        "timestamp": "2026-05-07T13:34:20.834406599",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.0"
@@ -79,14 +66,10 @@
                 "T1024                -            408 F093539              -             93   3.1e-05   11.0   0.1   1   4   1.6e-05   3.1e-05   11.0   0.1    57    75    50    68     6    75 0.82 LmrP, , 408 residues|"
             ],
             [
-                {
-                    "DOMAIN_ANNOTATION:HMMSEARCH_NMPFAMS": {
-                        "hmmer": 3.4
-                    }
-                }
+                
             ]
         ],
-        "timestamp": "2026-05-05T12:03:56.511344799",
+        "timestamp": "2026-05-07T13:34:41.751903369",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.0"
@@ -105,14 +88,10 @@
                 "#"
             ],
             [
-                {
-                    "DOMAIN_ANNOTATION:HMMSEARCH_PFAM": {
-                        "hmmer": 3.4
-                    }
-                }
+                
             ]
         ],
-        "timestamp": "2026-05-05T12:03:46.249313972",
+        "timestamp": "2026-05-07T13:34:32.093410935",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.0"
@@ -154,10 +133,7 @@
                     ]
                 ],
                 "4": [
-                    "versions.yml:md5,046e5161e3e1dff2ab111ddf4bb27331",
-                    "versions.yml:md5,160d4c5a5001cfb4ff57b94fc52b67d9",
-                    "versions.yml:md5,1b7d208e42364fb87160693faa4e83b9",
-                    "versions.yml:md5,f1d8a406d3dcb97a7c15e9c810926de1"
+                    
                 ],
                 "funfam_domains": [
                     [
@@ -192,14 +168,11 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,046e5161e3e1dff2ab111ddf4bb27331",
-                    "versions.yml:md5,160d4c5a5001cfb4ff57b94fc52b67d9",
-                    "versions.yml:md5,1b7d208e42364fb87160693faa4e83b9",
-                    "versions.yml:md5,f1d8a406d3dcb97a7c15e9c810926de1"
+                    
                 ]
             }
         ],
-        "timestamp": "2026-05-05T12:04:18.642602538",
+        "timestamp": "2026-05-07T13:35:05.627943668",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.0"
