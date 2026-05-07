@@ -46,7 +46,6 @@ workflow DOMAIN_ANNOTATION {
             .map{ meta, seqs, _meta2, models -> [meta, models, seqs, false, false, true] }
 
         HMMSEARCH_PFAM( ch_input_for_hmmsearch_pfam )
-        ch_versions = ch_versions.mix( HMMSEARCH_PFAM.out.versions.first() )
         ch_pfam_domains = HMMSEARCH_PFAM.out.domain_summary
     }
 
@@ -65,7 +64,6 @@ workflow DOMAIN_ANNOTATION {
             .map{ meta, seqs, _meta2, models -> [meta, models, seqs, false, false, true] }
 
         HMMSEARCH_FUNFAM( ch_input_for_hmmsearch_funfam )
-        ch_versions = ch_versions.mix( HMMSEARCH_FUNFAM.out.versions.first() )
         ch_funfam_domains = HMMSEARCH_FUNFAM.out.domain_summary
     }
 
@@ -84,7 +82,6 @@ workflow DOMAIN_ANNOTATION {
             .map{ meta, seqs, _meta2, models -> [meta, models, seqs, false, false, true] }
 
         HMMSEARCH_NMPFAMS( ch_input_for_hmmsearch_nmpfams )
-        ch_versions = ch_versions.mix( HMMSEARCH_NMPFAMS.out.versions.first() )
         ch_nmpfams_domains = HMMSEARCH_NMPFAMS.out.domain_summary
     }
 
@@ -103,7 +100,6 @@ workflow DOMAIN_ANNOTATION {
             .map{ meta, seqs, _meta2, models -> [meta, models, seqs, false, false, true] }
 
         HMMSEARCH_METAGROOT( ch_input_for_hmmsearch_metagroot )
-        ch_versions = ch_versions.mix( HMMSEARCH_METAGROOT.out.versions.first() )
         ch_metagroot_domains = HMMSEARCH_METAGROOT.out.domain_summary
     }
 
