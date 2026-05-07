@@ -318,8 +318,7 @@
             "properties": {
                 "skip_interproscan": {
                     "type": "boolean",
-                    "description": "Run InterProScan",
-                    "default": false
+                    "description": "Skip the functional annotation with InterProScan."
                 },
                 "interproscan_db_url": {
                     "type": "string",
@@ -344,7 +343,7 @@
                 },
                 "interproscan_enableprecalc": {
                     "type": "boolean",
-                    "help_text": "This increases the speed of functional annotation with InterProScan by pre-calculating matches found in the UniProtKB, thereby identifying unique matches in the query sequences for faster annotation. By default this is turned off.\n\nFor more information about this flag see the tool [documentation](https://interproscan-docs.readthedocs.io/en/latest/HowToRun.html).\n\n> Modifies tool parameter(s):\n> - InterProScan: `---diasable-precalc`",
+                    "help_text": "This increases the speed of functional annotation with InterProScan by pre-calculating matches found in the UniProtKB, thereby identifying unique matches in the query sequences for faster annotation. By default this is turned off.\n\nFor more information about this flag see the tool [documentation](https://interproscan-docs.readthedocs.io/en/latest/HowToRun.html).\n\n> Modifies tool parameter(s):\n> - InterProScan: `---disable-precalc`",
                     "description": "Pre-calculates residue mutual matches.",
                     "fa_icon": "fas fa-clock"
                 }
