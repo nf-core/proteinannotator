@@ -10,6 +10,11 @@
                         "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
                         "installed_by": ["modules"]
                     },
+                    "gunzip": {
+                        "branch": "master",
+                        "git_sha": "0902eac3012baaf4f9ab6513c8c55acc9353c96c",
+                        "installed_by": ["modules"]
+                    },
                     "hmmer/hmmsearch": {
                         "branch": "master",
                         "git_sha": "a971f6723149313787b278969dcbe0fb4411bb4a",
@@ -18,6 +23,11 @@
                     "interproscan": {
                         "branch": "master",
                         "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "installed_by": ["modules"]
+                    },
+                    "kofamscan": {
+                        "branch": "master",
+                        "git_sha": "9d675a431e1fcd9dc4043edcc9b1c26b5c2377c0",
                         "installed_by": ["modules"]
                     },
                     "multiqc": {

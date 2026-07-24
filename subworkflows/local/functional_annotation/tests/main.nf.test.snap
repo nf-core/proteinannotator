@@ -15,8 +15,14 @@
                 "0": [
                     
                 ],
+                "1": [
+
+                ],
                 "interproscan_tsv": [
                     
+                ],
+                "kofamscan_tsv": [
+
                 ]
             }
         ],

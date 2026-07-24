@@ -346,9 +346,46 @@
                     "help_text": "This increases the speed of functional annotation with InterProScan by pre-calculating matches found in the UniProtKB, thereby identifying unique matches in the query sequences for faster annotation. By default this is turned off.\n\nFor more information about this flag see the tool [documentation](https://interproscan-docs.readthedocs.io/en/latest/HowToRun.html).\n\n> Modifies tool parameter(s):\n> - InterProScan: `--disable-precalc`",
                     "description": "Pre-calculates residue mutual matches.",
                     "fa_icon": "fas fa-clock"
+                },
+                "skip_kofamscan": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Skip KEGG Orthology annotation with KOfamScan.",
+                    "help_text": "Set this to `false` to run KOfamScan. The database is downloaded automatically unless local database paths are provided.",
+                    "fa_icon": "fas fa-ban"
+                },
+                "kofamscan_profiles_url": {
+                    "type": "string",
+                    "default": "https://www.genome.jp/ftp/db/kofam/profiles.tar.gz",
+                    "description": "URL for the KOfam profiles archive.",
+                    "help_text": "Used to download and extract the KOfam profiles automatically when `--kofamscan_profiles` is not provided.",
+                    "fa_icon": "fas fa-database"
+                },
+                "kofamscan_profiles": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "exists": true,
+                    "description": "Path to a pre-downloaded and extracted KOfam profiles directory.",
+                    "help_text": "Optional local override that skips downloading and extracting the profiles archive.",
+                    "fa_icon": "fas fa-database"
+                },
+                "kofamscan_ko_list_url": {
+                    "type": "string",
+                    "default": "https://www.genome.jp/ftp/db/kofam/ko_list.gz",
+                    "description": "URL for the compressed KOfam KO list.",
+                    "help_text": "Used to download and decompress the KOfam KO list automatically when `--kofamscan_ko_list` is not provided.",
+                    "fa_icon": "fas fa-database"
+                },
+                "kofamscan_ko_list": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "description": "Path to a pre-downloaded and decompressed KOfam KO list.",
+                    "help_text": "Optional local override that skips downloading and decompressing the KO list.",
+                    "fa_icon": "fas fa-database"
                 }
             },
-            "help_text": "This subworkflow adds additional protein annotations to all input sequences. Currently, only annotation with InterProScan is integrated in the subworkflow.",
+            "help_text": "This subworkflow adds functional protein annotations to all input sequences with InterProScan and, optionally, KOfamScan.",
             "fa_icon": "fas fa-file-signature"
         },
         "prediction_params": {

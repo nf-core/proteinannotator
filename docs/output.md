@@ -19,6 +19,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
   - [hmmer](#hmmer) - To optionally match the input sequence to known Pfam, FunFam, NMPFams and/or metagRoot domains through `hmmer/hmmsearch`
 - [Functional annotation](#functional-annotation) Annotate proteins with functional domains
   - [InterProScan](#Interproscan) - Search the InterProScan database for functional domains
+  - [KOfamScan](#kofamscan) - Assign KEGG Orthologs with the KOfam profile database
 - [s4pred](#s4pred) - Predict secondary structures of sequences, producing amino acid level probabilities of forming an α-helix, a β-strand or a coil.
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
@@ -74,10 +75,15 @@ The `seqkit` module is used for initial preprocessing (i.e., gap removal, conver
   - `funfam-hmm3-v4_3_0*.lib.gz`: (optional) The latest (v4_3_0) full, or a minimal test, FunFam HMM database that can be downloaded through the pipeline.
   - `nmpfamsdb.hmm.gz`: (optional) The latest full, or a minimal test, NMPFams HMM database that can be downloaded through the pipeline.
   - `metagroot.hmm.gz`: (optional) The latest full, or a minimal test, metagRoot HMM database that can be downloaded through the pipeline.
+  - `kofam/`: (optional) KOfamScan database files downloaded when KOfamScan is enabled
+    - `profiles.tar.gz`: compressed KOfam profile archive
+    - `profiles/`: extracted KOfam profile HMMs
+    - `ko_list.gz`: compressed KOfam KO list
+    - `ko_list`: decompressed KOfam KO list
 
 </details>
 
-If the `skip_*` flags (e.g., `skip_pfam`, `skip_funfam`, `skip_nmpfams`, `skip_metagroot`, `skip_interproscan`) for each annotation database is set to `true`, or the `*_db` parameter paths (e.g., `pfam_db`, `funfam_db`, `nmpfams_db`, `metagroot_db`, `interproscan_db`) are set (i.e., not `null`), or the run is resumed after a successful database download, then the respective database will not be (re)downloaded. The full database links can be found in the main `nextflow.config` file, while minimal test versions can be found in the `test` and `test_full` profiles (i.e., `conf/test.config`, `conf/test_full.config`).
+If the `skip_*` flags (e.g., `skip_pfam`, `skip_funfam`, `skip_nmpfams`, `skip_metagroot`, `skip_interproscan`, `skip_kofamscan`) for each annotation database is set to `true`, or the local database parameter paths are set, or the run is resumed after a successful database download, then the respective database will not be (re)downloaded. The full database links can be found in the main `nextflow.config` file, while minimal test versions can be found in the `test` and `test_full` profiles (i.e., `conf/test.config`, `conf/test_full.config`).
 
 [aria2](https://github.com/aria2/aria2/) is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.
 
@@ -356,6 +362,20 @@ The XML Schema Definition (XSD) is available [here](http://ftp.ebi.ac.uk/pub/sof
 ```
 
 </details>
+
+#### KOfamScan
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `functional_annotation/`
+  - `kofamscan/`
+    - `<samplename>/`
+      - `<samplename>.kofamscan.tsv`: detailed KOfamScan hits in tab-separated format
+
+</details>
+
+[KOfamScan](https://github.com/takaram/kofam_scan) searches protein sequences against KOfam profile HMMs and reports KEGG Orthology assignments using KO-specific adaptive score thresholds. The detailed TSV output includes the query identifier, KO identifier, threshold, score, E-value and KO definition.
 
 #### s4pred
 
