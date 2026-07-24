@@ -3,10 +3,10 @@
         "content": [
             40,
             {
-                "ARIA2": {
+                "ARIA2_FUNFAM": {
                     "aria2": "1.37.0"
                 },
-                "ARIA2_FUNFAM": {
+                "ARIA2_INTERPROSCAN": {
                     "aria2": "1.37.0"
                 },
                 "ARIA2_METAGROOT": {
@@ -51,7 +51,7 @@
                 "SEQKIT_SEQ": {
                     "seqkit": "2.9.0"
                 },
-                "UNTAR": {
+                "UNTAR_INTERPROSCAN": {
                     "untar": 1.34
                 },
                 "Workflow": {
