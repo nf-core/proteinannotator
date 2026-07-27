@@ -193,7 +193,10 @@ def toolCitationText() {
 
     def domain_annotation_text = (params.skip_pfam && params.skip_funfam && params.skip_nmpfams && params.skip_metagroot) ? "" : "Domains were annotated with hmmer/hmmsearch (Eddy et al. 2011)."
 
-    def functional_annotation_text = params.skip_kofamscan ? "" : "KEGG Orthologs were assigned with KOfamScan (Aramaki et al. 2020)."
+    def functional_annotation_text = [
+        params.skip_interproscan ? "" : "Protein functions were annotated with InterProScan (Jones et al. 2014).",
+        params.skip_kofamscan ? "" : "KEGG Orthologs were assigned with KOfamScan (Aramaki et al. 2020)."
+    ].join(' ').trim()
 
     def prediction_text = params.skip_s4pred ? "" : "Secondary structures were predicted via the s4pred software (Moffat et al. 2021)."
 
@@ -218,7 +221,10 @@ def toolBibliographyText() {
 
     def domain_annotation_text = (params.skip_pfam && params.skip_funfam && params.skip_nmpfams && params.skip_metagroot) ? '' : '<li>Eddy, S. R. (2011). Accelerated profile HMM searches. PLoS computational biology, 7(10), e1002195. doi: <a href="https://doi.org/10.1371/journal.pcbi.1002195">10.1371/journal.pcbi.1002195</a></li>'
 
-    def functional_annotation_text = params.skip_kofamscan ? '' : '<li>Aramaki, T., Blanc-Mathieu, R., Endo, H., Ohkubo, K., Kanehisa, M., Goto, S., & Ogata, H. (2020). KofamKOALA: KEGG Ortholog assignment based on profile HMM and adaptive score threshold. Bioinformatics, 36(7), 2251–2252. doi: <a href="https://doi.org/10.1093/bioinformatics/btz859">10.1093/bioinformatics/btz859</a></li>'
+    def functional_annotation_text = [
+        params.skip_interproscan ? '' : '<li>Jones, P., Binns, D., Chang, H. Y., Fraser, M., Li, W., McAnulla, C., McWilliam, H., Maslen, J., Mitchell, A., Nuka, G., Pesseat, S., Quinn, A. F., Sangrador-Vegas, A., Scheremetjew, M., Yong, S. Y., Lopez, R., & Hunter, S. (2014). InterProScan 5: genome-scale protein function classification. Bioinformatics, 30(9), 1236–1240. doi: <a href="https://doi.org/10.1093/bioinformatics/btu031">10.1093/bioinformatics/btu031</a></li>',
+        params.skip_kofamscan ? '' : '<li>Aramaki, T., Blanc-Mathieu, R., Endo, H., Ohkubo, K., Kanehisa, M., Goto, S., & Ogata, H. (2020). KofamKOALA: KEGG Ortholog assignment based on profile HMM and adaptive score threshold. Bioinformatics, 36(7), 2251–2252. doi: <a href="https://doi.org/10.1093/bioinformatics/btz859">10.1093/bioinformatics/btz859</a></li>'
+    ].join(' ').trim()
 
     def prediction_text = params.skip_s4pred ? '' : '<li>Moffat, L., & Jones, D. T. (2021). Increasing the accuracy of single sequence prediction methods using a deep semi-supervised learning framework. Bioinformatics, 37(21), 3744-3751. doi: <a href="https://doi.org/10.1093/bioinformatics/btab491">10.1093/bioinformatics/btab491</a></li>'
 

@@ -1,11 +1,11 @@
-include { ARIA2 as ARIA2_INTERPROSCAN          } from '../../../modules/nf-core/aria2/main'
-include { ARIA2 as ARIA2_KOFAM_PROFILES       } from '../../../modules/nf-core/aria2/main'
-include { ARIA2 as ARIA2_KOFAM_KO_LIST        } from '../../../modules/nf-core/aria2/main'
-include { UNTAR as UNTAR_INTERPROSCAN          } from '../../../modules/nf-core/untar/main'
-include { UNTAR as UNTAR_KOFAM_PROFILES       } from '../../../modules/nf-core/untar/main'
-include { GUNZIP as GUNZIP_KOFAM_KO_LIST      } from '../../../modules/nf-core/gunzip/main'
-include { INTERPROSCAN                         } from '../../../modules/nf-core/interproscan/main'
-include { KOFAMSCAN                            } from '../../../modules/nf-core/kofamscan/main'
+include { ARIA2 as ARIA2_INTERPROSCAN               } from '../../../modules/nf-core/aria2/main'
+include { ARIA2 as ARIA2_KOFAM_PROFILES             } from '../../../modules/nf-core/aria2/main'
+include { ARIA2 as ARIA2_KOFAM_KO_LIST              } from '../../../modules/nf-core/aria2/main'
+include { UNTAR as UNTAR_INTERPROSCAN               } from '../../../modules/nf-core/untar/main'
+include { UNTAR as UNTAR_KOFAM_PROFILES             } from '../../../modules/nf-core/untar/main'
+include { GUNZIP as GUNZIP_KOFAM_KO_LIST            } from '../../../modules/nf-core/gunzip/main'
+include { INTERPROSCAN                              } from '../../../modules/nf-core/interproscan/main'
+include { KOFAMSCAN                                 } from '../../../modules/nf-core/kofamscan/main'
 
 workflow FUNCTIONAL_ANNOTATION {
     take:

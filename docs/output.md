@@ -83,7 +83,7 @@ The `seqkit` module is used for initial preprocessing (i.e., gap removal, conver
 
 </details>
 
-If the `skip_*` flags (e.g., `skip_pfam`, `skip_funfam`, `skip_nmpfams`, `skip_metagroot`, `skip_interproscan`, `skip_kofamscan`) for each annotation database is set to `true`, or the local database parameter paths are set, or the run is resumed after a successful database download, then the respective database will not be (re)downloaded. The full database links can be found in the main `nextflow.config` file, while minimal test versions can be found in the `test` and `test_full` profiles (i.e., `conf/test.config`, `conf/test_full.config`).
+If the `skip_*` flags (e.g., `skip_pfam`, `skip_funfam`, `skip_nmpfams`, `skip_metagroot`, `skip_interproscan`, `skip_kofamscan`) for each annotation database is set to `true`, or the database parameter paths (e.g., `pfam_db`, `funfam_db`, `nmpfams_db`, `metagroot_db`, `interproscan_db`, `kofamscan_profiles`, `kofamscan_ko_list`) are set (i.e., not `null`), or the run is resumed after a successful database download, then the respective database will not be (re)downloaded. The full database links can be found in the main `nextflow.config` file, while minimal test versions can be found in the `test` and `test_full` profiles (i.e., `conf/test.config`, `conf/test_full.config`).
 
 [aria2](https://github.com/aria2/aria2/) is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.
 
@@ -371,7 +371,7 @@ The XML Schema Definition (XSD) is available [here](http://ftp.ebi.ac.uk/pub/sof
 - `functional_annotation/`
   - `kofamscan/`
     - `<samplename>/`
-      - `<samplename>.kofamscan.tsv`: detailed KOfamScan hits in tab-separated format
+      - `<samplename>.tsv`: detailed KOfamScan hits in tab-separated format
 
 </details>
 

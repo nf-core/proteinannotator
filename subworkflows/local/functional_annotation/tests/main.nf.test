@@ -98,7 +98,9 @@ nextflow_workflow {
             assertAll(
                 { assert workflow.success },
                 { assert workflow.out.interproscan_tsv.isEmpty() },
-                { assert path(workflow.out.kofamscan_tsv[0][1]).exists() }
+                { assert snapshot(
+                    path(workflow.out.kofamscan_tsv[0][1]).readLines().findAll { line -> line.startsWith('*') }
+                ).match() }
             )
         }
     }

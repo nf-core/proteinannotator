@@ -175,7 +175,9 @@
                 },
                 "modules_testdata_base_path": {
                     "type": "string",
-                    "description": "Base URL or local path to location of modules test dataset files"
+                    "description": "Base URL or local path to location of modules test dataset files",
+                    "default": "https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/",
+                    "hidden": true
                 },
                 "trace_report_suffix": {
                     "type": "string",
@@ -349,9 +351,8 @@
                 },
                 "skip_kofamscan": {
                     "type": "boolean",
-                    "default": true,
                     "description": "Skip KEGG Orthology annotation with KOfamScan.",
-                    "help_text": "Set this to `false` to run KOfamScan. The database is downloaded automatically unless local database paths are provided.",
+                    "help_text": "KOfamScan runs by default. Set this to `true` to skip it. The database is downloaded automatically unless local database paths are provided.",
                     "fa_icon": "fas fa-ban"
                 },
                 "kofamscan_profiles_url": {
@@ -385,7 +386,7 @@
                     "fa_icon": "fas fa-database"
                 }
             },
-            "help_text": "This subworkflow adds functional protein annotations to all input sequences with InterProScan and, optionally, KOfamScan.",
+            "help_text": "This subworkflow adds functional protein annotations to all input sequences with InterProScan and KOfamScan.",
             "fa_icon": "fas fa-file-signature"
         },
         "prediction_params": {
