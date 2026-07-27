@@ -14,9 +14,9 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
   - [SeqFu](#seqfu) for input amino acid sequences quality control (QC)
   - [SeqKit](#seqkit) for preprocessing input amino acid sequences (i.e., gap removal, convert to upper case, validate, filter by length, replace special characters such as `/`, and remove duplicate sequences)
 - [Database download](#database-download) Optionally download selected databases for annotation.
-  - [aria2](#aria2) - To optionally download the Pfam, FunFam, and/or InterProScan databases through the pipeline.
+  - [aria2](#aria2) - To optionally download the Pfam, FunFam, NMPFams, metagRoot and/or InterProScan databases through the pipeline.
 - [Domain annotation](#domain-annotation) Annotate proteins with domains from established repositories.
-  - [hmmer](#hmmer) - To optionally match the input sequence to known Pfam and/or FunFam domains through `hmmer/hmmsearch`
+  - [hmmer](#hmmer) - To optionally match the input sequence to known Pfam, FunFam, NMPFams and/or metagRoot domains through `hmmer/hmmsearch`
 - [Functional annotation](#functional-annotation) Annotate proteins with functional domains
   - [InterProScan](#Interproscan) - Search the InterProScan database for functional domains
 - [s4pred](#s4pred) - Predict secondary structures of sequences, producing amino acid level probabilities of forming an α-helix, a β-strand or a coil.
@@ -72,10 +72,12 @@ The `seqkit` module is used for initial preprocessing (i.e., gap removal, conver
   - `Pfam-A*.hmm.gz`: (optional) The latest full, or a minimal test, Pfam-A HMM database that can be downloaded through the pipeline.
   - `interproscan_test.tar.gz`: (optional) the downloaded InterProScan archive of member databases according to the optional user-provided url
   - `funfam-hmm3-v4_3_0*.lib.gz`: (optional) The latest (v4_3_0) full, or a minimal test, FunFam HMM database that can be downloaded through the pipeline.
+  - `nmpfamsdb.hmm.gz`: (optional) The latest full, or a minimal test, NMPFams HMM database that can be downloaded through the pipeline.
+  - `metagroot.hmm.gz`: (optional) The latest full, or a minimal test, metagRoot HMM database that can be downloaded through the pipeline.
 
 </details>
 
-If the `skip_*` flags (e.g., `skip_pfam`, `skip_funfam`, `skip_interproscan`) for each annotation database is set to `true`, or the `*_db` parameter paths (e.g., `pfam_db`, `funfam_db`, `interproscan_db`) are set (i.e., not `null`), or the run is resumed after a successful database download, then the respective database will not be (re)downloaded. The full database links can be found in the main `nextflow.config` file, while minimal test versions can be found in the `test` and `test_full` profiles (i.e., `conf/test.config`, `conf/test_full.config`).
+If the `skip_*` flags (e.g., `skip_pfam`, `skip_funfam`, `skip_nmpfams`, `skip_metagroot`, `skip_interproscan`) for each annotation database is set to `true`, or the `*_db` parameter paths (e.g., `pfam_db`, `funfam_db`, `nmpfams_db`, `metagroot_db`, `interproscan_db`) are set (i.e., not `null`), or the run is resumed after a successful database download, then the respective database will not be (re)downloaded. The full database links can be found in the main `nextflow.config` file, while minimal test versions can be found in the `test` and `test_full` profiles (i.e., `conf/test.config`, `conf/test_full.config`).
 
 [aria2](https://github.com/aria2/aria2/) is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.
 
@@ -91,12 +93,16 @@ If the `skip_*` flags (e.g., `skip_pfam`, `skip_funfam`, `skip_interproscan`) fo
     - `<samplename>.domtbl.gz`: `hmmer/hmmsearch` results along parameters info.
   - `funfam/`
     - `<samplename>.domtbl.gz`: `hmmer/hmmsearch` results along parameters info.
+  - `nmpfams/`
+    - `<samplename>.domtbl.gz`: `hmmer/hmmsearch` results along parameters info.
+  - `metagroot/`
+    - `<samplename>.domtbl.gz`: `hmmer/hmmsearch` results along parameters info.
 
 </details>
 
-Each of the `domain_annotation/` subfolders (e.g., `pfam`, `funfam`) contain a `.domtbl.gz` annotation file per input sample, depending on which domain annotation databases were used in the pipeline execution.
+Each of the `domain_annotation/` subfolders (e.g., `pfam`, `funfam`, `nmpfams`, `metagroot`) contain a `.domtbl.gz` annotation file per input sample, depending on which domain annotation databases were used in the pipeline execution.
 
-[hmmer](https://github.com/EddyRivasLab/hmmer) is a fast and flexible alignment trimming tool that keeps phylogenetically informative sites and removes others.
+[hmmer](https://github.com/EddyRivasLab/hmmer) (HMMER) is a sequence search tool that uses profile hidden Markov models (profile HMMs) to identify homologous sequences against curated databases such as Pfam, FunFam, NMPFams and metagRoot.
 
 ### Functional annotation
 
@@ -108,7 +114,7 @@ Each of the `domain_annotation/` subfolders (e.g., `pfam`, `funfam`) contain a `
 - `functional_annotation/`
   - `interproscan/`
     - `<samplename>/`
-      - `<samplename>.gff`: general feature format (GFF) file
+      - `<samplename>.gff3`: general feature format (GFF) file
       - `<samplename>.json`: javascript object notation (JSON) file
       - `<samplename>.tsv`: tab-separated variable (TSV) file
       - `<samplename>.xml`: eXtensible markup language (XML) file
@@ -382,18 +388,6 @@ The `s4pred` module is used to predict secondary structures of amino acid sequen
 [MultiQC](http://multiqc.info) is a visualization tool that generates a single HTML report summarising all samples in your project. Most of the pipeline QC results are visualised in the report and further statistics are available in the report data directory.
 
 Results generated by MultiQC collate pipeline QC from supported tools e.g. FastQC. The pipeline has special steps which also allow the software versions to be reported in the MultiQC output for future traceability. For more information about how to use MultiQC reports, see <http://multiqc.info>.
-
-### SeqKit stats
-
-<details markdown="1">
-<summary>Output files</summary>
-
-- `seqkit/`
-  - `{prefix}.tsv`: output of `seqkit stats` command on `{prefix}.fasta` input file, in tab-delimited text format.
-
-</details>
-
-[SeqKit stats](https://bioinf.shenwei.me/seqkit/usage/#stats) generates simple statistics for protein FASTA files, such as number of residues, minimal sequence length, average sequence length, and maximal sequence length.
 
 ### Pipeline information
 

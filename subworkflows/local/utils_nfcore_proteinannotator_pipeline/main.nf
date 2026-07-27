@@ -14,7 +14,6 @@ include { samplesheetToList         } from 'plugin/nf-schema'
 include { paramsHelp                } from 'plugin/nf-schema'
 include { completionEmail           } from '../../nf-core/utils_nfcore_pipeline'
 include { completionSummary         } from '../../nf-core/utils_nfcore_pipeline'
-include { imNotification            } from '../../nf-core/utils_nfcore_pipeline'
 include { UTILS_NFCORE_PIPELINE     } from '../../nf-core/utils_nfcore_pipeline'
 include { UTILS_NEXTFLOW_PIPELINE   } from '../../nf-core/utils_nextflow_pipeline'
 
@@ -28,7 +27,7 @@ workflow PIPELINE_INITIALISATION {
     take:
     version           // boolean: Display version and exit
     validate_params   // boolean: Boolean whether to validate parameters against the schema at runtime
-    _monochrome_logs  // boolean: Do not use coloured log outputs
+    monochrome_logs   // boolean: Do not use coloured log outputs
     nextflow_cli_args //   array: List of positional nextflow CLI args
     outdir            //  string: The output directory where the results will be saved
     input             //  string: Path to input samplesheet
@@ -53,6 +52,9 @@ workflow PIPELINE_INITIALISATION {
     //
     // Validate parameters and generate parameter summary to stdout
     //
+
+    def before_text = ""
+    def after_text = ""
     before_text = """
 -\033[2m----------------------------------------------------\033[0m-
                                         \033[0;32m,--.\033[0;30m/\033[0;32m,-.\033[0m
@@ -70,6 +72,10 @@ workflow PIPELINE_INITIALISATION {
 * Software dependencies
     https://github.com/nf-core/proteinannotator/blob/master/CITATIONS.md
 """
+    if (monochrome_logs) {
+        before_text = before_text.replaceAll(/\033\[[0-9;]*m/, '')
+    }
+
     command = "nextflow run ${workflow.manifest.name} -profile <docker/singularity/.../institute> --input samplesheet.csv --outdir <OUTDIR>"
 
     UTILS_NFSCHEMA_PLUGIN (
@@ -81,7 +87,8 @@ workflow PIPELINE_INITIALISATION {
         show_hidden,
         before_text,
         after_text,
-        command
+        command,
+        null
     )
 
     //
@@ -122,8 +129,7 @@ workflow PIPELINE_COMPLETION {
     plaintext_email // boolean: Send plain-text email instead of HTML
     outdir //    path: Path to output directory where results will be published
     monochrome_logs // boolean: Disable ANSI colour codes in log output
-    hook_url //  string: hook URL for notifications
-    multiqc_report //  string: Path to MultiQC report
+    multiqc_report  //  string: Path to MultiQC report
 
     main:
     summary_params = paramsSummaryMap(workflow, parameters_schema: "nextflow_schema.json")
@@ -146,13 +152,11 @@ workflow PIPELINE_COMPLETION {
         }
 
         completionSummary(monochrome_logs)
-        if (hook_url) {
-            imNotification(summary_params, hook_url)
-        }
+
     }
 
     workflow.onError {
-        log.error("Pipeline failed. Please refer to troubleshooting docs: https://nf-co.re/docs/usage/troubleshooting")
+        log.error "Pipeline failed. Please refer to troubleshooting docs for common issues: https://nf-co.re/docs/running/troubleshooting"
     }
 }
 
@@ -180,7 +184,7 @@ def toolCitationText() {
         params.skip_preprocessing ? "" : "Input sequences were preprocessed with SeqKit (gap trimming, length filtering, validation, duplicate removal) (Shen et al. 2024)."
     ].join(' ').trim()
 
-    def domain_annotation_text = (params.skip_pfam && params.skip_funfam) ? "" : "Domains were annotated with hmmer/hmmsearch (Eddy et al. 2011)."
+    def domain_annotation_text = (params.skip_pfam && params.skip_funfam && params.skip_nmpfams && params.skip_metagroot) ? "" : "Domains were annotated with hmmer/hmmsearch (Eddy et al. 2011)."
 
     def prediction_text = params.skip_s4pred ? "" : "Secondary structures were predicted via the s4pred software (Moffat et al. 2021)."
 
@@ -202,7 +206,7 @@ def toolBibliographyText() {
         params.skip_preprocessing ? '' : '<li>Shen, W., Sipos, B., & Zhao, L. (2024). SeqKit2: A Swiss army knife for sequence and alignment processing. Imeta, 3(3), e191. doi: <a href="https://doi.org/10.1002/imt2.191">10.1002/imt2.191</a></li>'
     ].join(' ').trim()
 
-    def domain_annotation_text = (params.skip_pfam && params.skip_funfam) ? '' : '<li>Eddy, S. R. (2011). Accelerated profile HMM searches. PLoS computational biology, 7(10), e1002195. doi: <a href="https://doi.org/10.1371/journal.pcbi.1002195">10.1371/journal.pcbi.1002195</a></li>'
+    def domain_annotation_text = (params.skip_pfam && params.skip_funfam && params.skip_nmpfams && params.skip_metagroot) ? '' : '<li>Eddy, S. R. (2011). Accelerated profile HMM searches. PLoS computational biology, 7(10), e1002195. doi: <a href="https://doi.org/10.1371/journal.pcbi.1002195">10.1371/journal.pcbi.1002195</a></li>'
 
     def prediction_text = params.skip_s4pred ? '' : '<li>Moffat, L., & Jones, D. T. (2021). Increasing the accuracy of single sequence prediction methods using a deep semi-supervised learning framework. Bioinformatics, 37(21), 3744-3751. doi: <a href="https://doi.org/10.1093/bioinformatics/btab491">10.1093/bioinformatics/btab491</a></li>'
 
