@@ -1,6 +1,6 @@
 {
     "@context": [
-        "https://w3id.org/ro/crate/1.2/context",
+        "https://w3id.org/ro/crate/1.1/context",
         {
             "GithubService": "https://w3id.org/ro/terms/test#GithubService",
             "JenkinsService": "https://w3id.org/ro/terms/test#JenkinsService",
@@ -112,7 +112,7 @@
             },
             "conformsTo": [
                 {
-                    "@id": "https://w3id.org/ro/crate/1.2"
+                    "@id": "https://w3id.org/ro/crate/1.1"
                 },
                 {
                     "@id": "https://w3id.org/workflowhub/workflow-ro-crate/1.0"
@@ -121,21 +121,41 @@
         },
         {
             "@id": "main.nf",
-            "@type": ["File", "SoftwareSourceCode", "ComputationalWorkflow"],
-            "contributor": [
+            "@type": [
+                "File",
+                "SoftwareSourceCode",
+                "ComputationalWorkflow"
+            ],
+            "author": [
                 {
                     "@id": "https://orcid.org/0000-0003-4412-7970"
-                },
+                }
+            ],
+            "contributor": [
                 {
-                    "@id": "https://orcid.org/0000-0001-9132-8981"
+                    "@id": "https://orcid.org/0000-0002-9052-6000"
                 }
             ],
             "dateCreated": "",
             "dateModified": "2026-07-24T12:36:11Z",
             "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalWorkflow/1.0-RELEASE/",
-            "keywords": ["nf-core", "nextflow", "annotation", "proteomics"],
-            "license": ["MIT"],
-            "name": ["nf-core/proteinannotator"],
+            "keywords": [
+                "nf-core",
+                "nextflow",
+                "annotation",
+                "proteomics"
+            ],
+            "license": [
+                "MIT"
+            ],
+            "maintainer": [
+                {
+                    "@id": "https://orcid.org/0000-0001-9132-8981"
+                }
+            ],
+            "name": [
+                "nf-core/proteinannotator"
+            ],
             "programmingLanguage": {
                 "@id": "https://w3id.org/workflowhub/workflow-ro-crate#nextflow"
             },
@@ -302,13 +322,26 @@
         {
             "@id": "https://orcid.org/0000-0003-4412-7970",
             "@type": "Person",
-            "email": "olga.botvinnik@gmail.com",
-            "name": "Olga Botvinnik"
+            "affiliation": "Seanome, San Francisco, CA, USA",
+            "email": "olga@seanome.org",
+            "name": "Olga Botvinnik",
+            "url": "https://github.com/olgabot"
+        },
+        {
+            "@id": "https://orcid.org/0000-0002-9052-6000",
+            "@type": "Person",
+            "affiliation": "Network.bio, New York, NY, USA",
+            "email": "heuermh@acm.org",
+            "name": "Michael L Heuer",
+            "url": "https://github.com/heuermh"
         },
         {
             "@id": "https://orcid.org/0000-0001-9132-8981",
             "@type": "Person",
-            "name": "Evangelos Karatzas"
+            "affiliation": "EMBL-EBI",
+            "email": "vangelis@ebi.ac.uk",
+            "name": "Evangelos Karatzas",
+            "url": "https://github.com/vagkaratzas"
         }
     ]
 }
