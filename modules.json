@@ -13,7 +13,8 @@
                     "gunzip": {
                         "branch": "master",
                         "git_sha": "0902eac3012baaf4f9ab6513c8c55acc9353c96c",
-                        "installed_by": ["modules"]
+                        "installed_by": ["modules"],
+                        "patch": "modules/nf-core/gunzip/gunzip.diff"
                     },
                     "hmmer/hmmsearch": {
                         "branch": "master",

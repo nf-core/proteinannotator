@@ -115,6 +115,32 @@ nextflow_process {
 
     }
 
+    test("Should decompress a gz-only filename without a trailing dot") {
+
+        when {
+            params {
+                outdir = "$outputDir"
+            }
+            process {
+                """
+                input[0] = Channel.of([
+                        [],
+                        file(params.modules_testdata_base_path + 'genomics/sarscov2/genome/db/kofamscan/ko_list.gz', checkIfExists: true)
+                    ]
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+            { assert process.success },
+            { assert file(process.out.gunzip[0][1]).name == 'ko_list' }
+            )
+        }
+
+    }
+
     test("Should decompress file with extension appearing multiple times in filename - prefix") {
 
         config './nextflow.config'

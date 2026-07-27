@@ -23,7 +23,7 @@ process GUNZIP {
 	def extension = file(nameWithoutGz).extension
 	def name = file(nameWithoutGz).baseName
     def prefix = task.ext.prefix ?: name
-    gunzip = prefix + ".${extension}"
+    gunzip = extension ? "${prefix}.${extension}" : prefix
     """
     # Not calling gunzip itself because it creates files
     # with the original group ownership rather than the
@@ -40,7 +40,7 @@ process GUNZIP {
 	def extension = file(nameWithoutGz).extension
 	def name = file(nameWithoutGz).baseName
     def prefix = task.ext.prefix ?: name
-    gunzip = prefix + ".${extension}"
+    gunzip = extension ? "${prefix}.${extension}" : prefix
     """
     touch ${gunzip}
     """
