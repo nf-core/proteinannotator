@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Changed`
 
-- [#106](https://github.com/nf-core/proteinfamilies/pull/106) - nf-core tools template update to 4.0.3. (by @vagkaratzas)
+- [#106](https://github.com/nf-core/proteinannotator/pull/106) - nf-core tools template update to 4.0.3. (by @vagkaratzas)
 
 ## v1.1.0 - [2026/05/07]
 
@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Changed`
 
-- [#93](https://github.com/nf-core/proteinfamilies/pull/93) - nf-core tools template update to 4.0.2. (by @vagkaratzas)
+- [#93](https://github.com/nf-core/proteinannotator/pull/93) - nf-core tools template update to 4.0.2. (by @vagkaratzas)
 - [#85](https://github.com/nf-core/proteinannotator/pull/85) - `test_full.config` input samplesheet path is now set properly. (by @vagkaratzas)
 
 ### `Dependencies`
