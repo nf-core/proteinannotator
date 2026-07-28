@@ -42,6 +42,7 @@ workflow PROTEINANNOTATOR {
     skip_interproscan       // boolean
     interproscan_db_url     // string, url to download db
     interproscan_db         // string, existing db
+    interproscan_batch_size // integer, number of sequences per batch
     skip_s4pred             // boolean
 
     main:
@@ -71,7 +72,8 @@ workflow PROTEINANNOTATOR {
         FAA_SEQFU_SEQKIT.out.fasta,
         skip_interproscan,
         interproscan_db_url,
-        interproscan_db
+        interproscan_db,
+        interproscan_batch_size
     )
 
     if (!skip_s4pred) {
