@@ -214,9 +214,9 @@
                 "T1026_batch0.json:md5,5c2a40474b1cfb50cd043fe0be5e5d52",
                 "T1026_batch0.tsv:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "T1026_batch0.xml:md5,335552ce1703548565212a1d54681d75",
-                "l_arginase_batch0.gff3:md5,26d1fe410d320fea4cb4e635359c9535",
+                "l_arginase_batch0.gff3:md5,3362ac4dde1351d84ef66d81369297f1",
                 "l_arginase_batch0.json:md5,e0d127dd8a952cbd798999851d1338e6",
-                "l_arginase_batch0.tsv:md5,e72024f44571a780abb597b4fe0a6a82",
+                "l_arginase_batch0.tsv:md5,3007fcbf69e07173deb698ad465f5545",
                 "l_arginase_batch0.xml:md5,7248992d9c1618cf7baa7515ae79ce32",
                 "multiqc_T1024_after.txt:md5,f2a552d4750ff8360941b10cec141499",
                 "multiqc_T1024_before.txt:md5,f2a552d4750ff8360941b10cec141499",
@@ -248,10 +248,10 @@
                 "GI|225038609|EFDID|719595|FULL.ss2:md5,e7d8eaa84d46a6a714ffe00d7f21cdfb"
             ]
         ],
-        "timestamp": "2026-05-05T11:10:57.929189129",
         "meta": {
-            "nf-test": "0.9.5",
-            "nextflow": "26.04.0"
-        }
+            "nf-test": "0.9.2",
+            "nextflow": "25.10.4"
+        },
+        "timestamp": "2026-07-27T17:01:25.693103"
     }
 }

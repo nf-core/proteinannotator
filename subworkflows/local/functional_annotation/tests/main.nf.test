@@ -21,6 +21,7 @@ nextflow_workflow {
                 input[1] = false
                 input[2] = params.pipelines_testdata_base_path + '/testdata/interproscan/interproscan_test.tar.gz'
                 input[3] = []
+                input[4] = 1000
                 """
             }
         }
@@ -49,6 +50,7 @@ nextflow_workflow {
                 input[1] = true
                 input[2] = []
                 input[3] = []
+                input[4] = 1000
                 """
             }
         }
