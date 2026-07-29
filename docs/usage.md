@@ -7,7 +7,7 @@
 ## Introduction
 
 **nf-core/proteinannotator** is a bioinformatics pipeline that computes statistics and generates sequence-level annotations for amino acid sequences.
-It takes a protein FASTA file as input and performs conserved domain annotation (using Pfam, FunFam, NMPFams and metagRoot HMM databases), functional annotation (using InterProScan), and secondary structure prediction (using s4pred).
+It takes a protein FASTA file as input and performs conserved domain annotation (using Pfam, FunFam, NMPFams and metagRoot HMM databases), functional annotation (using InterProScan and KOfamScan), and secondary structure prediction (using s4pred).
 Optionally, paths to pre-downloaded databases can be provided to skip the automatic download steps and speed up repeated runs.
 
 ## Samplesheet input
@@ -121,6 +121,12 @@ interproscan_db/
     ├── superfamily
     └── tmhmm
 ```
+
+### KOfamScan
+
+[KOfamScan](https://github.com/takaram/kofam_scan) assigns KEGG Orthologs to protein sequences using the KOfam profile HMM database and KO-specific score thresholds. It runs by default and can be disabled with `--skip_kofamscan`.
+
+The pipeline downloads and prepares both database components from the [official KOfam database](https://www.genome.jp/ftp/db/kofam/) and saves them under `downloaded_dbs/kofam/`. To reuse an existing database, provide `--kofamscan_profiles /path/to/profiles` and `--kofamscan_ko_list /path/to/ko_list`.
 
 ## Updating the pipeline
 

@@ -1,4 +1,26 @@
 {
+    "faa - KOfamScan annotation - automatic database download": {
+        "content": [
+            [
+                "*\tENSSASP00005000002.1\tK24149\t15566.27\t16515.5\t0\t\"SARS coronavirus replicase polyprotein 1ab\"",
+                "*\tENSSASP00005000002.1\tK25021\t1912.00\t2136.4\t0\t\"SARS coronavirus RNA-directed RNA polymerase [EC:2.7.7.48]\"",
+                "*\tENSSASP00005000002.1\tK25022\t1250.20\t1380.1\t0\t\"SARS coronavirus helicase [EC:5.6.2.3 3.6.4.13]\"",
+                "*\tENSSASP00005000004.1\tK24152\t2410.87\t2762.7\t0\t\"SARS coronavirus spike glycoprotein\"",
+                "*\tENSSASP00005000005.1\tK24106\t900.47\t951.6\t2.5e-290\t\"SARS coronavirus nucleocapsid protein\"",
+                "*\tENSSASP00005000006.1\tK24579\t484.60\t580.9\t2.1e-178\t\"SARS coronavirus accessory protein 3a\"",
+                "*\tENSSASP00005000007.1\tK24150\t476.73\t498.3\t1.5e-153\t\"SARS coronavirus membrane protein\"",
+                "*\tENSSASP00005000009.1\tK24581\t206.03\t250.1\t2e-78\t\"SARS coronavirus accessory protein 7a\"",
+                "*\tENSSASP00005000010.1\tK24151\t160.77\t164.0\t4.4e-52\t\"SARS coronavirus envelope small membrane protein\"",
+                "*\tENSSASP00005000011.1\tK24580\t92.50\t131.5\t5.6e-42\t\"SARS coronavirus accessory protein 6\"",
+                "*\tENSSASP00005000012.1\tK24582\t77.37\t100.8\t1.5e-32\t\"SARS coronavirus accessory protein 7b\""
+            ]
+        ],
+        "timestamp": "2026-07-27T13:35:25.988235",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "26.04.3"
+        }
+    },
     "l_asparaginase - faa - functional annotation": {
         "content": [
             true
@@ -13,10 +35,16 @@
         "content": [
             {
                 "0": [
-                    
+
+                ],
+                "1": [
+
                 ],
                 "interproscan_tsv": [
-                    
+
+                ],
+                "kofamscan_tsv": [
+
                 ]
             }
         ],

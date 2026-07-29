@@ -26,6 +26,10 @@
 
 > Jones P, Binns D, Chang HY, Fraser M, Li W, McAnulla C, McWilliam H, Maslen J, Mitchell A, Nuka G, Pesseat S, Quinn, A. F, Sangrador-Vegas A, Scheremetjew M, Yong S-Y, Lopez R, Hunter S. InterProScan 5: genome-scale protein function classification. Bioinformatics. 2014 May 1;30(9):1236-40. doi: 10.1093/bioinformatics/btu031. PubMed PMID: 24451626; PubMed Central PMCID: PMC3998142.
 
+- [KOfamScan](https://pubmed.ncbi.nlm.nih.gov/31742321/)
+
+> Aramaki T, Blanc-Mathieu R, Endo H, Ohkubo K, Kanehisa M, Goto S, Ogata H. KofamKOALA: KEGG Ortholog assignment based on profile HMM and adaptive score threshold. Bioinformatics. 2020 Apr 1;36(7):2251-2252. doi: 10.1093/bioinformatics/btz859. PubMed PMID: 31742321; PubMed Central PMCID: PMC7141845.
+
 - [s4pred](https://pubmed.ncbi.nlm.nih.gov/34213528/)
 
 > Moffat L, Jones DT. Increasing the accuracy of single sequence prediction methods using a deep semi-supervised learning framework. Bioinformatics. 2021 Nov 1;37(21):3744-51. doi: 10.1093/bioinformatics/btab491. PubMed PMID: 34213528; PubMed Central PMCID: PMC8570780.

@@ -42,6 +42,11 @@ workflow PROTEINANNOTATOR {
     skip_interproscan       // boolean
     interproscan_db_url     // string, url to download db
     interproscan_db         // string, existing db
+    skip_kofamscan          // boolean
+    kofamscan_profiles_url  // string, URL to download the KOfam profiles archive
+    kofamscan_profiles      // string, existing KOfam profiles directory
+    kofamscan_ko_list_url   // string, URL to download the compressed KOfam KO list
+    kofamscan_ko_list       // string, existing KOfam KO list
     skip_s4pred             // boolean
 
     main:
@@ -71,7 +76,12 @@ workflow PROTEINANNOTATOR {
         FAA_SEQFU_SEQKIT.out.fasta,
         skip_interproscan,
         interproscan_db_url,
-        interproscan_db
+        interproscan_db,
+        skip_kofamscan,
+        kofamscan_profiles_url,
+        kofamscan_profiles,
+        kofamscan_ko_list_url,
+        kofamscan_ko_list
     )
 
     if (!skip_s4pred) {

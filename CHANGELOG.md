@@ -5,6 +5,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## v1.2.0dev - [date]
 
+### `Added`
+
+- [#110](https://github.com/nf-core/proteinannotator/pull/110) - Added KOfamScan for KEGG Ortholog functional annotation, including automatic database download and local database support. (by @Yixuan39)
+
 ### `Changed`
 
 - [#106](https://github.com/nf-core/proteinannotator/pull/106) - nf-core tools template update to 4.0.3. (by @vagkaratzas)

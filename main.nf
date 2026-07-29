@@ -59,6 +59,11 @@ workflow NFCORE_PROTEINANNOTATOR {
         params.skip_interproscan,
         params.interproscan_db_url,
         params.interproscan_db,
+        params.skip_kofamscan,
+        params.kofamscan_profiles_url,
+        params.kofamscan_profiles,
+        params.kofamscan_ko_list_url,
+        params.kofamscan_ko_list,
         params.skip_s4pred
     )
     emit:
