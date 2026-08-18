@@ -27,12 +27,10 @@ workflow FUNCTIONAL_ANNOTATION {
     //
     // SUBWORKFLOW: Run Diamond
     //
-
     DIAMOND(
         ch_fasta
     )
     ch_diamond_tsv = DIAMOND.out.tsv
-    ch_versions = ch_versions.mix(DIAMOND.out.versions.first())
 
     //
     // SUBWORKFLOW: Run Interproscan

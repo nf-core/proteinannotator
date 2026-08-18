@@ -14,13 +14,9 @@ process DIAMONDPREPARETAXA {
     val taxondmp_zip // NCBI taxonomy dump URL; default: ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
 
     output:
-    path "taxa/nodes.dmp"   , emit: taxonnodes
-    path "taxa/names.dmp"   , emit: taxonnames
-    path "versions.yml"     , emit: versions
-    // updated versioning method to be implemented
-    // tuple val("${task.process}"), val('wget'),
-    // eval('wget --version | head -n1 | sed "s/GNU Wget //" | sed "s/ .*//"'),
-    // emit: versions, topic: versions
+    path "taxa/nodes.dmp", emit: taxonnodes
+    path "taxa/names.dmp", emit: taxonnames
+    tuple val("${task.process}"), val('wget'), eval('wget --version | head -n1 | sed "s/GNU Wget //" | sed "s/ .*//"'), topic: versions, emit: versions_wget
 
     when:
     task.ext.when == null || task.ext.when
@@ -30,11 +26,6 @@ process DIAMONDPREPARETAXA {
     mkdir -p taxa/
     wget -q ${taxondmp_zip}
     tar -xzf taxdump.tar.gz -C taxa/
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        wget: \$(wget --version | head -n1 | sed 's/GNU Wget //' | sed 's/ .*//')
-    END_VERSIONS
     """
 
     stub:
@@ -42,10 +33,5 @@ process DIAMONDPREPARETAXA {
     mkdir -p taxa/
     touch taxa/nodes.dmp
     touch taxa/names.dmp
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        wget: "stub"
-    END_VERSIONS
     """
 }

@@ -31,6 +31,11 @@ nextflow_workflow {
                 input[1] = true
                 input[2] = []
                 input[3] = []
+                input[4] = true
+                input[5] = []
+                input[6] = []
+                input[7] = []
+                input[8] = []
                 """
             }
         }
@@ -63,6 +68,11 @@ nextflow_workflow {
                 input[1] = true
                 input[2] = []
                 input[3] = []
+                input[4] = true
+                input[5] = []
+                input[6] = []
+                input[7] = []
+                input[8] = []
                 """
             }
         }

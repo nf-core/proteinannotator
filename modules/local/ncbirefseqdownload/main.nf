@@ -12,12 +12,7 @@ process NCBIREFSEQDOWNLOAD {
 
     output:
     path "ncbi_refseq/refseq_fasta.fa.gz", emit: refseq_fasta // reference fasta for diamond/makedb nf-core module
-    path "versions.yml"           , emit: versions
-
-    // updated versioning method to be implemented
-    // tuple val("${task.process}"), val('rsync'),
-    // eval('rsync --version | head -n1 | sed \'s/rsync  version //\''),
-    // emit: versions, topic: versions
+    tuple val("${task.process}"), val('rsync'), eval('rsync --version | head -n1 | sed \'s/rsync  version //\''), emit: versions, topic: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -36,11 +31,6 @@ process NCBIREFSEQDOWNLOAD {
     zcat ncbi_refseq/*/*.faa.gz | gzip -c > ncbi_refseq/refseq_fasta.fa.gz
 
     echo "All RefSeq protein FASTAs aggregated into ncbi_refseq/"
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        rsync: \$(rsync --version | head -n1 | sed 's/rsync  version //')
-    END_VERSIONS
     """
 
     stub:
