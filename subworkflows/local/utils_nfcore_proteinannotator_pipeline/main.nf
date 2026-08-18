@@ -14,7 +14,6 @@ include { samplesheetToList         } from 'plugin/nf-schema'
 include { paramsHelp                } from 'plugin/nf-schema'
 include { completionEmail           } from '../../nf-core/utils_nfcore_pipeline'
 include { completionSummary         } from '../../nf-core/utils_nfcore_pipeline'
-include { imNotification            } from '../../nf-core/utils_nfcore_pipeline'
 include { UTILS_NFCORE_PIPELINE     } from '../../nf-core/utils_nfcore_pipeline'
 include { UTILS_NEXTFLOW_PIPELINE   } from '../../nf-core/utils_nextflow_pipeline'
 
@@ -28,7 +27,7 @@ workflow PIPELINE_INITIALISATION {
     take:
     version           // boolean: Display version and exit
     validate_params   // boolean: Boolean whether to validate parameters against the schema at runtime
-    _monochrome_logs  // boolean: Do not use coloured log outputs
+    monochrome_logs   // boolean: Do not use coloured log outputs
     nextflow_cli_args //   array: List of positional nextflow CLI args
     outdir            //  string: The output directory where the results will be saved
     input             //  string: Path to input samplesheet
@@ -53,6 +52,9 @@ workflow PIPELINE_INITIALISATION {
     //
     // Validate parameters and generate parameter summary to stdout
     //
+
+    def before_text = ""
+    def after_text = ""
     before_text = """
 -\033[2m----------------------------------------------------\033[0m-
                                         \033[0;32m,--.\033[0;30m/\033[0;32m,-.\033[0m
@@ -70,6 +72,10 @@ workflow PIPELINE_INITIALISATION {
 * Software dependencies
     https://github.com/nf-core/proteinannotator/blob/master/CITATIONS.md
 """
+    if (monochrome_logs) {
+        before_text = before_text.replaceAll(/\033\[[0-9;]*m/, '')
+    }
+
     command = "nextflow run ${workflow.manifest.name} -profile <docker/singularity/.../institute> --input samplesheet.csv --outdir <OUTDIR>"
 
     UTILS_NFSCHEMA_PLUGIN (
@@ -81,7 +87,8 @@ workflow PIPELINE_INITIALISATION {
         show_hidden,
         before_text,
         after_text,
-        command
+        command,
+        null
     )
 
     //
@@ -90,6 +97,13 @@ workflow PIPELINE_INITIALISATION {
     UTILS_NFCORE_PIPELINE(
         nextflow_cli_args
     )
+
+    if (!params.skip_kofamscan && !params.kofamscan_profiles && !params.kofamscan_profiles_url) {
+        error "KOfamScan requires `--kofamscan_profiles_url` when `--kofamscan_profiles` is not provided."
+    }
+    if (!params.skip_kofamscan && !params.kofamscan_ko_list && !params.kofamscan_ko_list_url) {
+        error "KOfamScan requires `--kofamscan_ko_list_url` when `--kofamscan_ko_list` is not provided."
+    }
 
     //
     // Create channel from input file provided through input
@@ -122,8 +136,7 @@ workflow PIPELINE_COMPLETION {
     plaintext_email // boolean: Send plain-text email instead of HTML
     outdir //    path: Path to output directory where results will be published
     monochrome_logs // boolean: Disable ANSI colour codes in log output
-    hook_url //  string: hook URL for notifications
-    multiqc_report //  string: Path to MultiQC report
+    multiqc_report  //  string: Path to MultiQC report
 
     main:
     summary_params = paramsSummaryMap(workflow, parameters_schema: "nextflow_schema.json")
@@ -146,13 +159,11 @@ workflow PIPELINE_COMPLETION {
         }
 
         completionSummary(monochrome_logs)
-        if (hook_url) {
-            imNotification(summary_params, hook_url)
-        }
+
     }
 
     workflow.onError {
-        log.error("Pipeline failed. Please refer to troubleshooting docs: https://nf-co.re/docs/usage/troubleshooting")
+        log.error "Pipeline failed. Please refer to troubleshooting docs for common issues: https://nf-co.re/docs/running/troubleshooting"
     }
 }
 
@@ -182,6 +193,11 @@ def toolCitationText() {
 
     def domain_annotation_text = (params.skip_pfam && params.skip_funfam && params.skip_nmpfams && params.skip_metagroot) ? "" : "Domains were annotated with hmmer/hmmsearch (Eddy et al. 2011)."
 
+    def functional_annotation_text = [
+        params.skip_interproscan ? "" : "Protein functions were annotated with InterProScan (Jones et al. 2014).",
+        params.skip_kofamscan ? "" : "KEGG Orthologs were assigned with KOfamScan (Aramaki et al. 2020)."
+    ].join(' ').trim()
+
     def prediction_text = params.skip_s4pred ? "" : "Secondary structures were predicted via the s4pred software (Moffat et al. 2021)."
 
     def postprocessing_text = "Run statistics were reported using MultiQC (Ewels et al. 2016)."
@@ -189,6 +205,7 @@ def toolCitationText() {
     def citation_text = [
         quality_check_text,
         domain_annotation_text,
+        functional_annotation_text,
         prediction_text,
         postprocessing_text
     ].join(' ').trim()
@@ -204,6 +221,11 @@ def toolBibliographyText() {
 
     def domain_annotation_text = (params.skip_pfam && params.skip_funfam && params.skip_nmpfams && params.skip_metagroot) ? '' : '<li>Eddy, S. R. (2011). Accelerated profile HMM searches. PLoS computational biology, 7(10), e1002195. doi: <a href="https://doi.org/10.1371/journal.pcbi.1002195">10.1371/journal.pcbi.1002195</a></li>'
 
+    def functional_annotation_text = [
+        params.skip_interproscan ? '' : '<li>Jones, P., Binns, D., Chang, H. Y., Fraser, M., Li, W., McAnulla, C., McWilliam, H., Maslen, J., Mitchell, A., Nuka, G., Pesseat, S., Quinn, A. F., Sangrador-Vegas, A., Scheremetjew, M., Yong, S. Y., Lopez, R., & Hunter, S. (2014). InterProScan 5: genome-scale protein function classification. Bioinformatics, 30(9), 1236–1240. doi: <a href="https://doi.org/10.1093/bioinformatics/btu031">10.1093/bioinformatics/btu031</a></li>',
+        params.skip_kofamscan ? '' : '<li>Aramaki, T., Blanc-Mathieu, R., Endo, H., Ohkubo, K., Kanehisa, M., Goto, S., & Ogata, H. (2020). KofamKOALA: KEGG Ortholog assignment based on profile HMM and adaptive score threshold. Bioinformatics, 36(7), 2251–2252. doi: <a href="https://doi.org/10.1093/bioinformatics/btz859">10.1093/bioinformatics/btz859</a></li>'
+    ].join(' ').trim()
+
     def prediction_text = params.skip_s4pred ? '' : '<li>Moffat, L., & Jones, D. T. (2021). Increasing the accuracy of single sequence prediction methods using a deep semi-supervised learning framework. Bioinformatics, 37(21), 3744-3751. doi: <a href="https://doi.org/10.1093/bioinformatics/btab491">10.1093/bioinformatics/btab491</a></li>'
 
     def postprocessing_text = '<li>Ewels, P., Magnusson, M., Lundin, S., & Käller, M. (2016). MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics, 32(19), 3047–3048. doi: <a href="https://doi.org/10.1093/bioinformatics/btw354">10.1093/bioinformatics/btw354</a></li>'
@@ -211,6 +233,7 @@ def toolBibliographyText() {
     def reference_text = [
         quality_check_text,
         domain_annotation_text,
+        functional_annotation_text,
         prediction_text,
         postprocessing_text
     ].join(' ').trim()

@@ -1,9 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
 name: functional_annotation
 description: |
-  Performs functional annotation of protein sequences using InterProScan.
-  Optionally downloads and extracts the InterProScan database via ARIA2 and UNTAR,
-  or uses a pre-existing local database. The annotation step can be skipped entirely.
+  Performs functional annotation of protein sequences using InterProScan and KOfamScan.
+  Both databases can be downloaded automatically or supplied locally.
 keywords:
   - annotation
   - functional
@@ -16,11 +15,15 @@ components:
   - diamond
   - interproscan
   - interproscan
+  - kofamscan
+  - kegg
   - proteins
   - fasta
   - aria2
   - untar
+  - gunzip
   - interproscan
+  - kofamscan
 
 input:
   - ch_fasta:
@@ -44,6 +47,28 @@ input:
       description: |
         Path to a pre-existing local InterProScan database directory. When
         provided, the download and extraction steps are skipped.
+  - skip_kofamscan:
+      type: boolean
+      description: |
+        If true, KOfamScan annotation is skipped.
+  - kofamscan_profiles_url:
+      type: string
+      description: |
+        URL to download the KOfam profiles archive. Used when
+        kofamscan_profiles is not provided and skip_kofamscan is false.
+  - kofamscan_profiles:
+      type: string
+      description: |
+        Optional path to a pre-existing KOfam profiles directory.
+  - kofamscan_ko_list_url:
+      type: string
+      description: |
+        URL to download the compressed KOfam KO list. Used when
+        kofamscan_ko_list is not provided and skip_kofamscan is false.
+  - kofamscan_ko_list:
+      type: string
+      description: |
+        Optional path to a pre-existing decompressed KOfam KO list.
 
 output:
   - diamond_tsv:
@@ -59,13 +84,13 @@ output:
         Optional — only produced when skip_interproscan is false.
         Structure: [ val(meta), path(tsv) ]
       pattern: "*.tsv"
-  - versions:
+  - kofamscan_tsv:
       type: file
       description: |
-        File containing software versions for all tools used in the subworkflow.
-        Only populated when skip_interproscan is false (ARIA2 versions collected).
-        Structure: [ path(versions.yml) ]
-      pattern: "versions.yml"
+        Detailed KOfamScan annotation results.
+        Optional — only produced when skip_kofamscan is false.
+        Structure: [ val(meta), path(tsv) ]
+      pattern: "*.tsv"
 
 authors:
   - "@eweizy"
@@ -75,3 +100,4 @@ maintainers:
   - "@tracelail"
   - "@vagkaratzas"
   - "@Muskan-2464"
+  - "@Yixuan39"

@@ -20,6 +20,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 - [Functional annotation](#functional-annotation) Annotate proteins with functional domains
   - [Diamond](#Diamond) - Provide potential homologous protein matches between species
   - [InterProScan](#Interproscan) - Search the InterProScan database for functional domains
+  - [KOfamScan](#kofamscan) - Assign KEGG Orthologs with the KOfam profile database
 - [s4pred](#s4pred) - Predict secondary structures of sequences, producing amino acid level probabilities of forming an α-helix, a β-strand or a coil.
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
@@ -75,10 +76,15 @@ The `seqkit` module is used for initial preprocessing (i.e., gap removal, conver
   - `funfam-hmm3-v4_3_0*.lib.gz`: (optional) The latest (v4_3_0) full, or a minimal test, FunFam HMM database that can be downloaded through the pipeline.
   - `nmpfamsdb.hmm.gz`: (optional) The latest full, or a minimal test, NMPFams HMM database that can be downloaded through the pipeline.
   - `metagroot.hmm.gz`: (optional) The latest full, or a minimal test, metagRoot HMM database that can be downloaded through the pipeline.
+  - `kofam/`: (optional) KOfamScan database files downloaded when KOfamScan is enabled
+    - `profiles.tar.gz`: compressed KOfam profile archive
+    - `profiles/`: extracted KOfam profile HMMs
+    - `ko_list.gz`: compressed KOfam KO list
+    - `ko_list`: decompressed KOfam KO list
 
 </details>
 
-If the `skip_*` flags (e.g., `skip_pfam`, `skip_funfam`, `skip_nmpfams`, `skip_metagroot`, `skip_interproscan`) for each annotation database is set to `true`, or the `*_db` parameter paths (e.g., `pfam_db`, `funfam_db`, `nmpfams_db`, `metagroot_db`, `interproscan_db`) are set (i.e., not `null`), or the run is resumed after a successful database download, then the respective database will not be (re)downloaded. The full database links can be found in the main `nextflow.config` file, while minimal test versions can be found in the `test` and `test_full` profiles (i.e., `conf/test.config`, `conf/test_full.config`).
+If the `skip_*` flags (e.g., `skip_pfam`, `skip_funfam`, `skip_nmpfams`, `skip_metagroot`, `skip_interproscan`, `skip_kofamscan`) for each annotation database is set to `true`, or the database parameter paths (e.g., `pfam_db`, `funfam_db`, `nmpfams_db`, `metagroot_db`, `interproscan_db`, `kofamscan_profiles`, `kofamscan_ko_list`) are set (i.e., not `null`), or the run is resumed after a successful database download, then the respective database will not be (re)downloaded. The full database links can be found in the main `nextflow.config` file, while minimal test versions can be found in the `test` and `test_full` profiles (i.e., `conf/test.config`, `conf/test_full.config`).
 
 [aria2](https://github.com/aria2/aria2/) is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.
 
@@ -103,7 +109,7 @@ If the `skip_*` flags (e.g., `skip_pfam`, `skip_funfam`, `skip_nmpfams`, `skip_m
 
 Each of the `domain_annotation/` subfolders (e.g., `pfam`, `funfam`, `nmpfams`, `metagroot`) contain a `.domtbl.gz` annotation file per input sample, depending on which domain annotation databases were used in the pipeline execution.
 
-[hmmer](https://github.com/EddyRivasLab/hmmer) is a fast and flexible alignment trimming tool that keeps phylogenetically informative sites and removes others.
+[hmmer](https://github.com/EddyRivasLab/hmmer) (HMMER) is a sequence search tool that uses profile hidden Markov models (profile HMMs) to identify homologous sequences against curated databases such as Pfam, FunFam, NMPFams and metagRoot.
 
 ### Functional annotation
 
@@ -115,7 +121,7 @@ Each of the `domain_annotation/` subfolders (e.g., `pfam`, `funfam`, `nmpfams`, 
 - `functional_annotation/`
   - `interproscan/`
     - `<samplename>/`
-      - `<samplename>.gff`: general feature format (GFF) file
+      - `<samplename>.gff3`: general feature format (GFF) file
       - `<samplename>.json`: javascript object notation (JSON) file
       - `<samplename>.tsv`: tab-separated variable (TSV) file
       - `<samplename>.xml`: eXtensible markup language (XML) file
@@ -569,7 +575,17 @@ WP_430799656.1	267	0	267	+	WP_430799656.1	267	0	267	267	267	255	AS:i:528	ZR:i:13
 WP_148044478.1	547	0	547	+	WP_148044478.1	547	0	547	547	547	255	AS:i:1087	ZR:i:2812	ZE:f:0.0
 ```
 
+#### KOfamScan
+
 </details>
+- `functional_annotation/`
+  - `kofamscan/`
+    - `<samplename>/`
+      - `<samplename>.tsv`: detailed KOfamScan hits in tab-separated format
+
+</details>
+
+[KOfamScan](https://github.com/takaram/kofam_scan) searches protein sequences against KOfam profile HMMs and reports KEGG Orthology assignments using KO-specific adaptive score thresholds. The detailed TSV output includes the query identifier, KO identifier, threshold, score, E-value and KO definition.
 
 #### s4pred
 
@@ -586,6 +602,7 @@ WP_148044478.1	547	0	547	+	WP_148044478.1	547	0	547	547	547	255	AS:i:1087	ZR:i:2
 The `s4pred` module is used to predict secondary structures of amino acid sequences.
 
 [s4pred](https://github.com/psipred/s4pred) is a tool for accurate prediction of a protein's secondary structure from only it's amino acid sequence.
+
 ### MultiQC
 
 <details markdown="1">
@@ -601,18 +618,6 @@ The `s4pred` module is used to predict secondary structures of amino acid sequen
 [MultiQC](http://multiqc.info) is a visualization tool that generates a single HTML report summarising all samples in your project. Most of the pipeline QC results are visualised in the report and further statistics are available in the report data directory.
 
 Results generated by MultiQC collate pipeline QC from supported tools e.g. FastQC. The pipeline has special steps which also allow the software versions to be reported in the MultiQC output for future traceability. For more information about how to use MultiQC reports, see <http://multiqc.info>.
-
-### SeqKit stats
-
-<details markdown="1">
-<summary>Output files</summary>
-
-- `seqkit/`
-  - `{prefix}.tsv`: output of `seqkit stats` command on `{prefix}.fasta` input file, in tab-delimited text format.
-
-</details>
-
-[SeqKit stats](https://bioinf.shenwei.me/seqkit/usage/#stats) generates simple statistics for protein FASTA files, such as number of residues, minimal sequence length, average sequence length, and maximal sequence length.
 
 ### Pipeline information
 

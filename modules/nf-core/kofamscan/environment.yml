@@ -4,4 +4,4 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - bioconda::seqkit=2.9.0
+  - bioconda::kofamscan=1.3.0

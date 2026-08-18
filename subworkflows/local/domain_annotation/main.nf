@@ -36,7 +36,6 @@ workflow DOMAIN_ANNOTATION {
             ch_pfam_link = channel.of([ [ id: 'pfam' ], pfam_latest_link ])
 
             ARIA2_PFAM( ch_pfam_link )
-            ch_versions = ch_versions.mix( ARIA2_PFAM.out.versions )
             ch_pfam_db = ARIA2_PFAM.out.downloaded_file
         } else {
             ch_pfam_db = channel.of([ [ id: 'pfam' ], pfam_db ])
@@ -47,7 +46,6 @@ workflow DOMAIN_ANNOTATION {
             .map{ meta, seqs, _meta2, models -> [meta, models, seqs, false, false, true] }
 
         HMMSEARCH_PFAM( ch_input_for_hmmsearch_pfam )
-        ch_versions = ch_versions.mix( HMMSEARCH_PFAM.out.versions.first() )
         ch_pfam_domains = HMMSEARCH_PFAM.out.domain_summary
     }
 
@@ -56,7 +54,6 @@ workflow DOMAIN_ANNOTATION {
             ch_funfam_link = channel.of([ [ id: 'funfam' ], funfam_latest_link ])
 
             ARIA2_FUNFAM( ch_funfam_link )
-            ch_versions = ch_versions.mix( ARIA2_FUNFAM.out.versions )
             ch_funfam_db = ARIA2_FUNFAM.out.downloaded_file
         } else {
             ch_funfam_db = channel.of([ [ id: 'funfam' ], funfam_db ])
@@ -67,7 +64,6 @@ workflow DOMAIN_ANNOTATION {
             .map{ meta, seqs, _meta2, models -> [meta, models, seqs, false, false, true] }
 
         HMMSEARCH_FUNFAM( ch_input_for_hmmsearch_funfam )
-        ch_versions = ch_versions.mix( HMMSEARCH_FUNFAM.out.versions.first() )
         ch_funfam_domains = HMMSEARCH_FUNFAM.out.domain_summary
     }
 
@@ -76,7 +72,6 @@ workflow DOMAIN_ANNOTATION {
             ch_nmpfams_link = channel.of([ [ id: 'nmpfams' ], nmpfams_latest_link ])
 
             ARIA2_NMPFAMS( ch_nmpfams_link )
-            ch_versions = ch_versions.mix( ARIA2_NMPFAMS.out.versions )
             ch_nmpfams_db = ARIA2_NMPFAMS.out.downloaded_file
         } else {
             ch_nmpfams_db = channel.of([ [ id: 'nmpfams' ], nmpfams_db ])
@@ -87,7 +82,6 @@ workflow DOMAIN_ANNOTATION {
             .map{ meta, seqs, _meta2, models -> [meta, models, seqs, false, false, true] }
 
         HMMSEARCH_NMPFAMS( ch_input_for_hmmsearch_nmpfams )
-        ch_versions = ch_versions.mix( HMMSEARCH_NMPFAMS.out.versions.first() )
         ch_nmpfams_domains = HMMSEARCH_NMPFAMS.out.domain_summary
     }
 
@@ -96,7 +90,6 @@ workflow DOMAIN_ANNOTATION {
             ch_metagroot_link = channel.of([ [ id: 'metagroot' ], metagroot_latest_link ])
 
             ARIA2_METAGROOT( ch_metagroot_link )
-            ch_versions = ch_versions.mix( ARIA2_METAGROOT.out.versions )
             ch_metagroot_db = ARIA2_METAGROOT.out.downloaded_file
         } else {
             ch_metagroot_db = channel.of([ [ id: 'metagroot' ], metagroot_db ])
@@ -107,7 +100,6 @@ workflow DOMAIN_ANNOTATION {
             .map{ meta, seqs, _meta2, models -> [meta, models, seqs, false, false, true] }
 
         HMMSEARCH_METAGROOT( ch_input_for_hmmsearch_metagroot )
-        ch_versions = ch_versions.mix( HMMSEARCH_METAGROOT.out.versions.first() )
         ch_metagroot_domains = HMMSEARCH_METAGROOT.out.domain_summary
     }
 
