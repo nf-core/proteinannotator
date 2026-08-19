@@ -16,7 +16,7 @@ process DIAMONDPREPARETAXA {
     output:
     path "taxa/nodes.dmp", emit: taxonnodes
     path "taxa/names.dmp", emit: taxonnames
-    tuple val("${task.process}"), val('wget'), eval('wget --version | head -n1 | sed "s/GNU Wget //" | sed "s/ .*//"'), topic: versions, emit: versions_wget
+    tuple val("${task.process}"), val('curl'), eval('curl --version | head -n1 | sed "s/^curl //; s/ .*//"'), topic: versions, emit: versions_curl
 
     when:
     task.ext.when == null || task.ext.when
@@ -24,7 +24,7 @@ process DIAMONDPREPARETAXA {
     script:
     """
     mkdir -p taxa/
-    wget -q ${taxondmp_zip}
+    curl -sL -o taxdump.tar.gz "${taxondmp_zip}"
     tar -xzf taxdump.tar.gz -C taxa/
     """
 

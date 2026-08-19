@@ -19,7 +19,7 @@ nextflow_workflow {
         when {
             params {
                 refseq_release        = 'other'
-                taxondmp_zip          = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
+                taxondmp_zip          = "file://${moduleDir}/../../../../modules/local/diamondpreparetaxa/tests/mini_taxdump.tar.gz"
                 taxonmap              = "${moduleTestDir}/mini_prot.accession2taxid.gz"
                 diamond_outfmt        = 6
                 diamond_blast_columns = ''
