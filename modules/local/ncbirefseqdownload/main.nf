@@ -4,15 +4,15 @@ process NCBIREFSEQDOWNLOAD {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/r-stitch:1.7.3--r44h64f727c_0':
-        'biocontainers/r-stitch:1.7.3--r44h64f727c_0' }"
+        'oras://community.wave.seqera.io/library/rsync:3.4.4--e7cdbdef11f909e3' :
+        'community.wave.seqera.io/library/rsync:3.4.4--c47965c3c662c89a' }"
 
     input:
     val(refseq_release) // ncbi refseq release category -- default of 'complete'
 
     output:
     path "ncbi_refseq/refseq_fasta.fa.gz", emit: refseq_fasta // reference fasta for diamond/makedb nf-core module
-    tuple val("${task.process}"), val('rsync'), eval('rsync --version | head -n1 | sed \'s/rsync  version //\''), emit: versions, topic: versions
+    tuple val("${task.process}"), val('rsync'), eval('rsync --version | head -n1 | sed \'s/rsync  version //\''), topic: versions, emit: versions_rsync
 
     when:
     task.ext.when == null || task.ext.when
@@ -37,10 +37,5 @@ process NCBIREFSEQDOWNLOAD {
     """
     mkdir -p ncbi_refseq
     echo "" | gzip > ncbi_refseq/refseq_fasta.fa.gz
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        rsync: "stub"
-    END_VERSIONS
     """
 }
