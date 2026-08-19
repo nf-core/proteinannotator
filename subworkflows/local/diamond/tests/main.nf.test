@@ -124,4 +124,37 @@ nextflow_workflow {
             )
         }
     }
+
+    test("Test DIAMOND subworkflow success -- 6 - TXT output -- stub - two samples") {
+        tag "stub"
+        tag "CI"
+
+        options "-stub"
+
+        when {
+            params {
+                refseq_release        = 'other'
+                taxondmp_zip          = 'file://${moduleTestDir}/mini_taxdump.tar.gz'
+                taxonmap              = "${moduleTestDir}/mini_prot.accession2taxid.gz"
+                diamond_outfmt        = 6
+                diamond_blast_columns = ''
+            }
+            workflow {
+                """
+                input[0] = channel.of(
+                    [ [id:'sample1'], file("${moduleTestDir}/test_refseq.fasta", checkIfExists: false) ],
+                    [ [id:'sample2'], file("${moduleTestDir}/test_refseq.fasta", checkIfExists: false) ]
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert workflow.out.txt.size() == 2 },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
 }
