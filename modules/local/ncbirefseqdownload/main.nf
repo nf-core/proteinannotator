@@ -4,15 +4,15 @@ process NCBIREFSEQDOWNLOAD {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'oras://community.wave.seqera.io/library/rsync:3.4.4--e7cdbdef11f909e3' :
-        'community.wave.seqera.io/library/rsync:3.4.4--c47965c3c662c89a' }"
+        'oras://community.wave.seqera.io/library/rclone:1.75.0--740c5f5c731d4cea' :
+        'community.wave.seqera.io/library/rclone:1.75.0--0b2d3444376fb3b2' }"
 
     input:
     val(refseq_release) // ncbi refseq release category -- default of 'complete'
 
     output:
     path "ncbi_refseq/refseq_fasta.fa.gz", emit: refseq_fasta // reference fasta for diamond/makedb nf-core module
-    tuple val("${task.process}"), val('rsync'), eval('rsync --version | head -n1 | sed \'s/rsync  version //\''), topic: versions, emit: versions_rsync
+    tuple val("${task.process}"), val('rclone'), eval('rclone --version | head -n1 | sed "s/rclone //"'), topic: versions, emit: versions_rclone
 
     when:
     task.ext.when == null || task.ext.when
@@ -21,12 +21,11 @@ process NCBIREFSEQDOWNLOAD {
     """
     mkdir -p ncbi_refseq/${refseq_release}/
 
-    rsync \\
-        -av \\
-        --include '*protein.faa.gz' \\
-        --exclude '*' \\
-        rsync://ftp.ncbi.nlm.nih.gov/refseq/release/${refseq_release}/ \\
-        ncbi_refseq/${refseq_release}/
+    rclone copy \\
+        :http:refseq/release/${refseq_release}/ \\
+        ncbi_refseq/${refseq_release}/ \\
+        --http-url https://ftp.ncbi.nlm.nih.gov \\
+        --include '*protein.faa.gz'
 
     zcat ncbi_refseq/*/*.faa.gz | gzip -c > ncbi_refseq/refseq_fasta.fa.gz
 
