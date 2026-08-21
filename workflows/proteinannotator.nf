@@ -47,6 +47,7 @@ workflow PROTEINANNOTATOR {
     kofamscan_profiles      // string, existing KOfam profiles directory
     kofamscan_ko_list_url   // string, URL to download the compressed KOfam KO list
     kofamscan_ko_list       // string, existing KOfam KO list
+    skip_diamond            // boolean
     skip_s4pred             // boolean
 
     main:
@@ -81,7 +82,8 @@ workflow PROTEINANNOTATOR {
         kofamscan_profiles_url,
         kofamscan_profiles,
         kofamscan_ko_list_url,
-        kofamscan_ko_list
+        kofamscan_ko_list,
+        skip_diamond
     )
 
     if (!skip_s4pred) {

@@ -1,46 +1,4 @@
 {
-    "Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success": {
-        "content": [
-            {
-                "0": [],
-                "1": [],
-                "2": [
-                    "versions.yml:md5,360c40011f1cc989e92af5ec14d367c8"
-                ],
-                "diamond_tsv": [],
-                "interproscan_tsv": [],
-                "versions": [
-                    "versions.yml:md5,360c40011f1cc989e92af5ec14d367c8"
-                ]
-            }
-        ],
-        "timestamp": "2026-04-09T10:13:40.576061038",
-        "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.4"
-        }
-    },
-    "Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success - stub": {
-        "content": [
-            {
-                "0": [],
-                "1": [],
-                "2": [
-                    "versions.yml:md5,0f07f649936a9d30bb0203870dc9c256"
-                ],
-                "diamond_tsv": [],
-                "interproscan_tsv": [],
-                "versions": [
-                    "versions.yml:md5,0f07f649936a9d30bb0203870dc9c256"
-                ]
-            }
-        ],
-        "timestamp": "2026-04-06T17:45:00.005789225",
-        "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.4"
-        }
-    },
     "faa - KOfamScan annotation - automatic database download": {
         "content": [
             [
@@ -63,6 +21,35 @@
             "nextflow": "26.04.3"
         }
     },
+    "Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    "versions.yml:md5,360c40011f1cc989e92af5ec14d367c8"
+                ],
+                "diamond_tsv": [
+                    
+                ],
+                "interproscan_tsv": [
+                    
+                ],
+                "versions": [
+                    "versions.yml:md5,360c40011f1cc989e92af5ec14d367c8"
+                ]
+            }
+        ],
+        "timestamp": "2026-04-09T10:13:40.576061038",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
     "l_asparaginase - faa - functional annotation": {
         "content": [
             true
@@ -73,17 +60,104 @@
             "nextflow": "26.04.0"
         }
     },
+    "Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success - stub": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "db": "refseq"
+                        },
+                        "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    
+                ],
+                "7": [
+                    
+                ],
+                "8": [
+                    
+                ],
+                "diamond_blast": [
+                    
+                ],
+                "diamond_daa": [
+                    
+                ],
+                "diamond_paf": [
+                    
+                ],
+                "diamond_sam": [
+                    
+                ],
+                "diamond_tsv": [
+                    
+                ],
+                "diamond_txt": [
+                    [
+                        {
+                            "id": "test",
+                            "db": "refseq"
+                        },
+                        "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "diamond_xml": [
+                    
+                ],
+                "interproscan_tsv": [
+                    
+                ],
+                "kofamscan_tsv": [
+                    
+                ]
+            }
+        ],
+        "timestamp": "2026-08-21T19:35:41.555326075",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    },
     "faa - functional annotation - stub": {
         "content": [
             {
-                "0": [],
-                "1": [],
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
                 "2": [
                     "versions.yml:md5,360c40011f1cc989e92af5ec14d367c8"
                 ],
-                "diamond_tsv": [],
-                "interproscan_tsv": [],
-                "kofamscan_tsv": []
+                "diamond_tsv": [
+                    
+                ],
+                "interproscan_tsv": [
+                    
+                ],
+                "kofamscan_tsv": [
+                    
+                ]
             }
         ],
         "timestamp": "2026-05-05T11:38:15.575589861",

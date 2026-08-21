@@ -49,6 +49,13 @@
             "description": "Options for DIAMOND blastp subworkflow for protein homology searches",
             "default": "",
             "properties": {
+                "skip_diamond": {
+                    "type": "boolean",
+                    "fa_icon": "fas fa-ban",
+                    "description": "Skip the DIAMOND BLASTP taxonomic classification.",
+                    "help": "Skips the DIAMOND BLASTP homology search and taxonomic classification of input sequences against the RefSeq database.",
+                    "default": false
+                },
                 "refseq_release": {
                     "type": "string",
                     "description": "NCBI refseq release category of protein fastas from ftp.ncbi.nlm.nih.gov/refseq/release/",

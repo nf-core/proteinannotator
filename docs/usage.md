@@ -92,8 +92,9 @@ A local version of the database can be supplied to the pipeline by passing the I
 
 ### DIAMOND
 
-Running [Diamond](https://github.com/bbuchfink/diamond) requires five inputs parameters.
+Running [Diamond](https://github.com/bbuchfink/diamond) requires six inputs parameters.
 
+- `--skip_diamond`: Skip the DIAMOND BLASTP taxonomic classification step entirely.
 - `--refseq_release`: NCBI refseq release category of protein fastas for creation of a protein reference database using [`diamond/makedb`](https://nf-co.re/modules/diamond_makedb)
 - `--taxondmp_zip`: Compressed taxon dmp file path to provide taxon names and nodes files for creation of a protein reference database using [`diamond/makedb`]
 - `--taxonmap`: Compressed taxon map file path to provide taxon mapping file for creation of a protein reference database using [`diamond/makedb`]
@@ -108,6 +109,7 @@ Running [Diamond](https://github.com/bbuchfink/diamond) requires five inputs par
 - `--diamond_blast_columns`: Accompanied optional input parameter to `diamond_outfmt`: `*.txt (6)` output format. Space separated list of columns to be included. Options: qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore.
 
 ### Updating the pipeline
+
 ```
 curl -L https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/interproscan-5.72-103.0-64-bit.tar.gz -o interproscan_db/interproscan-5.72-103.0-64-bit.tar.gz
 tar -xzf interproscan_db/interproscan-5.72-103.0-64-bit.tar.gz -C interproscan_db/

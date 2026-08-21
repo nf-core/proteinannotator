@@ -36,6 +36,7 @@ nextflow_workflow {
                 input[6] = []
                 input[7] = []
                 input[8] = []
+                input[9] = false
                 """
             }
         }
@@ -73,6 +74,7 @@ nextflow_workflow {
                 input[6] = []
                 input[7] = []
                 input[8] = []
+                input[9] = false
                 """
             }
         }
@@ -101,6 +103,7 @@ nextflow_workflow {
                 input[6] = []
                 input[7] = []
                 input[8] = []
+                input[9] = true
                 """
             }
         }
@@ -133,6 +136,7 @@ nextflow_workflow {
                 input[6] = []
                 input[7] = []
                 input[8] = []
+                input[9] = true
                 """
             }
         }
@@ -163,6 +167,7 @@ nextflow_workflow {
                 input[6] = []
                 input[7] = params.modules_testdata_base_path + 'genomics/sarscov2/genome/db/kofamscan/ko_list.gz'
                 input[8] = []
+                input[9] = true
                 """
             }
         }
