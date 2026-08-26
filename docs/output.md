@@ -369,14 +369,16 @@ The XML Schema Definition (XSD) is available [here](http://ftp.ebi.ac.uk/pub/sof
 <details markdown="1">
 <summary>Output files</summary>
 
-- `functional_annotation/diamond`
-  - `*.blast (0)`: (Basic Local Alignment Search Tool) BLAST pairwise format
-  - `*.xml (5)`: BLAST Extensible Markup Language (XML) format
-  - `*.txt (6)`: BLAST tabular format (default). This format can be customized, the 6 may be followed by a space-separated list of the blast_columns keywords, each specifying a field of the output.
-  - `*.daa (100)`: DIAMOND alignment archive (DAA). The DAA format is a proprietary binary format that can subsequently be used to generate other output formats using the view command. It is also supported by MEGAN and allows a quick import of results.
-  - `*.sam (101)`: SAM format.
-  - `*.tsv (102)`: Taxonomic classification. This format will not print alignments but only a taxonomic classification for each query using the LCA algorithm.
-  - `*.paf (103)`: PAF format. The custom fields in the format are AS (bit score), ZR (raw score) and ZE (e-value)
+- `functional_annotation/`
+  - `diamond/`
+    - `<samplename>/`
+      - `*.blast (0)`: (Basic Local Alignment Search Tool) BLAST pairwise format
+      - `*.xml (5)`: BLAST Extensible Markup Language (XML) format
+      - `*.txt (6)`: BLAST tabular format (default). This format can be customized, the 6 may be followed by a space-separated list of the blast_columns keywords, each specifying a field of the output.
+      - `*.daa (100)`: DIAMOND alignment archive (DAA). The DAA format is a proprietary binary format that can subsequently be used to generate other output formats using the view command. It is also supported by MEGAN and allows a quick import of results.
+      - `*.sam (101)`: SAM format.
+      - `*.tsv (102)`: Taxonomic classification. This format will not print alignments but only a taxonomic classification for each query using the LCA algorithm.
+      - `*.paf (103)`: PAF format. The custom fields in the format are AS (bit score), ZR (raw score) and ZE (e-value)
 
 </details>
 
