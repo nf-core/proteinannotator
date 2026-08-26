@@ -25,7 +25,8 @@ process NCBIREFSEQDOWNLOAD {
         :http:refseq/release/${refseq_release}/ \\
         ncbi_refseq/${refseq_release}/ \\
         --http-url https://ftp.ncbi.nlm.nih.gov \\
-        --include '*protein.faa.gz'
+        --include '*protein.faa.gz' \\
+        --user-agent "Mozilla/5.0"
 
     zcat ncbi_refseq/*/*.faa.gz | gzip -c > ncbi_refseq/refseq_fasta.fa.gz
 

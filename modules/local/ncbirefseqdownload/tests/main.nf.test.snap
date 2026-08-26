@@ -1,24 +1,4 @@
 {
-    "versions_stub": {
-        "content": null,
-        "timestamp": "2026-08-20T18:54:43.600627847",
-        "meta": {
-            "nf-test": "0.9.5",
-            "nextflow": "26.04.6"
-        }
-    },
-    "versions": {
-        "content": [
-            [
-                "versions.yml:md5,9fabe17275a444ef94e5e2dedcac4f32"
-            ]
-        ],
-        "timestamp": "2026-04-06T13:39:51.888472042",
-        "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.4"
-        }
-    },
     "Should download ncbi refseq 'other' zipped protein fasta -- stub": {
         "content": [
             {
@@ -57,20 +37,28 @@
                     "refseq_fasta.fa.gz:md5,af9fbb4c725173a9286979c7f1c6a67e"
                 ],
                 "1": [
-                    "versions.yml:md5,9fabe17275a444ef94e5e2dedcac4f32"
+                    [
+                        "NCBIREFSEQDOWNLOAD",
+                        "rclone",
+                        "v1.75.0"
+                    ]
                 ],
                 "refseq_fasta": [
                     "refseq_fasta.fa.gz:md5,af9fbb4c725173a9286979c7f1c6a67e"
                 ],
-                "versions": [
-                    "versions.yml:md5,9fabe17275a444ef94e5e2dedcac4f32"
+                "versions_rclone": [
+                    [
+                        "NCBIREFSEQDOWNLOAD",
+                        "rclone",
+                        "v1.75.0"
+                    ]
                 ]
             }
         ],
-        "timestamp": "2026-04-06T13:39:51.876586473",
+        "timestamp": "2026-08-26T14:52:02.541271594",
         "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.4"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
         }
     }
 }
