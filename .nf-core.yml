@@ -3,12 +3,15 @@ lint:
     - .github/workflows/ci.yml
     - conf/igenomes.config
     - conf/igenomes_ignored.config
+    - .github/workflows/linting_comment.yml
   files_unchanged:
     - assets/nf-core-proteinannotator_logo_light.png
     - docs/images/nf-core-proteinannotator_logo_light.png
     - docs/images/nf-core-proteinannotator_logo_dark.png
     - .github/PULL_REQUEST_TEMPLATE.md
-nf_core_version: 4.0.3
+    - .github/workflows/branch.yml
+    - .github/workflows/linting.yml
+nf_core_version: 4.1.0
 repository_type: pipeline
 template:
   author: Olga Botvinnik, Evangelos Karatzas
