@@ -16,9 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Dependencies`
 
-| Tool    | Previous version | New version |
-| ------- | ---------------- | ----------- |
-| seqkit  | 2.9.0            | 2.13.0      |
+| Tool   | Previous version | New version |
+| ------ | ---------------- | ----------- |
+| seqkit | 2.9.0            | 2.13.0      |
 
 ## v1.1.0 - [2026/05/07]
 
