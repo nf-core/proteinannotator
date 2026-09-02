@@ -69,9 +69,6 @@ workflow UTILS_NFSCHEMA_PLUGIN {
         if(cli_typecast != null) {
             validateOptions << [cast_cli_params: cli_typecast]
         }
-        if(cli_typecast != null) {
-            validateOptions << [cliTypecast: cli_typecast]
-        }
         validateParameters(validateOptions)
     }
 
