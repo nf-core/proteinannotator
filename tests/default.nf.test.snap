@@ -55,13 +55,13 @@
                     "seqfu": "1.22.3"
                 },
                 "SEQKIT_REPLACE": {
-                    "seqkit": "2.9.0"
+                    "seqkit": "2.13.0"
                 },
                 "SEQKIT_RMDUP": {
-                    "seqkit": "2.9.0"
+                    "seqkit": "2.13.0"
                 },
                 "SEQKIT_SEQ": {
-                    "seqkit": "2.9.0"
+                    "seqkit": "2.13.0"
                 },
                 "UNTAR_INTERPROSCAN": {
                     "untar": 1.34
@@ -451,10 +451,10 @@
                 "GI|225038609|EFDID|719595|FULL.ss2:md5,e7d8eaa84d46a6a714ffe00d7f21cdfb"
             ]
         ],
-        "timestamp": "2026-07-27T13:43:53.452281",
+        "timestamp": "2026-09-02T11:22:22.960095437",
         "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.4"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
         }
     }
 }
