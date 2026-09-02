@@ -3,7 +3,7 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## v1.2.0dev - [unreleased<!-- TODO nf-core: replace with date on release -->]
+## v1.2.0dev - [unreleased]
 
 ### `Added`
 
@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Changed`
 
+- [#111](https://github.com/nf-core/proteinannotator/pull/111) - nf-core tools template update to 4.1.0. (by @vagkaratzas)
 - [#106](https://github.com/nf-core/proteinannotator/pull/106) - nf-core tools template update to 4.0.3. (by @vagkaratzas)
 
 ## v1.1.0 - [2026/05/07]
