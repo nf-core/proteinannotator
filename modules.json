@@ -5,15 +5,76 @@
         "https://github.com/nf-core/modules.git": {
             "modules": {
                 "nf-core": {
+                    "aria2": {
+                        "branch": "master",
+                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "installed_by": ["modules"]
+                    },
+                    "gunzip": {
+                        "branch": "master",
+                        "git_sha": "0902eac3012baaf4f9ab6513c8c55acc9353c96c",
+                        "installed_by": ["modules"],
+                        "patch": "modules/nf-core/gunzip/gunzip.diff"
+                    },
+                    "hmmer/hmmsearch": {
+                        "branch": "master",
+                        "git_sha": "a971f6723149313787b278969dcbe0fb4411bb4a",
+                        "installed_by": ["modules"]
+                    },
+                    "interproscan": {
+                        "branch": "master",
+                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "installed_by": ["modules"]
+                    },
+                    "kofamscan": {
+                        "branch": "master",
+                        "git_sha": "9d675a431e1fcd9dc4043edcc9b1c26b5c2377c0",
+                        "installed_by": ["modules"]
+                    },
                     "multiqc": {
                         "branch": "master",
                         "git_sha": "98403d15b0e50edae1f3fec5eae5e24982f1fade",
+                        "installed_by": ["modules"]
+                    },
+                    "s4pred/runmodel": {
+                        "branch": "master",
+                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "installed_by": ["modules"]
+                    },
+                    "seqfu/stats": {
+                        "branch": "master",
+                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "installed_by": ["faa_seqfu_seqkit"]
+                    },
+                    "seqkit/replace": {
+                        "branch": "master",
+                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "installed_by": ["faa_seqfu_seqkit"]
+                    },
+                    "seqkit/rmdup": {
+                        "branch": "master",
+                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "installed_by": ["faa_seqfu_seqkit"]
+                    },
+                    "seqkit/seq": {
+                        "branch": "master",
+                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "installed_by": ["faa_seqfu_seqkit"]
+                    },
+                    "untar": {
+                        "branch": "master",
+                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
                         "installed_by": ["modules"]
                     }
                 }
             },
             "subworkflows": {
                 "nf-core": {
+                    "faa_seqfu_seqkit": {
+                        "branch": "master",
+                        "git_sha": "bf70cbf44b42ff4a81afcb673fcef604f5ef3a85",
+                        "installed_by": ["subworkflows"]
+                    },
                     "utils_nextflow_pipeline": {
                         "branch": "master",
                         "git_sha": "c2b22d85f30a706a3073387f30380704fcae013b",
