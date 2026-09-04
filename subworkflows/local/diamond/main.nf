@@ -5,7 +5,7 @@ include { DIAMOND_BLASTP     } from '../../../modules/nf-core/diamond/blastp/mai
 
 workflow DIAMOND {
     take:
-    ch_fasta // channel: [ val(meta), [ fasta ] ]
+    ch_fasta      // channel: [ val(meta), [ fasta ] ]
 
     main:
 
@@ -15,7 +15,7 @@ workflow DIAMOND {
     )
     ch_diamond_reference_fasta = NCBIREFSEQDOWNLOAD.out.refseq_fasta.map { file -> [ [id: 'refseq'], file ] }
 
-    DIAMONDPREPARETAXA (
+    DIAMONDPREPARETAXA(
         params.taxondmp_zip
     )
     ch_taxonnodes = DIAMONDPREPARETAXA.out.taxonnodes

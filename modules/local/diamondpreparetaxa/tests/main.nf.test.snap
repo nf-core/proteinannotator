@@ -8,32 +8,18 @@
                 "1": [
                     "names.dmp:md5,d41d8cd98f00b204e9800998ecf8427e"
                 ],
-                "2": [
-                    [
-                        "DIAMONDPREPARETAXA",
-                        "curl",
-                        "8.14.1"
-                    ]
-                ],
                 "taxonnames": [
                     "names.dmp:md5,d41d8cd98f00b204e9800998ecf8427e"
                 ],
                 "taxonnodes": [
                     "nodes.dmp:md5,d41d8cd98f00b204e9800998ecf8427e"
-                ],
-                "versions_curl": [
-                    [
-                        "DIAMONDPREPARETAXA",
-                        "curl",
-                        "8.14.1"
-                    ]
                 ]
             }
         ],
-        "timestamp": "2026-08-18T21:28:40.378814708",
+        "timestamp": "2026-09-03T19:52:21.122291124",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.4"
+            "nextflow": "26.04.6"
         }
     },
     "Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files": {
@@ -45,32 +31,41 @@
                 "1": [
                     "names.dmp:md5,d0b9ab68938991757886bd7515f2de3f"
                 ],
-                "2": [
-                    [
-                        "DIAMONDPREPARETAXA",
-                        "curl",
-                        "8.14.1"
-                    ]
-                ],
                 "taxonnames": [
                     "names.dmp:md5,d0b9ab68938991757886bd7515f2de3f"
                 ],
                 "taxonnodes": [
                     "nodes.dmp:md5,5526506044a931be50f09e32fe9ac5ce"
-                ],
-                "versions_curl": [
-                    [
-                        "DIAMONDPREPARETAXA",
-                        "curl",
-                        "8.14.1"
-                    ]
                 ]
             }
         ],
-        "timestamp": "2026-08-18T21:28:32.161295189",
+        "timestamp": "2026-09-03T19:52:08.712261138",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.4"
+            "nextflow": "26.04.6"
+        }
+    },
+    "Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files -- live test": {
+        "content": [
+            {
+                "0": [
+                    "nodes.dmp:md5,632a80bd63b693eafde4145e81f45475"
+                ],
+                "1": [
+                    "names.dmp:md5,6f29ebccb26570d226cdb6757fcf8f3a"
+                ],
+                "taxonnames": [
+                    "names.dmp:md5,6f29ebccb26570d226cdb6757fcf8f3a"
+                ],
+                "taxonnodes": [
+                    "nodes.dmp:md5,632a80bd63b693eafde4145e81f45475"
+                ]
+            }
+        ],
+        "timestamp": "2026-09-03T19:10:47.081419013",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
         }
     }
 }

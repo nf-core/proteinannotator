@@ -4,19 +4,17 @@ process DIAMONDPREPARETAXA {
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
-    container "${workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/diamond:2.1.12--hdb4b4cc_1' :
-        'biocontainers/diamond:2.1.12--hdb4b4cc_1'}"
-    // Note: diamond container is used here for convenience (includes wget/tar);
-    // a minimal linux container would be more correct for this download-only process.
+    container "${workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container
+        ? 'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data'
+        : 'community.wave.seqera.io/library/coreutils_grep_gzip_lbzip2_pruned:838ba80435a629f8'}"
 
     input:
-    val taxondmp_zip // NCBI taxonomy dump URL; default: ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
+    path taxondmp_zip // NCBI taxonomy dump URL; default: ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
 
     output:
     path "taxa/nodes.dmp", emit: taxonnodes
     path "taxa/names.dmp", emit: taxonnames
-    tuple val("${task.process}"), val('curl'), eval('curl --version | head -n1 | sed "s/^curl //; s/ .*//"'), topic: versions, emit: versions_curl
+    tuple val("${task.process}"), val('tar'), eval('tar --version 2>&1 | head -1 | sed "s/tar (GNU tar) //; s/ Copyright.*//"'), emit: versions_tar, topic: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -24,8 +22,7 @@ process DIAMONDPREPARETAXA {
     script:
     """
     mkdir -p taxa/
-    curl -sL -o taxdump.tar.gz "${taxondmp_zip}"
-    tar -xzf taxdump.tar.gz -C taxa/
+    tar -xzf ${taxondmp_zip} -C taxa/
     """
 
     stub:
