@@ -31,23 +31,71 @@
                     
                 ],
                 "2": [
-                    "versions.yml:md5,360c40011f1cc989e92af5ec14d367c8"
+                    [
+                        {
+                            "id": "test",
+                            "db": "refseq"
+                        },
+                        "test.refseq.txt:md5,f58fdf4044f9e4bf42da7e2c05f581f5"
+                    ]
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    
+                ],
+                "7": [
+                    
+                ],
+                "8": [
+                    
+                ],
+                "diamond_blast": [
+                    
+                ],
+                "diamond_daa": [
+                    
+                ],
+                "diamond_paf": [
+                    
+                ],
+                "diamond_sam": [
+                    
                 ],
                 "diamond_tsv": [
+                    
+                ],
+                "diamond_txt": [
+                    [
+                        {
+                            "id": "test",
+                            "db": "refseq"
+                        },
+                        "test.refseq.txt:md5,f58fdf4044f9e4bf42da7e2c05f581f5"
+                    ]
+                ],
+                "diamond_xml": [
                     
                 ],
                 "interproscan_tsv": [
                     
                 ],
-                "versions": [
-                    "versions.yml:md5,360c40011f1cc989e92af5ec14d367c8"
+                "kofamscan_tsv": [
+                    
                 ]
             }
         ],
-        "timestamp": "2026-04-09T10:13:40.576061038",
+        "timestamp": "2026-09-04T19:18:12.745998853",
         "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.4"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
         }
     },
     "l_asparaginase - faa - functional annotation": {
@@ -147,9 +195,45 @@
                     
                 ],
                 "2": [
-                    "versions.yml:md5,360c40011f1cc989e92af5ec14d367c8"
+                    
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    
+                ],
+                "7": [
+                    
+                ],
+                "8": [
+                    
+                ],
+                "diamond_blast": [
+                    
+                ],
+                "diamond_daa": [
+                    
+                ],
+                "diamond_paf": [
+                    
+                ],
+                "diamond_sam": [
+                    
                 ],
                 "diamond_tsv": [
+                    
+                ],
+                "diamond_txt": [
+                    
+                ],
+                "diamond_xml": [
                     
                 ],
                 "interproscan_tsv": [
@@ -160,10 +244,10 @@
                 ]
             }
         ],
-        "timestamp": "2026-05-05T11:38:15.575589861",
+        "timestamp": "2026-09-04T19:18:52.396065383",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.4"
+            "nextflow": "26.04.6"
         }
     }
 }
