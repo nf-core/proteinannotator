@@ -9,12 +9,12 @@ keywords:
   - database
   - classification
 tools:
-  - "curl":
-      description: Command-line tool and library for transferring data with URLs
-      homepage: "https://curl.se/"
-      documentation: "https://curl.se/docs/"
-      tool_dev_url: "https://github.com/curl/curl"
-      licence: ["curl"]
+  - untar:
+      description: |
+        Extract tar, tar.gz, tar.bz2, tar.xz files.
+      documentation: https://www.gnu.org/software/tar/manual/
+      licence: ["GPL-3.0-or-later"]
+      identifier: ""
   - "diamond":
       description: Accelerated BLAST-compatible local sequence aligner
       homepage: "https://github.com/bbuchfink/diamond"
