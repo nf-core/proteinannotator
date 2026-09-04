@@ -5,3 +5,4 @@ channels:
   - bioconda
 dependencies:
   - "conda-forge::rclone=1.75.0"
+  - conda-forge::ca-certificates

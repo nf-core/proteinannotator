@@ -4,8 +4,8 @@ process NCBIREFSEQDOWNLOAD {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'oras://community.wave.seqera.io/library/rclone:1.75.0--740c5f5c731d4cea' :
-        'community.wave.seqera.io/library/rclone:1.75.0--0b2d3444376fb3b2' }"
+        'oras://community.wave.seqera.io/library/ca-certificates_rclone:c3d926a2a2b1e656' :
+        'community.wave.seqera.io/library/ca-certificates_rclone:ebc43190fc56df7c' }"
 
     input:
     val(refseq_release) // ncbi refseq release category -- default of 'complete'
@@ -19,6 +19,9 @@ process NCBIREFSEQDOWNLOAD {
 
     script:
     """
+    if [ -f /opt/conda/ssl/cacert.pem ]; then
+        export SSL_CERT_FILE=/opt/conda/ssl/cacert.pem
+    fi
     mkdir -p ncbi_refseq/${refseq_release}/
 
     rclone copy \\

@@ -9,7 +9,7 @@
                     [
                         "NCBIREFSEQDOWNLOAD",
                         "rclone",
-                        "v1.75.0"
+                        "v1.75.0-DEV"
                     ]
                 ],
                 "refseq_fasta": [
@@ -19,12 +19,12 @@
                     [
                         "NCBIREFSEQDOWNLOAD",
                         "rclone",
-                        "v1.75.0"
+                        "v1.75.0-DEV"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-08-20T18:54:43.579551367",
+        "timestamp": "2026-09-03T20:23:28.920384752",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
@@ -40,7 +40,7 @@
                     [
                         "NCBIREFSEQDOWNLOAD",
                         "rclone",
-                        "v1.75.0"
+                        "v1.75.0-DEV"
                     ]
                 ],
                 "refseq_fasta": [
@@ -50,12 +50,12 @@
                     [
                         "NCBIREFSEQDOWNLOAD",
                         "rclone",
-                        "v1.75.0"
+                        "v1.75.0-DEV"
                     ]
                 ]
             }
         ],
-        "timestamp": "2026-08-26T14:52:02.541271594",
+        "timestamp": "2026-09-03T20:23:21.042978854",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
