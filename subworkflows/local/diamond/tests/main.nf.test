@@ -5,7 +5,6 @@ nextflow_workflow {
     workflow "DIAMOND"
 
     tag "subworkflows"
-    tag "subworkflows_"
     tag "subworkflows/diamond"
     tag "ncbirefseqdownload"
     tag "diamondpreparetaxa"
@@ -33,14 +32,13 @@ nextflow_workflow {
             assertAll(
                 { assert workflow.success },
                 { assert workflow.out.txt.size() > 0 },
-                { assert snapshot(workflow.out).match() }
+                { assert snapshot(sanitizeOutput(workflow.out)).match() }
             )
         }
     }
 
     test("Test Diamond subworkflow success -- 6 - TXT output - no columns specified -- stub") {
         tag "stub"
-        tag "CI"
 
         options "-stub"
 
@@ -62,14 +60,13 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                { assert snapshot(sanitizeOutput(workflow.out)).match() }
             )
         }
     }
 
         test("Test Diamond subworkflow -- 6 - TXT output - with columns -- stub") {
         tag "stub"
-        tag "CI"
 
         options "-stub"
 
@@ -91,14 +88,13 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                { assert snapshot(sanitizeOutput(workflow.out)).match() }
             )
         }
     }
 
     test("Test Diamond subworkflow -- 0 - BLAST output -- stub") {
         tag "stub"
-        tag "CI"
 
         options "-stub"
 
@@ -120,14 +116,13 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                { assert snapshot(sanitizeOutput(workflow.out)).match() }
             )
         }
     }
 
     test("Test DIAMOND subworkflow success -- 6 - TXT output -- stub - two samples") {
         tag "stub"
-        tag "CI"
 
         options "-stub"
 
@@ -153,7 +148,7 @@ nextflow_workflow {
             assertAll(
                 { assert workflow.success },
                 { assert workflow.out.txt.size() == 2 },
-                { assert snapshot(workflow.out).match() }
+                { assert snapshot(sanitizeOutput(workflow.out)).match() }
             )
         }
     }

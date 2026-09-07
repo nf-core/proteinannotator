@@ -5,7 +5,6 @@ nextflow_workflow {
     workflow "FUNCTIONAL_ANNOTATION"
 
     tag "subworkflows"
-    tag "subworkflows_"
     tag "subworkflows_local"
     tag "subworkflows/functional_annotation"
     tag "functional_annotation"
@@ -43,14 +42,13 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                { assert snapshot(sanitizeOutput(workflow.out)).match() }
             )
         }
     }
 
     test("Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success - stub") {
         tag "stub"
-        tag "CI"
 
         options "-stub"
 
@@ -81,7 +79,7 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success },
-                { assert snapshot(workflow.out).match() }
+                { assert snapshot(sanitizeOutput(workflow.out)).match() }
             )
         }
     }

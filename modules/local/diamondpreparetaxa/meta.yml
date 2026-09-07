@@ -5,23 +5,15 @@ description: Downloads and extracts NCBI taxonomy database files (nodes.dmp and 
 keywords:
   - taxonomy
   - ncbi
-  - diamond
   - database
   - classification
 tools:
-  - untar:
+  - tar:
       description: |
         Extract tar, tar.gz, tar.bz2, tar.xz files.
-      documentation: https://www.gnu.org/software/tar/manual/
+      documentation: "https://www.gnu.org/software/tar/manual/"
       licence: ["GPL-3.0-or-later"]
       identifier: ""
-  - "diamond":
-      description: Accelerated BLAST-compatible local sequence aligner
-      homepage: "https://github.com/bbuchfink/diamond"
-      documentation: "https://github.com/bbuchfink/diamond/wiki"
-      tool_dev_url: "https://github.com/bbuchfink/diamond"
-      doi: "10.1038/s41592-021-01101-x"
-      licence: ["GPL-3.0-or-later"]
 
 input:
   - taxondmp_zip:
@@ -42,11 +34,17 @@ output:
           description: NCBI taxonomy names file containing taxon names
           pattern: "names.dmp"
 
-  - versions_curl:
-      - "versions.yml":
-          type: file
-          description: File containing software version (topic channel)
-          pattern: "versions.yml"
+topics:
+  versions:
+    - - "${task.process}":
+          type: string
+          description: The name of the process
+      - tar:
+          type: string
+          description: The name of the tool
+      - "tar --version 2>&1 | head -1 | sed \"s/tar (GNU tar) //; s/ Copyright.*//\"":
+          type: eval
+          description: The expression to obtain the version of the tool
 
 authors:
   - "@tracelail"

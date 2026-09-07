@@ -95,7 +95,7 @@ A local version of the database can be supplied to the pipeline by passing the I
 Running [Diamond](https://github.com/bbuchfink/diamond) requires six inputs parameters.
 
 - `--skip_diamond`: Skip the DIAMOND BLASTP taxonomic classification step entirely.
-- `--refseq_release`: NCBI refseq release category of protein fastas for creation of a protein reference database using [`diamond/makedb`](https://nf-co.re/modules/diamond_makedb)
+- `--refseq_release`: NCBI refseq release category of protein fastas for creation of a protein reference database using [`diamond/makedb`](https://nf-co.re/modules/diamond_makedb). One of: `archaea`, `bacteria`, `complete` (default), `fungi`, `invertebrate`, `mitochondrion`, `other`, `plant`, `plasmid`, `plastid`, `protozoa`, `vertebrate_mammalian`, `vertebrate_other`, `viral` — matching the subdirectories at [ftp://ftp.ncbi.nih.gov/refseq/release/](ftp://ftp.ncbi.nih.gov/refseq/release/).
 - `--taxondmp_zip`: Compressed taxon dmp file path to provide taxon names and nodes files for creation of a protein reference database using [`diamond/makedb`]
 - `--taxonmap`: Compressed taxon map file path to provide taxon mapping file for creation of a protein reference database using [`diamond/makedb`]
 - `--diamond_outfmt`: One of seven optional output formats for [`diamond/blastp`](https://nf-co.re/modules/diamond_blastp/), indicated by a digit code. Options include:

@@ -53,16 +53,32 @@
                     "type": "boolean",
                     "fa_icon": "fas fa-ban",
                     "description": "Skip the DIAMOND BLASTP taxonomic classification.",
-                    "help": "Skips the DIAMOND BLASTP homology search and taxonomic classification of input sequences against the RefSeq database.",
-                    "default": false
+                    "help": "Skips the DIAMOND BLASTP homology search and taxonomic classification of input sequences against the RefSeq database."
                 },
                 "refseq_release": {
                     "type": "string",
                     "description": "NCBI refseq release category of protein fastas from ftp.ncbi.nlm.nih.gov/refseq/release/",
-                    "default": "complete"
+                    "default": "complete",
+                    "enum": [
+                        "archaea",
+                        "bacteria",
+                        "complete",
+                        "fungi",
+                        "invertebrate",
+                        "mitochondrion",
+                        "other",
+                        "plant",
+                        "plasmid",
+                        "plastid",
+                        "protozoa",
+                        "vertebrate_mammalian",
+                        "vertebrate_other",
+                        "viral"
+                    ]
                 },
                 "taxondmp_zip": {
                     "type": "string",
+                    "format": "file-path",
                     "mimetype": "text/plain",
                     "pattern": "^.*\\.(tar\\.gz|gz)$",
                     "description": "Path to a compressed taxon dmp file",
@@ -70,6 +86,7 @@
                 },
                 "taxonmap": {
                     "type": "string",
+                    "format": "file-path",
                     "mimetype": "text/plain",
                     "pattern": "^.*\\.(tar\\.gz|gz)$",
                     "description": "Path to a compressed taxon map file",
