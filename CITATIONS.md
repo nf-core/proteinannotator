@@ -10,7 +10,6 @@
 
 ## Pipeline tools
 
-
 - [DIAMOND](https://github.com/bbuchfink/diamond)
 
 > Buchfink B, Xie C, Huson DH, "Fast and sensitive protein alignment using DIAMOND", Nature Methods 12, 59-60 (2015). doi:10.1038/nmeth.3176
