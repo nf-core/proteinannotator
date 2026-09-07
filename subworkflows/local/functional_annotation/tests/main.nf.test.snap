@@ -21,37 +21,170 @@
             "nextflow": "26.04.3"
         }
     },
-    "l_asparaginase - faa - functional annotation": {
+    "Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success": {
         "content": [
-            true
+            {
+                "diamond_blast": [
+                    
+                ],
+                "diamond_daa": [
+                    
+                ],
+                "diamond_paf": [
+                    
+                ],
+                "diamond_sam": [
+                    
+                ],
+                "diamond_tsv": [
+                    
+                ],
+                "diamond_txt": [
+                    [
+                        {
+                            "db": "refseq",
+                            "id": "test"
+                        },
+                        "test.refseq.txt:md5,f58fdf4044f9e4bf42da7e2c05f581f5"
+                    ]
+                ],
+                "diamond_xml": [
+                    
+                ],
+                "interproscan_tsv": [
+                    
+                ],
+                "kofamscan_tsv": [
+                    
+                ]
+            }
         ],
-        "timestamp": "2026-05-05T11:45:58.77732872",
+        "timestamp": "2026-09-07T18:56:48.53575459",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.0"
+            "nextflow": "26.04.6"
+        }
+    },
+    "l_asparaginase - faa - functional annotation": {
+        "content": [
+            true,
+            [
+                
+            ]
+        ],
+        "timestamp": "2026-09-07T19:24:04.720241439",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    },
+    "Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success - stub": {
+        "content": [
+            {
+                "diamond_blast": [
+                    
+                ],
+                "diamond_daa": [
+                    
+                ],
+                "diamond_paf": [
+                    
+                ],
+                "diamond_sam": [
+                    
+                ],
+                "diamond_tsv": [
+                    
+                ],
+                "diamond_txt": [
+                    [
+                        {
+                            "db": "refseq",
+                            "id": "test"
+                        },
+                        "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "diamond_xml": [
+                    
+                ],
+                "interproscan_tsv": [
+                    
+                ],
+                "kofamscan_tsv": [
+                    
+                ]
+            }
+        ],
+        "timestamp": "2026-09-07T18:57:01.807602546",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
         }
     },
     "faa - functional annotation - stub": {
         "content": [
             {
                 "0": [
-
+                    
                 ],
                 "1": [
-
+                    
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    
+                ],
+                "7": [
+                    
+                ],
+                "8": [
+                    
+                ],
+                "diamond_blast": [
+                    
+                ],
+                "diamond_daa": [
+                    
+                ],
+                "diamond_paf": [
+                    
+                ],
+                "diamond_sam": [
+                    
+                ],
+                "diamond_tsv": [
+                    
+                ],
+                "diamond_txt": [
+                    
+                ],
+                "diamond_xml": [
+                    
                 ],
                 "interproscan_tsv": [
-
+                    
                 ],
                 "kofamscan_tsv": [
-
+                    
                 ]
             }
         ],
-        "timestamp": "2026-05-05T11:38:15.575589861",
+        "timestamp": "2026-09-04T19:18:52.396065383",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.4"
+            "nextflow": "26.04.6"
         }
     }
 }

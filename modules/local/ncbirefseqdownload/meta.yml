@@ -1,0 +1,41 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "ncbirefseqdownload"
+description: Downloads NCBI RefSeq protein sequences for a specified release category and aggregates them into a single compressed FASTA file
+keywords:
+  - download
+  - refseq
+  - ncbi
+  - protein
+  - database
+tools:
+  - "rclone":
+      description: Command line program to sync files and directories to and from different cloud storage providers
+      homepage: "https://rclone.org/"
+      documentation: "https://rclone.org/docs/"
+      tool_dev_url: "https://github.com/rclone/rclone"
+      licence: ["MIT"]
+
+input:
+  - refseq_release:
+      type: string
+      description: NCBI RefSeq release category (e.g., 'complete', 'other', 'viral', 'bacteria')
+      pattern: ".*"
+
+output:
+  - refseq_fasta:
+      - "ncbi_refseq/refseq_fasta.fa.gz":
+          type: file
+          description: Aggregated and compressed protein FASTA file from RefSeq release
+          pattern: "*.fa.gz"
+
+  - versions:
+      - "versions.yml":
+          type: file
+          description: File containing software versions
+          pattern: "versions.yml"
+
+authors:
+  - "@tracelail"
+maintainers:
+  - "@tracelail"

@@ -1,0 +1,50 @@
+{
+    "Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files -- stub": {
+        "content": [
+            {
+                "taxonnames": [
+                    "names.dmp:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ],
+                "taxonnodes": [
+                    "nodes.dmp:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ],
+                "versions_tar": [
+                    [
+                        "DIAMONDPREPARETAXA",
+                        "tar",
+                        "1.34"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-09-07T13:23:21.555681281",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    },
+    "Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files": {
+        "content": [
+            {
+                "taxonnames": [
+                    "names.dmp:md5,d0b9ab68938991757886bd7515f2de3f"
+                ],
+                "taxonnodes": [
+                    "nodes.dmp:md5,5526506044a931be50f09e32fe9ac5ce"
+                ],
+                "versions_tar": [
+                    [
+                        "DIAMONDPREPARETAXA",
+                        "tar",
+                        "1.34"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-09-07T13:23:10.544865596",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    }
+}

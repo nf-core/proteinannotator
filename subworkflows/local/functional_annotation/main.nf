@@ -1,3 +1,4 @@
+include { DIAMOND                                   } from '../diamond/main'
 include { ARIA2 as ARIA2_INTERPROSCAN               } from '../../../modules/nf-core/aria2/main'
 include { ARIA2 as ARIA2_KOFAM_PROFILES             } from '../../../modules/nf-core/aria2/main'
 include { ARIA2 as ARIA2_KOFAM_KO_LIST              } from '../../../modules/nf-core/aria2/main'
@@ -18,11 +19,38 @@ workflow FUNCTIONAL_ANNOTATION {
     kofamscan_profiles     // string, existing KOfam profiles directory
     kofamscan_ko_list_url  // string, URL to download KOfam KO list
     kofamscan_ko_list      // string, existing KOfam KO list
+    skip_diamond           // boolean
 
     main:
+    def ch_diamond_blast    = channel.empty()
+    def ch_diamond_xml      = channel.empty()
+    def ch_diamond_txt      = channel.empty()
+    def ch_diamond_daa      = channel.empty()
+    def ch_diamond_sam      = channel.empty()
+    def ch_diamond_tsv      = channel.empty()
+    def ch_diamond_paf      = channel.empty()
     def ch_interproscan_tsv = channel.empty()
     def ch_kofamscan_tsv    = channel.empty()
 
+    //
+    // SUBWORKFLOW: Run Diamond
+    //
+    if (!skip_diamond) {
+        DIAMOND(
+            ch_fasta
+        )
+        ch_diamond_blast = DIAMOND.out.blast
+        ch_diamond_xml   = DIAMOND.out.xml
+        ch_diamond_txt   = DIAMOND.out.txt
+        ch_diamond_daa   = DIAMOND.out.daa
+        ch_diamond_sam   = DIAMOND.out.sam
+        ch_diamond_tsv   = DIAMOND.out.tsv
+        ch_diamond_paf   = DIAMOND.out.paf
+    }
+
+    //
+    // SUBWORKFLOW: Run Interproscan
+    //
     if (!skip_interproscan) {
         def ch_interproscan_db
         if (interproscan_db) {
@@ -70,6 +98,13 @@ workflow FUNCTIONAL_ANNOTATION {
     }
 
     emit:
+    diamond_blast    = ch_diamond_blast
+    diamond_xml      = ch_diamond_xml
+    diamond_txt      = ch_diamond_txt
+    diamond_daa      = ch_diamond_daa
+    diamond_sam      = ch_diamond_sam
+    diamond_tsv      = ch_diamond_tsv
+    diamond_paf      = ch_diamond_paf
     interproscan_tsv = ch_interproscan_tsv
     kofamscan_tsv    = ch_kofamscan_tsv
 }

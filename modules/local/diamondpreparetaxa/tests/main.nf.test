@@ -1,0 +1,54 @@
+// nf-core modules test diamondpreparetaxa
+nextflow_process {
+
+    name "Test Process DIAMONDPREPARETAXA"
+    script "../main.nf"
+    process "DIAMONDPREPARETAXA"
+
+    tag "modules"
+    tag "diamondpreparetaxa"
+    tag "diamond"
+    tag "diamond_local"
+
+    test("Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files") {
+
+        when {
+            process {
+                """
+                input[0] = "file://${moduleTestDir}/mini_taxdump.tar.gz"
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(sanitizeOutput(process.out)).match() }
+            )
+        }
+
+    }
+
+    test("Test DIAMONDPREPARETAXA creates taxon nodes and names dmp files -- stub") {
+        tag "stub"
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(sanitizeOutput(process.out)).match() }
+            )
+        }
+
+    }
+
+}

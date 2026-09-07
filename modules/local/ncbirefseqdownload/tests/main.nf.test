@@ -1,0 +1,51 @@
+nextflow_process {
+
+    name "Test Process NCBIREFSEQDOWNLOAD"
+    script "../main.nf"
+    process "NCBIREFSEQDOWNLOAD"
+
+    tag "modules"
+    tag "ncbirefseqdownload"
+
+    test("Should download ncbi refseq 'other' zipped protein fasta") {
+
+        when {
+            process {
+                """
+                input[0] = 'other'
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(sanitizeOutput(process.out)).match() }
+            )
+        }
+
+    }
+
+    test("Should download ncbi refseq 'other' zipped protein fasta -- stub") {
+        tag "stub"
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = 'other'
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(sanitizeOutput(process.out)).match() }
+            )
+        }
+
+    }
+
+}

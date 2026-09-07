@@ -1,0 +1,52 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "diamondpreparetaxa"
+description: Downloads and extracts NCBI taxonomy database files (nodes.dmp and names.dmp) required for DIAMOND taxonomic classification
+keywords:
+  - taxonomy
+  - ncbi
+  - database
+  - classification
+tools:
+  - tar:
+      description: |
+        Extract tar, tar.gz, tar.bz2, tar.xz files.
+      documentation: "https://www.gnu.org/software/tar/manual/"
+      licence: ["GPL-3.0-or-later"]
+      identifier: ""
+
+input:
+  - taxondmp_zip:
+      type: string
+      description: URL to NCBI taxonomy dump archive (taxdump.tar.gz)
+      pattern: ".*taxdump.tar.gz"
+
+output:
+  - taxonnodes:
+      - "taxa/nodes.dmp":
+          type: file
+          description: NCBI taxonomy nodes file containing taxonomic hierarchy
+          pattern: "nodes.dmp"
+
+  - taxonnames:
+      - "taxa/names.dmp":
+          type: file
+          description: NCBI taxonomy names file containing taxon names
+          pattern: "names.dmp"
+
+topics:
+  versions:
+    - - "${task.process}":
+          type: string
+          description: The name of the process
+      - tar:
+          type: string
+          description: The name of the tool
+      - 'tar --version 2>&1 | head -1 | sed "s/tar (GNU tar) //; s/ Copyright.*//"':
+          type: eval
+          description: The expression to obtain the version of the tool
+
+authors:
+  - "@tracelail"
+maintainers:
+  - "@tracelail"
