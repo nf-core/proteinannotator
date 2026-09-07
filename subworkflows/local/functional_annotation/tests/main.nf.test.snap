@@ -24,39 +24,6 @@
     "Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success": {
         "content": [
             {
-                "0": [
-                    
-                ],
-                "1": [
-                    
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "test",
-                            "db": "refseq"
-                        },
-                        "test.refseq.txt:md5,f58fdf4044f9e4bf42da7e2c05f581f5"
-                    ]
-                ],
-                "3": [
-                    
-                ],
-                "4": [
-                    
-                ],
-                "5": [
-                    
-                ],
-                "6": [
-                    
-                ],
-                "7": [
-                    
-                ],
-                "8": [
-                    
-                ],
                 "diamond_blast": [
                     
                 ],
@@ -75,8 +42,8 @@
                 "diamond_txt": [
                     [
                         {
-                            "id": "test",
-                            "db": "refseq"
+                            "db": "refseq",
+                            "id": "test"
                         },
                         "test.refseq.txt:md5,f58fdf4044f9e4bf42da7e2c05f581f5"
                     ]
@@ -92,7 +59,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-09-04T19:18:12.745998853",
+        "timestamp": "2026-09-07T18:56:48.53575459",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
@@ -100,50 +67,20 @@
     },
     "l_asparaginase - faa - functional annotation": {
         "content": [
-            true
+            true,
+            [
+                
+            ]
         ],
-        "timestamp": "2026-05-05T11:45:58.77732872",
+        "timestamp": "2026-09-07T19:24:04.720241439",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.0"
+            "nextflow": "26.04.6"
         }
     },
     "Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success - stub": {
         "content": [
             {
-                "0": [
-                    
-                ],
-                "1": [
-                    
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "test",
-                            "db": "refseq"
-                        },
-                        "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "3": [
-                    
-                ],
-                "4": [
-                    
-                ],
-                "5": [
-                    
-                ],
-                "6": [
-                    
-                ],
-                "7": [
-                    
-                ],
-                "8": [
-                    
-                ],
                 "diamond_blast": [
                     
                 ],
@@ -162,8 +99,8 @@
                 "diamond_txt": [
                     [
                         {
-                            "id": "test",
-                            "db": "refseq"
+                            "db": "refseq",
+                            "id": "test"
                         },
                         "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
@@ -179,7 +116,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-08-21T19:35:41.555326075",
+        "timestamp": "2026-09-07T18:57:01.807602546",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"

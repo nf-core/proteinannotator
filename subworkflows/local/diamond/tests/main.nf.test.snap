@@ -2,38 +2,11 @@
     "Test Diamond subworkflow -- 0 - BLAST output -- stub": {
         "content": [
             {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "db": "refseq"
-                        },
-                        "test.blast:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "1": [
-                    
-                ],
-                "2": [
-                    
-                ],
-                "3": [
-                    
-                ],
-                "4": [
-                    
-                ],
-                "5": [
-                    
-                ],
-                "6": [
-                    
-                ],
                 "blast": [
                     [
                         {
-                            "id": "test",
-                            "db": "refseq"
+                            "db": "refseq",
+                            "id": "test"
                         },
                         "test.blast:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
@@ -58,7 +31,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-08-19T19:47:49.699309341",
+        "timestamp": "2026-09-07T18:56:03.301522977",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
@@ -67,40 +40,6 @@
     "Test DIAMOND subworkflow success -- 6 - TXT output -- stub - two samples": {
         "content": [
             {
-                "0": [
-                    
-                ],
-                "1": [
-                    
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "sample1",
-                            "db": "refseq"
-                        },
-                        "sample1.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ],
-                    [
-                        {
-                            "id": "sample2",
-                            "db": "refseq"
-                        },
-                        "sample2.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "3": [
-                    
-                ],
-                "4": [
-                    
-                ],
-                "5": [
-                    
-                ],
-                "6": [
-                    
-                ],
                 "blast": [
                     
                 ],
@@ -119,15 +58,15 @@
                 "txt": [
                     [
                         {
-                            "id": "sample1",
-                            "db": "refseq"
+                            "db": "refseq",
+                            "id": "sample1"
                         },
                         "sample1.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ],
                     [
                         {
-                            "id": "sample2",
-                            "db": "refseq"
+                            "db": "refseq",
+                            "id": "sample2"
                         },
                         "sample2.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
@@ -137,7 +76,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-08-19T19:44:48.388726426",
+        "timestamp": "2026-09-07T18:56:15.678381005",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
@@ -146,33 +85,6 @@
     "Test Diamond subworkflow success -- 6 - TXT output - no columns specified -- stub": {
         "content": [
             {
-                "0": [
-                    
-                ],
-                "1": [
-                    
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "test",
-                            "db": "refseq"
-                        },
-                        "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "3": [
-                    
-                ],
-                "4": [
-                    
-                ],
-                "5": [
-                    
-                ],
-                "6": [
-                    
-                ],
                 "blast": [
                     
                 ],
@@ -191,8 +103,8 @@
                 "txt": [
                     [
                         {
-                            "id": "test",
-                            "db": "refseq"
+                            "db": "refseq",
+                            "id": "test"
                         },
                         "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
@@ -202,7 +114,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-08-19T19:47:32.344749385",
+        "timestamp": "2026-09-07T18:55:39.085552714",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
@@ -211,33 +123,6 @@
     "Test Diamond subworkflow success -- 6 - TXT output - no columns specified": {
         "content": [
             {
-                "0": [
-                    
-                ],
-                "1": [
-                    
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "test",
-                            "db": "refseq"
-                        },
-                        "test.refseq.txt:md5,f58fdf4044f9e4bf42da7e2c05f581f5"
-                    ]
-                ],
-                "3": [
-                    
-                ],
-                "4": [
-                    
-                ],
-                "5": [
-                    
-                ],
-                "6": [
-                    
-                ],
                 "blast": [
                     
                 ],
@@ -256,8 +141,8 @@
                 "txt": [
                     [
                         {
-                            "id": "test",
-                            "db": "refseq"
+                            "db": "refseq",
+                            "id": "test"
                         },
                         "test.refseq.txt:md5,f58fdf4044f9e4bf42da7e2c05f581f5"
                     ]
@@ -267,7 +152,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-09-03T20:33:41.44907526",
+        "timestamp": "2026-09-07T18:55:28.256329038",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
@@ -276,33 +161,6 @@
     "Test Diamond subworkflow -- 6 - TXT output - with columns -- stub": {
         "content": [
             {
-                "0": [
-                    
-                ],
-                "1": [
-                    
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "test",
-                            "db": "refseq"
-                        },
-                        "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
-                    ]
-                ],
-                "3": [
-                    
-                ],
-                "4": [
-                    
-                ],
-                "5": [
-                    
-                ],
-                "6": [
-                    
-                ],
                 "blast": [
                     
                 ],
@@ -321,8 +179,8 @@
                 "txt": [
                     [
                         {
-                            "id": "test",
-                            "db": "refseq"
+                            "db": "refseq",
+                            "id": "test"
                         },
                         "test.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
                     ]
@@ -332,7 +190,7 @@
                 ]
             }
         ],
-        "timestamp": "2026-08-19T19:47:41.118581828",
+        "timestamp": "2026-09-07T18:55:51.344611711",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
