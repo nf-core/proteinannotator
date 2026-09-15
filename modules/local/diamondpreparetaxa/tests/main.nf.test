@@ -15,7 +15,7 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = "file://${moduleTestDir}/mini_taxdump.tar.gz"
+                input[0] = params.pipelines_testdata_base_path + 'testdata/diamond/mini_taxdump.tar.gz'
                 """
             }
         }
@@ -37,7 +37,7 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
+                input[0] = params.pipelines_testdata_base_path + 'testdata/diamond/mini_taxdump.tar.gz'
                 """
             }
         }

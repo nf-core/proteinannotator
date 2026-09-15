@@ -14,19 +14,21 @@ nextflow_workflow {
     tag "diamond/makedb"
     tag "diamond/blastp"
 
+    def testdata = 'https://raw.githubusercontent.com/nf-core/test-datasets/proteinannotator/testdata/diamond/'
+
     test("Test FUNCTIONAL_ANNOTATION Diamond execution subworkflow success") {
         when {
             params {
                 refseq_release        = 'other'
-                taxondmp_zip          = "file://${moduleDir}/../../../modules/local/diamondpreparetaxa/tests/mini_taxdump.tar.gz"
-                taxonmap              = "${moduleTestDir}/mini_prot.accession2taxid.gz"
+                taxondmp_zip          = testdata + 'mini_taxdump.tar.gz'
+                taxonmap              = testdata + 'mini_prot.accession2taxid.gz'
                 diamond_outfmt        = 6
                 diamond_blast_columns = ''
                 skip_interproscan     = true
             }
             workflow {
                 """
-                input[0] = [ [id:'test'], file("${moduleTestDir}/test_refseq.fasta", checkIfExists: true)]
+                input[0] = [ [id:'test'], file(params.pipelines_testdata_base_path + 'testdata/diamond/test_refseq.fasta', checkIfExists: true)]
                 input[1] = true
                 input[2] = []
                 input[3] = []
@@ -55,15 +57,15 @@ nextflow_workflow {
         when {
             params {
                 refseq_release        = 'other'
-                taxondmp_zip          = 'ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz'
-                taxonmap              = "${moduleTestDir}/mini_prot.accession2taxid.gz"
+                taxondmp_zip          = testdata + 'mini_taxdump.tar.gz'
+                taxonmap              = testdata + 'mini_prot.accession2taxid.gz'
                 diamond_outfmt        = 6
                 diamond_blast_columns = ''
                 skip_interproscan     = true
             }
             workflow {
                 """
-                input[0] = [ [id:'test'], file("${moduleTestDir}/test_refseq.fasta", checkIfExists: false)]
+                input[0] = [ [id:'test'], file(params.pipelines_testdata_base_path + 'testdata/diamond/test_refseq.fasta', checkIfExists: true)]
                 input[1] = true
                 input[2] = []
                 input[3] = []
