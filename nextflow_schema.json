@@ -285,7 +285,7 @@
                 },
                 "nmpfams_latest_link": {
                     "type": "string",
-                    "default": "https://pavlopoulos-lab.org/envofams/databases/hmmer/nmpfamsdb.hmm.gz",
+                    "default": "https://envofams.org/envofams/databases/hmmer/nmpfamsdb.hmm.gz",
                     "description": "NMPFams hosted link to the latest NMPFams HMM database file."
                 },
                 "skip_metagroot": {
@@ -302,7 +302,7 @@
                 },
                 "metagroot_latest_link": {
                     "type": "string",
-                    "default": "https://pavlopoulos-lab.org/envofams/databases/hmmer/metagroot.hmm.gz",
+                    "default": "https://envofams.org/envofams/databases/hmmer/metagroot.hmm.gz",
                     "description": "metagRoot hosted link to the latest available metagRoot HMM database file."
                 },
                 "hmmsearch_evalue_cutoff": {
