@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Fixed`
 
-- [#114](https://github.com/nf-core/proteinannotator/issues/114) - Fixed `INTERPROSCAN` failing on real databases: updated the `interproscan` module so it uses the staged database ([nf-core/modules#13009](https://github.com/nf-core/modules/issues/13009)), set the default `interproscan_db_url` to the 5.59-91.0 release that matches the container, and pass the inner `data/` directory of an untarred release to `INTERPROSCAN`. (by @vagkaratzas)
+- [#115](https://github.com/nf-core/proteinannotator/pull/115) - Fixed `INTERPROSCAN` failing on real databases: updated the `interproscan` module so it uses the staged database ([nf-core/modules#13009](https://github.com/nf-core/modules/issues/13009)), set the default `interproscan_db_url` to the 5.59-91.0 release that matches the container, and pass the inner `data/` directory of an untarred release to `INTERPROSCAN`. (by @vagkaratzas)
 
 ### `Dependencies`
 
