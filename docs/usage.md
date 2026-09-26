@@ -85,42 +85,43 @@ You can also generate such `YAML`/`JSON` files via [nf-core/launch](https://nf-c
 [InterProScan](https://github.com/ebi-pf-team/interproscan) is used to provide more information about the proteins annotated on the contigs. By default, turning on this subworkflow without `--skip_interproscan` will download and unzip the InterPro database. The database will then be saved in the output directory `<output_directory>/downloaded_dbs/interproscan_db/`. We recommend keeping a copy of this directory for future reuse in case the results folder is deleted.
 
 > [!NOTE]
-> The large database download (5.5GB) can take up to 4 hours depending on the bandwidth.
+> The large database download (6.6GB) can take up to 4 hours depending on the bandwidth.
 
-A local version of the database can be supplied to the pipeline by passing the InterProScan database directory to `--interproscan_db <path/to/downloaded-untarred-interproscan_db-dir/>`. The directory can be created by running (e.g. for database version 5.72-103.0):
+The database release must match the InterProScan version in the pipeline's container, which is **5.59-91.0**. Newer releases rename or replace member databases (e.g. TIGRFAM was merged into NCBIfam) and will not be found.
+
+A local version of the database can be supplied to the pipeline with `--interproscan_db`. This can be either the untarred release directory or the `data/` directory inside it. The directory can be created by running:
+
+```bash
+curl -L https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.59-91.0/interproscan-5.59-91.0-64-bit.tar.gz -o interproscan-5.59-91.0-64-bit.tar.gz
+tar -pxzf interproscan-5.59-91.0-64-bit.tar.gz
+```
+
+This creates the following layout:
 
 ```
-curl -L https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.72-103.0/interproscan-5.72-103.0-64-bit.tar.gz -o interproscan_db/interproscan-5.72-103.0-64-bit.tar.gz
-tar -xzf interproscan_db/interproscan-5.72-103.0-64-bit.tar.gz -C interproscan_db/
-
+interproscan-5.59-91.0/          <- pass this (or its data/ subdirectory) to --interproscan_db
+  ├── bin/
+  ├── data/
+  │   ├── hamap/
+  │   ├── panther/
+  │   ├── pirsf/
+  │   ├── sfld/
+  │   ├── tigrfam/
+  │   └── ...
+  ├── interproscan.properties
+  ├── interproscan.sh
+  └── setup.py
 ```
 
-The contents of the database directory should include the directory `data` in the top level with a number of subdirectories:
-
-```
-interproscan_db/
-  └── data/
-    ├── antifam
-    ├── cdd
-    ├── funfam
-    ├── gene3d
-    ├── hamap
-    ├── ncbifam
-    ├── panther
-    | └── [18.0]
-    ├── pfam
-    | └── [36.0]
-    ├── phobius
-    ├── pirsf
-    ├── pirsr
-    ├── prints
-    ├── prosite
-    | └── [2023_05]
-    ├── sfld
-    ├── smart
-    ├── superfamily
-    └── tmhmm
-```
+> [!NOTE]
+> The HMMs in the 5.59-91.0 release are not pre-indexed. The default applications do not need them indexed, except PIRSF, which indexes its own HMMs the first time it runs. When several samples run InterProScan in parallel against a fresh database, they may all try to index the same PIRSF files at once. To avoid this, index the database once before running the pipeline, from inside the untarred release directory (the one containing `setup.py` and `interproscan.properties`, not `data/`):
+>
+> ```bash
+> cd interproscan-5.59-91.0/
+> python3 setup.py -f interproscan.properties
+> ```
+>
+> For a database downloaded by the pipeline, run the same command inside `<output_directory>/downloaded_dbs/interproscan_db/`, then reuse that directory with `--interproscan_db`.
 
 ### KOfamScan
 
