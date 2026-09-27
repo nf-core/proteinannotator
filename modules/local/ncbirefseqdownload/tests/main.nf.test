@@ -13,6 +13,7 @@ nextflow_process {
             process {
                 """
                 input[0] = 'other'
+                input[1] = params.pipelines_testdata_base_path + 'testdata/diamond/refseq/release/other/other.wp_protein_test.1.protein.faa.gz'
                 """
             }
         }
@@ -35,6 +36,7 @@ nextflow_process {
             process {
                 """
                 input[0] = 'other'
+                input[1] = params.pipelines_testdata_base_path + 'proteinannotator/testdata/diamond/refseq/release/other/other.wp_protein_test.1.protein.faa.gz'
                 """
             }
         }

@@ -11,7 +11,8 @@ workflow DIAMOND {
 
     // Local modules of Diamond subworkflow
     NCBIREFSEQDOWNLOAD(
-        params.refseq_release
+        params.refseq_release,
+        params.refseq_fasta_url
     )
     ch_diamond_reference_fasta = NCBIREFSEQDOWNLOAD.out.refseq_fasta.map { file -> [ [id: 'refseq'], file ] }
 

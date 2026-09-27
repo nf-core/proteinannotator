@@ -9,6 +9,7 @@ process NCBIREFSEQDOWNLOAD {
 
     input:
     val(refseq_release) // ncbi refseq release category -- default of 'complete'
+    val(refseq_fasta_url) // for testing: direct URL to a single pre-built fasta.gz, bypasses live rclone sync
 
     output:
     path "ncbi_refseq/refseq_fasta.fa.gz", emit: refseq_fasta // reference fasta for diamond/makedb nf-core module
@@ -18,23 +19,36 @@ process NCBIREFSEQDOWNLOAD {
     task.ext.when == null || task.ext.when
 
     script:
-    """
-    if [ -f /opt/conda/ssl/cacert.pem ]; then
-        export SSL_CERT_FILE=/opt/conda/ssl/cacert.pem
-    fi
-    mkdir -p ncbi_refseq/${refseq_release}/
+    if (refseq_fasta_url) {
+        """
+        if [ -f /opt/conda/ssl/cacert.pem ]; then
+            export SSL_CERT_FILE=/opt/conda/ssl/cacert.pem
+        fi
+        mkdir -p ncbi_refseq
 
-    rclone copy \\
-        :http:refseq/release/${refseq_release}/ \\
-        ncbi_refseq/${refseq_release}/ \\
-        --http-url https://ftp.ncbi.nlm.nih.gov \\
-        --include '*protein.faa.gz' \\
-        --user-agent "Mozilla/5.0"
+        rclone copyto \\
+            :http:${refseq_fasta_url.tokenize('/').last()} \\
+            ncbi_refseq/refseq_fasta.fa.gz \\
+            --http-url ${refseq_fasta_url.substring(0, refseq_fasta_url.lastIndexOf('/') + 1)} \\
+            --user-agent "Mozilla/5.0"
+        """
+    } else {
+        """
+        if [ -f /opt/conda/ssl/cacert.pem ]; then
+            export SSL_CERT_FILE=/opt/conda/ssl/cacert.pem
+        fi
+        mkdir -p ncbi_refseq/${refseq_release}/
 
-    zcat ncbi_refseq/*/*.faa.gz | gzip -c > ncbi_refseq/refseq_fasta.fa.gz
+        rclone copy \\
+            :http:refseq/release/${refseq_release}/ \\
+            ncbi_refseq/${refseq_release}/ \\
+            --http-url https://ftp.ncbi.nlm.nih.gov \\
+            --include '*protein.faa.gz' \\
+            --user-agent "Mozilla/5.0"
 
-    echo "All RefSeq protein FASTAs aggregated into ncbi_refseq/"
-    """
+        zcat ncbi_refseq/*/*.faa.gz | gzip -c > ncbi_refseq/refseq_fasta.fa.gz
+        """
+    }
 
     stub:
     """

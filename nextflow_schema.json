@@ -58,6 +58,7 @@
                 "refseq_release": {
                     "type": "string",
                     "description": "NCBI refseq release category of protein fastas from ftp.ncbi.nlm.nih.gov/refseq/release/",
+                    "help": "Determines which RefSeq subdirectory is synced for the local reference database, e.g. 'complete' for the full protein set.",
                     "default": "complete",
                     "enum": [
                         "archaea",
@@ -76,12 +77,19 @@
                         "viral"
                     ]
                 },
+                "refseq_fasta_url": {
+                    "type": "string",
+                    "pattern": "^https?:\\/\\/.+$",
+                    "description": "Direct URL to a single pre-built RefSeq protein fasta.gz file, bypassing the live rclone category sync.",
+                    "help": "Used by the test profile to point at a small hosted subset. When set, downloads this exact file instead of syncing the `refseq_release` category from NCBI."
+                },
                 "taxondmp_zip": {
                     "type": "string",
                     "format": "file-path",
                     "mimetype": "text/plain",
                     "pattern": "^.*\\.(tar\\.gz|gz)$",
                     "description": "Path to a compressed taxon dmp file",
+                    "help": "Provides the taxon nodes and names files used to build the DIAMOND reference database.",
                     "default": "ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz"
                 },
                 "taxonmap": {
@@ -90,11 +98,13 @@
                     "mimetype": "text/plain",
                     "pattern": "^.*\\.(tar\\.gz|gz)$",
                     "description": "Path to a compressed taxon map file",
+                    "help": "Maps RefSeq protein accessions to taxon IDs, used alongside `taxondmp_zip` when building the DIAMOND reference database.",
                     "default": "ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/prot.accession2taxid.gz"
                 },
                 "diamond_outfmt": {
                     "type": "integer",
                     "description": "One of seven optional output formats for [`diamond/blastp`](https://nf-co.re/modules/diamond_blastp/), indicated by a digit code.",
+                    "help": "Controls the format of the BLASTP alignment output. Only format `6` supports customizing columns via `diamond_blast_columns`.",
                     "enum": [0, 5, 6, 100, 101, 102, 103],
                     "default": 6
                 },
