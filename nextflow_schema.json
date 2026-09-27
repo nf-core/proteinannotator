@@ -337,9 +337,9 @@
                 },
                 "interproscan_applications": {
                     "type": "string",
-                    "default": "Hamap,PANTHER,PIRSF,TIGRFAM,sfld",
+                    "default": "Hamap,PANTHER,TIGRFAM,sfld",
                     "pattern": "^\\w+(,\\w+)*",
-                    "help_text": "A comma-separated string specifying the database(s) to be used to annotate the coding regions annotated during the contig annotation workflow of the pipeline. By default these include `Hamap,PANTHER,PIRSF,TIGRFAM,sfld`.\n\nFor more information about all possible databases see the tool [documentation](https://interproscan-docs.readthedocs.io/en/v5/HowToRun.html).\n\n> Modifies tool parameter(s):\n> - InterProScan: `--applications`",
+                    "help_text": "A comma-separated string specifying the database(s) to be used to annotate the coding regions annotated during the contig annotation workflow of the pipeline. By default these include `Hamap,PANTHER,TIGRFAM,sfld`.\n\nFor more information about all possible databases see the tool [documentation](https://interproscan-docs.readthedocs.io/en/v5/HowToRun.html).\n\n> Modifies tool parameter(s):\n> - InterProScan: `--applications`",
                     "description": "Assigns the database(s) to be used to annotate the coding regions.",
                     "fa_icon": "fas fa-database"
                 },

@@ -114,7 +114,7 @@ interproscan-5.59-91.0/          <- pass this (or its data/ subdirectory) to --i
 ```
 
 > [!NOTE]
-> The HMMs in the 5.59-91.0 release are not pre-indexed. The default applications do not need them indexed, except PIRSF, which indexes its own HMMs the first time it runs. When several samples run InterProScan in parallel against a fresh database, they may all try to index the same PIRSF files at once. To avoid this, index the database once before running the pipeline, from inside the untarred release directory (the one containing `setup.py` and `interproscan.properties`, not `data/`):
+> The HMMs in the 5.59-91.0 release are not pre-indexed. The default applications do not need them indexed. PIRSF is not in the defaults because it indexes its own HMMs the first time it runs, and when several samples run InterProScan in parallel against a fresh database, they may all try to index the same PIRSF files at once. To add PIRSF to `--interproscan_applications`, index the database once before running the pipeline, from inside the untarred release directory (the one containing `setup.py` and `interproscan.properties`, not `data/`):
 >
 > ```bash
 > cd interproscan-5.59-91.0/
