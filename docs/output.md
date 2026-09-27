@@ -128,7 +128,7 @@ Each of the `domain_annotation/` subfolders (e.g., `pfam`, `funfam`, `nmpfams`, 
 </details>
 
 [InterProScan](https://interproscan-docs.readthedocs.io/en/v5/#) is a protein annotation tool that searches [InterPro](http://www.ebi.ac.uk/interpro/), a database which integrates predictive information about protein function from a number of member resources, giving an overview of the families that a protein belongs to and the domains and sites it contains. The default database applications that are used to functionally annotate sequences include
-Hamap, PANTHER, PIRSF, TIGRFAM and sfld, and are set through the `--interproscan_applications` parameter.
+Hamap, PANTHER, TIGRFAM and sfld, and are set through the `--interproscan_applications` parameter.
 
 See also [InterProScan output documentation](https://interproscan-docs.readthedocs.io/en/v5/), where most of these examples are taken from.
 

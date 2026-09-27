@@ -36,6 +36,10 @@ workflow FUNCTIONAL_ANNOTATION {
                 .first()
         }
 
+        // A full release untars to the whole install; INTERPROSCAN needs its inner data/ folder
+        ch_interproscan_db = ch_interproscan_db
+            .map { database -> database.resolve('data').isDirectory() ? database.resolve('data') : database }
+
         INTERPROSCAN( ch_fasta, ch_interproscan_db )
         ch_interproscan_tsv = INTERPROSCAN.out.tsv
     }
