@@ -1,7 +1,7 @@
 {
     "-profile test": {
         "content": [
-            47,
+            53,
             {
                 "ARIA2_FUNFAM": {
                     "aria2": "1.37.0"
@@ -24,6 +24,15 @@
                 "ARIA2_PFAM": {
                     "aria2": "1.37.0"
                 },
+                "DIAMONDPREPARETAXA": {
+                    "tar": 1.34
+                },
+                "DIAMOND_BLASTP": {
+                    "diamond": "2.1.23"
+                },
+                "DIAMOND_MAKEDB": {
+                    "diamond": "2.1.16"
+                },
                 "GUNZIP_KOFAM_KO_LIST": {
                     "gunzip": 1.13
                 },
@@ -44,6 +53,9 @@
                 },
                 "KOFAMSCAN": {
                     "kofamscan": "1.3.0"
+                },
+                "NCBIREFSEQDOWNLOAD": {
+                    "rclone": "v1.75.0-DEV"
                 },
                 "S4PRED_RUNMODEL": {
                     "s4pred": "1.2.1"
@@ -74,6 +86,10 @@
                 }
             },
             [
+                "diamondpreparetaxa",
+                "diamondpreparetaxa/taxa",
+                "diamondpreparetaxa/taxa/names.dmp",
+                "diamondpreparetaxa/taxa/nodes.dmp",
                 "domain_annotation",
                 "domain_annotation/funfam",
                 "domain_annotation/funfam/T1024.domtbl.gz",
@@ -93,6 +109,8 @@
                 "domain_annotation/pfam/l_arginase.domtbl.gz",
                 "downloaded_dbs",
                 "downloaded_dbs/Pfam-A_test.hmm.gz",
+                "downloaded_dbs/diamond",
+                "downloaded_dbs/diamond/refseq.dmnd",
                 "downloaded_dbs/funfam-hmm3-v4_3_0_test.lib.gz",
                 "downloaded_dbs/interproscan_db",
                 "downloaded_dbs/interproscan_db/hamap",
@@ -209,6 +227,13 @@
                 "downloaded_dbs/metagroot_test.hmm.gz",
                 "downloaded_dbs/nmpfamsdb_test.hmm.gz",
                 "functional_annotation",
+                "functional_annotation/diamond",
+                "functional_annotation/diamond/T1024",
+                "functional_annotation/diamond/T1024/T1024.refseq.txt",
+                "functional_annotation/diamond/T1026",
+                "functional_annotation/diamond/T1026/T1026.refseq.txt",
+                "functional_annotation/diamond/l_arginase",
+                "functional_annotation/diamond/l_arginase/l_arginase.refseq.txt",
                 "functional_annotation/interproscan",
                 "functional_annotation/interproscan/T1024",
                 "functional_annotation/interproscan/T1024/T1024.gff3",
@@ -270,6 +295,9 @@
                 "multiqc/multiqc_plots/svg/l_arginase_after.svg",
                 "multiqc/multiqc_plots/svg/l_arginase_before.svg",
                 "multiqc/multiqc_report.html",
+                "ncbirefseqdownload",
+                "ncbirefseqdownload/ncbi_refseq",
+                "ncbirefseqdownload/ncbi_refseq/refseq_fasta.fa.gz",
                 "pipeline_info",
                 "pipeline_info/nf_core_proteinannotator_software_mqc_versions.yml",
                 "qc",
@@ -306,7 +334,10 @@
                 "s4pred/l_arginase/ss2/GI|225038609|EFDID|719595|FULL.ss2"
             ],
             [
+                "names.dmp:md5,d0b9ab68938991757886bd7515f2de3f",
+                "nodes.dmp:md5,5526506044a931be50f09e32fe9ac5ce",
                 "Pfam-A_test.hmm.gz:md5,a5ab72b2b7bc72c62756684707e2387c",
+                "refseq.dmnd:md5,a79d5b729867c86eeee92db6f968a0c3",
                 "funfam-hmm3-v4_3_0_test.lib.gz:md5,df8b324882e1ceb8f8196155a968ed77",
                 "hamap.hmm.lib:md5,8c589a7f459284080e674e79454434d3",
                 "hamap.prf:md5,1c9f7eef7704bf307cfaf9f0f2e22153",
@@ -412,6 +443,9 @@
                 "K25926.hmm:md5,0f5e05441ef0fa21de35a39d70f8de6b",
                 "metagroot_test.hmm.gz:md5,d23de95bf39fb6e27ffb266ce61ac98e",
                 "nmpfamsdb_test.hmm.gz:md5,ad7a094618ccfdaeed1c03e93f6abf1e",
+                "T1024.refseq.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "T1026.refseq.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "l_arginase.refseq.txt:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "T1024.json:md5,0288f7551a14faedc409dd374b3e073e",
                 "T1024.xml:md5,63a3db0eb0e1f76403411602c23b721e",
                 "T1026.json:md5,5c2a40474b1cfb50cd043fe0be5e5d52",
@@ -428,6 +462,7 @@
                 "multiqc_citations.txt:md5,4c806e63a283ec1b7e78cdae3a923d4f",
                 "multiqc_l_arginase_after.txt:md5,5df939cbafd732aa5095dad4434a4a33",
                 "multiqc_l_arginase_before.txt:md5,dd8e50549823ef944d6e36d0e2af56f7",
+                "refseq_fasta.fa.gz:md5,af9fbb4c725173a9286979c7f1c6a67e",
                 "T1024.fasta:md5,aa546680bf58fcb8aeb10e1617e6d5bd",
                 "T1024.log:md5,a41135cfe024baaf42f135583fe73f0d",
                 "T1024_after.tsv:md5,2daf830aba484edbcf25e811f5769ad0",
@@ -451,7 +486,7 @@
                 "GI|225038609|EFDID|719595|FULL.ss2:md5,e7d8eaa84d46a6a714ffe00d7f21cdfb"
             ]
         ],
-        "timestamp": "2026-09-02T11:22:22.960095437",
+        "timestamp": "2026-09-27T20:57:55.236291823",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
