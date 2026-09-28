@@ -1,0 +1,53 @@
+nextflow_process {
+
+    name "Test Process NCBIREFSEQDOWNLOAD"
+    script "../main.nf"
+    process "NCBIREFSEQDOWNLOAD"
+
+    tag "modules"
+    tag "ncbirefseqdownload"
+
+    test("Should download ncbi refseq 'other' zipped protein fasta") {
+
+        when {
+            process {
+                """
+                input[0] = 'other'
+                input[1] = params.pipelines_testdata_base_path + 'testdata/diamond/refseq/release/other/other.wp_protein_test.1.protein.faa.gz'
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(sanitizeOutput(process.out)).match() }
+            )
+        }
+
+    }
+
+    test("Should download ncbi refseq 'other' zipped protein fasta -- stub") {
+        tag "stub"
+
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = 'other'
+                input[1] = params.pipelines_testdata_base_path + 'proteinannotator/testdata/diamond/refseq/release/other/other.wp_protein_test.1.protein.faa.gz'
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(sanitizeOutput(process.out)).match() }
+            )
+        }
+
+    }
+
+}

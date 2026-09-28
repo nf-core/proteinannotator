@@ -1,0 +1,162 @@
+nextflow_workflow {
+
+    name "Test Subworkflow DIAMOND"
+    script "../main.nf"
+    workflow "DIAMOND"
+
+    tag "subworkflows"
+    tag "subworkflows/diamond"
+    tag "ncbirefseqdownload"
+    tag "diamondpreparetaxa"
+    tag "diamond/makedb"
+    tag "diamond/blastp"
+
+    def testdata = 'https://raw.githubusercontent.com/nf-core/test-datasets/proteinannotator/testdata/diamond/'
+
+    test("Test Diamond subworkflow success -- 6 - TXT output - no columns specified") {
+
+        when {
+            params {
+                refseq_release        = 'other'
+                refseq_fasta_url      = testdata + 'refseq/release/other/other.wp_protein_test.1.protein.faa.gz'
+                taxondmp_zip          = testdata + 'mini_taxdump.tar.gz'
+                taxonmap              = testdata + 'mini_prot.accession2taxid.gz'
+                diamond_outfmt        = 6
+                diamond_blast_columns = ''
+            }
+            workflow {
+                """
+                input[0] = [ [id:'test'], file(params.pipelines_testdata_base_path + 'testdata/diamond/test_refseq.fasta', checkIfExists: true)]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert workflow.out.txt.size() > 0 },
+                { assert snapshot(sanitizeOutput(workflow.out)).match() }
+            )
+        }
+    }
+
+    test("Test Diamond subworkflow success -- 6 - TXT output - no columns specified -- stub") {
+        tag "stub"
+
+        options "-stub"
+
+        when {
+            params {
+                refseq_release        = 'other'
+                refseq_fasta_url      = testdata + 'refseq/release/other/other.wp_protein_test.1.protein.faa.gz'
+                taxondmp_zip          = testdata + 'mini_taxdump.tar.gz'
+                taxonmap              = testdata + 'mini_prot.accession2taxid.gz'
+                diamond_outfmt        = 6
+                diamond_blast_columns = ''
+            }
+            workflow {
+                """
+                input[0] = [ [id:'test'], file(params.pipelines_testdata_base_path + 'testdata/diamond/test_refseq.fasta', checkIfExists: false)]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(sanitizeOutput(workflow.out)).match() }
+            )
+        }
+    }
+
+        test("Test Diamond subworkflow -- 6 - TXT output - with columns -- stub") {
+        tag "stub"
+
+        options "-stub"
+
+        when {
+            params {
+                refseq_release        = 'other'
+                refseq_fasta_url      = testdata + 'refseq/release/other/other.wp_protein_test.1.protein.faa.gz'
+                taxondmp_zip          = testdata + 'mini_taxdump.tar.gz'
+                taxonmap              = testdata + 'mini_prot.accession2taxid.gz'
+                diamond_outfmt        = 6
+                diamond_blast_columns = 'qseqid sseqid pident length evalue bitscore'
+            }
+            workflow {
+                """
+                input[0] = [ [id:'test'], file(params.pipelines_testdata_base_path + 'testdata/diamond/test_refseq.fasta', checkIfExists: false)]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(sanitizeOutput(workflow.out)).match() }
+            )
+        }
+    }
+
+    test("Test Diamond subworkflow -- 0 - BLAST output -- stub") {
+        tag "stub"
+
+        options "-stub"
+
+        when {
+            params {
+                refseq_release        = 'other'
+                refseq_fasta_url      = testdata + 'refseq/release/other/other.wp_protein_test.1.protein.faa.gz'
+                taxondmp_zip          = testdata + 'mini_taxdump.tar.gz'
+                taxonmap              = testdata + 'mini_prot.accession2taxid.gz'
+                diamond_outfmt        = 0
+                diamond_blast_columns = ''
+            }
+            workflow {
+                """
+                input[0] = [ [id:'test'], file(params.pipelines_testdata_base_path + 'testdata/diamond/test_refseq.fasta', checkIfExists: false)]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(sanitizeOutput(workflow.out)).match() }
+            )
+        }
+    }
+
+    test("Test DIAMOND subworkflow success -- 6 - TXT output -- stub - two samples") {
+        tag "stub"
+
+        options "-stub"
+
+        when {
+            params {
+                refseq_release        = 'other'
+                refseq_fasta_url      = testdata + 'refseq/release/other/other.wp_protein_test.1.protein.faa.gz'
+                taxondmp_zip          = testdata + 'mini_taxdump.tar.gz'
+                taxonmap              = testdata + 'mini_prot.accession2taxid.gz'
+                diamond_outfmt        = 6
+                diamond_blast_columns = ''
+            }
+            workflow {
+                """
+                input[0] = channel.of(
+                    [ [id:'sample1'], file(params.pipelines_testdata_base_path + 'testdata/diamond/test_refseq.fasta', checkIfExists: false) ],
+                    [ [id:'sample2'], file(params.pipelines_testdata_base_path + 'testdata/diamond/test_refseq.fasta', checkIfExists: false) ]
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert workflow.out.txt.size() == 2 },
+                { assert snapshot(sanitizeOutput(workflow.out)).match() }
+            )
+        }
+    }
+}

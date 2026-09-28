@@ -1,23 +1,27 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
 name: functional_annotation
 description: |
-  Performs functional annotation of protein sequences using InterProScan and KOfamScan.
-  Both databases can be downloaded automatically or supplied locally.
+  Performs functional annotation of protein sequences using DIAMOND BLASTP
+  against RefSeq, InterProScan and KOfamScan. Databases can be downloaded
+  automatically or supplied locally.
 keywords:
   - annotation
   - functional
+  - protein
+  - diamond
+  - interproscan
+  - blastp
+
+components:
+  - diamond
   - interproscan
   - kofamscan
   - kegg
   - proteins
   - fasta
-
-components:
   - aria2
   - untar
   - gunzip
-  - interproscan
-  - kofamscan
 
 input:
   - ch_fasta:
@@ -63,8 +67,53 @@ input:
       type: string
       description: |
         Optional path to a pre-existing decompressed KOfam KO list.
+  - skip_diamond:
+      type: boolean
+      description: Skip DIAMOND BLASTP taxonomic classification
 
 output:
+  - diamond_blast:
+      type: file
+      description: |
+        Channel containing BLAST-formatted output files from DIAMOND (only populated when --diamond_outfmt selects this format)
+        Structure: [ val(meta), path(blast) ]
+      pattern: "*"
+  - diamond_xml:
+      type: file
+      description: |
+        Channel containing XML-formatted output files from DIAMOND (only populated when --diamond_outfmt selects this format)
+        Structure: [ val(meta), path(xml) ]
+      pattern: "*.xml"
+  - diamond_txt:
+      type: file
+      description: |
+        Channel containing tabular text output files from DIAMOND (only populated when --diamond_outfmt selects this format; this is the default format)
+        Structure: [ val(meta), path(txt) ]
+      pattern: "*.txt"
+  - diamond_daa:
+      type: file
+      description: |
+        Channel containing DIAMOND archive format output files (only populated when --diamond_outfmt selects this format)
+        Structure: [ val(meta), path(daa) ]
+      pattern: "*.daa"
+  - diamond_sam:
+      type: file
+      description: |
+        Channel containing SAM alignment files from DIAMOND (only populated when --diamond_outfmt selects this format)
+        Structure: [ val(meta), path(sam) ]
+      pattern: "*.sam"
+  - diamond_tsv:
+      type: file
+      description: |
+        Channel containing tab-separated output files from DIAMOND (only populated when --diamond_outfmt selects this format)
+        Structure: [ val(meta), path(tsv) ]
+      pattern: "*.tsv"
+  - diamond_paf:
+      type: file
+      description: |
+        Channel containing PAF alignment files from DIAMOND (only populated when --diamond_outfmt selects this format)
+        Structure: [ val(meta), path(paf) ]
+      pattern: "*.paf"
   - interproscan_tsv:
       type: file
       description: |
@@ -81,8 +130,11 @@ output:
       pattern: "*.tsv"
 
 authors:
+  - "@eweizy"
+  - "@tracelail"
+maintainers:
+  - "@eweizy"
+  - "@tracelail"
   - "@vagkaratzas"
   - "@Muskan-2464"
   - "@Yixuan39"
-maintainers:
-  - "@vagkaratzas"

@@ -1,0 +1,44 @@
+{
+    "Should download ncbi refseq 'other' zipped protein fasta -- stub": {
+        "content": [
+            {
+                "refseq_fasta": [
+                    "refseq_fasta.fa.gz:md5,68b329da9893e34099c7d8ad5cb9c940"
+                ],
+                "versions_rclone": [
+                    [
+                        "NCBIREFSEQDOWNLOAD",
+                        "rclone",
+                        "v1.75.0-DEV"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-09-07T13:26:51.111520232",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    },
+    "Should download ncbi refseq 'other' zipped protein fasta": {
+        "content": [
+            {
+                "refseq_fasta": [
+                    "refseq_fasta.fa.gz:md5,af9fbb4c725173a9286979c7f1c6a67e"
+                ],
+                "versions_rclone": [
+                    [
+                        "NCBIREFSEQDOWNLOAD",
+                        "rclone",
+                        "v1.75.0-DEV"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-09-07T13:26:43.042633275",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.6"
+        }
+    }
+}
