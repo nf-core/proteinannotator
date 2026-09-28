@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#111](https://github.com/nf-core/proteinannotator/pull/111) - nf-core tools template update to 4.1.0. (by @vagkaratzas)
 - [#106](https://github.com/nf-core/proteinannotator/pull/106) - nf-core tools template update to 4.0.3. (by @vagkaratzas)
 
+### `Fixed`
+
+- [#115](https://github.com/nf-core/proteinannotator/pull/115) - Fixed `INTERPROSCAN` failing on real databases: updated the `interproscan` module so it uses the staged database ([nf-core/modules#13009](https://github.com/nf-core/modules/issues/13009)), set the default `interproscan_db_url` to the 5.59-91.0 release that matches the container, pass the inner `data/` directory of an untarred release to `INTERPROSCAN`, and removed `PIRSF` from the default `interproscan_applications`, since parallel samples can race to index its HMMs on a fresh database (see usage docs to re-enable it). (by @vagkaratzas)
+
 ### `Dependencies`
 
 | Tool   | Previous version | New version |
