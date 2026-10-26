@@ -182,4 +182,5 @@ If you update images or graphics, follow the nf-core [style guidelines](https://
 
 ## Pipeline specific contribution guidelines
 
-<!-- TODO nf-core: Add any pipeline specific contribution guidelines here, such as coding styles, procedures, checklists etc. -->
+- When adding or modifying annotation tools, ensure that the reference database paths are parameterised in `nextflow.config` and documented in `nextflow_schema.json` — hardcoded paths are a common source of portability issues.
+- Protein annotation steps can be computationally expensive; always set sensible `withLabel:` resource defaults in `conf/base.config` and test locally with a small FASTA subset before opening a PR.

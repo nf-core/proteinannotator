@@ -1,0 +1,88 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
+name: functional_annotation
+description: |
+  Performs functional annotation of protein sequences using InterProScan and KOfamScan.
+  Both databases can be downloaded automatically or supplied locally.
+keywords:
+  - annotation
+  - functional
+  - interproscan
+  - kofamscan
+  - kegg
+  - proteins
+  - fasta
+
+components:
+  - aria2
+  - untar
+  - gunzip
+  - interproscan
+  - kofamscan
+
+input:
+  - ch_fasta:
+      type: file
+      description: |
+        Channel containing FASTA files with protein sequences to annotate.
+        Structure: [ val(meta), path(fasta) ]
+      pattern: "*.{fa,fasta,faa}"
+  - skip_interproscan:
+      type: boolean
+      description: |
+        If true, the entire InterProScan annotation step is skipped and no
+        output TSV is produced.
+  - interproscan_db_url:
+      type: string
+      description: |
+        URL to download the InterProScan database archive (tar.gz). Used when
+        interproscan_db is not provided and skip_interproscan is false.
+  - interproscan_db:
+      type: string
+      description: |
+        Path to a pre-existing local InterProScan database directory. When
+        provided, the download and extraction steps are skipped.
+  - skip_kofamscan:
+      type: boolean
+      description: |
+        If true, KOfamScan annotation is skipped.
+  - kofamscan_profiles_url:
+      type: string
+      description: |
+        URL to download the KOfam profiles archive. Used when
+        kofamscan_profiles is not provided and skip_kofamscan is false.
+  - kofamscan_profiles:
+      type: string
+      description: |
+        Optional path to a pre-existing KOfam profiles directory.
+  - kofamscan_ko_list_url:
+      type: string
+      description: |
+        URL to download the compressed KOfam KO list. Used when
+        kofamscan_ko_list is not provided and skip_kofamscan is false.
+  - kofamscan_ko_list:
+      type: string
+      description: |
+        Optional path to a pre-existing decompressed KOfam KO list.
+
+output:
+  - interproscan_tsv:
+      type: file
+      description: |
+        TSV file containing InterProScan functional annotation results.
+        Optional — only produced when skip_interproscan is false.
+        Structure: [ val(meta), path(tsv) ]
+      pattern: "*.tsv"
+  - kofamscan_tsv:
+      type: file
+      description: |
+        Detailed KOfamScan annotation results.
+        Optional — only produced when skip_kofamscan is false.
+        Structure: [ val(meta), path(tsv) ]
+      pattern: "*.tsv"
+
+authors:
+  - "@vagkaratzas"
+  - "@Muskan-2464"
+  - "@Yixuan39"
+maintainers:
+  - "@vagkaratzas"

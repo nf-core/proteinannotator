@@ -1,0 +1,205 @@
+{
+    "hmmer/hmmsearch": {
+        "content": [
+            {
+                "versions_hmmer": [
+                    [
+                        "HMMER_HMMSEARCH",
+                        "hmmer",
+                        "3.4"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-07T12:11:28.12628",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "hmmer/hmmsearch - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.txt.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    [
+                        "HMMER_HMMSEARCH",
+                        "hmmer",
+                        "3.4"
+                    ]
+                ],
+                "alignments": [
+                    
+                ],
+                "domain_summary": [
+                    
+                ],
+                "output": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.txt.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "target_summary": [
+                    
+                ],
+                "versions_hmmer": [
+                    [
+                        "HMMER_HMMSEARCH",
+                        "hmmer",
+                        "3.4"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-07T12:11:36.304424",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "hmmer/hmmsearch - optional - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.txt.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.sto.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.tbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "4": [
+                    [
+                        "HMMER_HMMSEARCH",
+                        "hmmer",
+                        "3.4"
+                    ]
+                ],
+                "alignments": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.sto.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "domain_summary": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.domtbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "output": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.txt.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "target_summary": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test.tbl.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_hmmer": [
+                    [
+                        "HMMER_HMMSEARCH",
+                        "hmmer",
+                        "3.4"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-05-07T12:11:40.288705",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "hmmer/hmmsearch - optional": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test.sto.gz:md5,5c44c289b9e36aa1f7f3afae2005fbb7"
+                ],
+                {
+                    "versions_hmmer": [
+                        [
+                            "HMMER_HMMSEARCH",
+                            "hmmer",
+                            "3.4"
+                        ]
+                    ]
+                }
+            ]
+        ],
+        "timestamp": "2026-05-07T12:11:32.272907",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}

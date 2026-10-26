@@ -1,0 +1,65 @@
+Changes in component 'nf-core/gunzip'
+'modules/nf-core/gunzip/environment.yml' is unchanged
+'modules/nf-core/gunzip/meta.yml' is unchanged
+Changes in 'gunzip/main.nf':
+--- modules/nf-core/gunzip/main.nf
++++ modules/nf-core/gunzip/main.nf
+@@ -23,7 +23,7 @@
+ 	def extension = file(nameWithoutGz).extension
+ 	def name = file(nameWithoutGz).baseName
+     def prefix = task.ext.prefix ?: name
+-    gunzip = prefix + ".${extension}"
++    gunzip = extension ? "${prefix}.${extension}" : prefix
+     """
+     # Not calling gunzip itself because it creates files
+     # with the original group ownership rather than the
+@@ -40,7 +40,7 @@
+ 	def extension = file(nameWithoutGz).extension
+ 	def name = file(nameWithoutGz).baseName
+     def prefix = task.ext.prefix ?: name
+-    gunzip = prefix + ".${extension}"
++    gunzip = extension ? "${prefix}.${extension}" : prefix
+     """
+     touch ${gunzip}
+     """
+
+'modules/nf-core/gunzip/tests/main.nf.test.snap' is unchanged
+'modules/nf-core/gunzip/tests/nextflow.config' is unchanged
+Changes in 'gunzip/tests/main.nf.test':
+--- modules/nf-core/gunzip/tests/main.nf.test
++++ modules/nf-core/gunzip/tests/main.nf.test
+@@ -115,6 +115,32 @@
+ 
+     }
+ 
++    test("Should decompress a gz-only filename without a trailing dot") {
++
++        when {
++            params {
++                outdir = "$outputDir"
++            }
++            process {
++                """
++                input[0] = Channel.of([
++                        [],
++                        file(params.modules_testdata_base_path + 'genomics/sarscov2/genome/db/kofamscan/ko_list.gz', checkIfExists: true)
++                    ]
++                )
++                """
++            }
++        }
++
++        then {
++            assertAll(
++            { assert process.success },
++            { assert file(process.out.gunzip[0][1]).name == 'ko_list' }
++            )
++        }
++
++    }
++
+     test("Should decompress file with extension appearing multiple times in filename - prefix") {
+ 
+         config './nextflow.config'
+
+************************************************************
