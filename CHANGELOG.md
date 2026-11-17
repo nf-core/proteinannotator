@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Changed`
 
+- [#118](https://github.com/nf-core/proteinannotator/pull/118) - nf-core tools template update to 4.2.1. (by @vagkaratzas)
 - [#111](https://github.com/nf-core/proteinannotator/pull/111) - nf-core tools template update to 4.1.0. (by @vagkaratzas)
 - [#106](https://github.com/nf-core/proteinannotator/pull/106) - nf-core tools template update to 4.0.3. (by @vagkaratzas)
 
