@@ -11,19 +11,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Changed`
 
+- [#122](https://github.com/nf-core/proteinannotator/pull/122) - nf-core modules update and release housekeeping (by @vagkaratzas):
+  - Updated nf-core modules and subworkflows: `hmmer/hmmsearch` and `seqkit/*` now use Seqera containers, and `s4pred/runmodel` reports its version through the `versions` topic channel.
+  - Added missing contributors to `manifest.contributors` and the README credits.
+  - Updated the metro map with NMPFams, metagRoot, KOfamScan and the InterProScan/KOfam database downloads, and fixed its dark version (logo and legend were unreadable).
+  - Documented in `docs/output.md` how s4pred renames its per-sequence output files, which can overwrite predictions for IDs that differ only by case or `-` ([#121](https://github.com/nf-core/proteinannotator/issues/121)).
+- [#119](https://github.com/nf-core/proteinannotator/pull/119) - nf-core tools template update to 4.2.2. (by @vagkaratzas)
 - [#118](https://github.com/nf-core/proteinannotator/pull/118) - nf-core tools template update to 4.2.1. (by @vagkaratzas)
 - [#111](https://github.com/nf-core/proteinannotator/pull/111) - nf-core tools template update to 4.1.0. (by @vagkaratzas)
 - [#106](https://github.com/nf-core/proteinannotator/pull/106) - nf-core tools template update to 4.0.3. (by @vagkaratzas)
 
 ### `Fixed`
 
+- [#122](https://github.com/nf-core/proteinannotator/pull/122) - Fixed `INTERPROSCAN` failing on sequences that contain `*` (stop codons) by updating the `interproscan` module, which now drops a trailing `*` and masks internal ones as `X` ([nf-core/modules#13160](https://github.com/nf-core/modules/pull/13160)). (by @vagkaratzas)
 - [#115](https://github.com/nf-core/proteinannotator/pull/115) - Fixed `INTERPROSCAN` failing on real databases: updated the `interproscan` module so it uses the staged database ([nf-core/modules#13009](https://github.com/nf-core/modules/issues/13009)), set the default `interproscan_db_url` to the 5.59-91.0 release that matches the container, pass the inner `data/` directory of an untarred release to `INTERPROSCAN`, and removed `PIRSF` from the default `interproscan_applications`, since parallel samples can race to index its HMMs on a fresh database (see usage docs to re-enable it). (by @vagkaratzas)
 
 ### `Dependencies`
 
-| Tool   | Previous version | New version |
-| ------ | ---------------- | ----------- |
-| seqkit | 2.9.0            | 2.13.0      |
+| Tool      | Previous version | New version |
+| --------- | ---------------- | ----------- |
+| kofamscan |                  | 1.3.0       |
+| multiqc   | 1.34             | 1.35        |
+| seqkit    | 2.9.0            | 2.13.0      |
 
 ## v1.1.0 - [2026/05/07]
 
