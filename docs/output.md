@@ -385,13 +385,16 @@ The XML Schema Definition (XSD) is available [here](http://ftp.ebi.ac.uk/pub/sof
 - `s4pred/`
   - `<samplename>/`
     - `<s4pred_outfmt>/`
-      - `<samplename>.<s4pred_outfmt>`: The probability of each amino acid to be an α-helix, a β-strand or a coil, in the chosen output format (i.e., 'ss2', 'fas', or 'horiz').
+      - `<sequence_name>.<s4pred_outfmt>`: One file per input sequence with the probability of each amino acid to be an α-helix, a β-strand or a coil, in the chosen output format (i.e., 'ss2', 'fas', or 'horiz').
 
 </details>
 
 The `s4pred` module is used to predict secondary structures of amino acid sequences.
 
 [s4pred](https://github.com/psipred/s4pred) is a tool for accurate prediction of a protein's secondary structure from only it's amino acid sequence.
+
+> [!WARNING]
+> s4pred names each file after the sequence name, which it normalises first: it is uppercased and every `-` is removed (on top of the `/` → `_` replacement done during preprocessing). File names can therefore differ from the sequence IDs in the other outputs, and two IDs that differ only by case or `-` (e.g., `ab-1` and `AB1`) write to the same file, so one prediction is overwritten. Make such IDs unique before running the pipeline. See [#121](https://github.com/nf-core/proteinannotator/issues/121).
 
 ### MultiQC
 
