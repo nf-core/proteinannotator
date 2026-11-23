@@ -86,7 +86,6 @@ workflow PROTEINANNOTATOR {
 
     if (!skip_s4pred) {
         S4PRED_RUNMODEL( FAA_SEQFU_SEQKIT.out.fasta )
-        ch_versions = ch_versions.mix( S4PRED_RUNMODEL.out.versions.first() )
     }
 
     //

@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Changed`
 
+- [#122](https://github.com/nf-core/proteinannotator/pull/122) - Updated nf-core modules and subworkflows: `hmmer/hmmsearch` and `seqkit/*` now use Seqera containers, and `s4pred/runmodel` reports its version through the `versions` topic channel. (by @vagkaratzas)
 - [#119](https://github.com/nf-core/proteinannotator/pull/119) - nf-core tools template update to 4.2.2. (by @vagkaratzas)
 - [#118](https://github.com/nf-core/proteinannotator/pull/118) - nf-core tools template update to 4.2.1. (by @vagkaratzas)
 - [#111](https://github.com/nf-core/proteinannotator/pull/111) - nf-core tools template update to 4.1.0. (by @vagkaratzas)
@@ -18,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Fixed`
 
+- [#122](https://github.com/nf-core/proteinannotator/pull/122) - Fixed `INTERPROSCAN` failing on sequences that contain `*` (stop codons) by updating the `interproscan` module, which now drops a trailing `*` and masks internal ones as `X` ([nf-core/modules#13160](https://github.com/nf-core/modules/pull/13160)). (by @vagkaratzas)
 - [#115](https://github.com/nf-core/proteinannotator/pull/115) - Fixed `INTERPROSCAN` failing on real databases: updated the `interproscan` module so it uses the staged database ([nf-core/modules#13009](https://github.com/nf-core/modules/issues/13009)), set the default `interproscan_db_url` to the 5.59-91.0 release that matches the container, pass the inner `data/` directory of an untarred release to `INTERPROSCAN`, and removed `PIRSF` from the default `interproscan_applications`, since parallel samples can race to index its HMMs on a fresh database (see usage docs to re-enable it). (by @vagkaratzas)
 
 ### `Dependencies`
