@@ -11,9 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Changed`
 
-- [#122](https://github.com/nf-core/proteinannotator/pull/122) - Documented in `docs/output.md` how s4pred renames its per-sequence output files, which can overwrite predictions for IDs that differ only by case or `-` ([#121](https://github.com/nf-core/proteinannotator/issues/121)). (by @vagkaratzas)
-- [#122](https://github.com/nf-core/proteinannotator/pull/122) - Added missing contributors to `manifest.contributors` and the README credits. (by @vagkaratzas)
-- [#122](https://github.com/nf-core/proteinannotator/pull/122) - Updated nf-core modules and subworkflows: `hmmer/hmmsearch` and `seqkit/*` now use Seqera containers, and `s4pred/runmodel` reports its version through the `versions` topic channel. (by @vagkaratzas)
+- [#122](https://github.com/nf-core/proteinannotator/pull/122) - nf-core modules update and release housekeeping (by @vagkaratzas):
+  - Updated nf-core modules and subworkflows: `hmmer/hmmsearch` and `seqkit/*` now use Seqera containers, and `s4pred/runmodel` reports its version through the `versions` topic channel.
+  - Added missing contributors to `manifest.contributors` and the README credits.
+  - Documented in `docs/output.md` how s4pred renames its per-sequence output files, which can overwrite predictions for IDs that differ only by case or `-` ([#121](https://github.com/nf-core/proteinannotator/issues/121)).
 - [#119](https://github.com/nf-core/proteinannotator/pull/119) - nf-core tools template update to 4.2.2. (by @vagkaratzas)
 - [#118](https://github.com/nf-core/proteinannotator/pull/118) - nf-core tools template update to 4.2.1. (by @vagkaratzas)
 - [#111](https://github.com/nf-core/proteinannotator/pull/111) - nf-core tools template update to 4.1.0. (by @vagkaratzas)
@@ -26,9 +27,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Dependencies`
 
-| Tool   | Previous version | New version |
-| ------ | ---------------- | ----------- |
-| seqkit | 2.9.0            | 2.13.0      |
+| Tool      | Previous version | New version |
+| --------- | ---------------- | ----------- |
+| kofamscan |                  | 1.3.0       |
+| multiqc   | 1.34             | 1.35        |
+| seqkit    | 2.9.0            | 2.13.0      |
 
 ## v1.1.0 - [2026/05/07]
 
