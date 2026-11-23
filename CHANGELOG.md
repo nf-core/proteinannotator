@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### `Changed`
 
+- [#122](https://github.com/nf-core/proteinannotator/pull/122) - Added missing contributors to `manifest.contributors` and the README credits. (by @vagkaratzas)
 - [#122](https://github.com/nf-core/proteinannotator/pull/122) - Updated nf-core modules and subworkflows: `hmmer/hmmsearch` and `seqkit/*` now use Seqera containers, and `s4pred/runmodel` reports its version through the `versions` topic channel. (by @vagkaratzas)
 - [#119](https://github.com/nf-core/proteinannotator/pull/119) - nf-core tools template update to 4.2.2. (by @vagkaratzas)
 - [#118](https://github.com/nf-core/proteinannotator/pull/118) - nf-core tools template update to 4.2.1. (by @vagkaratzas)

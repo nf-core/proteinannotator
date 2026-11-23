@@ -91,6 +91,9 @@ We thank the following people for their extensive assistance in the development 
 - [Edmund Miller](https://github.com/edmundmiller)
 - [Eric Wei](https://github.com/eweizy)
 - [Martin Beracochea](https://github.com/mberacochea)
+- [Yixuan Yang](https://github.com/Yixuan39)
+- [Angel](https://github.com/angelphanth)
+- [Nikos Pechlivanis](https://github.com/npechl)
 
 ## Contributions and Support
 
