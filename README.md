@@ -11,7 +11,7 @@
 [![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)
 
 [![Nextflow](https://img.shields.io/badge/version-%E2%89%A525.10.4-green?style=flat&logo=nextflow&logoColor=white&color=%230DC09D&link=https%3A%2F%2Fnextflow.io)](https://www.nextflow.io/)
-[![nf-core template version](https://img.shields.io/badge/nf--core_template-4.0.2-green?style=flat&logo=nfcore&logoColor=white&color=%2324B064&link=https%3A%2F%2Fnf-co.re)](https://github.com/nf-core/tools/releases/tag/4.0.2)
+[![nf-core template version](https://img.shields.io/badge/nf--core_template-4.2.2-green?style=flat&logo=nfcore&logoColor=white&color=%2324B064&link=https%3A%2F%2Fnf-co.re)](https://github.com/nf-core/tools/releases/tag/4.2.2)
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
 [![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
@@ -40,6 +40,7 @@ Generate input amino acid sequence statistics with ([`SeqFu`](https://github.com
    such as [Pfam](https://ftp.ebi.ac.uk/pub/databases/Pfam/), [FunFam](https://download.cathdb.info/cath/releases/all-releases/), and [NMPFams and metagRoot](https://pavlopoulos-lab.org/envofams/databases/hmmer/)
 2. Functional annotation:
    - ([`InterProScan`](https://interproscan-docs.readthedocs.io/en/v5/)) a software tool used to analyze protein sequences by scanning them against the signatures of protein families, domains, and sites in the [InterPro](https://www.ebi.ac.uk/interpro/) database, helping to identify their functional characteristics.
+   - ([`KOfamScan`](https://github.com/takaram/kofam_scan)) assigns KEGG Orthologs to protein sequences using profile HMMs and KO-specific score thresholds.
 3. Predict secondary structure compositional features such as α-helices, β-strands and coils with ([`s4pred`](https://github.com/psipred/s4pred))
 4. Present QC stats for input sequences before and after initial pre-processing with ([`MultiQC`](http://multiqc.info/))
 
@@ -90,6 +91,9 @@ We thank the following people for their extensive assistance in the development 
 - [Edmund Miller](https://github.com/edmundmiller)
 - [Eric Wei](https://github.com/eweizy)
 - [Martin Beracochea](https://github.com/mberacochea)
+- [Yixuan Yang](https://github.com/Yixuan39)
+- [Angel](https://github.com/angelphanth)
+- [Nikos Pechlivanis](https://github.com/npechl)
 
 ## Contributions and Support
 
