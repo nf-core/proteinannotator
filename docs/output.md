@@ -375,7 +375,7 @@ The XML Schema Definition (XSD) is available [here](http://ftp.ebi.ac.uk/pub/sof
 
 </details>
 
-[KOfamScan](https://github.com/takaram/kofam_scan) searches protein sequences against KOfam profile HMMs and reports KEGG Orthology assignments using KO-specific adaptive score thresholds. The detailed TSV output includes the query identifier, KO identifier, threshold, score, E-value and KO definition.
+[KOfamScan](https://github.com/takaram/kofam_scan) searches protein sequences against KOfam profile HMMs and reports KEGG Orthology assignments using KO-specific adaptive score thresholds. The pipeline runs it with `--format detail-tsv`, so the TSV output has the columns: significance mark, query identifier, KO identifier, threshold, score, E-value and KO definition. It lists all hits, including those that score below the KO-specific threshold; only hits marked with `*` in the first column pass the threshold, so filter on that column to keep reliable KO assignments.
 
 #### s4pred
 
